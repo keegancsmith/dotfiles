@@ -1,0 +1,6 @@
+syntax: glob
+.emacs.d/pwords.el
+.emacs.d/auto-save-list
+*.elc
+*.pyc
+*~

@@ -1,0 +1,35 @@
+Host *
+ControlMaster auto
+ControlPath /tmp/%r@%h:%p
+
+Host *.uct.ac.za
+User smtkee002
+
+Host tsl
+User smtkee002
+Hostname tsl.uct.ac.za
+
+Host casper
+User smtkee002
+Hostname casper.cs.uct.ac.za
+
+Host casper2
+User smtkee002
+Hostname casper2.cs.uct.ac.za
+
+Host nightmare
+User smtkee002
+Hostname nightmare.cs.uct.ac.za
+
+Host olympiad*
+User keegan
+Hostname olympiad.cs.uct.ac.za
+
+Host clam*
+User keegan
+Hostname clam.leg.uct.ac.za
+
+Host tunnel
+User tunnel
+IdentityFile ~/.ssh/tunnel_id_dsa
+Hostname soul.ltserv.net
