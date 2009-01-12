@@ -42,5 +42,5 @@
 (setq pymacs-load-path '("~/.emacs.d/python/"))
 (require 'pymacs)
 (pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-shortcuts
+(setq ropemacs-enable-shortcuts t
       ropemacs-guess-project t)
