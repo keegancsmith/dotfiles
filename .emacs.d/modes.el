@@ -29,9 +29,9 @@
 
 ;; LaTeX - Turn on spellcheck and fill mode
 (add-hook 'latex-mode-hook
-	  (lambda ()
-	    (flyspell-mode t)
-	    (auto-fill-mode t)))
+          (lambda ()
+            (flyspell-mode t)
+            (auto-fill-mode t)))
 
 
 ;; Haskell
@@ -44,3 +44,7 @@
 (pymacs-load "ropemacs" "rope-")
 (setq ropemacs-enable-shortcuts t
       ropemacs-guess-project t)
+(add-hook 'python-mode-hook
+          '(lambda ()
+             (define-key ropemacs-local-keymap "\M-/" 'dabbrev-expand)
+             (define-key ropemacs-local-keymap "\M-." 'rope-code-assist)))
