@@ -1,7 +1,7 @@
 ;; Color-theme
 (require 'color-theme)
 (color-theme-initialize)
-(if window-system (color-theme-dark-laptop) (color-theme-euphoria))
+(if window-system (color-theme-dark-laptop))
 
 
 (custom-set-faces

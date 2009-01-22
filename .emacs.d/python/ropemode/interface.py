@@ -1,7 +1,7 @@
 import os
 
 import rope.base.change
-from rope.base import libutils
+from rope.base import libutils, utils
 from rope.contrib import codeassist, generate, autoimport, findit
 
 from ropemode import refactor, decorators, dialog
@@ -171,14 +171,15 @@ class RopeMode(object):
         text = self._get_text()
         offset = self.env.get_offset()
         docs = get_doc(self.project, text, offset,
-                       self._get_resource(), maxfixes)
+                       self.resource, maxfixes)
         self.env.show_doc(docs, prefix)
         if docs is None:
             self.env.message('No docs avilable!')
 
     def _get_text(self):
-        if not self.env.is_modified():
-            return self._get_resource().read()
+        resource = self.resource
+        if not self.env.is_modified() and resource is not None:
+            return resource.read()
         return self.env.get_text()
 
     def _base_findit(self, do_find, optionals, get_kwds):
@@ -231,6 +232,10 @@ class RopeMode(object):
     @decorators.local_command()
     def auto_import(self):
         _CodeAssist(self, self.env).auto_import()
+
+    @decorators.local_command()
+    def completions(self):
+        return _CodeAssist(self, self.env).completions()
 
     def _check_autoimport(self):
         self._check_project()
@@ -340,8 +345,7 @@ class RopeMode(object):
     def analyze_module(self):
         """Perform static object analysis on this module"""
         self._check_project()
-        resource = self._get_resource()
-        self.project.pycore.analyze_module(resource)
+        self.project.pycore.analyze_module(self.resource)
 
     @decorators.global_command()
     def analyze_modules(self):
@@ -355,8 +359,7 @@ class RopeMode(object):
     def run_module(self):
         """Run and perform dynamic object analysis on this module"""
         self._check_project()
-        resource = self._get_resource()
-        process = self.project.pycore.run_module(resource)
+        process = self.project.pycore.run_module(self.resource)
         try:
             process.wait_process()
         finally:
@@ -386,17 +389,26 @@ class RopeMode(object):
             self.env.goto_line(lineno)
 
     def _get_location(self):
-        resource = self._get_resource()
         offset = self.env.get_offset()
-        return resource, offset
+        return self.resource, offset
 
     def _get_resource(self, filename=None):
         if filename is None:
             filename = self.env.filename()
-        if filename is None:
+        if filename is None or self.project is None:
             return
         resource = libutils.path_to_resource(self.project, filename, 'file')
         return resource
+
+    @property
+    def resource(self):
+        """the current resource
+
+        Returns `None` when file does not exist.
+        """
+        resource = self._get_resource()
+        if resource and resource.exists():
+            return resource
 
     def _check_project(self):
         if self.project is None:
@@ -492,11 +504,6 @@ class _CodeAssist(object):
         self.interface = interface
         self.autoimport = interface.autoimport
         self.env = env
-        self._source = None
-        self._offset = None
-        self._starting_offset = None
-        self._starting = None
-        self._expression = None
 
     def code_assist(self, prefix):
         names = self._calculate_proposals()
@@ -540,6 +547,11 @@ class _CodeAssist(object):
         else:
             self.env.message('Global name %s not found!' % name)
 
+    def completions(self):
+        names = self._calculate_proposals()
+        prefix = self.offset - self.starting_offset
+        return [name[prefix:] for name in names]
+
     def _apply_assist(self, assist):
         if ' : ' in assist:
             name, module = assist.rsplit(' : ', 1)
@@ -552,7 +564,7 @@ class _CodeAssist(object):
 
     def _calculate_proposals(self):
         self.interface._check_project()
-        resource = self.interface._get_resource()
+        resource = self.interface.resource
         maxfixes = self.env.get('codeassist_maxfixes')
         proposals = codeassist.code_assist(
             self.interface.project, self.source, self.offset,
@@ -584,33 +596,26 @@ class _CodeAssist(object):
         return prefix
 
     @property
+    @utils.cacheit
     def offset(self):
-        if self._offset is None:
-            self._offset = self.env.get_offset()
-        return self._offset
+        return self.env.get_offset()
 
     @property
+    @utils.cacheit
     def source(self):
-        if self._source is None:
-            self._source = self.interface._get_text()
-        return self._source
+        return self.interface._get_text()
 
     @property
+    @utils.cacheit
     def starting_offset(self):
-        if self._starting_offset is None:
-            self._starting_offset = codeassist.starting_offset(self.source,
-                                                               self.offset)
-        return self._starting_offset
+        return codeassist.starting_offset(self.source, self.offset)
 
     @property
+    @utils.cacheit
     def starting(self):
-        if self._starting is None:
-            self._starting = self.source[self.starting_offset:self.offset]
-        return self._starting
+        return self.source[self.starting_offset:self.offset]
 
     @property
+    @utils.cacheit
     def expression(self):
-        if self._expression is None:
-            self._expression = codeassist.starting_expression(self.source,
-                                                              self.offset)
-        return self._expression
+        return codeassist.starting_expression(self.source, self.offset)
