@@ -1,5 +1,6 @@
 syntax: glob
 .emacs.d/pwords.el
+.emacs.d/tramp
 .emacs.d/auto-save-list
 *.elc
 *.pyc
