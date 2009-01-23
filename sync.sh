@@ -13,7 +13,7 @@ function conditionallink {
     fi
 
     rm -f "$2"
-    mkdirhier "$(dirname $2)"
+    mkdir -p "$(dirname $2)"
     ln -vs "$1" "$2"
 }
 
