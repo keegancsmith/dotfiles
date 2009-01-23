@@ -10,7 +10,6 @@
 ;; reST Mode
 (autoload 'rst-mode "rst" "mode for editing reStructuredText documents" t)
 (add-to-list 'auto-mode-alist '("\\.re?st\\'" . rst-mode))
-(setq rst-mode-lazy nil)
 (add-hook 'rst-mode-hook
           (lambda ()
             (flyspell-mode t)
