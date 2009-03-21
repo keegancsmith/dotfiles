@@ -34,7 +34,7 @@
 
 
 ;; Haskell
-(load "~/.emacs.d/elisp/haskell-mode/haskell-site-file.el")
+;(load "~/.emacs.d/elisp/haskell-mode/haskell-site-file.el")
 
 
 ;; Python
