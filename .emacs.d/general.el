@@ -2,7 +2,7 @@
 
 ;; Xft support if using 23
 (if (>= emacs-major-version 23)
-    (set-frame-font "Bitstream Vera Sans Mono-9"))
+    (set-frame-font "Monospace-9"))
     ;;(set-default-font "Andale Mono-11"))
 
 ;; Email
