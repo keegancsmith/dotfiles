@@ -20,7 +20,7 @@ function conditionallink {
 cd $(dirname $0)
 REPO=$(pwd)
 
-for f in .bash_logout .bash_profile .bashrc .emacs .emacs.d .hgrc; do
+for f in .bash_logout .bash_profile .bashrc .emacs .emacs.d .hgrc .inputrc; do
     conditionallink "${REPO}/${f}" "${HOME}/${f}"
 done
 

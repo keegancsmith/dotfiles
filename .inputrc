@@ -1,0 +1,11 @@
+# Page up and down
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+
+# Alt + arrow key
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word
+
+# Home and end
+"\e[H": beginning-of-line
+"\e[F": end-of-line

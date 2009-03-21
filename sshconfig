@@ -1,6 +1,6 @@
-Host *
-ControlMaster auto
-ControlPath /tmp/%r@%h:%p
+#Host *
+#ControlMaster auto
+#ControlPath /tmp/%r@%h:%p
 
 Host *.uct.ac.za
 User smtkee002
