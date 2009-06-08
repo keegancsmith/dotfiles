@@ -63,7 +63,7 @@
  save-abbrevs nil
  font-lock-maximum-decoration t
  tramp-default-method "ssh"
- tramp-auto-save-directory "~/emacs/tramp-autosave")
+ tramp-auto-save-directory "~/.emacs.d/tramp-autosave")
 (global-font-lock-mode 1)
 
 ;; Misc buffer settings
@@ -94,4 +94,4 @@
 
 
 ;; Enable Full Screen mode
-(fullscreen)
+;;(fullscreen)
