@@ -10,15 +10,15 @@ User smtkee002
 Hostname tsl.uct.ac.za
 
 Host casper
-User smtkee002
+User ksmith
 Hostname casper.cs.uct.ac.za
 
 Host casper2
-User smtkee002
+User ksmith
 Hostname casper2.cs.uct.ac.za
 
 Host nightmare
-User smtkee002
+User ksmith
 Hostname nightmare.cs.uct.ac.za
 
 Host olympiad*
