@@ -38,7 +38,7 @@
  '(org-agenda-restore-windows-after-quit t)
  '(org-replace-disputed-keys t)
 ;; '(org-agenda-files (quote ("~/todo.org" "~/series.org")))
- '(org-agenda-files (quote ("~/org-files/todo.org")))
+ '(org-agenda-files (quote ("~/org-files/todo.org" "~/org-files/birthdays.org")))
  '(org-default-notes-file "~/org-files/notes.org")
  '(org-agenda-ndays 7)
  '(org-deadline-warning-days 14)
