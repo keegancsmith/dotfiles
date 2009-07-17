@@ -17,7 +17,7 @@ xsetroot -solid black
  
 pidgin &
  
-xscreensaver -no-splash &
+gnome-screensaver &
 
 amarok &> /dev/null &
 

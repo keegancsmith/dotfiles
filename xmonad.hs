@@ -9,7 +9,7 @@ import Data.List
 
 myManageHook = composeAll . concat $
    [ [ className =? "Firefox-bin" --> doShift "web" ]
-   , [ className =? "emacs"       --> doShift "code" ]
+   , [ className =? "Emacs"       --> doShift "code" ]
    , [ className =? "Evince"      --> doShift "pdf" ]
    , [(className =? "Firefox" <&&> resource =? "Dialog") --> doFloat]
 
@@ -47,7 +47,7 @@ main = do
        , focusFollowsMouse = False
        , workspaces = ["web", "code"] ++ map show [3..7] ++ ["pdf", "misc"]
        } `additionalKeys`
-       [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
+       [ ((mod4Mask .|. shiftMask, xK_z), spawn "gnome-screensaver-command --lock")
        , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
        , ((0, xK_Print), spawn "scrot")
        , ((mod4Mask, xK_c), spawn "/home/keegan/bin/mpris-remote playpause")
