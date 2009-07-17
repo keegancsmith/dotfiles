@@ -45,6 +45,9 @@ alias grep="grep --color=auto"
 # Completion
 [[ -f /etc/profile.d/bash-completion ]] && source /etc/profile.d/bash-completion
 
+# http://techbase.kde.org/Getting_Started/Increased_Productivity_in_KDE4_with_Scripts/.bashrc
+[[ -f $HOME/.kderc ]] && source $HOME/.kderc
+
 # Some customizations
 export PATH=$HOME/bin:"$PATH"
 export EDITOR=nano
