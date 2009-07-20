@@ -62,6 +62,7 @@
  compilation-scroll-output t
  save-abbrevs nil
  font-lock-maximum-decoration t
+ vc-follow-symlinks t
  tramp-default-method "ssh"
  tramp-auto-save-directory "~/.emacs.d/tramp-autosave")
 (global-font-lock-mode 1)

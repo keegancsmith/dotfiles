@@ -11,6 +11,7 @@ myManageHook = composeAll . concat $
    [ [ className =? "Firefox-bin" --> doShift "web" ]
    , [ className =? "Emacs"       --> doShift "code" ]
    , [ className =? "Evince"      --> doShift "pdf" ]
+   , [ className =? "display"     --> doFloat ]
    , [(className =? "Firefox" <&&> resource =? "Dialog") --> doFloat]
 
      -- using list comprehensions and partial matches
