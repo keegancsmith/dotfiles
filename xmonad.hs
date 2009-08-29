@@ -12,6 +12,8 @@ myManageHook = composeAll . concat $
    , [ className =? "Emacs"       --> doShift "code" ]
    , [ className =? "Evince"      --> doShift "pdf" ]
    , [ className =? "display"     --> doFloat ]
+   , [ className =? "VLC media player" --> doFloat ]
+   , [ title     =? "VLC (XVideo output)" --> doFloat ]
    , [(className =? "Firefox" <&&> resource =? "Dialog") --> doFloat]
 
      -- using list comprehensions and partial matches
@@ -49,8 +51,23 @@ main = do
        , workspaces = ["web", "code"] ++ map show [3..7] ++ ["pdf", "misc"]
        } `additionalKeys`
        [ ((mod4Mask .|. shiftMask, xK_z), spawn "gnome-screensaver-command --lock")
+
+       -- Screenshots
        , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
        , ((0, xK_Print), spawn "scrot")
+
+       -- Multimedia shortcuts
        , ((mod4Mask, xK_c), spawn "/home/keegan/bin/mpris-remote playpause")
        , ((mod4Mask, xK_v), spawn "/home/keegan/bin/mpris-remote next")
+
+       -- multimedia keys
+       --
+       -- XF86AudioLowerVolume
+       , ((0            , 0x1008ff11), spawn "amixer -q set Master 10%-")
+       -- XF86AudioRaiseVolume
+       , ((0            , 0x1008ff13), spawn "amixer -q set Master 10%+")
+       -- XF86AudioMute
+       , ((0            , 0x1008ff12), spawn "amixer -q set Master toggle")
+       -- XF86AudioPlay
+       , ((0            , 0x1008ff14), spawn "/home/keegan/bin/mpris-remote playpause")
        ]
