@@ -1,21 +1,16 @@
-#Host *
-#ControlMaster auto
-#ControlPath /tmp/%r@%h:%p
-
 Host *.uct.ac.za
 User smtkee002
+
+Host *.cs.uct.ac.za
+User ksmith
 
 Host tsl
 User smtkee002
 Hostname tsl.uct.ac.za
 
-Host casper
+Host deer
 User ksmith
-Hostname casper.cs.uct.ac.za
-
-Host casper2
-User ksmith
-Hostname casper2.cs.uct.ac.za
+Hostname deer.cs.uct.ac.za
 
 Host nightmare
 User ksmith
@@ -28,8 +23,3 @@ Hostname olympiad.cs.uct.ac.za
 Host clam*
 User keegan
 Hostname clam.leg.uct.ac.za
-
-Host tunnel
-User tunnel
-IdentityFile ~/.ssh/tunnel_id_dsa
-Hostname soul.ltserv.net
