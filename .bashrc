@@ -35,7 +35,17 @@ case $TERM in
 esac
 
 # Prompt
-PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
+#PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
+BLUE=`tput setf 1`
+GREEN=`tput setf 2`
+CYAN=`tput setf 3`
+RED=`tput setf 4`
+MAGENTA=`tput setf 5`
+YELLOW=`tput setf 6`
+WHITE=`tput setf 7`
+BOLD=`tput bold`
+RST=`tput sgr0`
+PS1='\n\[$BLUE\][\w]\n\[$CYAN\][\t] \[$GREEN\]\u@\h \[$YELLOW\]$ \[$RST\]'
 
 # Alias's
 alias la="ls -A"
