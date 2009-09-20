@@ -2,6 +2,7 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders
+import XMonad.Layout.ThreeColumns
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
@@ -22,10 +23,16 @@ myManageHook = composeAll . concat $
   where myFloatsC = ["Xmessage"]
 
 -- Main pane in Tall is 2/3's of screen
-myLayoutHook = tiled ||| Full
+myLayoutHook = tiled ||| tiled3 ||| Full
   where
+     -- fullscreen
+     full    = noBorders $ avoidStruts $ Full
+
      -- default tiling algorithm partitions the screen into two panes
      tiled   = smartBorders $ avoidStruts $ Tall nmaster delta ratio
+
+     -- Same as tiled, but with three columns
+     tiled3  = smartBorders $ avoidStruts $ ThreeCol nmaster delta (1/2)
 
      -- The default number of windows in the master pane
      nmaster = 1
