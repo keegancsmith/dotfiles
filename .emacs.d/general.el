@@ -58,7 +58,7 @@
  column-number-mode t
  case-fold-search t
  current-language-environment "English"
- compilation-window-height 18
+ compilation-window-height 10
  compilation-scroll-output t
  save-abbrevs nil
  font-lock-maximum-decoration t
