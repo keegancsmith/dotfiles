@@ -3,6 +3,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ThreeColumns
+import XMonad.Layout.ResizableTile
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
@@ -23,7 +24,7 @@ myManageHook = composeAll . concat $
   where myFloatsC = ["Xmessage"]
 
 -- Main pane in Tall is 2/3's of screen
-myLayoutHook = tiled ||| tiled3 ||| Full
+myLayoutHook = tiled ||| resize ||| tiled3 ||| Full
   where
      -- fullscreen
      full    = noBorders $ avoidStruts $ Full
@@ -33,6 +34,9 @@ myLayoutHook = tiled ||| tiled3 ||| Full
 
      -- Same as tiled, but with three columns
      tiled3  = smartBorders $ avoidStruts $ ThreeCol nmaster delta (1/2)
+
+     -- Resizable
+     resize  = smartBorders $ avoidStruts $ ResizableTall nmaster delta ratio []
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -63,6 +67,11 @@ main = do
        , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
        , ((0, xK_Print), spawn "scrot")
 
+       -- ResizableTall keybindings
+       , ((mod4Mask, xK_i), sendMessage MirrorShrink)
+       , ((mod4Mask, xK_u), sendMessage MirrorExpand)
+
+
        -- Multimedia shortcuts
        , ((mod4Mask, xK_c), spawn "/home/keegan/bin/mpris-remote playpause")
        , ((mod4Mask, xK_v), spawn "/home/keegan/bin/mpris-remote next")
@@ -70,11 +79,11 @@ main = do
        -- multimedia keys
        --
        -- XF86AudioLowerVolume
-       , ((0            , 0x1008ff11), spawn "amixer -q set Master 10%-")
+       , ((0, 0x1008ff11), spawn "amixer -q set Master 10%-")
        -- XF86AudioRaiseVolume
-       , ((0            , 0x1008ff13), spawn "amixer -q set Master 10%+")
+       , ((0, 0x1008ff13), spawn "amixer -q set Master 10%+")
        -- XF86AudioMute
-       , ((0            , 0x1008ff12), spawn "amixer -q set Master toggle")
+       , ((0, 0x1008ff12), spawn "amixer -q set Master toggle")
        -- XF86AudioPlay
-       , ((0            , 0x1008ff14), spawn "/home/keegan/bin/mpris-remote playpause")
+       , ((0, 0x1008ff14), spawn "/home/keegan/bin/mpris-remote playpause")
        ]
