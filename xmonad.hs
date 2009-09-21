@@ -14,7 +14,7 @@ myManageHook = composeAll . concat $
    , [ className =? "Emacs"       --> doShift "code" ]
    , [ className =? "Evince"      --> doShift "pdf" ]
    , [ className =? "display"     --> doFloat ]
-   , [ className =? "VLC media player" --> doFloat ]
+   , [ title     =? "VLC media player"    --> doFloat ]
    , [ title     =? "VLC (XVideo output)" --> doFloat ]
    , [(className =? "Firefox" <&&> resource =? "Dialog") --> doFloat]
 
