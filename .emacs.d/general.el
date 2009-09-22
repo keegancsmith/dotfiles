@@ -2,8 +2,8 @@
 
 ;; Xft support if using 23
 (if (>= emacs-major-version 23)
-    (set-frame-font "Monospace-9"))
-    ;;(set-default-font "Andale Mono-11"))
+    (set-frame-font "Inconsolata-12"))
+
 
 ;; Email
 (setq user-full-name "Keegan Carruthers-Smith")
@@ -66,6 +66,7 @@
  tramp-default-method "ssh"
  tramp-auto-save-directory "~/.emacs.d/tramp-autosave")
 (global-font-lock-mode 1)
+
 
 ;; Misc buffer settings
 (setq-default

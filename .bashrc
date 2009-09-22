@@ -24,14 +24,14 @@ else
 fi
 alias ls="ls --color=auto"
 
-# Change the window title of X terminals 
+# Change the window title of X terminals
 case $TERM in
     xterm*|rxvt*|Eterm)
-	PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
-	;;
+        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
+        ;;
     screen)
-	PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
-	;;
+        PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
+        ;;
 esac
 
 # Prompt
@@ -45,7 +45,7 @@ CYAN=`tput setaf 6`
 WHITE=`tput setaf 7`
 BOLD=`tput bold`
 RST=`tput sgr0`
-PS1='\n\[$BLUE\][\w]\n\[$CYAN\][\t] \[$GREEN\]\u@\h \[$YELLOW\]$ \[$RST\]'
+PS1='\n\[$BOLD$BLUE\][\w]\n\[$BOLD$CYAN\][\t] \[$GREEN\]\u@\h \[$YELLOW\]$ \[$RST\]'
 
 # Alias's
 alias la="ls -A"
