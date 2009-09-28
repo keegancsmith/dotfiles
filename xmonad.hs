@@ -24,7 +24,7 @@ myManageHook = composeAll . concat $
   where myFloatsC = ["Xmessage"]
 
 -- Main pane in Tall is 2/3's of screen
-myLayoutHook = tiled ||| resize ||| tiled3 ||| Full
+myLayoutHook = resize ||| tiled3 ||| Full
   where
      -- fullscreen
      full    = noBorders $ avoidStruts $ Full

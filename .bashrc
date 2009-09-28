@@ -45,7 +45,7 @@ CYAN=`tput setaf 6`
 WHITE=`tput setaf 7`
 BOLD=`tput bold`
 RST=`tput sgr0`
-PS1='\n\[$BOLD$BLUE\][\w]\n\[$BOLD$CYAN\][\t] \[$GREEN\]\u@\h \[$YELLOW\]$ \[$RST\]'
+PS1='\[$BOLD$BLUE\][\w]\n\[$BOLD$GREEN\]\u@\h \[$YELLOW\]$ \[$RST\]'
 
 # Alias's
 alias la="ls -A"
