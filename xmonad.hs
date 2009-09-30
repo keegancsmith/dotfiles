@@ -13,30 +13,29 @@ myManageHook = composeAll . concat $
    [ [ className =? "Firefox-bin" --> doShift "web" ]
    , [ className =? "Emacs"       --> doShift "code" ]
    , [ className =? "Evince"      --> doShift "pdf" ]
-   , [ className =? "display"     --> doFloat ]
-   , [ title     =? "VLC media player"    --> doFloat ]
-   , [ title     =? "VLC (XVideo output)" --> doFloat ]
    , [(className =? "Firefox" <&&> resource =? "Dialog") --> doFloat]
 
      -- using list comprehensions and partial matches
    , [ className =?  c --> doFloat | c <- myFloatsC ]
+   , [ title     =?  t --> doFloat | t <- myFloatsT ]
    ]
-  where myFloatsC = ["Xmessage"]
+  where myFloatsC = ["Xmessage", "display", "Gimp"]
+        myFloatsT = ["Downloads", "VLC media player", "VLC (XVideo output)", "Save As...", "Open"]
 
 -- Main pane in Tall is 2/3's of screen
-myLayoutHook = resize ||| tiled3 ||| Full
+myLayoutHook = smartBorders $ avoidStruts $ resize ||| tiled3 ||| Full
   where
      -- fullscreen
-     full    = noBorders $ avoidStruts $ Full
+     full    = Full
 
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = smartBorders $ avoidStruts $ Tall nmaster delta ratio
+     tiled   = Tall nmaster delta ratio
 
      -- Same as tiled, but with three columns
-     tiled3  = smartBorders $ avoidStruts $ ThreeCol nmaster delta (1/2)
+     tiled3  = ThreeCol nmaster delta (1/2)
 
      -- Resizable
-     resize  = smartBorders $ avoidStruts $ ResizableTall nmaster delta ratio []
+     resize  = ResizableTall nmaster delta ratio []
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -48,6 +47,12 @@ myLayoutHook = resize ||| tiled3 ||| Full
      delta   = 1/100
 
 
+-- hook for xmobar to change titles of layouts
+layoutName "ResizableTall" = "Two Columns"
+layoutName "ThreeCol" = "Three Columns"
+layoutName s = s
+
+
 main = do
   xmproc <- spawnPipe "/home/keegan/bin/xmobar /home/keegan/.xmonad/xmobarrc"
   xmonad $ defaultConfig
@@ -56,6 +61,7 @@ main = do
        , logHook = dynamicLogWithPP $ xmobarPP
                    { ppOutput = hPutStrLn xmproc
                    , ppTitle = xmobarColor "green" "" . shorten 80
+                   , ppLayout = layoutName
                    }
        , modMask = mod4Mask
        , focusFollowsMouse = False
