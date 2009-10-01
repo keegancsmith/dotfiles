@@ -1,9 +1,12 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Layout.Grid
 import XMonad.Layout.NoBorders
-import XMonad.Layout.ThreeColumns
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.Spiral
+import XMonad.Layout.ThreeColumns
+import XMonad.Layout.ToggleLayouts
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
@@ -22,39 +25,36 @@ myManageHook = composeAll . concat $
   where myFloatsC = ["Xmessage", "display", "Gimp"]
         myFloatsT = ["Downloads", "VLC media player", "VLC (XVideo output)", "Save As...", "Open"]
 
--- Main pane in Tall is 2/3's of screen
-myLayoutHook = smartBorders $ avoidStruts $ resize ||| tiled3 ||| Full
+
+myLayoutHook = smartBorders $ avoidStruts $ toggleLayouts
+               (resize ||| tiled3 ||| grid ||| spiral (6/7))
+               (tiled ||| full)
   where
-     -- fullscreen
+     -- Normal Layouts
+     tiled   = Tall nmaster delta ratio
      full    = Full
 
-     -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
-
-     -- Same as tiled, but with three columns
-     tiled3  = ThreeCol nmaster delta (1/2)
-
-     -- Resizable
+     -- Other Layouts
      resize  = ResizableTall nmaster delta ratio []
+     tiled3  = ThreeCol nmaster delta (1/2)
+     grid    = Grid
 
-     -- The default number of windows in the master pane
+     -- Common Parameters
      nmaster = 1
-
-     -- Default proportion of screen occupied by master pane
      ratio   = 2/3
-
-     -- Percent of screen to increment by when resizing panes
      delta   = 1/100
 
 
 -- hook for xmobar to change titles of layouts
-layoutName "ResizableTall" = "Two Columns"
+layoutName "Tall" = "Two Columns"
+layoutName "Full" = "Fullscreen"
+layoutName "ResizableTall" = "Resizable Two Columns"
 layoutName "ThreeCol" = "Three Columns"
 layoutName s = s
 
 
 main = do
-  xmproc <- spawnPipe "/home/keegan/bin/xmobar /home/keegan/.xmonad/xmobarrc"
+  xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc"
   xmonad $ defaultConfig
        { manageHook = manageDocks <+> manageHook defaultConfig <+> myManageHook
        , layoutHook = myLayoutHook
@@ -73,14 +73,18 @@ main = do
        , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
        , ((0, xK_Print), spawn "scrot")
 
+       -- Toggle between common layouts and other layouts
+       , ((mod4Mask .|. shiftMask, xK_space), sendMessage ToggleLayout)
+
+
        -- ResizableTall keybindings
        , ((mod4Mask, xK_i), sendMessage MirrorShrink)
        , ((mod4Mask, xK_u), sendMessage MirrorExpand)
 
 
        -- Multimedia shortcuts
-       , ((mod4Mask, xK_c), spawn "/home/keegan/bin/mpris-remote playpause")
-       , ((mod4Mask, xK_v), spawn "/home/keegan/bin/mpris-remote next")
+       , ((mod4Mask, xK_c), spawn "mpris-remote playpause")
+       , ((mod4Mask, xK_v), spawn "mpris-remote next")
 
        -- multimedia keys
        --
