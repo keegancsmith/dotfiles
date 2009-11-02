@@ -21,7 +21,7 @@ cd $(dirname $0)
 REPO=$(pwd)
 
 dotfiles=".bash_logout .bash_profile .bashrc .emacs .emacs.d \
-          .hgrc .inputrc .stalonetrayrc .xsession"
+          .hgrc .inputrc .xsession"
 
 for f in $dotfiles; do
     conditionallink "${REPO}/${f}" "${HOME}/${f}"
