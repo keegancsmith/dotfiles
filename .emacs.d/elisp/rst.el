@@ -1265,11 +1265,11 @@ of the right hand fingers and the binding is unused in `text-mode'."
               ;; Advance one level down.
               (setq cur
                     (if prev
-                        (if (not reverse-direction)
-                            (or (funcall (if rst-new-decoration-down 'cadr 'car)
-					 (rst-get-decoration-match hier prev))
-                                (rst-suggest-new-decoration hier prev))
-                          prev)
+                        (if (or (and rst-new-decoration-down reverse-direction)
+				(and (not rst-new-decoration-down) (not reverse-direction)))
+			    prev
+                            (or (cadr (rst-get-decoration-match hier prev))
+                                (rst-suggest-new-decoration hier prev)))
                       (copy-list (car rst-preferred-decorations))
                       ))
 
@@ -1963,7 +1963,7 @@ document.
 The Emacs buffer can be navigated, and selecting a section
 brings the cursor in that section."
   (interactive)
-  (let* ((curbuf (current-buffer))
+  (let* ((curbuf (list (current-window-configuration) (point-marker)))
 
          ;; Get the section tree
          (alldecos (rst-find-all-decorations))
@@ -2017,6 +2017,7 @@ brings the cursor in that section."
   (interactive)
   (let ((pos (rst-toc-mode-find-section)))
     (when kill
+      (set-window-configuration (car rst-toc-return-buffer))
       (kill-buffer (get-buffer rst-toc-buffer-name)))
     (pop-to-buffer (marker-buffer pos))
     (goto-char pos)
@@ -2049,12 +2050,13 @@ EVENT is the input event."
 
 (defvar rst-toc-return-buffer nil
   "Buffer local variable that is used to return to the original
-  buffer from the TOC.")
+  window configuration from the TOC.")
 
 (defun rst-toc-quit-window ()
   (interactive)
-  (quit-window)
-  (pop-to-buffer rst-toc-return-buffer))
+  (let ((retbuf rst-toc-return-buffer))
+    (set-window-configuration (car retbuf))
+    (goto-char (cadr retbuf))))
 
 (defvar rst-toc-mode-map
   (let ((map (make-sparse-keymap)))

@@ -4,14 +4,6 @@
 (if window-system (color-theme-dark-laptop))
 
 
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(italic ((t (:slant oblique)))))
-
-
 ;; Better background for Flymake. For some reason it needs to go after
 ;; global-font-lock-mode
 (when (load "flymake" t)

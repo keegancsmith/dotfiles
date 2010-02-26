@@ -58,6 +58,7 @@
  column-number-mode t
  case-fold-search t
  current-language-environment "English"
+ confirm-nonexistent-file-or-buffer nil
  compilation-window-height 10
  compilation-scroll-output t
  save-abbrevs nil

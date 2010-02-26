@@ -26,6 +26,12 @@
 (add-to-list 'auto-mode-alist '("commonapache[12]\?\\.conf$" . apache-mode))
 
 
+;; PHP
+(autoload 'php-mode "php-mode" "Major mode for editing PHP code." t)
+(add-hook 'php-mode-hook
+          '(lambda () (define-abbrev php-mode-abbrev-table "ex" "extends")))
+
+
 ;; LaTeX - Turn on spellcheck and fill mode
 (add-hook 'latex-mode-hook
           (lambda ()
