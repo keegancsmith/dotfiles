@@ -24,8 +24,8 @@
 (setq dired-omit-files
       (rx (or (seq bol (? ".") "#")         ;; emacs autosave files
               (seq "~" eol)                 ;; backup-files
-              (seq bol ".svn" eol)          ;; svn dirs
-              (seq ".pyc" eol)
+              (seq (or ".pyc" ".o") eol)    ;; build artifacts
+              (seq bol "." (not (any "."))) ;; hidden files
               )))
 (setq dired-omit-extensions
       (append dired-latex-unclean-extensions
