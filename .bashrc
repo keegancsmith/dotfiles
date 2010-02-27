@@ -60,7 +60,7 @@ alias grep="grep --color=auto"
 
 # Some customizations
 export PATH=$HOME/bin:"$PATH"
-export EDITOR=nano
+export EDITOR=vim
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=8000
 export HISTSIZE=2000
