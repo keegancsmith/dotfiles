@@ -20,15 +20,6 @@
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 
-;; Indentation
-(set-variable 'c-basic-offset 4)
-(c-set-offset 'access-label -2)
-(c-set-offset 'case-label '+)
-(add-hook 'html-mode-hook
-          (lambda ()
-            (setq indent-line-function 'indent-relative)))
-
-
 ;; Yes-or-No queries become Y-or-N
 (fset 'yes-or-no-p 'y-or-n-p)
 
