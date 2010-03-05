@@ -1,7 +1,9 @@
 ;; Color-theme
 (require 'color-theme)
-(color-theme-initialize)
-(if window-system (color-theme-dark-laptop))
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-dark-laptop)))
 
 
 ;; Better background for Flymake. For some reason it needs to go after
