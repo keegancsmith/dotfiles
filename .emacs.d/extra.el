@@ -3,7 +3,7 @@
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-dark-laptop)))
+     (color-theme-twilight)))
 
 
 ;; Better background for Flymake. For some reason it needs to go after
