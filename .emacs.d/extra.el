@@ -44,3 +44,14 @@ by using nxml's indentation rules."
       (backward-char) (insert "\n"))
     (indent-region begin end))
   (message "Ah, much better!"))
+
+
+; from newsgroup gnu.emacs.help, by Richard Riley, 2009-08-02 
+(defun open-current-file-as-admin ()
+  "Open the current buffer as unix root.
+This command works on unixes only."
+  (interactive)
+  (when buffer-file-name
+    (find-alternate-file
+     (concat "/sudo:root@localhost:"
+             buffer-file-name))))
