@@ -83,17 +83,17 @@ main = do
 
 
        -- Multimedia shortcuts
-       , ((mod4Mask, xK_c), spawn "mpris-remote playpause")
-       , ((mod4Mask, xK_v), spawn "mpris-remote next")
+       , ((mod4Mask, xK_c), spawn "mpc toggle")
+       , ((mod4Mask, xK_v), spawn "mpc next")
 
        -- multimedia keys
        --
        -- XF86AudioLowerVolume
-       , ((0, 0x1008ff11), spawn "amixer -q set Master 10%-")
+       , ((0, 0x1008ff11), spawn "amixer -q set Master 5%-")
        -- XF86AudioRaiseVolume
-       , ((0, 0x1008ff13), spawn "amixer -q set Master 10%+")
+       , ((0, 0x1008ff13), spawn "amixer -q set Master 5%+")
        -- XF86AudioMute
        , ((0, 0x1008ff12), spawn "amixer -q set Master toggle")
        -- XF86AudioPlay
-       , ((0, 0x1008ff14), spawn "/home/keegan/bin/mpris-remote playpause")
+       , ((0, 0x1008ff14), spawn "mpc playpause")
        ]
