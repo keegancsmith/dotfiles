@@ -2,3 +2,15 @@
 username=Keegan Carruthers-Smith <keegan.csmith@gmail.com>
 merge=meld
 ssh = ssh -C
+
+[extensions]
+mq =
+bookmarks =
+color =
+rebase =
+record =
+hgext.fetch =
+hgext.graphlog = 
+
+[bookmarks]
+track.current = True
