@@ -1,25 +1,18 @@
-Host *.uct.ac.za
-User smtkee002
-
-Host *.cs.uct.ac.za
-User ksmith
-
-Host tsl
-User smtkee002
-Hostname tsl.uct.ac.za
-
-Host deer
-User ksmith
-Hostname deer.cs.uct.ac.za
+User keegan
 
 Host nightmare
 User ksmith
 Hostname nightmare.cs.uct.ac.za
 
-Host olympiad*
-User keegan
+Host tsl
+User smtkee002
+Hostname tsl.uct.ac.za
+
+Host heist
+Hostname heist.cs.uct.ac.za
+
+Host olympiad
 Hostname olympiad.cs.uct.ac.za
 
-Host clam*
-User keegan
+Host clam
 Hostname clam.leg.uct.ac.za
