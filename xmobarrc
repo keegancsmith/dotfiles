@@ -7,7 +7,7 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Date "%a %b %_d %l:%M" "date" 10
                     , Run Com "sh" ["-c", "amixer get Master | grep Mono: | awk '{ if ($6 == \"[on]\") print substr($4, 2, length($4)-2); else print \"Muted\"; }'"] "volume" 20
-                    , Run Com "ncmpcpp" ["--now-playing"] "nowplaying" 20
+                    , Run Com "nowplaying.sh" [] "nowplaying" 20
                     , Run StdinReader
                     ]
        , sepChar = "%"

@@ -9,7 +9,7 @@ xsetroot -solid black
 # trayer: http://github.com/sargon/trayer-srg
 trayer --edge top --align right --SetDockType true --SetPartialStrut true \
     --expand true --width 7 --transparent true --tint 0x000000 --alpha 0 \
-    --height 12 --monitor 0 &
+    --height 17 --monitor 0 &
 
 gnome-screensaver
 gnome-settings-daemon

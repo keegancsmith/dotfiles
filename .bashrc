@@ -51,12 +51,10 @@ PS1='\[$BOLD$BLUE\][\w]\n\[$BOLD$GREEN\]\u@\h \[$YELLOW\]$ \[$RST\]'
 alias la="ls -A"
 alias ll="ls -l"
 alias grep="grep --color=auto"
+alias o="xdg-open"
 
 # Completion
 [[ -f /etc/profile.d/bash-completion ]] && source /etc/profile.d/bash-completion
-
-# http://techbase.kde.org/Getting_Started/Increased_Productivity_in_KDE4_with_Scripts/.bashrc
-[[ -f $HOME/.kderc ]] && source $HOME/.kderc
 
 # Some customizations
 export PATH=$HOME/bin:"$PATH"
@@ -65,5 +63,6 @@ export HISTCONTROL=ignoreboth
 export HISTFILESIZE=8000
 export HISTSIZE=2000
 export MAILCHECK=0
+export PIP_RESPECT_VIRTUALENV=true
 
 shopt -s histappend

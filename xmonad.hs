@@ -64,7 +64,6 @@ main = do
                    , ppLayout = layoutName
                    }
        , modMask = mod4Mask
-       , focusFollowsMouse = False
        , workspaces = ["web", "code"] ++ map show [3..7] ++ ["pdf", "misc"]
        } `additionalKeys`
        [ ((mod4Mask .|. shiftMask, xK_z), spawn "gnome-screensaver-command --lock")
