@@ -41,6 +41,10 @@
 (setq ido-enable-flex-matching t)
 
 
+;; Better buffer names when names conflict
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward)
+
 ;; Misc settings
 (setq
  inhibit-startup-message t
