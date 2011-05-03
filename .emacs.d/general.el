@@ -56,6 +56,7 @@
  confirm-nonexistent-file-or-buffer nil
  compilation-window-height 10
  compilation-scroll-output t
+ dabbrev-case-fold-search t
  save-abbrevs nil
  font-lock-maximum-decoration t
  vc-follow-symlinks t
