@@ -54,7 +54,9 @@ alias grep="grep --color=auto"
 alias o="xdg-open"
 
 # Completion
-[[ -f /etc/profile.d/bash-completion ]] && source /etc/profile.d/bash-completion
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
 
 # Some customizations
 export PATH=$HOME/bin:"$PATH"
