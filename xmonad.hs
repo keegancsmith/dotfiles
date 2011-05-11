@@ -1,14 +1,15 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.Grid
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spiral
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.ToggleLayouts
-import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.Run(spawnPipe)
 import System.IO
 import Data.List
 
@@ -21,9 +22,11 @@ myManageHook = composeAll . concat $
      -- using list comprehensions and partial matches
    , [ className =?  c --> doFloat | c <- myFloatsC ]
    , [ title     =?  t --> doFloat | t <- myFloatsT ]
+   , [ composeOne [ isFullscreen -?> doFullFloat ] ]
    ]
   where myFloatsC = ["Xmessage", "display", "Gimp"]
-        myFloatsT = ["Downloads", "VLC media player", "VLC (XVideo output)", "Save As...", "Open"]
+        myFloatsT = ["Downloads", "VLC media player", "VLC (XVideo output)",
+                     "Save As...", "Open"]
 
 
 myLayoutHook = smartBorders $ avoidStruts $ toggleLayouts
