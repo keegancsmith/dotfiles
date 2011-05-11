@@ -11,6 +11,10 @@ rebase =
 record =
 hgext.fetch =
 hgext.graphlog = 
+hggit =
 
 [bookmarks]
 track.current = True
+
+[hooks]
+post-push = python:~/.github_mirror.py:post_push

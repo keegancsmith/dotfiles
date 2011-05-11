@@ -33,3 +33,6 @@ conditionallink "${REPO}/sshconfig" "${HOME}/.ssh/config"
 # xmonad
 conditionallink "${REPO}/xmonad.hs" "${HOME}/.xmonad/xmonad.hs"
 conditionallink "${REPO}/xmobarrc"  "${HOME}/.xmonad/xmobarrc"
+
+# Github mirror script
+conditionallink "${REPO}/github_mirror.py" "${HOME}/.github_mirror.py"
