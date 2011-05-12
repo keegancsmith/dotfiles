@@ -18,3 +18,6 @@ track.current = True
 
 [hooks]
 post-push = python:~/.misc/github_mirror.py:post_push
+
+[alias]
+, = glog -v -l 10 --style ~/.misc/map-cmdline.sglog
