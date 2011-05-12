@@ -13,6 +13,7 @@ hgext.fetch =
 hgext.graphlog = 
 hggit =
 progress =
+convert =
 
 [bookmarks]
 track.current = True
