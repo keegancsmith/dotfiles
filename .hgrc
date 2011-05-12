@@ -17,4 +17,4 @@ hggit =
 track.current = True
 
 [hooks]
-post-push = python:~/.github_mirror.py:post_push
+post-push = python:~/.misc/github_mirror.py:post_push
