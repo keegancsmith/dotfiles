@@ -13,6 +13,11 @@
   (set-face-background 'flymake-warnline "DarkBlue"))
 
 
+;; Flymake does not recognize warnings in GCC 4.5, fix this
+(add-to-list
+ 'flymake-err-line-patterns
+ '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(	\n]+\\):\\([0-9]+\\):[0-9]+:[ 	\n]*\\(.+\\)" 2 4 nil 5))
+
 ;; Dired Stuff
 (require 'dired-x)
 (setq dired-omit-files
