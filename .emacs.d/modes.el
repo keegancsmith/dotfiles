@@ -1,3 +1,9 @@
+;; Function is used in txt based modes such as rst or latex
+(defun my-txt-mode-hook ()
+  (flyspell-mode t)
+  (auto-fill-mode t))
+
+
 ;; c++-mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (set-variable 'c-basic-offset 4)
@@ -13,10 +19,10 @@
 ;; reST Mode
 (autoload 'rst-mode "rst" "mode for editing reStructuredText documents" t)
 (add-to-list 'auto-mode-alist '("\\.re?st\\'" . rst-mode))
-(add-hook 'rst-mode-hook
-          (lambda ()
-            (flyspell-mode t)
-            (auto-fill-mode t)))
+(add-hook 'rst-mode-hook 'my-txt-mode-hook)
+(setq rst-adornment-faces-alist
+      '((t . font-lock-keyword-face)
+        (nil . font-lock-keyword-face)))
 
 
 ;; Apache
@@ -38,10 +44,7 @@
 
 
 ;; LaTeX - Turn on spellcheck and fill mode
-(add-hook 'latex-mode-hook
-          (lambda ()
-            (flyspell-mode t)
-            (auto-fill-mode t)))
+(add-hook 'latex-mode-hook 'my-txt-mode-hook)
 
 
 ;; Haskell

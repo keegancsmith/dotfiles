@@ -1,4 +1,3 @@
-(setq org-replace-disputed-keys t)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key mode-specific-map [?a] 'org-agenda)
 
@@ -7,6 +6,7 @@
 
 (global-set-key (kbd "C-M-r") 'remember)
 (global-set-key (kbd "C-c l") 'org-store-link)
+
 
 (setq
  org-agenda-restore-windows-after-quit t
