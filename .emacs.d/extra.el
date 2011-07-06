@@ -10,13 +10,15 @@
 ;; global-font-lock-mode
 (when (load "flymake" t)
   (set-face-background 'flymake-errline  "DarkRed")
-  (set-face-background 'flymake-warnline "DarkBlue"))
+  (set-face-background 'flymake-warnline "DarkBlue")
+  (require 'flymake-cursor))
 
 
 ;; Flymake does not recognize warnings in GCC 4.5, fix this
 (add-to-list
  'flymake-err-line-patterns
  '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(	\n]+\\):\\([0-9]+\\):[0-9]+:[ 	\n]*\\(.+\\)" 2 4 nil 5))
+
 
 ;; Dired Stuff
 (require 'dired-x)
