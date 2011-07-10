@@ -66,6 +66,6 @@ export HISTFILESIZE=8000
 export HISTSIZE=2000
 export MAILCHECK=0
 export PIP_RESPECT_VIRTUALENV=true
-export PIP_DOWNLOAD_CACHE=true
+export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
 shopt -s histappend
