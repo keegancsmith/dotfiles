@@ -11,6 +11,12 @@
 (c-set-offset 'case-label '+)
 
 
+;; EDiff customizations. Use a tiling window manager so much prefer ediff to
+;; not float it's control window
+(setq
+ ediff-window-setup-function 'ediff-setup-windows-plain
+ ediff-split-window-function 'split-window-horizontally)
+
 ;; Django Templates
 (autoload 'django-html-mode "django-html-mode" "Django HTML Mode" t)
 (add-to-list 'auto-mode-alist '("\\.djhtml$'" . django-html-mode))

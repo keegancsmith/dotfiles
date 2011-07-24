@@ -75,7 +75,6 @@
 (global-set-key (kbd "<f5>")     'previous-error)
 (global-set-key (kbd "<f6>")     'next-error)
 (global-set-key (kbd "<f7>")     'flymake-mode)
-(global-set-key (kbd "<f8>")     'add-change-log-entry-other-window)
 (global-set-key (kbd "<f9>")     'compile)
 (global-set-key (kbd "<f11>")    'fullscreen)
 (global-set-key (kbd "C-g")      'goto-line)
