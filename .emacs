@@ -2,8 +2,8 @@
 
 
 ;; Compile lisp files in elisp dir then add elisp to path
-(byte-recompile-directory "~/.emacs.d" 0)
 (add-to-list 'load-path "~/.emacs.d/elisp")
+(byte-recompile-directory "~/.emacs.d" 0)
 
 ;; Call extra elisp files
 (mapc (lambda (file)
