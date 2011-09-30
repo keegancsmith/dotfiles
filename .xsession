@@ -19,4 +19,8 @@ gnome-power-manager &
 nm-applet --sm-disable &
 gnome-volume-control-applet &
 
+eval $(gnome-keyring-daemon --start)
+export GNOME_KEYRING_SOCKET
+export GNOME_KEYRING_PID
+
 exec xmonad
