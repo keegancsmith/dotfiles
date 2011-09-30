@@ -31,6 +31,20 @@
  ediff-split-window-function 'split-window-horizontally
  ediff-window-setup-function 'ediff-setup-windows-plain)
 
+
+;; Pyflakes for python
+(when (load "flymake" t)
+  (defun flymake-pychecker-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "~/.misc/pyflakespep8.py" (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pychecker-init)))
+
+
 ;; Dired Stuff
 (require 'dired-x)
 (setq dired-omit-files
