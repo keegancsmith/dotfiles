@@ -29,6 +29,8 @@
       '("JOIN" "NICK" "PART" "QUIT" "MODE"
         "324" "329" "332" "333" "353" "477"))
 
+(add-hook 'erc-mode-hook (lambda () (auto-fill-mode 0)))
+
 (require 'erc-ring)
 (erc-ring-mode t)
 
