@@ -2,7 +2,7 @@
 
 ;; Xft support if using 23
 (if (>= emacs-major-version 23)
-    (set-frame-font "Inconsolata-12"))
+    (set-frame-font "Inconsolata-13"))
 
 
 ;; Email
@@ -60,6 +60,7 @@
  save-abbrevs nil
  font-lock-maximum-decoration t
  vc-follow-symlinks t
+ vc-bzr-diff-switches t ;; Make bzr diffs normal
  tramp-default-method "ssh"
  tramp-auto-save-directory "~/.emacs.d/tramp-autosave")
 (global-font-lock-mode 1)
