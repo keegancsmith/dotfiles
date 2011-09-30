@@ -3,7 +3,13 @@
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-twilight)))
+     (color-theme-hober)))
+
+
+;; Add some colour to diff-mode
+(require 'diff-mode-)
+(set-face-foreground 'diff-added "green")
+(set-face-foreground 'diff-removed "firebrick")
 
 
 ;; Better background for Flymake. For some reason it needs to go after
@@ -17,8 +23,13 @@
 ;; Flymake does not recognize warnings in GCC 4.5, fix this
 (add-to-list
  'flymake-err-line-patterns
- '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(	\n]+\\):\\([0-9]+\\):[0-9]+:[ 	\n]*\\(.+\\)" 2 4 nil 5))
+ '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(	\n]+\\):\\([0-9]+\\):[0-9]+:[   \n]*\\(.+\\)" 2 4 nil 5))
 
+
+;; EDiff customisations
+(setq
+ ediff-split-window-function 'split-window-horizontally
+ ediff-window-setup-function 'ediff-setup-windows-plain)
 
 ;; Dired Stuff
 (require 'dired-x)
@@ -53,7 +64,7 @@ by using nxml's indentation rules."
   (message "Ah, much better!"))
 
 
-; from newsgroup gnu.emacs.help, by Richard Riley, 2009-08-02 
+; from newsgroup gnu.emacs.help, by Richard Riley, 2009-08-02
 (defun open-current-file-as-admin ()
   "Open the current buffer as unix root.
 This command works on unixes only."
