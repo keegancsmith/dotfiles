@@ -7,11 +7,10 @@
 (global-set-key (kbd "C-M-r") 'remember)
 (global-set-key (kbd "C-c l") 'org-store-link)
 
-
 (setq
  org-agenda-restore-windows-after-quit t
  org-replace-disputed-keys t
- org-agenda-files '("~/org-files/todo.org" "~/org-files/birthdays.org")
+ org-agenda-files '("~/Dropbox/org-files/todo.org" "~/Dropbox/org-files/birthdays.org")
  org-agenda-ndays 7
  org-deadline-warning-days 14
  org-agenda-show-all-dates t
@@ -22,8 +21,9 @@
  org-fast-tag-selection-single-key 'expert
  org-remember-store-without-prompt t
  org-remember-templates (quote
-                         ((97  "* APPT %?\n  %u" "~/org-files/todo.org" "Tasks")
-                          (116 "* TODO %?\n  %u" "~/org-files/todo.org" "Tasks")))
+                         ((97  "* APPT %?\n  %u" "~/Dropbox/org-files/todo.org" "Tasks")
+                          (84  "* TODO %?\n  %u" "~/Dropbox/org-files/todo.org" "Tasks")
+                          (116 "* TODO %?\n  %u\n%a" "~/Dropbox/org-files/todo.org" "Tasks")))
  remember-annotation-functions '(org-remember-annotation)
  remember-handler-functions '(org-remember-handler)
  org-agenda-custom-commands
