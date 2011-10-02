@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PATH=$HOME/bin:$PATH
+PATH=$HOME/bin:/usr/bin/:$PATH
 
 # Set the background color
 xsetroot -solid black
