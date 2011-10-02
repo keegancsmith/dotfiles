@@ -127,10 +127,6 @@ main = do
        , ((mod4Mask, xK_u), sendMessage MirrorExpand)
 
 
-       -- Multimedia shortcuts
-       , ((mod4Mask, xK_c), spawn "mpc toggle")
-       , ((mod4Mask, xK_v), spawn "mpc next")
-
        -- multimedia keys
        --
        -- XF86AudioLowerVolume
