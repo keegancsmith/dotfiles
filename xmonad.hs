@@ -28,7 +28,7 @@ myManageHook = composeAll . concat $
    , [ title     =?  t --> doFloat | t <- myFloatsT ]
    , [ composeOne [ isFullscreen -?> doFullFloat ] ]
    ]
-  where myFloatsC = ["Xmessage", "display", "Gimp"]
+  where myFloatsC = ["Xmessage", "display", "Gimp", "Ediff"]
         myFloatsT = ["Downloads", "VLC media player", "VLC (XVideo output)",
                      "Save As...", "Open"]
 

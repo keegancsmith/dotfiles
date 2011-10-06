@@ -1,6 +1,6 @@
 [ui]
 username=Keegan Carruthers-Smith <keegan.csmith@gmail.com>
-merge=meld
+merge = emacs
 ssh = ssh -C
 
 [extensions]
@@ -23,6 +23,9 @@ post-push = python:~/.misc/github_mirror.py:post_push
 
 [alias]
 , = glog -v -l 10 --style ~/.misc/map-cmdline.sglog
+
+[merge-tools]
+emacs.args = --eval "(ediff-merge-with-ancestor \"$local\" \"$other\" \"$base\" nil \"$output\")"
 
 [diff]
 git = 1
