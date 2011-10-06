@@ -21,9 +21,9 @@
  org-fast-tag-selection-single-key 'expert
  org-remember-store-without-prompt t
  org-remember-templates (quote
-                         ((97  "* APPT %?\n  %u" "~/Dropbox/org-files/todo.org" "Tasks")
-                          (84  "* TODO %?\n  %u" "~/Dropbox/org-files/todo.org" "Tasks")
-                          (116 "* TODO %?\n  %u\n%a" "~/Dropbox/org-files/todo.org" "Tasks")))
+                         ((97  "* APPT %?\n  %u"     "~/Dropbox/org-files/todo.org" "Tasks")
+                          (84  "* TODO %?\n  %u\n%a" "~/Dropbox/org-files/todo.org" "Tasks")
+                          (116 "* TODO %?\n  %u"     "~/Dropbox/org-files/todo.org" "Tasks")))
  remember-annotation-functions '(org-remember-annotation)
  remember-handler-functions '(org-remember-handler)
  org-agenda-custom-commands
