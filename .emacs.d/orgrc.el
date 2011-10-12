@@ -34,3 +34,7 @@
               (org-agenda-skip-entry-if (quote scheduled) (quote deadline)
                                         (quote regexp) "<[^>\n]+>")))
            (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
+
+(eval-after-load "org"
+  '(progn
+     (set-face-foreground 'org-level-2 "orange")))
