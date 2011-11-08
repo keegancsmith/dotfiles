@@ -1,0 +1,2 @@
+startup_message off
+hardstatus alwayslastline '%{= M} %H%{= G} %= %{= w}%-w%{+b r}%n*%t%{-b r}%{w}%+w %='
