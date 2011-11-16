@@ -50,3 +50,7 @@
 ;; Haskell
 ;(load "~/.emacs.d/elisp/haskell-mode/haskell-site-file.el")
 (add-hook 'haskell-mode-hook (lambda () (require 'inf-haskell)))
+
+
+;; Log edit mode. Used when commiting from vc-mode
+(add-hook 'log-edit-mode-hook 'my-txt-mode-hook)
