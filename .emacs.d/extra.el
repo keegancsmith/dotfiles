@@ -61,6 +61,11 @@
 (put 'dired-find-alternate-file 'disabled nil)
 
 
+;; Revert all buffers which are not modified with `revbufs`. Useful when
+;; switching branches or running hg update.
+(require 'revbufs)
+
+
 ;; Some useful functions
 (defun nxml-pretty-print-region (begin end)
   "Pretty format XML markup in region. You need to have nxml-mode
