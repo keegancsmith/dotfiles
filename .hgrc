@@ -11,7 +11,7 @@ rebase =
 record =
 hgext.fetch =
 hgext.graphlog = 
-hggit =
+hgext.git =
 progress =
 convert =
 
