@@ -39,8 +39,14 @@
 (autoload 'php-mode "php-mode" "Major mode for editing PHP code." t)
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+(add-to-list 'interpreter-mode-alist
+             '("php" . php-mode))
 (add-hook 'php-mode-hook
-          '(lambda () (define-abbrev php-mode-abbrev-table "ex" "extends")))
+          '(lambda ()
+             (define-abbrev php-mode-abbrev-table "ex" "extends")
+             (setq
+              tab-width 2
+              c-basic-offset 2)))
 
 
 ;; LaTeX - Turn on spellcheck and fill mode
