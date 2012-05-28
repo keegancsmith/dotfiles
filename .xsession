@@ -7,7 +7,7 @@ xsetroot -solid black
 
 # Set up an icon tray This has multi monitor support. Uses this fork of
 # trayer: http://github.com/sargon/trayer-srg
-trayer --edge top --align right --SetDockType true --SetPartialStrut true \
+trayer --edge top --align right --SetDockType true --SetPartialStrut false \
     --expand true --width 10 --transparent true --tint 0x000000 --alpha 0 \
     --height 17 --monitor 0 &
 
