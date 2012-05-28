@@ -43,7 +43,8 @@
 
 ;; Better buffer names when names conflict
 (require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward)
+(setq uniquify-buffer-name-style 'post-forward
+      uniquify-strip-common-suffix nil)
 
 ;; Misc settings
 (setq
