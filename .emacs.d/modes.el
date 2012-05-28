@@ -60,3 +60,17 @@
 
 ;; Log edit mode. Used when commiting from vc-mode
 (add-hook 'log-edit-mode-hook 'my-txt-mode-hook)
+
+
+;; Puppet mode
+(autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+
+
+;; Markdown
+(add-hook 'markdown-mode-hook 'my-txt-mode-hook)
+
+
+;; Coffee script
+(autoload 'coffee-mode "coffee-mode" "Major mode for coffee script")
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
