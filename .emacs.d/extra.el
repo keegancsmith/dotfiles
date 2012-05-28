@@ -66,6 +66,11 @@
 (require 'revbufs)
 
 
+;; Use chrome
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome")
+
+
 ;; Some useful functions
 (defun nxml-pretty-print-region (begin end)
   "Pretty format XML markup in region. You need to have nxml-mode
