@@ -13,7 +13,7 @@ pyflakes_warning = make_re(
     'is assigned to but never used',
     'redefinition of unused',
 )
-pep8_ignore = ['E501']
+pep8_ignore = ['E501', 'E111']
 pep8_warning = make_re('.')
 
 def run(cmd, ignore_re, warning_re):
