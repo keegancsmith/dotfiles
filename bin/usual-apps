@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Start up apps I usually like to be running
+
+function check_and_run {
+	name="$1"
+	cmd="$1"
+	if [[ $# != 1 ]]; then
+		shift
+		cmd="$@"
+	fi;
+    if ! pgrep $name &> /dev/null; then
+        $cmd &
+    fi
+}
+
+check_and_run chrome google-chrome
+check_and_run pidgin
+check_and_run emacs
+check_and_run clementine
+check_and_run dropbox dropbox start

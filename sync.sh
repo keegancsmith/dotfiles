@@ -39,3 +39,9 @@ cd "${REPO}/misc"
 for f in *; do
     conditionallink "${REPO}/misc/${f}" "${HOME}/.misc/${f}"
 done
+
+# ~/bin
+cd "${REPO}/bin"
+for f in *; do
+    conditionallink "${REPO}/bin/${f}" "${HOME}/bin/${f}"
+done

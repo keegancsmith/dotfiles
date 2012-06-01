@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Personal script used to shared stuff on a webserver
+
+scp $@ ksmith@nightmare:public_html/share
+echo
+for i in $@; do
+    echo "http://people.cs.uct.ac.za/~ksmith/share/$(basename $i)"
+done

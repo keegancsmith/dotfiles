@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Plays the video files which the flash process is holding onto
+
+function flash_files() {
+    lsof -n -P | grep FlashXX | awk '{ print "/proc/" $2 "/fd/" substr($4, 1, length($4)-1) }'
+}
+
+case $1 in
+    list)
+        flash_files
+    ;;
+    play | '')
+        flash_files | xargs mplayer
+    ;;
+    *)
+        echo "USAGE: $0 [list | play]"
+        exit 1
+    ;;
+esac
