@@ -93,5 +93,9 @@
 (global-set-key (kbd "S-C-<up>")    'enlarge-window)
 
 
+;; Disable annoying emacs suspend shortcut
+(global-unset-key (kbd "C-z"))
+
+
 ;; Enable Full Screen mode
 ;;(fullscreen)
