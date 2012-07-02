@@ -4,16 +4,17 @@ merge = emacs
 ssh = ssh -C
 
 [extensions]
-mq =
 bookmarks =
 color =
+convert =
+hgext.fetch =
+hgext.git =
+hgext.graphlog =
+mq =
+pager =
+progress =
 rebase =
 record =
-hgext.fetch =
-hgext.graphlog = 
-hgext.git =
-progress =
-convert =
 
 [bookmarks]
 track.current = True
@@ -29,3 +30,6 @@ emacs.args = --eval "(ediff-merge-with-ancestor \"$local\" \"$other\" \"$base\" 
 
 [diff]
 git = 1
+
+[pager]
+pager = LESS='FSRX' less
