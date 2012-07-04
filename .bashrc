@@ -34,6 +34,11 @@ case $TERM in
         ;;
 esac
 
+# Optionally put vcprompt into PS1
+if ! which vcprompt > /dev/null; then
+    alias vcprompt='echo -n'
+fi
+
 # Prompt
 #PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
 RED=`tput setaf 1`
@@ -45,7 +50,7 @@ CYAN=`tput setaf 6`
 WHITE=`tput setaf 7`
 BOLD=`tput bold`
 RST=`tput sgr0`
-PS1='\[$BOLD$BLUE\][\w]\n\[$BOLD$GREEN\]\u@\h \[$YELLOW\]$ \[$RST\]'
+PS1='\[$BOLD$BLUE\][\w] \[$RST\]\[$GREEN\]$(vcprompt)\n\[$BOLD$GREEN\]\u@\h \[$YELLOW\]$ \[$RST\]'
 
 # Alias's
 alias la="ls -A"
