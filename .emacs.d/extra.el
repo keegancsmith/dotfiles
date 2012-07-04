@@ -1,9 +1,10 @@
 ;; Color-theme
-(require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-hober)))
+(when (display-graphic-p)
+  (require 'color-theme)
+  (eval-after-load "color-theme"
+    '(progn
+       (color-theme-initialize)
+       (color-theme-hober))))
 
 
 ;; Add some colour to diff-mode
