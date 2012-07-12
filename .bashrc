@@ -40,7 +40,6 @@ if ! which vcprompt > /dev/null; then
 fi
 
 # Prompt
-#PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
 RED=`tput setaf 1`
 GREEN=`tput setaf 2`
 YELLOW=`tput setaf 3`
@@ -50,7 +49,14 @@ CYAN=`tput setaf 6`
 WHITE=`tput setaf 7`
 BOLD=`tput bold`
 RST=`tput sgr0`
-PS1='\[$BOLD$BLUE\][\w] \[$RST\]\[$GREEN\]$(vcprompt)\n\[$BOLD$GREEN\]\u@\h \[$YELLOW\]$ \[$RST\]'
+get_exit_status(){
+    es=$?
+    if [ $es -ne 0 ]; then
+        echo -n "$RED$es "
+    fi
+}
+PROMPT_COMMAND='exitStatus=$(get_exit_status)'
+PS1='\[$BOLD$BLUE\][\w] \[$RST\]\[$GREEN\]$(vcprompt)\n\[$BOLD$GREEN\]\u@\h $exitStatus\[$YELLOW\]$ \[$RST\]'
 
 # Alias's
 alias la="ls -A"
