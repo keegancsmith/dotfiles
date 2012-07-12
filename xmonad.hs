@@ -13,7 +13,7 @@ import XMonad.Util.Run(spawnPipe)
 import System.IO
 import Data.List
 import qualified XMonad.StackSet as W
-import Monad
+import Control.Monad
 import Data.Monoid (All (All))
 
 
