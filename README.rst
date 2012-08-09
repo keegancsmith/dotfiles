@@ -18,3 +18,11 @@ External Programs
   xmonad
 * http://vc.gerg.ca/hg/vcprompt/ - Display version control information about
   your current directory in bash. If it is missing $PS1 won't include it.
+
+Notes
+=====
+
+Ubuntu Oneiric seemed to introduce a bug were the menu bar in gnome terminal
+is shown by default even if the profile disables it, this is a workaround::
+
+  $ sudo apt-get remove appmenu-gtk3 appmenu-gtk appmenu-qt
