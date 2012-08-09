@@ -2,6 +2,7 @@ syntax: glob
 .emacs.d/pwords.el
 .emacs.d/tramp
 .emacs.d/auto-save-list
+.emacs.d/ercprivate.el
 *.elc
 *.pyc
 *~
