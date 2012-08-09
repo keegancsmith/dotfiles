@@ -7,6 +7,7 @@ ssh = ssh -C
 bookmarks =
 color =
 convert =
+hgallpaths = ~/.misc/hgallpaths.py
 hgext.fetch =
 hgext.git =
 hgext.graphlog =
