@@ -38,7 +38,9 @@ Then I install everything else::
 
   $ sudo aptitude install mercurial emacs emacs-goodies-el vim \
      fonts-inconsolata screen xmonad build-essential haskell-mode \
-     mercurial-git git python-virtualenv virtualenvwrapper python-pip ipython
+     mercurial-git git python-virtualenv virtualenvwrapper python-pip \
+     ipython suckless-tools xmobar
+     
 
 Setup xsession::
 
