@@ -40,6 +40,10 @@ Then I install everything else::
      fonts-inconsolata screen xmonad build-essential haskell-mode \
      mercurial-git git python-virtualenv virtualenvwrapper python-pip ipython
 
+Setup xsession::
+
+  $ sudo cp xsession.desktop /usr/share/xsessions
+
 I then compile the stuff in custom programs section and put symbolic links
 into ~/bin.
 
