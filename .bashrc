@@ -35,7 +35,7 @@ case $TERM in
 esac
 
 # Optionally put vcprompt into PS1
-if ! which vcprompt > /dev/null; then
+if ! which vcprompt &> /dev/null; then
     alias vcprompt='echo -n'
 fi
 
