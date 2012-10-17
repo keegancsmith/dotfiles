@@ -11,13 +11,13 @@ trayer --edge top --align right --SetDockType true --SetPartialStrut false \
     --expand true --width 10 --transparent true --tint 0x000000 --alpha 0 \
     --height 17 --monitor 0 &
 
-gnome-screensaver
-gnome-settings-daemon
+#gnome-screensaver
+#gnome-settings-daemon
 
 sleep 1
-gnome-power-manager &
+#gnome-power-manager &
 nm-applet --sm-disable &
-gnome-volume-control-applet &
+#gnome-volume-control-applet &
 
 eval $(gnome-keyring-daemon --start)
 export GNOME_KEYRING_SOCKET
