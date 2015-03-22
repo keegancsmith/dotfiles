@@ -13,7 +13,7 @@ pyflakes_warning = make_re(
     'is assigned to but never used',
     'redefinition of unused',
 )
-pep8_ignore = ['E501', 'E111']
+pep8_ignore = ['E501', 'E111', 'E121', 'E125', 'E221']
 pep8_warning = make_re('.')
 
 def run(cmd, ignore_re, warning_re):
@@ -27,5 +27,5 @@ def run(cmd, ignore_re, warning_re):
 
 run('pyflakes %s' % sys.argv[1], pyflakes_ignore, pyflakes_warning)
 print '## pyflakes above, pep8 below ##'
-pep8_ignore = ' '.join('--ignore=%s' % i for i in pep8_ignore)
-run('pep8 %s --repeat %s' % (pep8_ignore, sys.argv[1]), None, pep8_warning)
+pep8_ignore = ','.join(pep8_ignore)
+run('pep8 --ignore %s --repeat %s' % (pep8_ignore, sys.argv[1]), None, pep8_warning)
