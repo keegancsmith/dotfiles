@@ -1,4 +1,4 @@
-changeset = '\033[0;33m{rev}\033[0m {desc|firstline|strip}{branches}{bookmarks}{tags}\n\n'
+changeset = '\033[0;33m{shortest(node)}\033[0m {desc|firstline|strip}{branches}{bookmarks}{tags}\n\n'
 
 changeset_verbose = '\033[0;33m{rev}\033[0m:\033[0;33m{node|short}\033[0m {desc|firstline|strip}{branches}{bookmarks}{tags}\n\033[1;30m({date|age} by {author|person})\033[0m\n\n'
 
