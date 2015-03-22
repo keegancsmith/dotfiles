@@ -5,6 +5,7 @@ email = keegan.csmith@gmail.com
 [alias]
 l = log --color --graph --pretty=format:'%C(yellow)%h%Creset %s%C(yellow)%d\n%C(bold blue)(%cr by %an)%Creset\n' --abbrev-commit --
 st = status
+br = branch
 
 [color]
 ui = auto
