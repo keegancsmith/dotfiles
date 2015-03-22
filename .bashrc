@@ -52,11 +52,13 @@ RST=`tput sgr0`
 get_exit_status(){
     es=$?
     if [ $es -ne 0 ]; then
-        echo -n "$RED$es "
+        echo -n "$RED"
+    else
+        echo -n "$YELLOW"
     fi
 }
 PROMPT_COMMAND='exitStatus=$(get_exit_status)'
-PS1='\[$BOLD$BLUE\][\w] \[$RST\]\[$GREEN\]$(vcprompt)\n\[$BOLD$GREEN\]\u@\h $exitStatus\[$YELLOW\]$ \[$RST\]'
+PS1='\[$BOLD$BLUE\][\w] \[$RST\]\[$GREEN\]$(vcprompt)\n\[$BOLD$GREEN\]\u@\h \[$exitStatus\]$ \[$RST\]'
 
 # Alias's
 alias la="ls -A"
@@ -72,10 +74,13 @@ fi
 # Some customizations
 export PATH=$HOME/bin:"$PATH"
 export EDITOR=vim
-export HISTCONTROL=ignoreboth
-export HISTFILESIZE=8000
-export HISTSIZE=2000
+export HISTCONTROL=ignoreboth:erasedups
+export HISTFILESIZE=80000
+export HISTSIZE=20000
 export MAILCHECK=0
+
+# I hate it when I accidently lock the terminal in screen
+export LOCKPRG=/bin/true
 
 # Virtualenv
 export PIP_RESPECT_VIRTUALENV=true
