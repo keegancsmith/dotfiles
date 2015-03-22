@@ -84,7 +84,6 @@ export LOCKPRG=/bin/true
 
 # Virtualenv
 export PIP_RESPECT_VIRTUALENV=true
-export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 source ~/.misc/lazyvirtualenvwrapper.sh
 
 shopt -s histappend
