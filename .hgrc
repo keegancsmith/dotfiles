@@ -8,11 +8,11 @@ bookmarks =
 color =
 convert =
 hgallpaths = ~/.misc/hgallpaths.py
-hgext.fetch =
 hgext.git =
 hgext.graphlog =
 mq =
 pager =
+patchbomb =
 progress =
 rebase =
 record =
@@ -24,8 +24,10 @@ track.current = True
 post-push = python:~/.misc/github_mirror.py:post_push
 
 [alias]
-, = glog -v -l 10 --style ~/.misc/map-cmdline.sglog
+. = glog -v -l 10 --style ~/.misc/map-cmdline.sglog
 erc = !vim `$HG root`/.hg/hgrc
+node = log --template '{node}\n' -r
+mark = resolve --all --mark
 
 [merge-tools]
 emacs.args = --eval "(ediff-merge-with-ancestor \"$local\" \"$other\" \"$base\" nil \"$output\")"
@@ -35,3 +37,6 @@ git = 1
 
 [pager]
 pager = LESS='FSRX' less
+
+[email]
+from = Keegan Carruthers-Smith <keegan.csmith@gmail.com>
