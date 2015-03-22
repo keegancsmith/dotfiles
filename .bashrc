@@ -19,10 +19,10 @@ if [[ -f ~/.dir_colors ]]; then
     eval `dircolors -b ~/.dir_colors`
 elif [[ -f /etc/DIR_COLORS ]]; then
     eval `dircolors -b /etc/DIR_COLORS`
-else
+elif hash dircolors 2>/dev/null; then
     eval "`dircolors -b`"
 fi
-alias ls="ls --color=auto"
+alias ls="ls -G"
 
 # Change the window title of X terminals
 case $TERM in
