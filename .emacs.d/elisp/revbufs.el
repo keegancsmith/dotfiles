@@ -44,7 +44,7 @@
     ;; Process the buffers.
     (mapcar (function
              (lambda (buf)
-	       (let ((file-name (buffer-file-name buf)))
+         (let ((file-name (buffer-file-name buf)))
                  (cond
                   ;; If buf is the report buf, ignore it.
                   ((eq buf report-buf) nil)
@@ -82,16 +82,16 @@
         (progn
           (display-buffer report-buf)
           (message
-	   (concat
-	    (format "Reverted %s with"
-		    (revbufs-quantity (length reverts) "buffer"))
-	    (if conflicts 
-		(format " %s%s"
-			(revbufs-quantity (length conflicts) "conflict")
-			(if orphans " and" "")))
-	    (if orphans
-		(format " %s"
-			(revbufs-quantity (length orphans) "orphan"))))))
+     (concat
+      (format "Reverted %s with"
+        (revbufs-quantity (length reverts) "buffer"))
+      (if conflicts
+    (format " %s%s"
+      (revbufs-quantity (length conflicts) "conflict")
+      (if orphans " and" "")))
+      (if orphans
+    (format " %s"
+      (revbufs-quantity (length orphans) "orphan"))))))
       (if reverts
           (message "Reverted %s." (revbufs-quantity (length reverts) "buffer"))
         (message "No buffers need reverting.")))))
@@ -100,7 +100,7 @@
   (if list
       (concat label
               (format " (%s):\n" (length list))
-              (mapconcat 
+              (mapconcat
                (function
                 (lambda (buf)
                   (format "  %-20s %s\n"

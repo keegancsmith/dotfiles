@@ -1,8 +1,14 @@
 ;; emacs general config. Should work with a bare install of emacs
 
-;; Xft support if using 23
-(if (>= emacs-major-version 23)
-    (set-frame-font "Inconsolata-13"))
+(defun setup-window-system-frame-colours (&rest frame)
+  (if window-system
+      (let ((f (if (car frame)
+                   (car frame)
+                 (selected-frame))))
+        (progn
+          (require 'color-theme)
+          (set-frame-font "Inconsolata-13")))))
+
 
 
 ;; Email
@@ -38,7 +44,20 @@
 
 ;; IDO
 (ido-mode t)
-(setq ido-enable-flex-matching t)
+(setq
+ ido-ignore-buffers
+ '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido" "^\*trace"
+   "^\*compilation" "^\*GTAGS" "^session\.*" "^\*")
+ ido-work-directory-list '("~/fbcode" "~/www" "~/repos" "~/org-files" "~/")
+ ido-case-fold t
+ ido-enable-last-directory-history t
+ ido-max-work-directory-list 30
+ ido-max-work-file-list 50
+ ido-use-filename-at-point nil
+ ido-use-url-at-point nil
+ ido-enable-flex-matching t
+ ido-max-prospects 8
+ ido-confirm-unique-completion t)
 
 
 ;; Better buffer names when names conflict
@@ -48,6 +67,7 @@
 
 ;; Misc settings
 (setq
+ vc-handled-backends ()
  inhibit-startup-message t
  x-select-enable-clipboard t
  make-backup-files nil
@@ -93,9 +113,21 @@
 (global-set-key (kbd "S-C-<up>")    'enlarge-window)
 
 
-;; Disable annoying emacs suspend shortcut
+;; Disable annoying keys I accidently hit
 (global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "C-x C-z"))
 
+
+(defun ask-before-closing ()
+  "Ask whether or not to close, and then close if y was pressed"
+  (interactive)
+  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
+      (if (< emacs-major-version 22)
+          (save-buffers-kill-terminal)
+        (save-buffers-kill-emacs))
+    (message "Canceled exit")))
+(when window-system
+  (global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
 ;; Enable Full Screen mode
 ;;(fullscreen)

@@ -6,7 +6,7 @@
 
 ;; c++-mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-(set-variable 'c-basic-offset 4)
+(set-variable 'c-basic-offset 2)
 (c-set-offset 'access-label -2)
 (c-set-offset 'case-label '+)
 
