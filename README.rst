@@ -14,12 +14,13 @@ Just run `./sync.sh` and make sure the external programs are installed.
 OS X
 ====
 
-I use brew to install all the program I care about::
+I use brew and pip to install all the program I care about::
 
-  $ brew install python mercurial vcprompt
+  $ brew install python mercurial vcprompt ispell
   $ brew linkapps python
   $ brew install emacs --cocoa
   $ brew linkapps emacs
+  $ pip install -r requirements.txt
 
 Org-Mode
 ========
