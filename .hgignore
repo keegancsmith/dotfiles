@@ -1,11 +1,11 @@
 syntax: glob
-.emacs.d/pwords.el
-.emacs.d/tramp
-.emacs.d/auto-save-list
-.emacs.d/ercprivate.el
-.emacs.d/ido.last
-.emacs.d/smex-items
 *.elc
 *.pyc
 *~
+.emacs.d/auto-save-list
 .emacs.d/elpa
+.emacs.d/ercprivate.el
+.emacs.d/ido.last
+.emacs.d/pwords.el
+.emacs.d/smex-items
+.emacs.d/tramp
