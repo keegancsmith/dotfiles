@@ -3,6 +3,7 @@ syntax: glob
 .emacs.d/tramp
 .emacs.d/auto-save-list
 .emacs.d/ercprivate.el
+.emacs.d/ido.last
 *.elc
 *.pyc
 *~

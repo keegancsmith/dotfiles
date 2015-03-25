@@ -27,19 +27,10 @@ is shown by default even if the profile disables it, this is a workaround::
 
   $ sudo apt-get remove appmenu-gtk3 appmenu-gtk appmenu-qt
 
-Emacs
-=====
+Org-Mode
+========
 
-I now manage my elisp packages through ELPA. You need to do
-`M-x package-install` on the following packages.
-
-* ace-jump-mode
-* smex
-
-Remeber to run `M-x package-refresh-contents` to update the latest
-package listings first.
-
-I also expect a directory called `org-files` in your home directory. I sync
+Emacs expect a directory called `org-files` in your home directory. I sync
 this with dropbox::
 
   $ ln -s ~/Dropbox/org-files/ ~/
