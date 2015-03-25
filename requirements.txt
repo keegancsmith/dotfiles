@@ -1,3 +1,5 @@
 cdiff
+hg-git
+ipython
 virtualenv
 virtualenvwrapper

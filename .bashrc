@@ -86,4 +86,10 @@ export LOCKPRG=/bin/true
 export PIP_RESPECT_VIRTUALENV=true
 source ~/.misc/lazyvirtualenvwrapper.sh
 
+# Create PYTHONPATH if it doesn't exist. A hack to ensure hg can see pip
+# installed packages
+if [ -z "$PYTHONPATH" ] && hash pip &> /dev/null; then
+    export PYTHONPATH="$(pip -V | grep -o '/.*site-packages')"
+fi
+
 shopt -s histappend
