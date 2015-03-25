@@ -3,6 +3,12 @@
 (defvar required-packages
   '(
     ace-jump-mode
+    apache-mode
+    coffee-mode
+    flymake-cursor
+    nginx-mode
+    php-mode
+    puppet-mode
     smex
     ) "a list of packages to ensure are installed at launch.")
 

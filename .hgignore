@@ -4,6 +4,7 @@ syntax: glob
 .emacs.d/auto-save-list
 .emacs.d/ercprivate.el
 .emacs.d/ido.last
+.emacs.d/smex-items
 *.elc
 *.pyc
 *~
