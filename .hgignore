@@ -6,3 +6,4 @@ syntax: glob
 *.elc
 *.pyc
 *~
+.emacs.d/elpa

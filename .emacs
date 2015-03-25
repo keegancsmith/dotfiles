@@ -1,9 +1,12 @@
 ;; emacs general config. Should work with a bare install of emacs
 
-
-;; Compile lisp files in elisp dir then add elisp to path
 (add-to-list 'load-path "~/.emacs.d/elisp")
-(byte-recompile-directory "~/.emacs.d" 0)
+
+;; Setup ELPA before anything else
+(setq package-enable-at-startup nil)
+(package-initialize)
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 ;; Call extra elisp files
 (mapc (lambda (file)
