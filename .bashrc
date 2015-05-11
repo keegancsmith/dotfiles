@@ -86,6 +86,10 @@ export LOCKPRG=/bin/true
 export PIP_RESPECT_VIRTUALENV=true
 source ~/.misc/lazyvirtualenvwrapper.sh
 
+# Go workspace
+export GOPATH=$HOME/go
+[ -d $GOPATH ] && export PATH="$PATH":$GOPATH/bin || unset GOPATH
+
 # Create PYTHONPATH if it doesn't exist. A hack to ensure hg can see pip
 # installed packages
 if [ -z "$PYTHONPATH" ] && hash pip &> /dev/null; then
