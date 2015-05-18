@@ -74,3 +74,10 @@
 ;; Coffee script
 (autoload 'coffee-mode "coffee-mode" "Major mode for coffee script")
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+
+
+;; flymake support for go
+(let ((path (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake")))
+  (when (file-exists-p path)
+    (add-to-list 'load-path path)
+    (require 'go-flymake)))
