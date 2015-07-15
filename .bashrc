@@ -92,7 +92,13 @@ function docker-shell-container { docker exec -ti $1 /bin/bash -s; }
 
 # Go workspace
 export GOPATH=$HOME/go
-[ -d $GOPATH ] && export PATH="$PATH":$GOPATH/bin || unset GOPATH
+export GOBIN=$GOPATH/bin
+[ -d $GOPATH ] && export PATH="$PATH":$GOBIN || unset GOPATH GOBIN
+function gofetch {
+    pushd $GOPATH/src
+    find . -maxdepth 4 -type d -name .git -print -execdir git fetch -a \;
+    popd
+}
 
 # Create PYTHONPATH if it doesn't exist. A hack to ensure hg can see pip
 # installed packages
