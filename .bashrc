@@ -86,6 +86,10 @@ export LOCKPRG=/bin/true
 export PIP_RESPECT_VIRTUALENV=true
 source ~/.misc/lazyvirtualenvwrapper.sh
 
+# Docker convenience functions
+function docker-shell-image { docker run -ti --entrypoint /bin/bash $1 -s; }
+function docker-shell-container { docker exec -ti $1 /bin/bash -s; }
+
 # Go workspace
 export GOPATH=$HOME/go
 [ -d $GOPATH ] && export PATH="$PATH":$GOPATH/bin || unset GOPATH
