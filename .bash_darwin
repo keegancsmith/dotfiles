@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+# OS X specific bash config
+
+alias vlc=/Applications/VLC.app/Contents/MacOS/VLC
+alias htop="sudo htop"
+
+eval $(boot2docker shellinit 2>/dev/null)
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi

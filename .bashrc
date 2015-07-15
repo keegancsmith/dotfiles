@@ -107,3 +107,5 @@ if [ -z "$PYTHONPATH" ] && hash pip &> /dev/null; then
 fi
 
 shopt -s histappend
+
+[[ $OSTYPE == darwin* ]] && . ~/.bash_darwin
