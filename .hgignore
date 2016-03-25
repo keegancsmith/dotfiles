@@ -9,3 +9,4 @@ syntax: glob
 .emacs.d/pwords.el
 .emacs.d/smex-items
 .emacs.d/tramp
+.emacs.d/bookmarks
