@@ -76,8 +76,24 @@
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 
 
-;; flymake support for go
-(let ((path (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake")))
-  (when (file-exists-p path)
-    (add-to-list 'load-path path)
-    (require 'go-flymake)))
+;; Go
+(add-hook 'after-init-hook #'global-flycheck-mode)
+;; I have a slightly less strict version of this regex so I can look at pastes
+;; which both can be expanded or not start with whitespace
+(when (and (boundp 'compilation-error-regexp-alist)
+           (boundp 'compilation-error-regexp-alist-alist))
+  (add-to-list 'compilation-error-regexp-alist 'go-test)
+  (add-to-list 'compilation-error-regexp-alist-alist
+               '(go-test . ("^\\(\t| \\)*\\([^()\t\n<> ]+\\):\\([0-9]+\\):? .*$" 2 3)) t))
+(setq gofmt-command "goimports")
+(add-hook 'before-save-hook 'gofmt-before-save)
+
+;; JS
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-mode))
+(add-hook 'js2-mode-hook
+          '(lambda ()
+	     (setq
+	      js2-basic-offset 8))) ;; sourcegraph coding convention
+
+(provide 'modes)
+;;; modes.el ends here
