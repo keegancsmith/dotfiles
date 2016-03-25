@@ -67,9 +67,6 @@ This command works on unixes only."
              buffer-file-name))))
 
 
-;; vc mode is annoying me atm
-(remove-hook 'find-file-hooks 'vc-find-file-hook)
-
 ;; quick jumping between symbols
 (defun ido-imenu ()
   "Update the imenu index and then use ido to select a symbol to navigate to.
