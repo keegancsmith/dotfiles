@@ -16,7 +16,7 @@ OS X
 
 I use brew and pip to install all the program I care about::
 
-  $ brew install python mercurial vcprompt ispell
+  $ brew install bash-completion python mercurial vcprompt ispell git
   $ brew linkapps python
   $ brew install emacs --cocoa
   $ brew linkapps emacs
