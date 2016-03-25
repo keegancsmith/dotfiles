@@ -22,27 +22,29 @@
  org-agenda-start-on-weekday nil
  org-reverse-note-order t
  org-fast-tag-selection-single-key 'expert
- ;; org-remember-store-without-prompt t
- ;; org-remember-templates (quote
- ;;                         ((97  "* APPT %?\n  %u"     (org-file "todo") "Tasks")
- ;;                          (84  "* TODO %?\n  %u\n%a" (org-file "todo") "Tasks")
- ;;                          (116 "* TODO %?\n  %u"     (org-file "todo") "Tasks")))
- ;; remember-annotation-functions '(org-remember-annotation)
- ;; remember-handler-functions '(org-remember-handler)
+ org-capture-templates
+ '(
+	("t" "Task" entry (file+headline "" "Tasks")
+		"* TODO %?\n  %u\n  %a")
+	("j" "Journal Entry"
+	 entry (file+datetree (org-file "journal")
+			      "* %?\n  %u"
+			      :empty-lines 1)))
  org-agenda-custom-commands
- (quote (("c" todo "DONE|DEFERRED|CANCELLED" nil)
-         ("u" alltodo ""
-          ((org-agenda-skip-function
-            (lambda nil
-              (org-agenda-skip-entry-if (quote scheduled) (quote deadline)
-                                        (quote regexp) "<[^>\n]+>")))
-           (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
+ (quote (("c" todo "DONE|DEFERRED|CANCELLED"
+          ((org-agenda-sorting-strategy '(tsia-down))))
+	 ("u" alltodo ""
+	  ((org-agenda-skip-function
+	    (lambda nil
+	      (org-agenda-skip-entry-if (quote scheduled) (quote deadline)
+					(quote regexp) "<[^>\n]+>")))
+	   (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
 
 (setq org-todo-keyword-faces
       '(("STARTED" . (:foreground "yellow"))
-        ("WAITING" . (:foreground "purple"))
-        ("INREVIEW" . (:foreground "purple"))
-        ("APPT" . org-todo)))
+	("WAITING" . (:foreground "purple"))
+	("INREVIEW" . (:foreground "purple"))
+	("APPT" . org-todo)))
 
 (eval-after-load "org"
   '(progn
