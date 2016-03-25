@@ -67,7 +67,7 @@
 
 ;; Misc settings
 (setq
- vc-handled-backends ()
+ vc-handled-backends '(Git Hg)
  inhibit-startup-message t
  x-select-enable-clipboard t
  make-backup-files nil
