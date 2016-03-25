@@ -5,7 +5,7 @@
     ace-jump-mode
     apache-mode
     coffee-mode
-    flymake-cursor
+    flycheck
     nginx-mode
     php-mode
     puppet-mode

@@ -7,37 +7,10 @@
 (set-face-foreground 'diff-removed "firebrick")
 
 
-;; Better background for Flymake. For some reason it needs to go after
-;; global-font-lock-mode
-(when (load "flymake" t)
-  (set-face-background 'flymake-errline  "DarkRed")
-  (set-face-background 'flymake-warnline "DarkBlue")
-  (require 'flymake-cursor))
-
-
-;; Flymake does not recognize warnings in GCC 4.5, fix this
-(add-to-list
- 'flymake-err-line-patterns
- '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(	\n]+\\):\\([0-9]+\\):[0-9]+:[   \n]*\\(.+\\)" 2 4 nil 5))
-
-
 ;; EDiff customisations
 (setq
  ediff-split-window-function 'split-window-horizontally
  ediff-window-setup-function 'ediff-setup-windows-plain)
-
-
-;; Pyflakes for python
-(when (load "flymake" t)
-  (defun flymake-pychecker-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      (list "~/.misc/pyflakespep8.py" (list local-file))))
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pychecker-init)))
 
 
 ;; Dired Stuff
