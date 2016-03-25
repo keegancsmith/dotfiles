@@ -121,3 +121,16 @@ Symbols matching the text at point are put first in the completion list."
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+;; M-x rgrep, but using git grep from the top-level git dir.
+;; Based on http://stackoverflow.com/questions/25633490/how-can-i-use-m-x-rgrep-with-the-git-grep-command-in-emacs
+(defcustom git-grep-command "git --no-pager grep --no-color --line-number <C> <R> | sed 's|^|./|'"
+  "The command to run with M-x git-grep.")
+(defun git-grep (regexp)
+  "Search for the given regexp using `git grep' in the current directory."
+  (interactive "sRegexp: ")
+  (unless (boundp 'grep-find-template) (grep-compute-defaults))
+  (let ((old-command grep-find-template))
+    (grep-apply-setting 'grep-find-template git-grep-command)
+    (rgrep regexp "*" (car (process-lines "git" "rev-parse" "--show-toplevel")))
+    (grep-apply-setting 'grep-find-template old-command)))
