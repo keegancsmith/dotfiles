@@ -27,9 +27,6 @@ for f in $dotfiles; do
     conditionallink "${REPO}/${f}" "${HOME}/${f}"
 done
 
-# SSH
-conditionallink "${REPO}/sshconfig" "${HOME}/.ssh/config"
-
 # xmonad
 conditionallink "${REPO}/xmonad.hs" "${HOME}/.xmonad/xmonad.hs"
 conditionallink "${REPO}/xmobarrc"  "${HOME}/.xmonad/xmobarrc"
