@@ -22,7 +22,6 @@
 # Logs and databases #
 ######################
 *.log
-*.sql
 *.sqlite
 
 # OS generated files #
@@ -39,3 +38,5 @@ Thumbs.db
 ##########
 .srclib-cache
 .srclib-store
+
+_scratch

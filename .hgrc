@@ -7,7 +7,7 @@ ssh = ssh -C
 bookmarks =
 color =
 convert =
-hgallpaths = ~/.misc/hgallpaths.py
+#hgallpaths = ~/.misc/hgallpaths.py
 hggit =
 hgext.graphlog =
 mq =
@@ -17,6 +17,7 @@ progress =
 purge =
 rebase =
 record =
+#crecord = ~/src/crecord/crecord
 
 [bookmarks]
 track.current = True
