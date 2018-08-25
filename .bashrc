@@ -5,7 +5,6 @@
 # that can't tolerate any output.  So make sure this doesn't display
 # anything or bad things will happen !
 
-
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
@@ -65,6 +64,7 @@ alias la="ls -A"
 alias ll="ls -l"
 alias grep="grep --color=auto"
 alias o="xdg-open"
+alias ack-go="ack --ignore-dir=vendor --type=go"
 
 # Completion
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
@@ -72,7 +72,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Some customizations
-export PATH=$HOME/bin:"$PATH"
 export EDITOR=vim
 export HISTCONTROL=ignoreboth:erasedups
 export HISTFILESIZE=80000
@@ -82,30 +81,54 @@ export MAILCHECK=0
 # I hate it when I accidently lock the terminal in screen
 export LOCKPRG=/bin/true
 
-# Virtualenv
-export PIP_RESPECT_VIRTUALENV=true
-source ~/.misc/lazyvirtualenvwrapper.sh
+# Create PYTHONPATH if it doesn't exist. A hack to ensure hg can see pip
+# installed packages
+#if [ -z "$PYTHONPATH" ] && hash pip &> /dev/null; then
+#    export PYTHONPATH="$(pip -V | grep -o '/.*site-packages')"
+#fi
 
-# Docker convenience functions
-function docker-shell-image { docker run -ti --entrypoint /bin/bash $1 -s; }
-function docker-shell-container { docker exec -ti $1 /bin/bash -s; }
+shopt -s histappend
+
+PATH="/Users/keegan/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/keegan/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/keegan/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/keegan/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/keegan/perl5"; export PERL_MM_OPT;
+
+export PATH="$HOME/.yarn/bin:$PATH"
+
+
+# Check for local install of gcloud
+if [[ -d ~/google-cloud-sdk ]]; then
+  source ~/google-cloud-sdk/path.bash.inc
+  source ~/google-cloud-sdk/completion.bash.inc
+fi
+
+export PATH=$HOME/bin:"$PATH"
 
 # Go workspace
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 [ -d $GOPATH ] && export PATH="$PATH":$GOBIN || unset GOPATH GOBIN
-function gofetch {
-    pushd $GOPATH/src
-    find . -maxdepth 4 -type d -name .git -print -execdir git fetch -a \;
-    popd
-}
+[ -d /usr/local/opt/go/libexec/bin ] && export PATH=/usr/local/opt/go/libexec/bin:$PATH
 
-# Create PYTHONPATH if it doesn't exist. A hack to ensure hg can see pip
-# installed packages
-if [ -z "$PYTHONPATH" ] && hash pip &> /dev/null; then
-    export PYTHONPATH="$(pip -V | grep -o '/.*site-packages')"
-fi
-
-shopt -s histappend
+# Virtualenv
+#export PIP_RESPECT_VIRTUALENV=true
+#source ~/.misc/lazyvirtualenvwrapper.sh
 
 [[ $OSTYPE == darwin* ]] && . ~/.bash_darwin
+
+#function _update_ps1() {
+#    PS1="$(powerline-go -error $? -mode compatible -modules venv,cwd,perms,gitlite,hg,jobs,exit,root)"
+#}
+#if [ "$TERM" != "linux" ]; then
+#    PROMPT_COMMAND="_update_ps1"
+#fi
+
+alias cd-src="cd ~/go/src/github.com/sourcegraph/sourcegraph"
+alias cd-sg="cd ~/go/src/github.com/sourcegraph/sourcegraph"
+alias cd-infra="cd ~/go/src/github.com/sourcegraph/infrastructure"
+
+export TERM=xterm-256color
+
+export SRCPATH=$HOME/go/src:$HOME/src

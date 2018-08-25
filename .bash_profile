@@ -4,8 +4,4 @@
 # runs your .bashrc and is recommended by the bash info pages.
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-# Check for local install of gcloud
-if [[ -d ~/google-cloud-sdk ]]; then
-  source ~/google-cloud-sdk/path.bash.inc
-  source ~/google-cloud-sdk/completion.bash.inc
-fi
+export PATH="$HOME/.cargo/bin:$PATH"
