@@ -122,7 +122,11 @@
 
 (use-package flycheck
   :ensure t
-  :init (global-flycheck-mode))
+  :init
+  (global-flycheck-mode)
+  ;; Make flycheck use the same load path so it doesn't complain about require
+  ;; statements in elisp.
+  (setq-default flycheck-emacs-lisp-load-path 'inherit))
 
 (use-package ivy
   :ensure t
