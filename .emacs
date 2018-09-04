@@ -136,20 +136,19 @@
   (ivy-mode 1))
 
 (use-package counsel
-             :bind (("M-x" . counsel-M-x)
-                    ("C-x C-f" . counsel-find-file)
-                    ("<f1> f" . counsel-describe-function)
-                    ("<f1> v" . counsel-describe-variable)
-                    ("<f1> l" . counsel-find-library)
-                    ("<f2> i" . counsel-info-lookup-symbol)
-                    ("<f2> u" . counsel-unicode-char)
-                    ("C-c g" . counsel-git)
-                    ("C-c j" . counsel-git-grep)
-                    ("C-c k" . counsel-rg)
-                    ("C-x l" . counsel-locate))
-             :config
-             ; Avoid long lines in counsel-rg
-             (setq counsel-rg-base-command "rg -i -g '!vendor' --no-heading --line-number --color never --max-columns 200 %s ."))
+  :bind (("M-x" . counsel-M-x)
+         ("C-x C-f" . counsel-find-file)
+         ("<f1> f" . counsel-describe-function)
+         ("<f1> v" . counsel-describe-variable)
+         ("<f1> l" . counsel-find-library)
+         ("<f2> i" . counsel-info-lookup-symbol)
+         ("<f2> u" . counsel-unicode-char)
+         ("C-c g" . counsel-git)
+         ("C-c k" . counsel-rg)
+         ("C-x l" . counsel-locate))
+  :config
+  ;; Avoid long lines in counsel-rg
+  (setq counsel-rg-base-command "rg -i -g '!vendor' --no-heading --line-number --color never --max-columns 200 %s ."))
 
 (use-package org
   :bind (("C-c l" . org-store-link)
