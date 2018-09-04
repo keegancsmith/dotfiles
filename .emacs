@@ -162,6 +162,7 @@
      org-journal-dir "~/org-files/journal/"
      org-journal-file-format "%Y%m%d.org"))
 
+  (require 'org-protocol)
   ;; https://orgmode.org/worg/org-contrib/org-protocol.html
   ;; https://www.diegoberrocal.com/blog/2015/08/19/org-protocol/
   ;; depends on script:
@@ -170,7 +171,9 @@
       (after make-full-window-frame activate)
     "Advise capture to be the only window when used as a popup"
     (if (equal "emacs-capture" (frame-parameter nil 'name))
-        (delete-other-windows)))
+        (progn
+          (delete-other-windows)
+          (x-focus-frame nil))))
   (defadvice org-capture-finalize
       (after delete-capture-frame activate)
     "Advise capture-finalize to close the frame"
@@ -180,6 +183,7 @@
   (setq
    org-modules '(org-habit)
    org-agenda-files '("~/org-files" "~/org-files/journal")
+   org-refile-targets '((("~/org-files/work.org" "~/org-files/todo.org") :maxlevel . 1))
    org-deadline-warning-days 14
    org-default-notes-file "~/org-files/todo.org"
    org-reverse-note-order t
@@ -194,8 +198,8 @@
       "* MEETING with %? :meeting:\n  %t\n  %u" :clock-in t :clock-keep t)
      ("p" "Personal task" entry (file+headline "" "Home")
       "* TODO %?\n  %u")
-     ("l" "Link from org-protocol" entry (file+headline "~/org-files/work.org" "Inbox")
-      "* TODO %^{Title}\n  SCHEDULED: %t\n  Source: %u, %c\n\n  %i"))))
+     ("L" "Link from org-protocol" entry (file+headline "~/org-files/work.org" "Inbox")
+      "* TODO foo\n  SCHEDULED: %t\n  Source: %u, %c\n\n  %i"))))
 
 (use-package python
   :config
