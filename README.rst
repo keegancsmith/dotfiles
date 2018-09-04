@@ -16,12 +16,12 @@ OS X
 
 I use brew and pip to install all the program I care about::
 
-  $ brew install bash-completion python mercurial vcprompt ispell git
-  $ brew linkapps python
-  $ brew install emacs --cocoa
-  $ brew linkapps emacs
-  $ pip install -r requirements.txt
-
+  $ brew install bash bash-completion codemod git graphviz htop ispell jq mosh redis ripgrep screen watchman youtube-dl python vcprompt
+  $ brew cask install docker emacs kap keybase keycastr mpv muzzle slack spectacle virtualbox visual-studio-code-insiders
+ 
+.. brew leaves
+   brew cask list
+  
 Org-Mode
 ========
 
