@@ -2,9 +2,7 @@
  Dotfiles
 ==========
 
-Collection of my linux settings. This should all work with the latest Ubuntu
-currently out. There are some external programs I use which are not in
-Ubuntu. These should be on somewhere on the $PATH
+Collection of my settings. Targetting OS X, but should work on Linux.
 
 Usage
 =====
@@ -14,19 +12,17 @@ Just run `./sync.sh` and make sure the external programs are installed.
 OS X
 ====
 
-I use brew and pip to install all the program I care about::
+I use brew to install all the program I care about: `./brew-install.sh`
 
-  $ brew install bash bash-completion codemod git graphviz htop ispell jq mosh redis ripgrep screen watchman youtube-dl python vcprompt
-  $ brew cask install docker emacs kap keybase keycastr mpv muzzle slack spectacle virtualbox visual-studio-code-insiders
- 
-.. brew leaves
-   brew cask list
+Additionally the following settings are toggled:
+
+- Accessibility -> Displays -> Reduce Transparency (faster window switches)
   
 Org-Mode
 ========
 
 Emacs expect a directory called `org-files` in your home directory. I sync
-this with dropbox::
+this with google drive::
 
-  $ ln -s ~/Dropbox/org-files/ ~/
+  $ ln -s ~/Drive/org-files/ ~/
 
