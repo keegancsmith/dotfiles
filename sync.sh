@@ -27,6 +27,9 @@ for f in $dotfiles; do
     conditionallink "${REPO}/${f}" "${HOME}/${f}"
 done
 
+# kitty
+conditionallink "${REPO}/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
+
 # xmonad
 conditionallink "${REPO}/xmonad.hs" "${HOME}/.xmonad/xmonad.hs"
 conditionallink "${REPO}/xmobarrc"  "${HOME}/.xmonad/xmobarrc"

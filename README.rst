@@ -17,7 +17,10 @@ I use brew to install all the program I care about: `./brew-install.sh`
 Additionally the following settings are toggled:
 
 - Accessibility -> Displays -> Reduce Transparency (faster window switches)
-  
+
+I use a daskeyboard. To get it working how I want on OS X I need to swap
+command and option in "modifier keys" in the keyboard settings.
+
 Org-Mode
 ========
 
@@ -26,3 +29,11 @@ this with google drive::
 
   $ ln -s ~/Drive/org-files/ ~/
 
+Go
+===
+
+Install go tooling::
+
+  $ go get -v \
+     github.com/rogpeppe/godef \
+     golang.org/x/tools/cmd/goimports
