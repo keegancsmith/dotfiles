@@ -93,6 +93,10 @@
 
 (global-set-key (kbd "C-c C-c") 'compile)
 
+;; go's present tool slides don't have a major mode for emacs, so ensure they
+;; are opened as text files.
+(add-to-list 'auto-mode-alist '("\\.slide\\'" . text-mode))
+
 (setq use-package-always-ensure t)
 
 (use-package dracula-theme)
