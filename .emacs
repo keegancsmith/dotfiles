@@ -118,7 +118,12 @@
     (if (not (string-match "go" compile-command))
         (set (make-local-variable 'compile-command)
              "go test")))
-  (add-hook 'go-mode-hook 'my-go-mode-hook))
+  (add-hook 'go-mode-hook #'my-go-mode-hook)
+
+  (use-package go-rename)
+  (use-package go-guru
+    :config
+    (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode)))
 
 (use-package flycheck
   :ensure t
