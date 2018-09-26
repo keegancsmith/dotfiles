@@ -42,3 +42,7 @@ compactionHeuristic = true
 
 [github]
 	user = keegancsmith
+
+[ghq]
+	root = /Users/keegan/src
+	root = /Users/keegan/go/src
