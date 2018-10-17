@@ -38,7 +38,8 @@ brew cask install \
      slack \
      spectacle \
      spotify \
-     virtualbox
+     virtualbox \
+     wkhtmltopdf
 
 brew install --with-short-names kubectx
 
