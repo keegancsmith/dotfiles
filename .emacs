@@ -247,6 +247,14 @@
          ("\\.md\\'" . gfm-mode)
          ("\\.markdown\\'" . markdown-mode)))
 
+;; https://addons.mozilla.org/en-US/firefox/addon/edit-with-emacs1/
+(use-package edit-server
+  :ensure t
+  :config
+  (setq edit-server-url-major-mode-alist '(("github\\.com" . gfm-mode))
+        edit-server-new-frame nil)
+  (edit-server-start))
+
 ;; Call secret elisp files
 (mapc (lambda (file)
         (if (file-exists-p (concat file ".el"))
@@ -264,7 +272,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-protocol try guide-key one-key org-gcal yaml-mode toml-mode quelpa-use-package py-yapf paredit org-journal markdown-mode magit ivy-hydra graphql-mode go-mode flycheck dracula-theme dockerfile-mode counsel blacken ace-window ace-jump-mode))))
+    (edit-server use-package go-guru go-rename org-protocol try guide-key one-key org-gcal yaml-mode toml-mode quelpa-use-package py-yapf paredit org-journal markdown-mode magit ivy-hydra graphql-mode go-mode flycheck dracula-theme dockerfile-mode counsel blacken ace-window ace-jump-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
