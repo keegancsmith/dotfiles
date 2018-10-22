@@ -65,6 +65,7 @@ alias ll="ls -l"
 alias grep="grep --color=auto"
 alias o="xdg-open"
 alias ack-go="ack --ignore-dir=vendor --type=go"
+alias kname='kubectl get -o jsonpath={.items[0].metadata.name}'
 
 # Completion
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
