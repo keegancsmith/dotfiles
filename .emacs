@@ -196,8 +196,8 @@
     (if (equal "emacs-capture" (frame-parameter nil 'name))
         (delete-frame)))
 
+  (add-to-list 'org-modules 'org-habit)
   (setq
-   org-modules '(org-habit)
    org-agenda-files '("~/org-files" "~/org-files/journal")
    org-refile-targets '((("~/org-files/work.org" "~/org-files/todo.org") :maxlevel . 1))
    org-deadline-warning-days 14
