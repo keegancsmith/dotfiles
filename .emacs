@@ -83,7 +83,7 @@
        (if (not (member p path))
            (setenv "PATH" (string-join (cons p path) path-separator)))
        (add-to-list 'exec-path p)))
-   '("~/bin" "~/go/bin" "/usr/local/bin")))
+   (reverse '("~/bin" "~/go/bin" "/usr/local/bin"))))
 
 ;; Hint that I use a dark background
 ;;(set-terminal-parameter nil 'background-mode 'dark)
