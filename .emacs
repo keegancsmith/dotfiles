@@ -207,13 +207,13 @@
    org-export-backends '(ascii html icalendar md)
    org-capture-templates
    '(("w" "Work task" entry (file+headline "~/org-files/work.org" "Inbox")
-      "* TODO %?\n  SCHEDULED: %t\n  %u")
+      "* TODO %?\n  SCHEDULED: %t\n  %u" :empty-lines-after 1)
      ("o" "P0 ops work scheduled and clocked in now" entry (file+headline "~/org-files/work.org" "Ops")
       "* [#A] P0 Ops :urgent:ops:\n  SCHEDULED: %t\n  %u" :clock-in t :clock-keep t :immediate-finish t)
      ("m" "Meeting now" entry (file+headline "~/org-files/work.org" "Meeting")
-      "* MEETING with %? :meeting:\n  %t\n  %u" :clock-in t :clock-keep t)
+      "* %? :meeting:\n  %t\n  %u" :clock-in t :clock-keep t :jump-to-captured t :immediate-finish t)
      ("p" "Personal task" entry (file+headline "" "Home")
-      "* TODO %?\n  %u")
+      "* TODO %?\n  %t\n  %u")
      ("L" "Link from org-protocol" entry (file+headline "~/org-files/work.org" "Inbox")
       "* TODO foo\n  SCHEDULED: %t\n  Source: %u, %c\n\n  %i"))))
 
