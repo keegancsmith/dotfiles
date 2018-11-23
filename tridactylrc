@@ -1,0 +1,8 @@
+" I to toggle ignore mode
+bind I mode ignore
+bind --mode=ignore mode normal
+
+set editorcmd /usr/local/bin/emacsclient
+
+" Open all github notifications
+bindurl github.com go js document.querySelectorAll('a.list-group-item-link').forEach(a => window.open(a.href))

@@ -30,6 +30,9 @@ done
 # kitty
 conditionallink "${REPO}/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
 
+# tridactyl (firefox vim mode)
+conditionallink "${REPO}/tridactylrc" "${HOME}/.config/tridactyl/tridactylrc"
+
 # xmonad
 conditionallink "${REPO}/xmonad.hs" "${HOME}/.xmonad/xmonad.hs"
 conditionallink "${REPO}/xmobarrc"  "${HOME}/.xmonad/xmobarrc"
