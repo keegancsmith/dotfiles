@@ -213,7 +213,7 @@
      ("m" "Meeting now" entry (file+headline "~/org-files/work.org" "Meeting")
       "* %? :meeting:\n  %t\n  %u" :clock-in t :clock-keep t :jump-to-captured t :immediate-finish t)
      ("p" "Personal task" entry (file+headline "" "Home")
-      "* TODO %?\n  %t\n  %u")
+      "* TODO %?\n  SCHEDULED: %t\n  %u")
      ("L" "Link from org-protocol" entry (file+headline "~/org-files/work.org" "Inbox")
       "* TODO foo\n  SCHEDULED: %t\n  Source: %u, %c\n\n  %i"))))
 
