@@ -235,6 +235,8 @@
 
 (use-package dockerfile-mode)
 
+(use-package nim-mode)
+
 (use-package guide-key
   :config
   (setq guide-key/guide-key-sequence t)

@@ -5,6 +5,7 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.nimble/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/keegan/google-cloud-sdk/path.bash.inc' ]; then source '/Users/keegan/google-cloud-sdk/path.bash.inc'; fi
