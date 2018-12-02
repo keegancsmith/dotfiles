@@ -16,6 +16,14 @@
 (eval-when-compile
   (require 'use-package))
 
+(when (memq window-system '(mac ns x))
+  (use-package exec-path-from-shell
+    :ensure t
+    :init
+    (exec-path-from-shell-initialize)
+    (exec-path-from-shell-copy-env "GOPATH")
+    (exec-path-from-shell-copy-env "GOROOT")))
+
 (server-start)
 
 ;; General config
@@ -73,18 +81,6 @@
 (when window-system
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
-;; Set my PATH when started without a shell
-(eval-when-compile (require 'subr-x))
-(when window-system
-  (mapc
-   (lambda (p)
-     (let ((p (string-remove-suffix "/" (expand-file-name p)))
-           (path (mapcar (apply-partially 'string-remove-suffix "/") (parse-colon-path (getenv "PATH")))))
-       (if (not (member p path))
-           (setenv "PATH" (string-join (cons p path) path-separator)))
-       (add-to-list 'exec-path p)))
-   (reverse '("~/bin" "~/go/bin" "/usr/local/bin"))))
-
 ;; Hint that I use a dark background
 ;;(set-terminal-parameter nil 'background-mode 'dark)
 ;;(set-frame-parameter nil 'background-mode 'dark)
@@ -116,8 +112,6 @@
   :config
   (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
-  (setenv "GOROOT" (string-trim (shell-command-to-string "go env GOROOT")))
-  (setenv "GOPATH" (string-trim (shell-command-to-string "go env GOPATH")))
   (defun my-go-mode-hook ()
     (if (not (string-match "go" compile-command))
         (set (make-local-variable 'compile-command)
