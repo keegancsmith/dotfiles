@@ -30,6 +30,9 @@ done
 # kitty
 conditionallink "${REPO}/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
 
+# youtube-dl
+conditionallink "${REPO}/youtube-dl.conf" "${HOME}/.config/youtube-dl/config"
+
 # tridactyl (firefox vim mode)
 conditionallink "${REPO}/tridactylrc" "${HOME}/.config/tridactyl/tridactylrc"
 
