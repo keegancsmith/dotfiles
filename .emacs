@@ -246,6 +246,7 @@
          ("\\.markdown\\'" . markdown-mode)))
 
 ;; https://addons.mozilla.org/en-US/firefox/addon/edit-with-emacs1/
+;; https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en
 (use-package edit-server
   :ensure t
   :config
