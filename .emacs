@@ -97,15 +97,9 @@
 
 (use-package monokai-theme)
 
-(use-package try)
-
-(use-package ace-jump-mode
-  :bind* ("C-c SPC" . ace-jump-mode))
-
-(use-package ace-window
+(use-package avy
   :ensure t
-  :init
-  (global-set-key [remap other-window] 'ace-window))
+  :bind ("C-c SPC" . avy-goto-char))
 
 (use-package go-mode
   :defer t
@@ -274,7 +268,7 @@
     ("a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "ec5f697561eaf87b1d3b087dd28e61a2fc9860e4c862ea8e6b0b77bd4967d0ba" default)))
  '(package-selected-packages
    (quote
-    (git-timemachine nginx-mode monokai-theme material-theme zenburn-theme exec-path-from-shell nim-mode edit-server use-package go-guru go-rename org-protocol try guide-key one-key org-gcal yaml-mode toml-mode quelpa-use-package py-yapf paredit org-journal markdown-mode ivy-hydra graphql-mode go-mode flycheck dracula-theme dockerfile-mode counsel blacken ace-window ace-jump-mode))))
+    (git-timemachine nginx-mode monokai-theme material-theme zenburn-theme exec-path-from-shell nim-mode edit-server use-package go-guru go-rename org-protocol guide-key one-key org-gcal yaml-mode toml-mode paredit org-journal markdown-mode ivy-hydra graphql-mode go-mode flycheck dockerfile-mode counsel blacken))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
