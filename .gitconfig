@@ -11,6 +11,7 @@ feature = !sh -c 'git checkout --no-track -b $0 origin/master'
 set-upstream = !sh -c 'git branch --set-upstream-to=origin/master `git rev-parse --abbrev-ref HEAD`'
 cherry-pick-branch = !sh -c 'git cherry-pick `git merge-base HEAD $0`..$0'
 	pr = !github-push-pr
+gc-all = -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc
 
 [color]
 ui = auto
