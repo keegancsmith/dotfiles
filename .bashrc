@@ -73,6 +73,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Some customizations
+export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export HISTCONTROL=ignoreboth:erasedups
 export HISTFILESIZE=80000
