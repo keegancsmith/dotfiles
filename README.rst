@@ -25,9 +25,9 @@ Org-Mode
 ========
 
 Emacs expect a directory called `org-files` in your home directory. I sync
-this with google drive::
+this with iCloud + beorg::
 
-  $ ln -s ~/Drive/org-files/ ~/
+  $ ln -s '/Users/keegan/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org' ~/org-files
 
 Go
 ===
