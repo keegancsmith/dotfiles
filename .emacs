@@ -193,6 +193,7 @@
    org-reverse-note-order t
    org-fast-tag-selection-single-key 'expert
    org-export-backends '(ascii html icalendar md)
+   org-agenda-span 'day
    org-capture-templates
    '(("w" "Work task" entry (file+headline "~/org-files/work.org" "Inbox")
       "* TODO %?\n  %u" :empty-lines 1)
