@@ -88,6 +88,7 @@
 (display-time-mode 1)
 
 (global-set-key (kbd "C-c C-c") 'compile)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; go's present tool slides don't have a major mode for emacs, so ensure they
 ;; are opened as text files.
