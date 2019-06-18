@@ -170,22 +170,6 @@
      org-journal-file-format "%Y%m%d.org"))
 
   (require 'org-protocol)
-  ;; https://orgmode.org/worg/org-contrib/org-protocol.html
-  ;; https://www.diegoberrocal.com/blog/2015/08/19/org-protocol/
-  ;; depends on script:
-  ;;   emacsclient -c -F "((name . \"emacs-capture\") (height . 10) (width . 80))" "$@"
-  (defadvice org-capture
-      (after make-full-window-frame activate)
-    "Advise capture to be the only window when used as a popup"
-    (if (equal "emacs-capture" (frame-parameter nil 'name))
-        (progn
-          (delete-other-windows)
-          (x-focus-frame nil))))
-  (defadvice org-capture-finalize
-      (after delete-capture-frame activate)
-    "Advise capture-finalize to close the frame"
-    (if (equal "emacs-capture" (frame-parameter nil 'name))
-        (delete-frame)))
 
   (add-to-list 'org-modules 'org-habit)
   (setq
