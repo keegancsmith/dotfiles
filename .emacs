@@ -173,7 +173,7 @@
 
   (add-to-list 'org-modules 'org-habit)
   (setq
-   org-agenda-files '("~/org-files" "~/org-files/journal")
+   org-agenda-files '("~/org-files")
    org-refile-targets '((("~/org-files/work.org" "~/org-files/todo.org") :maxlevel . 1))
    org-deadline-warning-days 14
    org-default-notes-file "~/org-files/todo.org"
