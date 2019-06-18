@@ -112,6 +112,8 @@
         (set (make-local-variable 'compile-command)
              "go test")))
   (add-hook 'go-mode-hook #'my-go-mode-hook)
+  (setenv "GOROOT" (string-trim (shell-command-to-string "go env GOROOT")))
+  (setenv "GOPATH" (string-trim (shell-command-to-string "go env GOPATH")))
 
   (use-package go-rename)
   (use-package go-guru
