@@ -91,28 +91,11 @@ export LOCKPRG=/bin/true
 
 shopt -s histappend
 
-PATH="/Users/keegan/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/keegan/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/keegan/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/keegan/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/keegan/perl5"; export PERL_MM_OPT;
-
-export PATH="$HOME/.yarn/bin:$PATH"
-
-
 # Check for local install of gcloud
 if [[ -d ~/google-cloud-sdk ]]; then
   source ~/google-cloud-sdk/path.bash.inc
   source ~/google-cloud-sdk/completion.bash.inc
 fi
-
-export PATH=$HOME/bin:"$PATH"
-
-# Go workspace
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-[ -d $GOPATH ] && export PATH="$PATH":$GOBIN || unset GOPATH GOBIN
-[ -d /usr/local/opt/go/libexec/bin ] && export PATH=/usr/local/opt/go/libexec/bin:$PATH
 
 # Virtualenv
 #export PIP_RESPECT_VIRTUALENV=true

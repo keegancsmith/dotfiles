@@ -12,3 +12,12 @@ if [ -f '/Users/keegan/google-cloud-sdk/path.bash.inc' ]; then source '/Users/ke
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/keegan/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/keegan/google-cloud-sdk/completion.bash.inc'; fi
+
+
+export PATH=$HOME/bin:"$PATH"
+
+# Go workspace
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+[ -d $GOPATH ] && export PATH="$PATH":$GOBIN || unset GOPATH GOBIN
+[ -d /usr/local/opt/go/libexec/bin ] && export PATH=/usr/local/opt/go/libexec/bin:$PATH
