@@ -29,6 +29,7 @@ done
 
 # kitty
 conditionallink "${REPO}/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
+conditionallink "${REPO}/dracula.conf" "${HOME}/.config/kitty/dracula.conf"
 
 # youtube-dl
 conditionallink "${REPO}/youtube-dl.conf" "${HOME}/.config/youtube-dl/config"
