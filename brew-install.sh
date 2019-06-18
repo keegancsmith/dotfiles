@@ -27,6 +27,7 @@ brew install \
 brew cask install \
      docker \
      emacs \
+     emacsclient \
      google-backup-and-sync \
      google-chrome \
      iterm2 \
