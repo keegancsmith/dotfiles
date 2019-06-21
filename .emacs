@@ -181,6 +181,10 @@
    org-fast-tag-selection-single-key 'expert
    org-export-backends '(ascii html icalendar md)
    org-agenda-span 'day
+   org-enforce-todo-dependencies t
+   org-log-done 'time
+   org-log-redeadline 'time
+   org-log-reschedule 'time
    org-capture-templates
    '(("c" "Task" entry (file "~/org-files/inbox.org")
       "* TODO %?\n  %U")
