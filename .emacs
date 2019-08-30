@@ -163,11 +163,6 @@
          ("C-c c" . org-capture)
          ("C-c C-x C-j" . org-clock-goto))
   :config
-  (use-package org-journal
-    :config
-    (setq
-     org-journal-dir "~/org-files/journal/"
-     org-journal-file-format "%Y%m%d.org"))
 
   (require 'org-protocol)
 
@@ -194,6 +189,8 @@
       "* P0 Ops :urgent:ops:\n  %t\n  %u" :clock-in t :clock-keep t :empty-lines 1)
      ("m" "Meeting now" entry (file+olp+datetree "~/org-files/meetings.org")
       "* %? :meeting:\n  %T" :clock-in t :clock-keep t :jump-to-captured t :empty-lines 1 :tree-type week)
+     ("j" "Journal" entry (file+olp+datetree "~/org-files/journal.org")
+      "* %?\n")
      ("p" "" entry (file "~/org-files/inbox.org")
       "* TODO %:description\n%U\n%:link\n\n#+BEGIN_QUOTE\n%:initial\n#+END_QUOTE" :immediate-finish t)
      ("L" "" entry (file "~/org-files/inbox.org")
