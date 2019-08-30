@@ -214,6 +214,9 @@
 
 (use-package git-timemachine)
 
+(use-package minions
+  :config (minions-mode 1))
+
 (use-package dockerfile-mode)
 
 (use-package nim-mode)
