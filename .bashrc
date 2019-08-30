@@ -113,6 +113,7 @@ fi
 alias cd-src="cd ~/go/src/github.com/sourcegraph/sourcegraph"
 alias cd-sg="cd ~/go/src/github.com/sourcegraph/sourcegraph"
 alias cd-infra="cd ~/go/src/github.com/sourcegraph/infrastructure"
+alias cd-zoekt="cd ~/go/src/github.com/google/zoekt"
 
 export TERM=xterm-256color
 
