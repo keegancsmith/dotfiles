@@ -164,6 +164,12 @@
          ("C-c C-x C-j" . org-clock-goto))
   :config
 
+  (defun org-insert-inactive-time-stamp ()
+    "Insert an inactive time stamp."
+    (interactive)
+    (org-insert-time-stamp (current-time) t t))
+  (define-key org-mode-map (kbd "C-c .") 'org-insert-inactive-time-stamp)
+
   (require 'org-protocol)
 
   (add-to-list 'org-modules 'org-habit)
