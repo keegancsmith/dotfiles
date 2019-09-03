@@ -118,3 +118,5 @@ alias cd-zoekt="cd ~/go/src/github.com/google/zoekt"
 export TERM=xterm-256color
 
 export SRCPATH=$HOME/go/src:$HOME/src
+
+eval "$(direnv hook bash)"
