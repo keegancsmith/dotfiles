@@ -263,13 +263,13 @@
   (edit-server-start))
 
 ;; Call secret elisp files
-(mapc (lambda (file)
-        (if (file-exists-p (concat file ".el"))
-            (load file)))
-      (mapcar (lambda (file) ;; Get filename with directory
-                (expand-file-name file "~/.secret"))
-              '("org-gcal"    ;; org-gcal contains secrets
-                )))
+;(mapc (lambda (file)
+;        (if (file-exists-p (concat file ".el"))
+;            (load file)))
+;      (mapcar (lambda (file) ;; Get filename with directory
+;                (expand-file-name file "~/.secret"))
+;              '("org-gcal"    ;; org-gcal contains secrets
+;                )))
 
 ;;; .emacs ends here
 (custom-set-variables
