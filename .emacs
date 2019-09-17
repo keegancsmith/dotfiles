@@ -17,6 +17,7 @@
   (require 'use-package))
 
 (when (memq window-system '(mac ns x))
+  (set-frame-font "-*-Hack-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
   (use-package exec-path-from-shell
     :ensure t
     :init
