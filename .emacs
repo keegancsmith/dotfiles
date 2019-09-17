@@ -199,9 +199,9 @@
      ("j" "Journal" entry (file+olp+datetree "~/org-files/journal.org")
       "* %?\n")
      ("p" "" entry (file "~/org-files/inbox.org")
-      "* TODO %:description\n%U\n%:link\n\n#+BEGIN_QUOTE\n%:initial\n#+END_QUOTE" :immediate-finish t)
+      "* TODO %:description\n%U\n%:link\n\n#+BEGIN_QUOTE\n%:initial\n#+END_QUOTE" :immediate-finish t :jump-to-captured t)
      ("L" "" entry (file "~/org-files/inbox.org")
-      "* TODO %:description\n%U\n%:link" :immediate-finish t))))
+      "* TODO %:description\n%U\n%:link" :immediate-finish t :jump-to-captured t))))
 
 (use-package direnv
  :config
