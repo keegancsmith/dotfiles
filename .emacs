@@ -206,6 +206,9 @@
 (use-package org-pomodoro
   :after org)
 
+(use-package forge
+  :after magit)
+
 (use-package direnv
  :config
  (direnv-mode))
