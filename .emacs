@@ -236,7 +236,8 @@
 
 (use-package guide-key
   :config
-  (setq guide-key/guide-key-sequence t)
+  (setq guide-key/guide-key-sequence t
+        guide-key/idle-delay 0.5)
   (guide-key-mode 1))
 
 ;; For visual wrapping at 80 columns when editing markdown.
