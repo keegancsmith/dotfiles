@@ -173,8 +173,6 @@
 
   (require 'org-protocol)
 
-  (use-package org-pomodoro)
-
   (add-to-list 'org-modules 'org-habit)
   (setq
    org-agenda-files '("~/org-files")
@@ -204,6 +202,9 @@
       "* TODO %:description\n%U\n%:link\n\n#+BEGIN_QUOTE\n%:initial\n#+END_QUOTE" :immediate-finish t :jump-to-captured t)
      ("L" "" entry (file "~/org-files/inbox.org")
       "* TODO %:description\n%U\n%:link" :immediate-finish t :jump-to-captured t))))
+
+(use-package org-pomodoro
+  :after org)
 
 (use-package direnv
  :config
