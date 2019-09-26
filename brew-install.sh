@@ -44,5 +44,6 @@ brew cask install \
 
 brew install --with-short-names kubectx
 
-brew tap homebrew/cask-versions
-brew cask install visual-studio-code-insiders
+brew cask install \
+     caskroom/fonts/font-cascadia \
+     caskroom/fonts/font-hack
