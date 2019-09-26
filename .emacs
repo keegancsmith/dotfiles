@@ -114,12 +114,25 @@
              "go test")))
   (add-hook 'go-mode-hook #'my-go-mode-hook)
   (setenv "GOROOT" (string-trim (shell-command-to-string "go env GOROOT")))
-  (setenv "GOPATH" (string-trim (shell-command-to-string "go env GOPATH")))
+  (setenv "GOPATH" (string-trim (shell-command-to-string "go env GOPATH"))))
 
-  (use-package go-rename)
-  (use-package go-guru
-    :config
-    (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode)))
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :bind (:map lsp-mode-map
+              ("C-c C-j" . lsp-find-definition)
+              ("C-c C-o d". lsp-describe-thing-at-point)
+              ("C-c C-o h". lsp-symbol-highlight)
+              ("C-c C-o j". lsp-goto-type-definition)
+              ("C-c C-o r". lsp-find-references)
+              ("C-c C-o s". counsel-imenu)
+              ("C-c C-o x". lsp-rename)
+              ("C-c C-o z". lsp-describe-session))
+  :config
+  (setq lsp-enable-snippet nil))
+
+;; if you use company-mode for completion (otherwise, complete-at-point works out of the box):
+(use-package company-lsp
+  :commands company-lsp)
 
 (use-package flycheck
   :ensure t
@@ -289,7 +302,7 @@
     ("a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "ec5f697561eaf87b1d3b087dd28e61a2fc9860e4c862ea8e6b0b77bd4967d0ba" default)))
  '(package-selected-packages
    (quote
-    (org-pomodoro direnv minions flycheck-rust rust-mode php-mode pyvenv visual-fill-column git-timemachine nginx-mode monokai-theme material-theme zenburn-theme exec-path-from-shell nim-mode edit-server use-package go-guru go-rename org-protocol guide-key one-key org-gcal yaml-mode toml-mode paredit markdown-mode ivy-hydra graphql-mode go-mode flycheck dockerfile-mode counsel blacken))))
+    (company-lsp lsp-mode forge org-pomodoro direnv minions flycheck-rust rust-mode php-mode pyvenv visual-fill-column git-timemachine nginx-mode monokai-theme material-theme zenburn-theme exec-path-from-shell nim-mode edit-server use-package go-guru go-rename org-protocol guide-key one-key org-gcal yaml-mode toml-mode paredit markdown-mode ivy-hydra graphql-mode go-mode flycheck dockerfile-mode counsel blacken))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
