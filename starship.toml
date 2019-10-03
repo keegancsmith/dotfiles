@@ -1,0 +1,32 @@
+[package]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[golang]
+disabled = true
+
+[java]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[python]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[aws]
+disabled = true
+
+[cmd_duration]
+disabled = true

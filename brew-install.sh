@@ -39,6 +39,7 @@ brew cask install \
      slack \
      spectacle \
      spotify \
+     starship \
      virtualbox \
      wkhtmltopdf
 

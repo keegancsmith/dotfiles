@@ -120,3 +120,4 @@ export TERM=xterm-256color
 export SRCPATH=$HOME/go/src:$HOME/src
 
 eval "$(direnv hook bash)"
+eval "$(starship init bash)"

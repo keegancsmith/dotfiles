@@ -31,6 +31,9 @@ done
 conditionallink "${REPO}/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
 conditionallink "${REPO}/dracula.conf" "${HOME}/.config/kitty/dracula.conf"
 
+# starship
+conditionallink "${REPO}/starship.toml" "${HOME}/.config/starship.toml"
+
 # youtube-dl
 conditionallink "${REPO}/youtube-dl.conf" "${HOME}/.config/youtube-dl/config"
 
