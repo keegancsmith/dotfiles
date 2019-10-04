@@ -19,7 +19,6 @@ brew install \
      redis \
      ripgrep \
      screen \
-     vcprompt \
      watchman \
      youtube-dl
 

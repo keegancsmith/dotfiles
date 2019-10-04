@@ -7,12 +7,16 @@
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.nimble/bin:$PATH"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/keegan/google-cloud-sdk/path.bash.inc' ]; then source '/Users/keegan/google-cloud-sdk/path.bash.inc'; fi
+# Completion
+[ -f /etc/bash_completion ] && . /etc/bash_completion
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/keegan/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/keegan/google-cloud-sdk/completion.bash.inc'; fi
+[[ $OSTYPE == darwin* ]] && . ~/.bash_darwin
 
+# Check for local install of gcloud
+if [[ -d ~/google-cloud-sdk ]]; then
+  source ~/google-cloud-sdk/path.bash.inc
+  source ~/google-cloud-sdk/completion.bash.inc
+fi
 
 export PATH=$HOME/bin:"$PATH"
 
