@@ -37,3 +37,9 @@ zplug "lib/key-bindings", from:oh-my-zsh
 zplug 'dracula/zsh', as:theme
 
 zplug load
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/keegan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/keegan/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/keegan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/keegan/google-cloud-sdk/completion.zsh.inc'; fi
