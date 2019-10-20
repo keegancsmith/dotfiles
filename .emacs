@@ -17,7 +17,7 @@
   (require 'use-package))
 
 (when (memq window-system '(mac ns x))
-  (set-frame-font "-*-Hack-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+  (set-frame-font "-*-Input Mono Narrow-normal-normal-extracondensed-*-12-*-*-*-m-0-iso10646-1")
   (use-package exec-path-from-shell
     :ensure t
     :init
@@ -194,6 +194,27 @@
 
   (require 'org-protocol)
 
+  (defun my-safari-url ()
+    (do-applescript "tell application \"Safari\" to get the URL of front document"))
+  (defun my-safari-name ()
+    (do-applescript "tell application \"Safari\" to get the name of front window"))
+  (defun my-safari-link ()
+    (let ((url (my-safari-url))
+          (name (my-safari-name)))
+      (if (string-match "\\(([0-9]+) \\)?\\(.*\\) \\(by [a-z]+ . Pull Request\\|. Issue\\) #\\([0-9]+\\) . \\([A-Za-z0-9_.-]+\\)/\\([A-Za-z0-9_.-]+\\)" name)
+          (let* ((title (match-string 2 name))
+                 (id    (match-string 4 name))
+                 (owner (match-string 5 name))
+                 (repo  (match-string 6 name))
+                 (desc  (cond ((equal repo "sourcegraph") "")
+                              ((equal owner "sourcegraph") repo)
+                              (t (format "%s/%s" owner repo)))))
+            (format "%s [[%s][%s#%s]]" title url desc id))
+        (format "[[%s][%s]]" url name))))
+  (defun my-insert-link ()
+    (interactive)
+    (insert-before-markers (my-safari-link)))
+
   (add-to-list 'org-modules 'org-habit)
   (setq
    org-agenda-files '("~/org-files")
@@ -211,8 +232,8 @@
    org-capture-templates
    '(("c" "Task" entry (file "~/org-files/inbox.org")
       "* TODO %?\n  %U")
-     ("w" "Task" entry (file "~/org-files/inbox.org")
-      "* TODO %?\n  %U")
+     ("s" "Safari" entry (file "~/org-files/inbox.org")
+      "* TODO %(my-safari-link)\n%U")
      ("o" "P0 ops work scheduled and clocked in now" entry (file+headline "~/org-files/work.org" "Ops")
       "* P0 Ops :urgent:ops:\n  %t\n  %u" :clock-in t :clock-keep t :empty-lines 1)
      ("m" "Meeting now" entry (file+olp+datetree "~/org-files/meetings.org")

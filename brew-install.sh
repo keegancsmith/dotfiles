@@ -46,4 +46,6 @@ brew install --with-short-names kubectx
 
 brew cask install \
      caskroom/fonts/font-cascadia \
-     caskroom/fonts/font-hack
+     caskroom/fonts/font-go-mono \
+     caskroom/fonts/font-hack \
+     caskroom/fonts/font-input
