@@ -227,8 +227,8 @@
     (let ((prefix (match-string 1 name))
           (title  (match-string 2 name)))
       (format "[[%s][%s]]: %s" url prefix title)))
-   ;; no title (title is URL without scheme)
-   ((string-suffix-p name url) url)
+   ;; no title (title is URL without scheme). Need to trim \u200 prefix
+   ((string-suffix-p (string-trim name (rx nonascii)) url) url)
    ;; default
    (t (format "[[%s][%s]]" url name))))
 
