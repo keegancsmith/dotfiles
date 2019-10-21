@@ -224,6 +224,17 @@
                             ((equal owner "sourcegraph") repo)
                             (t (format "%s/%s" owner repo)))))
           (format "%s [[%s][%s#%s]]" title url desc id)))
+       ;; Sourcegraph RFC
+       ((string-match
+         (rx (submatch "RFC " (one-or-more digit)) ;; RFC number: eg "RFC 30"
+             ": "
+             (submatch (one-or-more anything)) ;; Title: eg "Zoekt Horizontal Scaling"
+             " - Google Docs")
+         name)
+        (let ((id    (match-string 1 name))
+              (title (match-string 2 name))
+              (url   (replace-regexp-in-string "/edit.*" "" url)))
+          (format "%s: %s [[%s][%s]]" id title url id)))
        ;; default
        (t (format "[[%s][%s]]" url name)))))
   (defun my-insert-link ()
