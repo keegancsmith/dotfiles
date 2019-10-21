@@ -227,6 +227,8 @@
     (let ((prefix (match-string 1 name))
           (title  (match-string 2 name)))
       (format "[[%s][%s]]: %s" url prefix title)))
+   ;; no title (title is URL without scheme)
+   ((string-suffix-p name url) url)
    ;; default
    (t (format "[[%s][%s]]" url name))))
 
@@ -253,6 +255,10 @@
                   "https://github.com/reviewdog/reviewdog"
                   "reviewdog/reviewdog: Automated code review tool integrated with any code analysis tools regardless of programming language")
                  "[[https://github.com/reviewdog/reviewdog][reviewdog/reviewdog]]: Automated code review tool integrated with any code analysis tools regardless of programming language"))
+  (should (equal (my-org-link
+                  "http://db.csail.mit.edu/pubs/harizopoulosVLDB06.pdf"
+                  "‎db.csail.mit.edu/pubs/harizopoulosVLDB06.pdf")
+                 "http://db.csail.mit.edu/pubs/harizopoulosVLDB06.pdf"))
   (should (equal (my-org-link
                   "https://golang.org/"
                   "The Go Programming Language")
