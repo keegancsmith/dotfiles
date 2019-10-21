@@ -12,6 +12,7 @@ set-upstream = !sh -c 'git branch --set-upstream-to=origin/master `git rev-parse
 cherry-pick-branch = !sh -c 'git cherry-pick `git merge-base HEAD $0`..$0'
 	pr = !github-push-pr
 gc-all = -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc
+me = log --author=keegan
 
 [color]
 ui = auto
