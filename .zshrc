@@ -23,6 +23,18 @@ export LOCKPRG=/bin/true
 
 export SRCPATH=$HOME/go/src:$HOME/src
 
+# PATH
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.nimble/bin:$PATH"
+export PATH=$HOME/bin:"$PATH"
+
+# Go workspace
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+[ -d $GOPATH ] && export PATH="$PATH":$GOBIN || unset GOPATH GOBIN
+[ -d /usr/local/opt/go/libexec/bin ] && export PATH=/usr/local/opt/go/libexec/bin:$PATH
+
+eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 
 source ~/.zplug/init.zsh
