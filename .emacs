@@ -201,11 +201,23 @@
   (defun my-safari-link ()
     (let ((url (my-safari-url))
           (name (my-safari-name)))
-      (if (string-match "\\(([0-9]+) \\)?\\(.*\\) \\(by [a-z]+ . Pull Request\\|. Issue\\) #\\([0-9]+\\) . \\([A-Za-z0-9_.-]+\\)/\\([A-Za-z0-9_.-]+\\)" name)
-          (let* ((title (match-string 2 name))
-                 (id    (match-string 4 name))
-                 (owner (match-string 5 name))
-                 (repo  (match-string 6 name))
+      (if (string-match ; github issue/pr title
+           (rx (optional "(" (one-or-more digit) ") ")      ; notification count: eg "(1) "
+               (submatch (+? anything))                     ; title: eg "my issue title"
+               (optional " by " (one-or-more alphanumeric)) ; pr author: eg " by foo"
+               " · "
+               (or "Pull Request" "Issue")
+               " #"
+               (submatch (one-or-more digit))               ; PR/Issue ID
+               " · "
+               (submatch (one-or-more graphic))             ; owner: eg "microsoft"
+               "/"
+               (submatch (one-or-more graphic)))            ; repo:  eg "vscode"
+           name)
+          (let* ((title (match-string 1 name))
+                 (id    (match-string 2 name))
+                 (owner (match-string 3 name))
+                 (repo  (match-string 4 name))
                  (desc  (cond ((equal repo "sourcegraph") "")
                               ((equal owner "sourcegraph") repo)
                               (t (format "%s/%s" owner repo)))))
