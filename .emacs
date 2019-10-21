@@ -216,6 +216,17 @@
           (title (match-string 2 name))
           (url   (replace-regexp-in-string "/edit.*" "" url)))
       (format "%s: %s [[%s][%s]]" id title url id)))
+   ;; titles that look like "prefix: title"
+   ((string-match
+     (rx (submatch (+? graphic))                        ; prefix
+         ": "
+         (submatch (+? anything))                       ; title
+         (optional " - " (one-or-more (not (any "-")))) ; suffix
+         string-end)
+     name)
+    (let ((prefix (match-string 1 name))
+          (title  (match-string 2 name)))
+      (format "[[%s][%s]]: %s" url prefix title)))
    ;; default
    (t (format "[[%s][%s]]" url name))))
 
@@ -238,6 +249,10 @@
                   "https://github.com/sourcegraph/zoekt/pull/10"
                   "index: Use roaring bitmaps for content posting lists by keegancsmith · Pull Request #10 · sourcegraph/zoekt")
                  "index: Use roaring bitmaps for content posting lists [[https://github.com/sourcegraph/zoekt/pull/10][zoekt#10]]"))
+  (should (equal (my-org-link
+                  "https://github.com/reviewdog/reviewdog"
+                  "reviewdog/reviewdog: Automated code review tool integrated with any code analysis tools regardless of programming language")
+                 "[[https://github.com/reviewdog/reviewdog][reviewdog/reviewdog]]: Automated code review tool integrated with any code analysis tools regardless of programming language"))
   (should (equal (my-org-link
                   "https://golang.org/"
                   "The Go Programming Language")
