@@ -179,6 +179,65 @@
   ;; Avoid long lines in counsel-rg
   (setq counsel-rg-base-command "rg -i -g '!vendor' --no-heading --line-number --color never --max-columns 200 %s ."))
 
+(defun my-org-link (url name)
+  "Generate an org link using URL and NAME (title of page)."
+  (cond
+   ;; github issue/pr title
+   ((string-match
+     (rx (optional "(" (one-or-more digit) ") ")      ; notification count: eg "(1) "
+         (submatch (+? anything))                     ; title: eg "my issue title"
+         (optional " by " (one-or-more alphanumeric)) ; pr author: eg " by foo"
+         " · "
+         (or "Pull Request" "Issue")
+         " #"
+         (submatch (one-or-more digit))               ; PR/Issue ID
+         " · "
+         (submatch (one-or-more graphic))             ; owner: eg "microsoft"
+         "/"
+         (submatch (one-or-more graphic)))            ; repo:  eg "vscode"
+     name)
+    (let* ((title (match-string 1 name))
+           (id    (match-string 2 name))
+           (owner (match-string 3 name))
+           (repo  (match-string 4 name))
+           (desc  (cond ((equal repo "sourcegraph") "")
+                        ((equal owner "sourcegraph") repo)
+                        (t (format "%s/%s" owner repo)))))
+      (format "%s [[%s][%s#%s]]" title url desc id)))
+   ;; Sourcegraph RFC
+   ((string-match
+     (rx (submatch "RFC " (one-or-more digit)) ;; RFC number: eg "RFC 30"
+         ": "
+         (submatch (one-or-more anything)) ;; Title: eg "Zoekt Horizontal Scaling"
+         " - Google Docs")
+     name)
+    (let ((id    (match-string 1 name))
+          (title (match-string 2 name))
+          (url   (replace-regexp-in-string "/edit.*" "" url)))
+      (format "%s: %s [[%s][%s]]" id title url id)))
+   ;; default
+   (t (format "[[%s][%s]]" url name))))
+
+;; (insert-before-markers "\"" (my-safari-url) "\"\n\"" (my-safari-name) "\"\n\"" (my-safari-link) "\"")
+(ert-deftest my-test-org-link ()
+  "Tests the my-org-link."
+  (should (equal (my-org-link
+                  "https://docs.google.com/document/d/18w8T_KzYxQye8wg1g01QpMOX4_ERTtbOxMBRYaOEkmk/edit#heading=h.rf2d3v2oo71l"
+                  "RFC 30: Zoekt Horizontal Scaling - Google Docs")
+                 "RFC 30: Zoekt Horizontal Scaling [[https://docs.google.com/document/d/18w8T_KzYxQye8wg1g01QpMOX4_ERTtbOxMBRYaOEkmk][RFC 30]]"))
+  (should (equal (my-org-link
+                  "https://github.com/sourcegraph/sourcegraph/issues/6031"
+                  "Core Services: 3.10 tracking issue · Issue #6031 · sourcegraph/sourcegraph")
+                 "Core Services: 3.10 tracking issue [[https://github.com/sourcegraph/sourcegraph/issues/6031][#6031]]"))
+  (should (equal (my-org-link
+                  "https://github.com/sourcegraph/zoekt/pull/10"
+                  "index: Use roaring bitmaps for content posting lists by keegancsmith · Pull Request #10 · sourcegraph/zoekt")
+                 "index: Use roaring bitmaps for content posting lists [[https://github.com/sourcegraph/zoekt/pull/10][zoekt#10]]"))
+  (should (equal (my-org-link
+                  "https://golang.org/"
+                  "The Go Programming Language")
+                 "[[https://golang.org/][The Go Programming Language]]")))
+
 (use-package org
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
@@ -199,44 +258,7 @@
   (defun my-safari-name ()
     (do-applescript "tell application \"Safari\" to get the name of front window"))
   (defun my-safari-link ()
-    (let ((url (my-safari-url))
-          (name (my-safari-name)))
-      (cond
-       ;; github issue/pr title
-       ((string-match
-         (rx (optional "(" (one-or-more digit) ") ")      ; notification count: eg "(1) "
-             (submatch (+? anything))                     ; title: eg "my issue title"
-             (optional " by " (one-or-more alphanumeric)) ; pr author: eg " by foo"
-             " · "
-             (or "Pull Request" "Issue")
-             " #"
-             (submatch (one-or-more digit))               ; PR/Issue ID
-             " · "
-             (submatch (one-or-more graphic))             ; owner: eg "microsoft"
-             "/"
-             (submatch (one-or-more graphic)))            ; repo:  eg "vscode"
-         name)
-        (let* ((title (match-string 1 name))
-               (id    (match-string 2 name))
-               (owner (match-string 3 name))
-               (repo  (match-string 4 name))
-               (desc  (cond ((equal repo "sourcegraph") "")
-                            ((equal owner "sourcegraph") repo)
-                            (t (format "%s/%s" owner repo)))))
-          (format "%s [[%s][%s#%s]]" title url desc id)))
-       ;; Sourcegraph RFC
-       ((string-match
-         (rx (submatch "RFC " (one-or-more digit)) ;; RFC number: eg "RFC 30"
-             ": "
-             (submatch (one-or-more anything)) ;; Title: eg "Zoekt Horizontal Scaling"
-             " - Google Docs")
-         name)
-        (let ((id    (match-string 1 name))
-              (title (match-string 2 name))
-              (url   (replace-regexp-in-string "/edit.*" "" url)))
-          (format "%s: %s [[%s][%s]]" id title url id)))
-       ;; default
-       (t (format "[[%s][%s]]" url name)))))
+    (my-org-link (my-safari-url) (my-safari-name)))
   (defun my-insert-link ()
     (interactive)
     (insert-before-markers (my-safari-link)))
