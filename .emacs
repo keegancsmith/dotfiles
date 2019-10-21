@@ -201,28 +201,31 @@
   (defun my-safari-link ()
     (let ((url (my-safari-url))
           (name (my-safari-name)))
-      (if (string-match ; github issue/pr title
-           (rx (optional "(" (one-or-more digit) ") ")      ; notification count: eg "(1) "
-               (submatch (+? anything))                     ; title: eg "my issue title"
-               (optional " by " (one-or-more alphanumeric)) ; pr author: eg " by foo"
-               " · "
-               (or "Pull Request" "Issue")
-               " #"
-               (submatch (one-or-more digit))               ; PR/Issue ID
-               " · "
-               (submatch (one-or-more graphic))             ; owner: eg "microsoft"
-               "/"
-               (submatch (one-or-more graphic)))            ; repo:  eg "vscode"
-           name)
-          (let* ((title (match-string 1 name))
-                 (id    (match-string 2 name))
-                 (owner (match-string 3 name))
-                 (repo  (match-string 4 name))
-                 (desc  (cond ((equal repo "sourcegraph") "")
-                              ((equal owner "sourcegraph") repo)
-                              (t (format "%s/%s" owner repo)))))
-            (format "%s [[%s][%s#%s]]" title url desc id))
-        (format "[[%s][%s]]" url name))))
+      (cond
+       ;; github issue/pr title
+       ((string-match
+         (rx (optional "(" (one-or-more digit) ") ")      ; notification count: eg "(1) "
+             (submatch (+? anything))                     ; title: eg "my issue title"
+             (optional " by " (one-or-more alphanumeric)) ; pr author: eg " by foo"
+             " · "
+             (or "Pull Request" "Issue")
+             " #"
+             (submatch (one-or-more digit))               ; PR/Issue ID
+             " · "
+             (submatch (one-or-more graphic))             ; owner: eg "microsoft"
+             "/"
+             (submatch (one-or-more graphic)))            ; repo:  eg "vscode"
+         name)
+        (let* ((title (match-string 1 name))
+               (id    (match-string 2 name))
+               (owner (match-string 3 name))
+               (repo  (match-string 4 name))
+               (desc  (cond ((equal repo "sourcegraph") "")
+                            ((equal owner "sourcegraph") repo)
+                            (t (format "%s/%s" owner repo)))))
+          (format "%s [[%s][%s#%s]]" title url desc id)))
+       ;; default
+       (t (format "[[%s][%s]]" url name)))))
   (defun my-insert-link ()
     (interactive)
     (insert-before-markers (my-safari-link)))
