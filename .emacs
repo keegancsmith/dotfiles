@@ -207,7 +207,7 @@
    ;; Sourcegraph RFC
    ((string-match
      (rx (submatch "RFC " (one-or-more digit)) ;; RFC number: eg "RFC 30"
-         (optional " PRIVATE")
+         (optional " " (one-or-more letter))
          ": "
          (submatch (one-or-more anything)) ;; Title: eg "Zoekt Horizontal Scaling"
          " - Google Docs")
@@ -243,6 +243,10 @@
                   "https://docs.google.com/document/d/redacted/edit"
                   "RFC 30 PRIVATE: redacted - Google Docs")
                  "RFC 30: redacted [[https://docs.google.com/document/d/redacted][RFC 30]]"))
+  (should (equal (my-org-link
+                  "https://docs.google.com/document/d/redacted/edit"
+                  "RFC 60 REVIEW: Introduce a bi-weekly release cadence - Google Docs")
+                 "RFC 60: Introduce a bi-weekly release cadence [[https://docs.google.com/document/d/redacted][RFC 60]]"))
   (should (equal (my-org-link
                   "https://github.com/sourcegraph/sourcegraph/issues/6031"
                   "Core Services: 3.10 tracking issue · Issue #6031 · sourcegraph/sourcegraph")
