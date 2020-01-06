@@ -289,9 +289,17 @@
     (do-applescript "tell application \"Safari\" to get the name of front window"))
   (defun my-safari-link ()
     (my-org-link (my-safari-url) (my-safari-name)))
+  (defun my-chrome-url ()
+    (do-applescript "tell application \"Google Chrome\" to get URL of active tab of first window"))
+  (defun my-chrome-name ()
+    (do-applescript "tell application \"Google Chrome\" to get name of active tab of first window"))
+  (defun my-chrome-link ()
+    (my-org-link (my-chrome-url) (my-chrome-name)))
   (defun my-insert-link ()
     (interactive)
-    (insert-before-markers (my-safari-link)))
+    (insert-before-markers (if (equal 0 (call-process "pgrep" nil nil nil "-q" "^Safari$"))
+                               (my-safari-link)
+                             (my-chrome-link))))
 
   (add-to-list 'org-modules 'org-habit)
   (setq
