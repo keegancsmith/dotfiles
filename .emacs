@@ -295,11 +295,13 @@
     (do-applescript "tell application \"Google Chrome\" to get name of active tab of first window"))
   (defun my-chrome-link ()
     (my-org-link (my-chrome-url) (my-chrome-name)))
+  (defun my-browser-link ()
+    (if (equal 0 (call-process "pgrep" nil nil nil "-q" "^Safari$"))
+        (my-safari-link)
+      (my-chrome-link)))
   (defun my-insert-link ()
     (interactive)
-    (insert-before-markers (if (equal 0 (call-process "pgrep" nil nil nil "-q" "^Safari$"))
-                               (my-safari-link)
-                             (my-chrome-link))))
+    (insert-before-markers (my-browser-link)))
 
   (add-to-list 'org-modules 'org-habit)
   (setq
@@ -319,6 +321,8 @@
    org-capture-templates
    '(("c" "Task" entry (file "~/org-files/inbox.org")
       "* TODO %?\n  %U")
+     ("b" "Browser" entry (file "~/org-files/inbox.org")
+      "* TODO %(my-browser-link)\n%U")
      ("s" "Safari" entry (file "~/org-files/inbox.org")
       "* TODO %(my-safari-link)\n%U")
      ("o" "P0 ops work scheduled and clocked in now" entry (file+headline "~/org-files/work.org" "Ops")
