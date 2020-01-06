@@ -315,6 +315,7 @@
    org-log-done 'time
    org-log-redeadline 'time
    org-log-reschedule 'time
+   org-log-into-drawer t
    org-capture-templates
    '(("c" "Task" entry (file "~/org-files/inbox.org")
       "* TODO %?\n  %U")
