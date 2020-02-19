@@ -20,7 +20,7 @@ function conditionallink {
 cd $(dirname $0)
 REPO=$(pwd)
 
-dotfiles=".bash_logout .bash_profile .bashrc .emacs \
+dotfiles=".bash_logout .bash_profile .bashrc .emacs .mu4e.el \
           .hgrc .inputrc .screenrc .vimrc .xsession .gitconfig \
           .beetsconfig .bash_darwin .gitignore_global .zshrc"
 for f in $dotfiles; do
