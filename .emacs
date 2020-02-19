@@ -410,6 +410,10 @@
         edit-server-new-frame nil)
   (edit-server-start))
 
+(use-package unfill
+  :ensure t
+  :bind ("M-Q" . unfill-paragraph))
+
 ;; Call secret elisp files
 ;(mapc (lambda (file)
 ;        (if (file-exists-p (concat file ".el"))
