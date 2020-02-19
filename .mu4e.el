@@ -95,6 +95,7 @@
                            (string-prefix-p "/gmail/" (mu4e-message-field msg :maildir))))
            :vars '(
                    (user-mail-address  . "keegan.csmith@gmail.com")
+                   (smtpmail-smtp-user . "keegan.csmith@gmail.com")
                    (mu4e-sent-folder   . "/gmail/[Gmail]/Sent Mail")
                    (mu4e-trash-folder  . "/gmail/[Gmail]/Bin")
                    (mu4e-refile-folder . "/gmail/[Gmail]/All Mail")
@@ -106,7 +107,8 @@
                          (when msg
                            (string-prefix-p "/sourcegraph/" (mu4e-message-field msg :maildir))))
            :vars '(
-                   (user-mail-address . "keegan@sourcegraph.com" )
+                   (user-mail-address  . "keegan@sourcegraph.com" )
+                   (smtpmail-smtp-user . "keegan@sourcegraph.com")
                    (mu4e-sent-folder   . "/sourcegraph/[Gmail]/Sent Mail")
                    (mu4e-trash-folder  . "/sourcegraph/[Gmail]/Trash")
                    (mu4e-refile-folder . "/sourcegraph/[Gmail]/All Mail")
@@ -157,7 +159,8 @@
 (require 'smtpmail)
 (setq message-send-mail-function 'smtpmail-send-it
       smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
-      smtpmail-auth-credentials '(("smtp.gmail.com" 587 "keegan.csmith@gmail.com" nil))
+      smtpmail-auth-credentials '(("smtp.gmail.com" 587 "keegan.csmith@gmail.com" nil)
+                                  ("smtp.gmail.com" 587 "keegan@sourcegraph.com" nil))
       smtpmail-default-smtp-server "smtp.gmail.com"
       smtpmail-smtp-server "smtp.gmail.com"
       smtpmail-smtp-service 587)
