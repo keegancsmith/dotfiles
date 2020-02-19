@@ -99,7 +99,7 @@
 
 (setq use-package-always-ensure t)
 
-(use-package monokai-theme)
+(use-package leuven-theme)
 
 (use-package avy
   :ensure t
