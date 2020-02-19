@@ -344,6 +344,9 @@
 (use-package ox-gfm
   :after org)
 
+(use-package ob-go
+  :after org)
+
 (use-package forge
   :after magit)
 
@@ -425,6 +428,11 @@
  '(custom-safe-themes
    (quote
     ("a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "ec5f697561eaf87b1d3b087dd28e61a2fc9860e4c862ea8e6b0b77bd4967d0ba" default)))
+ '(org-babel-load-languages (quote ((emacs-lisp . t) (shell . t))))
+ '(org-confirm-babel-evaluate nil)
+ '(org-modules
+   (quote
+    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m org-mac-link)))
  '(package-selected-packages
    (quote
     (ox-gfm go-fill-struct company-lsp lsp-mode forge org-pomodoro direnv minions flycheck-rust rust-mode php-mode pyvenv visual-fill-column git-timemachine nginx-mode monokai-theme material-theme zenburn-theme exec-path-from-shell nim-mode edit-server use-package go-guru go-rename org-protocol guide-key one-key org-gcal yaml-mode toml-mode paredit markdown-mode ivy-hydra graphql-mode go-mode flycheck dockerfile-mode counsel blacken))))
