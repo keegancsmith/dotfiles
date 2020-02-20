@@ -218,6 +218,17 @@
           (title (match-string 2 name))
           (url   (replace-regexp-in-string "/edit.*" "" url)))
       (format "%s: %s [[%s][%s]]" id title url id)))
+   ;; titles that look like jira issues
+   ((string-match
+     (rx "["
+         (submatch (+? graphic))                        ; ticket
+         "] "
+         (submatch (+? anything))                       ; title
+         " - Jira Service Desk")
+     name)
+    (let ((ticket (match-string 1 name))
+          (title  (match-string 2 name)))
+      (format "[[%s][{%s}]] %s" url ticket title)))
    ;; titles that look like "prefix: title"
    ((string-match
      (rx (submatch (+? graphic))                        ; prefix
@@ -234,7 +245,7 @@
    ;; default
    (t (format "[[%s][%s]]" url name))))
 
-;; (insert-before-markers "\"" (my-safari-url) "\"\n\"" (my-safari-name) "\"\n\"" (my-safari-link) "\"")
+;; (insert-before-markers "\"" (my-chrome-url) "\"\n\"" (my-chrome-name) "\"\n\"" (my-chrome-link) "\"")
 (ert-deftest my-test-org-link ()
   "Tests the my-org-link."
   (should (equal (my-org-link
@@ -261,6 +272,10 @@
                   "https://github.com/reviewdog/reviewdog"
                   "reviewdog/reviewdog: Automated code review tool integrated with any code analysis tools regardless of programming language")
                  "[[https://github.com/reviewdog/reviewdog][reviewdog/reviewdog]]: Automated code review tool integrated with any code analysis tools regardless of programming language"))
+  (should (equal (my-org-link
+                  "https://sourcegraph.atlassian.net/jira/servicedesk/projects/SG/queues/custom/1/SG-01"
+                  "[SG-01] a jira title - Jira Service Desk")
+                 "[[https://sourcegraph.atlassian.net/jira/servicedesk/projects/SG/queues/custom/1/SG-01][{SG-01}]] a jira title"))
   (should (equal (my-org-link
                   "http://db.csail.mit.edu/pubs/harizopoulosVLDB06.pdf"
                   "‎db.csail.mit.edu/pubs/harizopoulosVLDB06.pdf")
