@@ -210,6 +210,7 @@
    ((string-match
      (rx (submatch "RFC " (one-or-more digit)) ;; RFC number: eg "RFC 30"
          (optional " " (one-or-more letter))
+         (optional " " (one-or-more letter))
          ": "
          (submatch (one-or-more anything)) ;; Title: eg "Zoekt Horizontal Scaling"
          " - Google Docs")
@@ -341,7 +342,7 @@
      ("b" "Browser" entry (file "~/org-files/inbox.org")
       "* TODO %(my-browser-link)\n%U")
      ("a" "Appointment today" entry (file+olp+datetree "~/org-files/meetings.org")
-        "* %?\n  %^t")
+        "* %?\n  %^t" :tree-type week)
      ("o" "P0 ops work scheduled and clocked in now" entry (file+headline "~/org-files/work.org" "Ops")
       "* P0 Ops :urgent:ops:\n  %t\n  %u" :clock-in t :clock-keep t :empty-lines 1)
      ("m" "Meeting now" entry (file+olp+datetree "~/org-files/meetings.org")

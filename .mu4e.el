@@ -4,6 +4,10 @@
 
 ;;store org-mode links to messages
 (require 'org-mu4e)
+
+;; when mail is sent, automatically convert org body to HTML
+(setq org-mu4e-convert-to-html t)
+
 ;;store link to message if in header view, not to header query
 (setq org-mu4e-link-query-in-headers-mode nil)
 
