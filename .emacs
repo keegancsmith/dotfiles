@@ -458,7 +458,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m org-mac-link)))
  '(package-selected-packages
    (quote
-    (ox-gfm go-fill-struct company-lsp lsp-mode forge org-pomodoro direnv minions flycheck-rust rust-mode php-mode pyvenv visual-fill-column git-timemachine nginx-mode monokai-theme material-theme zenburn-theme exec-path-from-shell nim-mode edit-server use-package go-guru go-rename org-protocol guide-key one-key org-gcal yaml-mode toml-mode paredit markdown-mode ivy-hydra graphql-mode go-mode flycheck dockerfile-mode counsel blacken))))
+    (lueven-theme unfill systemd ob-go lastpass ledger-mode hledger-mode python-black ox-gfm smartparens noflet go-fill-struct company-lsp lsp-mode forge org-pomodoro direnv minions flycheck-rust rust-mode php-mode pyvenv visual-fill-column git-timemachine nginx-mode monokai-theme material-theme zenburn-theme exec-path-from-shell nim-mode edit-server use-package go-guru go-rename org-protocol guide-key one-key org-gcal yaml-mode toml-mode paredit markdown-mode ivy-hydra graphql-mode go-mode flycheck dockerfile-mode counsel blacken))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
