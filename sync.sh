@@ -40,6 +40,9 @@ conditionallink "${REPO}/youtube-dl.conf" "${HOME}/.config/youtube-dl/config"
 # tridactyl (firefox vim mode)
 conditionallink "${REPO}/tridactylrc" "${HOME}/.config/tridactyl/tridactylrc"
 
+# Karabiner-Elements
+conditionallink "${REPO}/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
+
 # xmonad
 conditionallink "${REPO}/xmonad.hs" "${HOME}/.xmonad/xmonad.hs"
 conditionallink "${REPO}/xmobarrc"  "${HOME}/.xmonad/xmobarrc"
