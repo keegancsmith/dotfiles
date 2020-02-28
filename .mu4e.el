@@ -130,8 +130,8 @@
 (setq mu4e-bookmarks
       `(
         ,(make-mu4e-bookmark
-          :name  "INBOX"
-          :query "maildir:/gmail/INBOX OR maildir:/sourcegraph/INBOX"
+          :name  "Inbox"
+          :query "maildir:/inbox/"
           :key   ?i)
         ,(make-mu4e-bookmark
           :name  "All"
