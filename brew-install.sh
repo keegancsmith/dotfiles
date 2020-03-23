@@ -2,50 +2,123 @@
 
 set -ex
 
-# brew leaves
+# brew leaves | sort | awk 'BEGIN{printf "brew install"}{printf " \\\n     %s",$1}END{printf "\n"}' | pbcopy
 brew install \
+     aria2 \
+     asciidoc \
+     automake \
+     awscli \
      bash \
      bash-completion \
+     black \
+     cmake \
      codemod \
+     coreutils \
+     csshx \
+     direnv \
+     dos2unix \
+     gawk \
      git \
+     github/gh/gh \
+     gnu-sed \
      go \
+     goreleaser \
      graphviz \
+     hledger \
      htop \
+     imagemagick \
      ispell \
+     isync \
+     johanhaleby/kubetail/kubetail \
      jq \
-     kitty \
+     kubectx \
+     lastpass-cli \
+     ledger \
+     libarchive \
+     libpq \
+     libssh \
+     libzip \
+     make \
+     minikube \
+     mkcert \
      mosh \
      python \
+     mu \
+     netcat \
+     nginx \
+     nmap \
+     node@12 \
+     openjdk \
+     pandoc \
+     parallel \
+     pkg-config \
+     pngcrush \
+     postgresql \
+     prettier \
+     pypy \
+     python@2 \
      redis \
      ripgrep \
      screen \
+     shellcheck \
+     starship \
+     terraform \
+     tnftp \
+     tree \
+     vegeta \
+     watch \
      watchman \
-     youtube-dl
+     wget \
+     yarn \
+     youtube-dl \
+     zsh
 
-# brew cask list
+# brew cask list --full-name | sort | awk 'BEGIN{printf "brew cask install"}{printf " \\\n     %s",$1}END{printf "\n"}' | pbcopy
 brew cask install \
+     1password \
+     1password-cli \
+     adobe-acrobat-reader \
+     adoptopenjdk \
+     adoptopenjdk8 \
+     homebrew/cask-fonts/font-cascadia \
+     homebrew/cask-fonts/font-fira-code \
+     homebrew/cask-fonts/font-go-mono \
+     homebrew/cask-fonts/font-hack \
+     homebrew/cask-fonts/font-input \
+     homebrew/cask-fonts/font-jetbrains-mono \
+     homebrew/cask-fonts/font-office-code-pro \
+     day-o \
+     discord \
      docker \
+     dropbox \
      emacs \
      emacsclient \
+     firefox-developer-edition \
+     foxitreader \
      google-backup-and-sync \
      google-chrome \
+     handbrake \
+     intellij-idea \
      iterm2 \
      kap \
+     karabiner-elements \
      keybase \
      keycastr \
+     kitty \
+     minikube \
      mpv \
      muzzle \
+     phantomjs \
+     plex-media-server \
+     signal \
+     skype \
      slack \
      spectacle \
      spotify \
-     starship \
+     transmission \
      virtualbox \
+     visual-studio-code \
+     vlc \
+     whatsapp \
+     wireshark \
      wkhtmltopdf
-
-brew install --with-short-names kubectx
-
-brew cask install \
-     caskroom/fonts/font-cascadia \
-     caskroom/fonts/font-go-mono \
-     caskroom/fonts/font-hack \
-     caskroom/fonts/font-input
