@@ -94,12 +94,9 @@ brew cask install \
      emacs \
      emacsclient \
      firefox-developer-edition \
-     foxitreader \
-     google-backup-and-sync \
      google-chrome \
      handbrake \
      intellij-idea \
-     iterm2 \
      kap \
      karabiner-elements \
      keybase \
