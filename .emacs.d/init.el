@@ -425,8 +425,8 @@
   :ensure t
   :bind ("M-Q" . unfill-paragraph))
 
-(if (file-exists-p "~/.mu4e.el")
-    (load-file "~/.mu4e.el"))
+(if (file-exists-p "~/.emacs.d/mu4e.el")
+    (load-file "~/.emacs.d/mu4e.el"))
 
 ;; Call secret elisp files
 ;(mapc (lambda (file)
