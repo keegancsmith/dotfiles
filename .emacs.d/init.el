@@ -1,4 +1,6 @@
-;; emacs general config. Should work with a bare install of emacs
+;;; init.el --- Initialization file for Emacs
+
+;;; Commentary:
 
 ;;; Code:
 
@@ -55,7 +57,7 @@
  current-language-environment "English"
  confirm-nonexistent-file-or-buffer nil
  compilation-window-height 10
- compilation-scroll-output t
+ compilation-scroll-output 'first-error
  dabbrev-case-fold-search t
  save-abbrevs nil
  font-lock-maximum-decoration t
@@ -104,6 +106,8 @@
 (use-package avy
   :ensure t
   :bind ("C-c SPC" . avy-goto-char))
+
+(require 'subr-x)
 
 (use-package go-mode
   :defer t
@@ -433,6 +437,8 @@
   "Load the Lisp file named FILE if it exists."
   (if (file-exists-p file)
     (load-file file)))
+
+(load-file "~/.emacs.d/revbufs.el")
 
 (load-file-exists "~/.emacs.d/mu4e.el")
 
