@@ -1,6 +1,7 @@
 .org-id-locations
 auto-save-list
 bookmarks
+custom.el
 elpa
 network-security.data
 org-gcal

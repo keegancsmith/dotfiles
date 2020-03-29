@@ -322,6 +322,8 @@
     (insert-before-markers (my-browser-link)))
 
   (add-to-list 'org-modules 'org-habit)
+  (add-to-list 'org-modules 'org-mac-link)
+
   (setq
    org-agenda-files '("~/org-files")
    org-refile-targets '((("~/org-files/work.org" "~/org-files/todo.org") :maxlevel . 1))
@@ -336,6 +338,8 @@
    org-log-redeadline 'time
    org-log-reschedule 'time
    org-log-into-drawer t
+   org-babel-load-languages '((emacs-lisp . t) (shell . t))
+   ;org-confirm-babel-evaluate nil
    org-capture-templates
    '(("c" "Task" entry (file "~/org-files/inbox.org")
       "* TODO %?\n  %U\n%a")
@@ -425,38 +429,14 @@
   :ensure t
   :bind ("M-Q" . unfill-paragraph))
 
-(if (file-exists-p "~/.emacs.d/mu4e.el")
-    (load-file "~/.emacs.d/mu4e.el"))
+(defun load-file-exists (file)
+  "Load the Lisp file named FILE if it exists."
+  (if (file-exists-p file)
+    (load-file file)))
 
-;; Call secret elisp files
-;(mapc (lambda (file)
-;        (if (file-exists-p (concat file ".el"))
-;            (load file)))
-;      (mapcar (lambda (file) ;; Get filename with directory
-;                (expand-file-name file "~/.secret"))
-;              '("org-gcal"    ;; org-gcal contains secrets
-;                )))
+(load-file-exists "~/.emacs.d/mu4e.el")
 
-;;; .emacs ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "ec5f697561eaf87b1d3b087dd28e61a2fc9860e4c862ea8e6b0b77bd4967d0ba" default)))
- '(org-babel-load-languages (quote ((emacs-lisp . t) (shell . t))))
- '(org-confirm-babel-evaluate nil)
- '(org-modules
-   (quote
-    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m org-mac-link)))
- '(package-selected-packages
-   (quote
-    (lueven-theme unfill systemd ob-go lastpass ledger-mode hledger-mode python-black ox-gfm smartparens noflet go-fill-struct company-lsp lsp-mode forge org-pomodoro direnv minions flycheck-rust rust-mode php-mode pyvenv visual-fill-column git-timemachine nginx-mode monokai-theme material-theme zenburn-theme exec-path-from-shell nim-mode edit-server use-package go-guru go-rename org-protocol guide-key one-key org-gcal yaml-mode toml-mode paredit markdown-mode ivy-hydra graphql-mode go-mode flycheck dockerfile-mode counsel blacken))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(setq custom-file "~/.emacs.d/custom.el")
+(load-file-exists custom-file)
+
+;;; init.el ends here
