@@ -40,3 +40,4 @@ Thumbs.db
 .srclib-store
 
 _scratch
+flymake_*
