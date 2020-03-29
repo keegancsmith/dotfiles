@@ -363,9 +363,6 @@
 (use-package ob-go
   :after org)
 
-(use-package forge
-  :after magit)
-
 (use-package direnv
  :config
  (direnv-mode))
@@ -392,8 +389,6 @@
   :config (minions-mode 1))
 
 (use-package dockerfile-mode)
-
-(use-package nim-mode)
 
 (use-package guide-key
   :config
