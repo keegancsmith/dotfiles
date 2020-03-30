@@ -21,7 +21,7 @@ cd $(dirname $0)
 REPO=$(pwd)
 
 dotfiles=".bash_logout .bash_profile .bashrc .emacs.d \
-          .hgrc .inputrc .screenrc .vimrc .xsession .gitconfig \
+          .hgrc .inputrc .screenrc .vimrc .gitconfig \
           .beetsconfig .bash_darwin .gitignore_global .zshrc"
 for f in $dotfiles; do
     conditionallink "${REPO}/${f}" "${HOME}/${f}"
@@ -42,10 +42,6 @@ conditionallink "${REPO}/tridactylrc" "${HOME}/.config/tridactyl/tridactylrc"
 
 # Karabiner-Elements
 conditionallink "${REPO}/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
-
-# xmonad
-conditionallink "${REPO}/xmonad.hs" "${HOME}/.xmonad/xmonad.hs"
-conditionallink "${REPO}/xmobarrc"  "${HOME}/.xmonad/xmobarrc"
 
 # misc files used by configs
 cd "${REPO}/misc"
