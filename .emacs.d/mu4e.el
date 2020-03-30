@@ -131,11 +131,11 @@
       `(
         ,(make-mu4e-bookmark
           :name  "Inbox"
-          :query "maildir:/inbox/"
+          :query "maildir:/inbox/ AND NOT flag:trashed"
           :key   ?i)
         ,(make-mu4e-bookmark
           :name  "All"
-          :query "maildir:\"/gmail/[Gmail]/All Mail\" OR maildir:\"/sourcegraph/[Gmail]/All Mail\""
+          :query "maildir:\"/All Mail/\" AND NOT flag:trashed"
           :key   ?a)
         ,(make-mu4e-bookmark
           :name  "Unread messages"
@@ -143,11 +143,11 @@
           :key ?u)
         ,(make-mu4e-bookmark
           :name "Today's messages"
-          :query "date:today..now"
+          :query "date:today..now AND NOT flag:trashed"
           :key ?t)
         ,(make-mu4e-bookmark
           :name "Last 7 days"
-          :query "date:7d..now"
+          :query "date:7d..now AND NOT flag:trashed"
           :key ?w)
         ,(make-mu4e-bookmark
           :name "Flagged"
