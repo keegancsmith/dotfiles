@@ -22,7 +22,7 @@ REPO=$(pwd)
 
 dotfiles=".bash_logout .bash_profile .bashrc .emacs.d \
           .hgrc .inputrc .screenrc .vimrc .gitconfig \
-          .beetsconfig .bash_darwin .gitignore_global .zshrc"
+          .bash_darwin .gitignore_global .zshrc"
 for f in $dotfiles; do
     conditionallink "${REPO}/${f}" "${HOME}/${f}"
 done
@@ -36,9 +36,6 @@ conditionallink "${REPO}/starship.toml" "${HOME}/.config/starship.toml"
 
 # youtube-dl
 conditionallink "${REPO}/youtube-dl.conf" "${HOME}/.config/youtube-dl/config"
-
-# tridactyl (firefox vim mode)
-conditionallink "${REPO}/tridactylrc" "${HOME}/.config/tridactyl/tridactylrc"
 
 # Karabiner-Elements
 conditionallink "${REPO}/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
