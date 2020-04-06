@@ -112,8 +112,6 @@
 (use-package go-mode
   :defer t
   :config
-  (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook 'gofmt-before-save)
   (defun my-go-mode-hook ()
     (if (not (string-match "go" compile-command))
         (set (make-local-variable 'compile-command)
@@ -132,6 +130,7 @@
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
+  :hook (go-mode . lsp-deferred)
   :bind (:map lsp-mode-map
               ("C-c C-j" . lsp-find-definition)
               ("C-c C-o d". lsp-describe-thing-at-point)
@@ -142,7 +141,15 @@
               ("C-c C-o x". lsp-rename)
               ("C-c C-o z". lsp-describe-session))
   :config
-  (setq lsp-enable-snippet nil))
+
+  (defun lsp-go-install-save-hooks ()
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+  (setq
+   lsp-enable-file-watchers nil
+   lsp-enable-snippet nil))
 
 ;; if you use company-mode for completion (otherwise, complete-at-point works out of the box):
 (use-package company-lsp
