@@ -8,7 +8,8 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")))
+                         ("melpa" . "http://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -297,7 +298,11 @@
                   "The Go Programming Language")
                  "[[https://golang.org/][The Go Programming Language]]")))
 
+;(package-install (cadr (assq 'org package-archive-contents)))
+
 (use-package org
+  :ensure org-plus-contrib
+  :pin org
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture)
@@ -334,6 +339,7 @@
 
   (add-to-list 'org-modules 'org-habit)
   (add-to-list 'org-modules 'org-mac-link)
+  (add-to-list 'org-modules 'org-tempo)
 
   (setq
    org-agenda-files '("~/org-files")
