@@ -4,27 +4,28 @@
 
 ;;; Code:
 
-;; Install packages
-(require 'package)
-(setq package-enable-at-startup nil)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")))
-(package-initialize)
+;; straight.el bootstrap code
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(eval-when-compile
-  (require 'use-package))
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
 
 (when (memq window-system '(mac ns x))
   (set-frame-font "-*-Input Mono Narrow-normal-normal-extracondensed-*-12-*-*-*-m-0-iso10646-1")
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8")
   (use-package exec-path-from-shell
-    :ensure t
     :init
     (exec-path-from-shell-initialize)
     (exec-path-from-shell-copy-env "GOPATH")
@@ -100,18 +101,14 @@
 ;; are opened as text files.
 (add-to-list 'auto-mode-alist '("\\.slide\\'" . text-mode))
 
-(setq use-package-always-ensure t)
-
 (use-package leuven-theme)
 
 (use-package avy
-  :ensure t
-  :bind ("C-c SPC" . avy-goto-char))
+  :bind (("C-c SPC" . avy-goto-char)))
 
 (require 'subr-x)
 
 (use-package go-mode
-  :defer t
   :config
   (defun my-go-mode-hook ()
     (if (not (string-match "go" compile-command))
@@ -124,7 +121,6 @@
 ;; GO111MODULE=on go get github.com/davidrjenni/reftools/cmd/fillstruct
 (use-package go-fill-struct
   :after go-mode
-  :defer t
   :bind (:map go-mode-map
               ("C-c C-o f". go-fill-struct))
   :commands (go-fill-struct))
@@ -157,7 +153,6 @@
   :commands company-lsp)
 
 (use-package flycheck
-  :ensure t
   :init
   (global-flycheck-mode)
   ;; Make flycheck use the same load path so it doesn't complain about require
@@ -165,7 +160,6 @@
   (setq-default flycheck-emacs-lisp-load-path 'inherit))
 
 (use-package ivy
-  :ensure t
   :diminish (ivy-mode . "")
   :bind (("C-c C-r" . ivy-resume))
   :config
@@ -300,9 +294,9 @@
 
 ;(package-install (cadr (assq 'org package-archive-contents)))
 
+(straight-use-package 'org-plus-contrib)
+
 (use-package org
-  :ensure org-plus-contrib
-  :pin org
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture)
@@ -315,6 +309,10 @@
     (org-insert-time-stamp (current-time) t t))
   (define-key org-mode-map (kbd "C-c .") 'org-insert-inactive-time-stamp)
 
+  (add-to-list 'org-modules 'org-habit)
+  (add-to-list 'org-modules 'org-mac-link)
+  (add-to-list 'org-modules 'org-tempo)
+  
   (require 'org-protocol)
 
   (defun my-safari-url ()
@@ -336,10 +334,6 @@
   (defun my-insert-link ()
     (interactive)
     (insert-before-markers (my-browser-link)))
-
-  (add-to-list 'org-modules 'org-habit)
-  (add-to-list 'org-modules 'org-mac-link)
-  (add-to-list 'org-modules 'org-tempo)
 
   (setq
    org-agenda-files '("~/org-files")
@@ -421,7 +415,6 @@
 (use-package visual-fill-column)
 
 (use-package markdown-mode
-  :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . gfm-mode)
@@ -436,15 +429,15 @@
 ;; https://addons.mozilla.org/en-US/firefox/addon/edit-with-emacs1/
 ;; https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en
 (use-package edit-server
-  :ensure t
   :config
   (setq edit-server-url-major-mode-alist '(("github\\.com" . gfm-mode))
         edit-server-new-frame nil)
   (edit-server-start))
 
 (use-package unfill
-  :ensure t
   :bind ("M-Q" . unfill-paragraph))
+
+(use-package notmuch)
 
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
