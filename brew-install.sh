@@ -28,7 +28,6 @@ brew install \
      htop \
      imagemagick \
      ispell \
-     isync \
      johanhaleby/kubetail/kubetail \
      jq \
      kubectx \
@@ -43,7 +42,6 @@ brew install \
      mkcert \
      mosh \
      python \
-     mu \
      netcat \
      nginx \
      nmap \
