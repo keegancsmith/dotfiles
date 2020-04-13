@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source /Users/keegan/src/github.com/gauteh/lieer/venv/bin/activate
+
+cd ~/.mail/gmail
+gmi sync
+
+cd ~/.mail/sourcegraph
+gmi sync

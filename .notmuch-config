@@ -1,0 +1,25 @@
+# -*- mode: conf -*-
+#
+# .notmuch-config - Configuration file for the notmuch mail system
+#
+# For more information about notmuch, see https://notmuchmail.org
+
+[database]
+path=/Users/keegan/.mail
+
+[user]
+name=Keegan Carruthers-Smith
+primary_email=keegan.csmith@gmail.com
+other_email=keegan@sourcegraph.com;
+
+[new]
+tags=new
+ignore=/.*[.](json|lock|bak)$/
+
+# gmail uses spam and trash. muted is a tag I use to stop following a mailing
+# list thread.
+[search]
+exclude_tags=deleted;spam;muted;trash
+
+[maildir]
+synchronize_flags=true

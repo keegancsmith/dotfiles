@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+#### Me
+notmuch tag -unread -inbox -- tag:new and from:keegan.csmith@gmail.com
+notmuch tag -unread -inbox -- tag:new and from:keegan@sourcegraph.com
+
+#### Github
+notmuch tag +gh -- tag:new and from:notifications@github.com
+for reason in assign author comment manual mention push review_requested state_change subscribed team_mention your_activity; do
+    notmuch tag +gh/$reason -- tag:new and to:$reason@noreply.github.com
+done
+
+#### Gerrit
+notmuch tag +gerrit -- tag:new and from:gerritcodereview
+
+#### Mailing lists
+notmuch tag +list/notmuch -- tag:new and to:notmuch@notmuchmail.org
+
+#### Muting threads
+notmuch tag -unread -inbox +muted -- tag:new and 'thread:{tag:muted}'
+
+#### Low signal
+notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:[bot]'
+notmuch tag -unread -inbox -- tag:new and 'from:"Linter for Gerrit"'
+notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into master")'
+notmuch tag -unread -inbox -- tag:new and tag:gh/your_activity
+notmuch tag -unread -inbox -- tag:new and tag:gh/push
+
+#### Emails to shared inbox I can't unsubscribe to
+notmuch tag --remove-all +trash tag:new from:notifications@npmjs.com subject:"Successfully published @sourcegraph"
+notmuch tag --remove-all +trash tag:new from:nobody@mozilla.org subject:"signed and ready to download"
+
+echo
+echo "processed $(notmuch count tag:new) email(s)"
+echo "inbox $(notmuch count tag:inbox) email(s)"
+
+notmuch tag -new -- tag:new

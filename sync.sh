@@ -22,7 +22,7 @@ REPO=$(pwd)
 
 dotfiles=".bash_logout .bash_profile .bashrc .emacs.d \
           .hgrc .inputrc .screenrc .vimrc .gitconfig \
-          .bash_darwin .gitignore_global .zshrc"
+          .bash_darwin .gitignore_global .zshrc .notmuch-config"
 for f in $dotfiles; do
     conditionallink "${REPO}/${f}" "${HOME}/${f}"
 done
@@ -39,6 +39,16 @@ conditionallink "${REPO}/youtube-dl.conf" "${HOME}/.config/youtube-dl/config"
 
 # Karabiner-Elements
 conditionallink "${REPO}/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
+
+# notmuch hooks
+conditionallink "${REPO}/notmuch-hooks" "${HOME}/.mail/.notmuch/hooks"
+
+# https://github.com/gauteh/lieer gmail<->maildir syncer
+conditionallink "${REPO}/lieer-gmail.json" "${HOME}/.mail/gmail/.gmailieer.json"
+conditionallink "${REPO}/lieer-sourcegraph.json" "${HOME}/.mail/sourcegraph/.gmailieer.json"
+
+# Ensure we have maildirs setup for lieer
+mkdir -p "${HOME}"/.mail/{gmail,sourcegraph}/mail/{new,cur,tmp}
 
 # misc files used by configs
 cd "${REPO}/misc"
