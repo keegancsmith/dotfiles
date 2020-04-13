@@ -10,6 +10,9 @@
 (require 'ol-notmuch)
 
 (setq
+ ;; when archiving a thread I like to also mark it as read
+ notmuch-archive-tags '("-inbox" "-unread")
+
  ;; prefer showing newest first
  notmuch-search-oldest-first nil
 
