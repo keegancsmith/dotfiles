@@ -446,8 +446,6 @@
 
 (load-file "~/.emacs.d/revbufs.el")
 
-(load-file-exists "~/.emacs.d/mu4e.el")
-
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file-exists custom-file)
 
