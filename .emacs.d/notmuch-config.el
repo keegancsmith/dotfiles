@@ -19,6 +19,14 @@
  ;; on gmail sync we will get the file, we don't need to create the sent mail
  notmuch-fcc-dirs nil)
 
+;; I like to jump to tag searches from notmuch-hello
+(defun notmuch-search-by-tag (tag)
+  "Display threads matching TAG in a notmuch-search buffer."
+  (interactive
+   (list (notmuch-select-tag-with-completion "Notmuch search tag: ")))
+  (notmuch-search (concat "tag:" tag)))
+(define-key notmuch-hello-mode-map "t" #'notmuch-search-by-tag)
+
 ;; mail sending via emacs. Relies on ~/.authinfo
 (require 'smtpmail)
 (setq
