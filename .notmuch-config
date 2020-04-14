@@ -14,7 +14,7 @@ other_email=keegan@sourcegraph.com;
 
 [new]
 tags=new
-ignore=/.*[.](json|lock|bak)$/
+ignore=/(.*[.](json|lock|bak)|queued-mail)$/
 
 # gmail uses spam and trash. muted is a tag I use to stop following a mailing
 # list thread.

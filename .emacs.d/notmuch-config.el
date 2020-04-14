@@ -35,6 +35,10 @@
  smtpmail-smtp-server "smtp.gmail.com"
  smtpmail-smtp-service 587
 
+ ;; async
+ smtpmail-queue-mail t
+ smtpmail-queue-dir "~/.mail/queued-mail"
+
  ;; use personal as default
  user-mail-address   "keegan.csmith@gmail.com"
  smtpmail-smtp-user  "keegan.csmith@gmail.com"
