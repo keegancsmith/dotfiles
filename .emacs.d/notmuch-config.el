@@ -44,13 +44,13 @@
 ;; Use a message hook to decide which smtp details to use. I use gmail for
 ;; both my emails so I just need to adjust the smtp username.
 (defun my-change-smtp-user ()
-   "Change the SMTP server according to the current from line."
-   (save-excursion
-     (save-restriction
-       (message-narrow-to-headers)
-       (let* ((from (message-fetch-field "from"))
-              (addr (cadr (mail-extract-address-components from))))
-         (setq smtpmail-smtp-user addr)))))
+  "Change the SMTP server according to the current from line."
+  (save-excursion
+    (save-restriction
+      (message-narrow-to-headers)
+      (let* ((from (message-fetch-field "from"))
+             (addr (cadr (mail-extract-address-components from))))
+        (setq smtpmail-smtp-user addr)))))
 (add-hook 'message-send-hook #'my-change-smtp-user)
 
 ;; Render Joe's name instead of his GitHub username.
