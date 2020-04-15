@@ -348,7 +348,6 @@
    org-log-done 'time
    org-log-redeadline 'time
    org-log-reschedule 'time
-   org-log-into-drawer t
    org-babel-load-languages '((emacs-lisp . t) (shell . t))
    ;org-confirm-babel-evaluate nil
    org-capture-templates
