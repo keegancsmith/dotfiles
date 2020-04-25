@@ -45,27 +45,12 @@ alias o="xdg-open"
 alias ack-go="ack --ignore-dir=vendor --type=go"
 alias kname='kubectl get -o jsonpath={.items[0].metadata.name}'
 
-# Some customizations
-export LC_ALL=en_US.UTF-8
-export EDITOR=vim
-export HISTCONTROL=ignoreboth:erasedups
-export HISTFILESIZE=80000
-export HISTSIZE=20000
-export MAILCHECK=0
-
-# I hate it when I accidently lock the terminal in screen
-export LOCKPRG=/bin/true
-
 shopt -s histappend
 
 alias cd-src="cd ~/go/src/github.com/sourcegraph/sourcegraph"
 alias cd-sg="cd ~/go/src/github.com/sourcegraph/sourcegraph"
 alias cd-infra="cd ~/go/src/github.com/sourcegraph/infrastructure"
 alias cd-zoekt="cd ~/go/src/github.com/google/zoekt"
-
-export TERM=xterm-256color
-
-export SRCPATH=$HOME/go/src:$HOME/src
 
 eval "$(direnv hook bash)"
 eval "$(starship init bash)"

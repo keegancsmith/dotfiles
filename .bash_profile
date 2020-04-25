@@ -4,6 +4,21 @@
 # runs your .bashrc and is recommended by the bash info pages.
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
+# Some customizations
+export LC_ALL=en_US.UTF-8
+export EDITOR=vim
+export HISTCONTROL=ignoreboth:erasedups
+export HISTFILESIZE=80000
+export HISTSIZE=20000
+export MAILCHECK=0
+
+# I hate it when I accidently lock the terminal in screen
+export LOCKPRG=/bin/true
+
+export TERM=xterm-256color
+
+export SRCPATH=$HOME/go/src:$HOME/src
+
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.nimble/bin:$PATH"
 
