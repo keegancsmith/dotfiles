@@ -101,7 +101,9 @@
 ;; are opened as text files.
 (add-to-list 'auto-mode-alist '("\\.slide\\'" . text-mode))
 
-(use-package leuven-theme)
+(use-package leuven-theme
+  :config
+  (enable-theme 'leuven))
 
 (use-package avy
   :bind (("C-c SPC" . avy-goto-char)))
