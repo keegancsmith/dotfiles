@@ -13,9 +13,6 @@
  ;; when archiving a thread I like to also mark it as read
  notmuch-archive-tags '("-inbox" "-unread")
 
- ;; prefer showing newest first
- notmuch-search-oldest-first nil
-
  ;; on gmail sync we will get the file, we don't need to create the sent mail
  notmuch-fcc-dirs nil)
 
