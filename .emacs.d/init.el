@@ -455,7 +455,22 @@
 (use-package unfill
   :bind ("M-Q" . unfill-paragraph))
 
+(use-package editorconfig
+  :config
+  (editorconfig-mode 1))
+
+(straight-use-package
+ '(promql-mode :host github :repo "Andor/promql-mode"))
+
 (use-package notmuch)
+
+(use-package gnus
+  :init
+  (setq
+   gnus-select-method '(nntp "news.gmane.io")
+   nndraft-directory "~/.news/drafts"))
+
+(use-package ledger-mode)
 
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
