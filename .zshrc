@@ -6,7 +6,7 @@ SAVEHIST=20000
 alias ls="ls -G"
 alias grep="grep --color=auto"
 alias kname='kubectl get -o jsonpath={.items[0].metadata.name}'
-alias mailsync='mbsync -a && mu index && (mu find "maildir:/inbox/" || true)'
+alias gotestchanged='git status --porcelain | sed s/^.../.\\// | xargs -n1 dirname | sort | uniq | xargs go test'
 
 # Shortcuts to dirs I go to often
 alias cd-src="cd ~/go/src/github.com/sourcegraph/sourcegraph"
