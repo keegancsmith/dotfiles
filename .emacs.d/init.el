@@ -64,6 +64,9 @@
  save-abbrevs nil
  font-lock-maximum-decoration t
  vc-follow-symlinks t
+ calendar-location-name "Cape Town"
+ calendar-longitude 18.46
+ calendar-latitude -33.98
  display-time-world-list
  '(("Africa/Johannesburg" "Cape Town")
    ("America/Los_Angeles" "San Francisco")
