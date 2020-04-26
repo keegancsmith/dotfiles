@@ -180,14 +180,19 @@
          ("C-x l" . counsel-locate))
   :config
 
-  (load-file "~/go/src/github.com/keegancsmith/counsel-repo/counsel-repo.el")
-  (setq
-   counsel-repo-srcpaths '("~/go/src" "~/src")
-   counsel-repo-action #'magit-status)
-  (global-set-key (kbd "C-c j") #'counsel-repo)
-
   ;; Avoid long lines in counsel-rg
   (setq counsel-rg-base-command "rg -i -g '!vendor' --no-heading --line-number --color never --max-columns 200 %s ."))
+
+(straight-register-package
+ '(counsel-repo :host github :repo "keegancsmith/counsel-repo"))
+
+(use-package counsel-repo
+  :bind (("C-c j" . counsel-repo))
+  :after counsel
+  :config
+  (setq
+   counsel-repo-srcpaths '("~/go/src" "~/src")
+   counsel-repo-action #'magit-status))
 
 (defun my-org-link (url name)
   "Generate an org link using URL and NAME (title of page)."
