@@ -322,6 +322,12 @@
   (add-to-list 'org-modules 'org-habit)
   (add-to-list 'org-modules 'org-mac-link)
   (add-to-list 'org-modules 'org-tempo)
+
+  (defun my-org-clock-in-list ()
+    "Calls org-clock-in with `\\[universal-argument]'."
+    (interactive)
+    (org-clock-in '(4)))
+  (global-set-key (kbd "C-c i") 'my-org-clock-in-list)
   
   (require 'org-protocol)
 
