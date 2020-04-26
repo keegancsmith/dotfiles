@@ -354,12 +354,15 @@
   (setq
    org-agenda-files '("~/org-files")
    org-refile-targets '((("~/org-files/work.org" "~/org-files/todo.org") :maxlevel . 1))
+   org-archive-location "%s_archive::datetree/"
    org-deadline-warning-days 14
    org-default-notes-file "~/org-files/todo.org"
    org-reverse-note-order t
    org-fast-tag-selection-single-key 'expert
    org-export-backends '(ascii html icalendar md)
    org-agenda-span 'day
+   org-adapt-indentation 'headline-data
+   org-hide-leading-stars t
    org-enforce-todo-dependencies t
    org-log-done 'time
    org-log-redeadline 'time
@@ -378,7 +381,7 @@
      ("m" "Meeting now" entry (file+olp+datetree "~/org-files/meetings.org")
       "* %? :meeting:\n  %T" :clock-in t :clock-keep t :jump-to-captured t :empty-lines 1 :tree-type week)
      ("j" "Journal" entry (file+olp+datetree "~/org-files/journal.org")
-      "* %?\n")
+      "* %^{title} %^g\n    %U\n\n%?")
      ("p" "" entry (file "~/org-files/inbox.org")
       "* TODO %:description\n%U\n%:link\n\n#+BEGIN_QUOTE\n%:initial\n#+END_QUOTE" :immediate-finish t :jump-to-captured t)
      ("L" "" entry (file "~/org-files/inbox.org")
