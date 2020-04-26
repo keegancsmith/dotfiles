@@ -3,18 +3,18 @@
   "account": "keegan.csmith@gmail.com",
   "timeout": 0,
   "drop_non_existing_label": false,
-  "ignore_empty_history": false,
+  "ignore_empty_history": true,
   "ignore_tags": [
-    "personal",
+    "important",
     "new",
-    "important"
+    "personal"
   ],
   "ignore_remote_labels": [
-    "CATEGORY_SOCIAL",
     "CATEGORY_FORUMS",
-    "CATEGORY_UPDATES",
     "CATEGORY_PERSONAL",
     "CATEGORY_PROMOTIONS",
+    "CATEGORY_SOCIAL",
+    "CATEGORY_UPDATES",
     "IMPORTANT"
   ],
   "file_extension": ""
