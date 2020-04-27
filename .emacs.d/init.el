@@ -465,6 +465,7 @@
 (use-package notmuch)
 
 (use-package gnus
+  :bind (("C-c n" . gnus))
   :init
   (setq
    gnus-select-method '(nntp "news.gmane.io")
