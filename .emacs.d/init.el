@@ -353,10 +353,10 @@
 
   (setq
    org-agenda-files '("~/org-files")
-   org-refile-targets '((("~/org-files/work.org" "~/org-files/todo.org") :maxlevel . 1))
+   org-refile-targets '((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org") :maxlevel . 1))
    org-archive-location "%s_archive::datetree/"
    org-deadline-warning-days 14
-   org-default-notes-file "~/org-files/todo.org"
+   org-default-notes-file "~/org-files/inbox.org"
    org-reverse-note-order t
    org-fast-tag-selection-single-key 'expert
    org-export-backends '(ascii html icalendar md)
