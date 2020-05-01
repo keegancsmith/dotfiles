@@ -362,6 +362,7 @@
    org-fast-tag-selection-single-key 'expert
    org-export-backends '(ascii html icalendar md)
    org-agenda-span 'day
+   org-agenda-dim-blocked-tasks nil
    org-adapt-indentation 'headline-data
    org-hide-leading-stars t
    org-enforce-todo-dependencies t
