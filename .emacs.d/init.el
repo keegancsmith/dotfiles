@@ -62,6 +62,7 @@
  compilation-scroll-output 'first-error
  dabbrev-case-fold-search t
  save-abbrevs nil
+ save-interprogram-paste-before-kill t
  font-lock-maximum-decoration t
  vc-follow-symlinks t
  calendar-location-name "Cape Town"
