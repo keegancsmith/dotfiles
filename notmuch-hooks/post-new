@@ -4,11 +4,11 @@
 notmuch tag -unread -inbox -- tag:new and from:keegan.csmith@gmail.com
 notmuch tag -unread -inbox -- tag:new and from:keegan@sourcegraph.com
 
-#### Github
+#### GitHub
 notmuch tag +gh -- tag:new and from:notifications@github.com
-for reason in assign author comment manual mention push review_requested state_change subscribed team_mention your_activity; do
-    notmuch tag +gh/$reason -- tag:new and to:$reason@noreply.github.com
-done
+
+#### GitHub flag when people mention me
+notmuch tag +flagged +gh/mention -- tag:new and tag:gh and -from:keegan and '(body:keegan or body:keegancsmith)'
 
 #### Gerrit
 notmuch tag +gerrit -- tag:new and from:gerritcodereview
@@ -23,8 +23,8 @@ notmuch tag -unread -inbox +muted -- tag:new and 'thread:{tag:muted}'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:[bot]'
 notmuch tag -unread -inbox -- tag:new and 'from:"Linter for Gerrit"'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into master")'
-notmuch tag -unread -inbox -- tag:new and tag:gh/your_activity
-notmuch tag -unread -inbox -- tag:new and tag:gh/push
+notmuch tag -unread -inbox -- tag:new and tag:gh and to:your_activity@noreply.github.com
+notmuch tag -unread -inbox -- tag:new and tag:gh and to:push@noreply.github.com
 
 #### Emails to shared inbox I can't unsubscribe to
 notmuch tag --remove-all +trash tag:new from:notifications@npmjs.com subject:"Successfully published @sourcegraph"
