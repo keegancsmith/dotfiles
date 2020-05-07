@@ -3,7 +3,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set autoindent
-set textwidth=80
+set textwidth=72
 set rnu
 syntax enable
 set background=dark

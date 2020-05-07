@@ -76,7 +76,7 @@
 ;; Misc buffer settings
 (setq-default
  fill-column 78
- tab-width 4
+ tab-width 2
  indent-tabs-mode nil)
 ;; Disable annoying keys I accidently hit
 (global-unset-key (kbd "C-z"))
@@ -416,7 +416,12 @@
 ;;   (add-hook 'lisp-interaction-mode-hook #'paredit-mode))
 
 (use-package magit
-  :bind (("C-x g" . magit-status)))
+  :bind (("C-x g" . magit-status))
+  :config
+  (defun my-git-commit-mode-hook ()
+    "sets fill-column to the suggested git convention."
+    (setq fill-column 72))
+  (add-hook 'git-commit-mode-hook #'my-git-commit-mode-hook))
 
 (use-package git-timemachine)
 
@@ -424,6 +429,8 @@
   :config (minions-mode 1))
 
 (use-package dockerfile-mode)
+
+(use-package yaml-mode)
 
 (use-package guide-key
   :config
