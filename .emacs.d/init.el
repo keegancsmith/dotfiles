@@ -471,6 +471,10 @@
 (straight-use-package
  '(promql-mode :host github :repo "Andor/promql-mode"))
 
+(use-package link-hint
+  :bind
+  ("C-c o" . link-hint-open-link))
+
 (use-package notmuch)
 
 (use-package gnus
