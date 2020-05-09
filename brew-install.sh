@@ -46,7 +46,6 @@ brew install \
      nginx \
      nmap \
      node@12 \
-     openjdk \
      pandoc \
      parallel \
      pkg-config \
@@ -80,11 +79,9 @@ brew cask install \
      1password \
      1password-cli \
      adobe-acrobat-reader \
-     adoptopenjdk \
-     adoptopenjdk8 \
      homebrew/cask-fonts/font-cascadia \
      homebrew/cask-fonts/font-fira-code \
-     homebrew/cask-fonts/font-go-mono \
+     homebrew/cask-fonts/font-gomono-nerd-font \
      homebrew/cask-fonts/font-hack \
      homebrew/cask-fonts/font-input \
      homebrew/cask-fonts/font-jetbrains-mono \
