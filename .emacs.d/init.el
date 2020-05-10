@@ -365,6 +365,7 @@
    org-agenda-span 'day
    org-agenda-dim-blocked-tasks nil
    org-adapt-indentation 'headline-data
+   org-catch-invisible-edits 'show-and-error
    org-hide-leading-stars t
    org-enforce-todo-dependencies t
    org-log-done 'time
