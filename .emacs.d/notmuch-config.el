@@ -61,6 +61,7 @@
 
 (advice-add 'notmuch-search-insert-authors :filter-args  #'my-adjust-joe-name)
 
+;; Highlight my name in emails
 (defun my-notmuch-wash-highlight-name (msg depth)
   "Highlight my name."
   (goto-char (point-min))
@@ -69,5 +70,27 @@
                          '(face match))))
 
 (add-to-list 'notmuch-show-insert-text/plain-hook #'my-notmuch-wash-highlight-name t)
+
+;; Mention if there are emails that need sending on hello page. Borrowed from
+;; mu4e codebase.
+(defun my-notmuch-hello-queued-mail ()
+  "Modified version of mu4e~main-view-queue to just show queue size if non-empty"
+  (let ((queue-size (my-mu4e~main-queue-size)))
+    (unless (zerop queue-size)
+      (insert (format "\n\n\t!!! [f]lush %s queued %s !!!\n\n"
+                      (int-to-string queue-size)
+                      (if (> queue-size 1) "mails" "mail"))))))
+
+(defun my-mu4e~main-queue-size ()
+  "Return, as an int, the number of emails in the queue."
+  (condition-case nil
+      (with-temp-buffer
+        (insert-file-contents (expand-file-name smtpmail-queue-index-file
+                                                smtpmail-queue-dir))
+        (count-lines (point-min) (point-max)))
+    (error 0)))
+
+(add-to-list 'notmuch-hello-sections #'my-notmuch-hello-queued-mail)
+(define-key notmuch-hello-mode-map (kbd "f") #'smtpmail-send-queued-mail)
 
 ;;; notmuch-config.el ends here
