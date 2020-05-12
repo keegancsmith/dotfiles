@@ -61,4 +61,13 @@
 
 (advice-add 'notmuch-search-insert-authors :filter-args  #'my-adjust-joe-name)
 
+(defun my-notmuch-wash-highlight-name (msg depth)
+  "Highlight my name."
+  (goto-char (point-min))
+  (while (re-search-forward "@?\\(keegancsmith\\|keegan\\|kcsmith\\)" nil t)
+    (add-text-properties (match-beginning 0) (point)
+                         '(face match))))
+
+(add-to-list 'notmuch-show-insert-text/plain-hook #'my-notmuch-wash-highlight-name t)
+
 ;;; notmuch-config.el ends here
