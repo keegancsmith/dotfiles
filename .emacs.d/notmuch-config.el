@@ -90,7 +90,13 @@
         (count-lines (point-min) (point-max)))
     (error 0)))
 
+(defun my-notmuch-send-queued-mail ()
+  "sends queued email and refreshes current notmuch buffer."
+  (interactive)
+  (smtpmail-send-queued-mail)
+  (notmuch-refresh-this-buffer))
+
 (add-to-list 'notmuch-hello-sections #'my-notmuch-hello-queued-mail)
-(define-key notmuch-hello-mode-map (kbd "f") #'smtpmail-send-queued-mail)
+(define-key notmuch-hello-mode-map (kbd "f") #'my-notmuch-send-queued-mail)
 
 ;;; notmuch-config.el ends here
