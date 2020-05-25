@@ -321,6 +321,9 @@
     (org-insert-time-stamp (current-time) t t))
   (define-key org-mode-map (kbd "C-c .") 'org-insert-inactive-time-stamp)
 
+  ;; disable org-table-blank-field i'd rather have avy
+  (define-key org-mode-map (kbd "C-c SPC") nil)
+
   (add-to-list 'org-modules 'org-habit)
   (add-to-list 'org-modules 'org-mac-link)
   (add-to-list 'org-modules 'org-tempo)
