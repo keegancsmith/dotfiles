@@ -77,7 +77,7 @@
   "Modified version of mu4e~main-view-queue to just show queue size if non-empty"
   (let ((queue-size (my-mu4e~main-queue-size)))
     (unless (zerop queue-size)
-      (insert (format "\n\n\t!!! [f]lush %s queued %s !!!\n\n"
+      (insert (format "\n\n\t!!! [G] flush %s queued %s !!!\n\n"
                       (int-to-string queue-size)
                       (if (> queue-size 1) "mails" "mail"))))))
 
@@ -90,13 +90,13 @@
         (count-lines (point-min) (point-max)))
     (error 0)))
 
-(defun my-notmuch-send-queued-mail ()
+(defun my-notmuch-send-poll-and-refresh-this-buffer ()
   "sends queued email and refreshes current notmuch buffer."
   (interactive)
   (smtpmail-send-queued-mail)
-  (notmuch-refresh-this-buffer))
+  (notmuch-poll-and-refresh-this-buffer))
 
 (add-to-list 'notmuch-hello-sections #'my-notmuch-hello-queued-mail)
-(define-key notmuch-hello-mode-map (kbd "f") #'my-notmuch-send-queued-mail)
+(define-key notmuch-hello-mode-map (kbd "G") #'my-notmuch-send-poll-and-refresh-this-buffer)
 
 ;;; notmuch-config.el ends here
