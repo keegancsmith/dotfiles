@@ -122,6 +122,8 @@
         (set (make-local-variable 'compile-command)
              "go test")))
   (add-hook 'go-mode-hook #'my-go-mode-hook)
+  (add-hook 'before-save-hook #'gofmt-before-save)
+  (setq gofmt-command "goimports")
   (setenv "GOROOT" (string-trim (shell-command-to-string "go env GOROOT")))
   (setenv "GOPATH" (string-trim (shell-command-to-string "go env GOPATH"))))
 
