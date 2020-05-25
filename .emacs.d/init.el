@@ -162,9 +162,9 @@
 (use-package flycheck
   :init
   (global-flycheck-mode)
-  ;; Make flycheck use the same load path so it doesn't complain about require
-  ;; statements in elisp.
-  (setq-default flycheck-emacs-lisp-load-path 'inherit))
+  ; elisp checking is annoying. checkdoc is targetted at elisp packages, I
+  ; just hack at stuff.
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
 (use-package ivy
   :diminish (ivy-mode . "")
