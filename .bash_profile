@@ -33,7 +33,7 @@ if [[ -d ~/google-cloud-sdk ]]; then
   source ~/google-cloud-sdk/completion.bash.inc
 fi
 
-export PATH=$HOME/bin:"$PATH"
+export PATH=$HOME/bin:/usr/local/bin:"$PATH"
 
 # Go workspace
 export GOPATH=$HOME/go

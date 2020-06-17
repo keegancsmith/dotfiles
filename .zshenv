@@ -11,7 +11,7 @@ export SRCPATH=$HOME/go/src:$HOME/src
 # PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.nimble/bin:$PATH"
-export PATH="/usr/local/opt/node@12/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 export PATH=$HOME/bin:"$PATH"
 
 # Go workspace
