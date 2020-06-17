@@ -70,9 +70,9 @@ brew install \
      youtube-dl \
      zsh
 
-# Emacs built from HEAD
+# Build recent version of Emacs
 brew tap d12frosted/emacs-plus
-brew install emacs-plus --HEAD --with-jansson --with-modern-icon --with-no-titlebar
+brew install emacs-plus@27 --with-jansson --with-modern-icon --with-no-titlebar
 
 # brew cask list --full-name | sort | awk 'BEGIN{printf "brew cask install"}{printf " \\\n     %s",$1}END{printf "\n"}' | pbcopy
 brew cask install \
