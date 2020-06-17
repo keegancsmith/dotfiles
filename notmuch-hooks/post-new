@@ -16,6 +16,9 @@ notmuch tag +gerrit -- tag:new and from:gerritcodereview
 #### Mailing lists
 notmuch tag +list/notmuch -- tag:new and to:notmuch@notmuchmail.org
 
+#### Likely invoices/receipts to later reference. Manually untag false positives
+notmuch tag +invoice -- '(statement or invoice)' to:keegan.csmith@gmail.com
+
 #### Muting threads
 notmuch tag -unread -inbox +muted -- tag:new and 'thread:{tag:muted}'
 
