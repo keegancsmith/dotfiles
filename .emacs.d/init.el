@@ -407,6 +407,13 @@
 (use-package ob-go
   :after org)
 
+; Can do :async on src code blocks
+(use-package ob-async
+  :after org)
+
+; Highlight code when exporting
+(use-package htmlize)
+
 (use-package direnv
  :config
  (direnv-mode))
