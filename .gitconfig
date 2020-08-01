@@ -50,3 +50,5 @@ compactionHeuristic = true
 	root = /Users/keegan/go/src
 [merge]
 	conflictStyle = diff3
+[pull]
+  rebase = true
