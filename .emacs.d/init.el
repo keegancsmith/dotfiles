@@ -502,6 +502,23 @@
 
 (use-package ledger-mode)
 
+(use-package rg
+  :config
+  (setq
+   rg-group-result t
+   rg-hide-command t
+   rg-show-columns nil
+   rg-show-header t
+   rg-custom-type-aliases nil
+   rg-default-alias-fallback "all")
+
+  :bind (("M-s g" . rg)
+         :map rg-mode-map
+         ("C-n" . next-line)
+         ("C-p" . previous-line)
+         ("M-n" . rg-next-file)
+         ("M-p" . rg-prev-file)))
+
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
   (if (file-exists-p file)
