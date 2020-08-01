@@ -198,7 +198,7 @@
   :after counsel
   :config
   (setq
-   counsel-repo-srcpaths '("~/go/src" "~/src")
+   counsel-repo-srcpaths '("~/go/src" "~/src" "~/.emacs.d/straight/repos")
    counsel-repo-action #'magit-status))
 
 (defun my-org-link (url name)
