@@ -362,7 +362,7 @@
 
   (setq
    org-agenda-files '("~/org-files")
-   org-refile-targets '((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org") :maxlevel . 1))
+   org-refile-targets '((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org") :maxlevel . 1))
    org-archive-location "%s_archive::datetree/"
    org-deadline-warning-days 14
    org-default-notes-file "~/org-files/inbox.org"
