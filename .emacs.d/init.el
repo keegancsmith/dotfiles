@@ -358,6 +358,8 @@
     (interactive)
     (insert-before-markers (my-browser-link)))
 
+  (require 'ob-shell)
+
   (setq
    org-agenda-files '("~/org-files")
    org-refile-targets '((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org") :maxlevel . 1))
@@ -376,7 +378,7 @@
    org-log-done 'time
    org-log-redeadline 'time
    org-log-reschedule 'time
-   org-babel-load-languages '((emacs-lisp . t) (shell . t))
+   org-babel-load-languages '((emacs-lisp . t) (sh . t))
    ;org-confirm-babel-evaluate nil
    org-capture-templates
    '(("c" "Task" entry (file "~/org-files/inbox.org")
