@@ -26,6 +26,7 @@ notmuch tag -unread -inbox +muted -- tag:new and 'thread:{tag:muted}'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:[bot]'
 notmuch tag -unread -inbox -- tag:new and 'from:"Linter for Gerrit"'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into master")'
+notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into main")'
 notmuch tag -unread -inbox -- tag:new and tag:gh and to:your_activity@noreply.github.com
 notmuch tag -unread -inbox -- tag:new and tag:gh and to:push@noreply.github.com
 
