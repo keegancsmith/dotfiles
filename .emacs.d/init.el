@@ -359,6 +359,7 @@
     (insert-before-markers (my-browser-link)))
 
   (require 'ob-shell)
+  (require 'ob-awk)
 
   (setq
    org-agenda-files '("~/org-files")
@@ -369,6 +370,9 @@
    org-reverse-note-order t
    org-fast-tag-selection-single-key 'expert
    org-export-backends '(ascii html icalendar md)
+   ;; prevent foo_bar being exported as foo<sub>bar</sub>. Requires foo_{bar}
+   ;; for subscript.
+   org-export-with-sub-superscripts '{}
    org-agenda-span 'day
    org-agenda-dim-blocked-tasks nil
    org-adapt-indentation 'headline-data
@@ -378,7 +382,7 @@
    org-log-done 'time
    org-log-redeadline 'time
    org-log-reschedule 'time
-   org-babel-load-languages '((emacs-lisp . t) (sh . t))
+   org-babel-load-languages '((emacs-lisp . t) (sh . t) (awk . t))
    ;org-confirm-babel-evaluate nil
    org-capture-templates
    '(("c" "Task" entry (file "~/org-files/inbox.org")
