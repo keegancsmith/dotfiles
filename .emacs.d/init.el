@@ -445,6 +445,8 @@
 
 (use-package git-timemachine)
 
+(use-package browse-at-remote)
+
 (use-package minions
   :config (minions-mode 1))
 
