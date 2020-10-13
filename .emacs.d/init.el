@@ -510,6 +510,46 @@
    gnus-select-method '(nntp "news.gmane.io")
    nndraft-directory "~/.news/drafts"))
 
+;; https://github.com/skeeto/.emacs.d/blob/master/etc/feed-setup.el
+(use-package elfeed)
+
+(use-package elfeed-org
+  :after elfeed
+  :config
+  (elfeed-org))
+
+(use-package youtube-dl
+  :after elfeed
+  :config
+
+  (require 'cl-lib)
+
+  (defun elfeed-show-youtube-dl ()
+    "Download the current entry with youtube-dl."
+    (interactive)
+    (pop-to-buffer (youtube-dl (elfeed-entry-link elfeed-show-entry))))
+
+  (cl-defun elfeed-search-youtube-dl (&key slow)
+    "Download the current entry with youtube-dl."
+    (interactive)
+    (let ((entries (elfeed-search-selected)))
+      (dolist (entry entries)
+        (if (null (youtube-dl (elfeed-entry-link entry)
+                              :title (elfeed-entry-title entry)
+                              :slow slow))
+            (message "Entry is not a YouTube link!")
+          (message "Downloading %s" (elfeed-entry-title entry)))
+        (elfeed-untag entry 'unread)
+        (elfeed-search-update-entry entry)
+        (unless (use-region-p) (forward-line)))))
+
+  (define-key elfeed-show-mode-map "d" 'elfeed-show-youtube-dl)
+  (define-key elfeed-search-mode-map "d" 'elfeed-search-youtube-dl)
+  (define-key elfeed-search-mode-map "L" 'youtube-dl-list)
+
+  (setq
+   youtube-dl-arguments (list "--no-mtime" "--restrict-filenames" "-f" "[height<=?720]/best")
+   youtube-dl-directory "~/youtube/feed"))
 (use-package ledger-mode)
 
 (use-package rg
@@ -528,6 +568,20 @@
          ("C-p" . previous-line)
          ("M-n" . rg-next-file)
          ("M-p" . rg-prev-file)))
+
+(setq browse-url-browser-function
+      '(
+        ;; Open youtube links directly in mpv
+        ("https:\\/\\/www\\.youtu\\.*be." . browse-url-mpv)
+        ;; Otherwise open URLs without taking focus from emacs
+        ("." . browse-url-background)))
+
+(defun browse-url-mpv (url &optional single)
+  (let ((process-connection-type nil))
+        (start-process "mpv" "mpv" "mpv" url)))
+
+(defun browse-url-background (url &optional single)
+  (start-process "open" nil "open" "-g" url))
 
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."

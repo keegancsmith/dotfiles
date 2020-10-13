@@ -1,0 +1,110 @@
+* Feeds                                                              :elfeed:
+** Blogs                                                               :blog:
+*** https://brooker.co.za/blog/atom.xml
+*** https://cpbotha.net/posts/index.xml
+*** https://vxlabs.com/index.xml
+*** https://thorstenball.com/atom.xml
+*** https://nullprogram.com/feed/
+*** https://lemire.me/blog/feed/
+*** https://danluu.com/atom.xml
+*** https://drewdevault.com/feed.xml
+*** https://rachelbythebay.com/w/atom.xml
+*** https://randomascii.wordpress.com/feed/
+*** https://sachachua.com/blog/category/emacs/feed/
+*** https://stuartwheaton.com/feed.xml
+*** https://eli.thegreenplace.net/feeds/all.atom.xml
+*** https://jameshfisher.com/feed.xml
+*** http://dtrace.org/blogs/bmc/feed/rss/
+*** https://blog.jessfraz.com/index.xml
+*** https://awesomekling.github.io/feed.xml
+*** https://stevelosh.com/rss.xml
+*** https://irreal.org/blog
+** Youtube                                                          :youtube:
+*** Music                                                             :music:
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC4eYXhJI4-7wSWc8UNRwD4A][NPR Music]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC3I2GFN_F8WudD_2jUZbojA][KEXP]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9DkCKm4_VDztRRyge4mCJQ][Amoeba]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCEwitVqwW1FZlpM34DT78vw][ListenToThisOfficial]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCIZ4NEJamsWybup2TJUdoPA][James Blake]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCTEKCqTDWQjuQsBJJQgI04g][on James Blake]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCrFO2XbD2zyV7WcB6O-QnsA][jamesblakevideo]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCbcUt4SAP587pHR4v9O60aA][Jamie xx]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCiwgazsh4EbM04FIQuyDVYw][Jon Hopkins]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UClqoxjo1S73pcBTJs39KYHA][Future Islands]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCqnMk5GA1spXDiHYFcPN-eA][Mac DeMarco]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCXAhoI7XO2kafTMjocm0jCg][Flume]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCqrBKQHQVEvD2Q9FP0DCP2g][benny blanco]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCy3DbVl0K1qj0e8jGAOYgPg][Future Classic]]
+*** Chess                                                             :chess:
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCQHX6ViZmPsWiYSFAyS0a3Q][GothamChess]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCHP9CdeguNUI-_nBv_UXBhw][Daniel Naroditsky]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC6hOVYvNn79Sl1Fc1vx2mYA][John Bartholomew]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCkJdvwRC-oGPhRHW_XPNokg][Hanging Pawns]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCMxK1FKAbmj2N-faTWLwNig][MatoJelic]]
+*** Skate                                                             :skate:
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCt16NSYjauKclK67LCXvQyA][ThrasherMagazine]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCndVTMFzqnWRWR1VggXTM1w][jenkemmag]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCt-67P8kpqTNVYt6Ohy3EwQ][william strobeck]]
+**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCtmU6euep0ehxk85iaBRO7Q][emerica]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC0uTPqBCFIpZxlz_Lv1tk_g][Protesilaos Stavrou]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC1RVRAdiSH4qxjBgxm_plng][100days]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC2N2HqEyaVE5Tt1rFqe3_Og][straybob]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC4E98HDsPXrf5kTKIgrSmtQ][Special Books by Special Kids]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC5bnzGuTw7jQQVZgWYRGeEQ][Jonathan Sidego]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC6LTUrKPUb-AlXXRCSz6YSw][Frankie Fardette]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC72zCOrxkfXxZAnqQoS43Qw][Kyle Hates Hiking]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC7CUgivJP7KGLSuJrhQ2Exw][#NewTechBerlin]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC7IcJI8PUf5Z3zKxnZvTBog][The School of Life]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC8bM_y2J-rhv1FL3hdP2VSA][Nomad's Trails]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9RM-iSvTu1uPJb8X5yp3EQ][Wendover Productions]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9TOJlW5ZLaiWdMjAUoTpqQ][arghdos]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9pO2YNforRbdwKOh09djKA][Blank on Blank]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCAGWBQwGEIU7MI6mwkW95cw][ScaleConf]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCAL3JXZSzSm8AlZyD3nQdBA][Primitive Technology]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCBa659QWEk1AI4Tg--mrJ2A][Tom Scott]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCEFW1E8QzP-hKxjO2Rj68wg][Nat's What I Reckon]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCGPCtbLDO1bNcF75LVl3P_Q][People Of]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCJTTv1UsG-VWifFOl6DB3nA][allenpalin]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCMb0O2CdPBNi-QqPk5T3gsQ][James Hoffmann]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCNa9i8ifGJRlK2yWgM9DcOA][DNSL]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCO8DQrSp5yEP937qNqTooOw][Strange Parts]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCQEzBGVcHU5Md7n-92AMI4A][Stranger Kitchens]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCQG4cX86zZ51IU2cerZgPSA][Awkward Puppets]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCQL5ABUvwY7YoW5lgMyAS_w][WheezyWaiter]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCSuT9FSddzI6W5Bij9XwtmA][Internet Shaquille]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCUFbPMD-Y2y4Wy0EuCJ_I9A][GameDevVlog]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCVDB8kPzvpssfHci9rXgSig][TwoFoolsWalking]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCVH0T3rL5q8LXb1DPon6M5w][Modern Bummers]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCVqpNG1R72i21jh-nAxEk4A][c90adventures]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCXgjH2-Mrb3-h1_iWurz7dQ][Philip Buuck]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC_BzFbxG2za3bp5NRRRXJSw][justforfunc: Programming in Go]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC_E4px0RST-qFwXLJWBav8Q][Business Casual]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCatq_OX2bZiISrRotsuUtIw][Phantom]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCb80KaQNNALoCA6nXHkg6bw][The Manolo Show]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCbbQalJ4OaC0oQ0AqRaOJ9g][Jay Foreman]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCbfYPyITQ-7l4upoX8nvctg][Two Minute Papers]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UChHhJcgQL4ABxdW-7FicM0A][The Life Of Brian Mujati]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UChoxc58JVjk_HVVWdtYxsjg][Jake Lava]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCimiUgDLbi6P17BdaCZpVbg][exurb1a]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCkVa-0nz73GpLfjKcHk_fhA][TarraDarraBros]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCm325cMiw9B15xl22_gr6Dw][Beau Miles]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCndCHxwMu2Amdc-tq1cH8Mg][Gravity Dogz]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCozArQQOb0V5ZvIi_sMGuBA][Jay Lavely]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCpRb_7xVq02L7o4YqKfx3YQ][ZA Dev Chat]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCqTqNdCd5eibr8GP23S3e7Q][Scotty's Gone Walkabouts]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCruZAttYMe_WlVpQ-WplFQw][Mike Jones]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCs82FH2GAsj8XOuseu52FJA][IsaacApp]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCsvn_Po0SmunchJYOWpOxMg][videogamedunkey]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCt54Hzhj7RpCWOYpoFJLKAQ][steveo]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCtiFWOeRSTP3M6QUnTEKwpw][Robust Perception]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCu2oaGQ6Dds6g9lqfexUFbQ][Squidge Rugby]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCuSEN52fnqKmD99JkfexTGA][Always Another Adventure]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCuu8jzt29J5rfGvo1cBiuog][DevOps Cape Town]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCvRQKXtIGcK1yEnQ4Te8hWQ][Drugslab]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCwbYxKtKNrPQXHlCZ3rcgyw][Sledgehammer Studio]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCxQ23K0sHrCA_ui4CR5Gn_A][Happily Unmarried]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCz7iJPVTBGX6DNO1RNI2Fcg][GradeAUnderA]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCzH5n3Ih5kgQoiDAQt2FwLw][Pro Home Cooks]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCzdg4pZb-viC3EdA1zxRl4A][Hundred Rabbits]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCBr_Fu6q9iHYQCh13jmpbrg][Errichto]]
