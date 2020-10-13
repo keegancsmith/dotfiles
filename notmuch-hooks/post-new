@@ -23,7 +23,8 @@ notmuch tag +invoice -- '(statement or invoice)' to:keegan.csmith@gmail.com
 notmuch tag -unread -inbox +muted -- tag:new and 'thread:{tag:muted}'
 
 #### Low signal
-notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:[bot]'
+notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:renovate[bot]'
+notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:codecov[bot]'
 notmuch tag -unread -inbox -- tag:new and 'from:"Linter for Gerrit"'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into master")'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into main")'
@@ -35,6 +36,8 @@ notmuch tag --remove-all +trash tag:new from:notifications@npmjs.com subject:"Su
 notmuch tag --remove-all +trash tag:new from:nobody@mozilla.org subject:"signed and ready to download"
 notmuch tag --remove-all +trash tag:new from:admin@sourcegraph.com subject:"Namecheap Renewals"
 notmuch tag --remove-all +trash tag:new from:support@buildkite.com subject:"Invoice"
+notmuch tag --remove-all +trash tag:new from:dev@sourcegraph.com subject:"Tracking Issue"
+notmuch tag --remove-all +trash tag:new from:dev@sourcegraph.com subject:"renovate/docker-sourcegraph-docker-insiders-images"
 
 echo
 echo "processed $(notmuch count tag:new) email(s)"
