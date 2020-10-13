@@ -99,4 +99,27 @@
 (add-to-list 'notmuch-hello-sections #'my-notmuch-hello-queued-mail)
 (define-key notmuch-hello-mode-map (kbd "G") #'my-notmuch-send-poll-and-refresh-this-buffer)
 
+(defun my-notmuch-show-browse ()
+  "Browse to the last URL in a thread. Useful for GitHub notifications."
+  (interactive)
+  (let* ((urls (notmuch-show--gather-urls))
+         (url (car (last urls))))
+    (if url (progn
+              (browse-url url)
+              (message "Visited %s" url))
+      (ding)
+      (message "No URLs found in message!")
+      nil)))
+
+(defun my-notmuch-search-browse ()
+  "Browse to the last URL in a thread. Useful for GitHub notifications."
+  (interactive)
+  (when (save-window-excursion
+          (notmuch-search-show-thread)
+          (my-notmuch-show-browse))
+    (notmuch-search-archive-thread)))
+
+(define-key notmuch-show-mode-map "B" #'my-notmuch-show-browse)
+(define-key notmuch-search-mode-map "B" #'my-notmuch-search-browse)
+
 ;;; notmuch-config.el ends here
