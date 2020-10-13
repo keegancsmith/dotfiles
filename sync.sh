@@ -37,6 +37,9 @@ conditionallink "${REPO}/starship.toml" "${HOME}/.config/starship.toml"
 # youtube-dl
 conditionallink "${REPO}/youtube-dl.conf" "${HOME}/.config/youtube-dl/config"
 
+# mpv
+conditionallink "${REPO}/mpv.conf" "${HOME}/.config/mpv/mpv.conf"
+
 # Karabiner-Elements
 conditionallink "${REPO}/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
 
