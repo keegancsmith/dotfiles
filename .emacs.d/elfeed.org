@@ -18,7 +18,11 @@
 *** https://blog.jessfraz.com/index.xml
 *** https://awesomekling.github.io/feed.xml
 *** https://stevelosh.com/rss.xml
-*** https://irreal.org/blog
+*** https://irreal.org/blog/?feed=rss2
+*** https://blog.acolyer.org/feed/
+*** https://jlongster.com/atom.xml
+*** https://www.daemonology.net/blog/index.rss
+*** https://www.coryzue.com/feed.xml
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
