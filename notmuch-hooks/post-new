@@ -22,6 +22,9 @@ notmuch tag +invoice -- '(statement or invoice)' to:keegan.csmith@gmail.com
 #### Muting threads
 notmuch tag -unread -inbox +muted -- tag:new and 'thread:{tag:muted}'
 
+#### Notify bots
+notmuch tag -unread -flagged -- tag:new and tag:gh and from:sourcegraph-bot and "codenotify report"
+
 #### Low signal
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:renovate[bot]'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:codecov[bot]'
