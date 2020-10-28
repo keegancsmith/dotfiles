@@ -558,6 +558,9 @@
   (setq
    youtube-dl-arguments (list "--no-mtime" "--restrict-filenames" "-f" "[height<=?720]/best")
    youtube-dl-directory "~/youtube/feed"))
+
+(use-package pass)
+
 (use-package ledger-mode)
 
 (use-package rg
@@ -576,6 +579,8 @@
          ("C-p" . previous-line)
          ("M-n" . rg-next-file)
          ("M-p" . rg-prev-file)))
+
+(use-package elpher)
 
 (setq browse-url-browser-function
       '(
