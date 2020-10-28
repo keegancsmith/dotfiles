@@ -423,6 +423,14 @@
 ; Highlight code when exporting
 (use-package htmlize)
 
+(use-package dired-open
+  :config
+  (setq dired-open-extensions
+        '(
+          ("mp4" . "mpv")
+          ("mkv" . "mpv")
+          )))
+
 (use-package direnv
  :config
  (direnv-mode))
