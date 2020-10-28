@@ -7,7 +7,8 @@
 *** https://nullprogram.com/feed/
 *** https://lemire.me/blog/feed/
 *** https://danluu.com/atom.xml
-*** https://drewdevault.com/feed.xml
+*** https://drewdevault.com/feed.xml                                 :ignore:
+Started following him on gemini.
 *** https://rachelbythebay.com/w/atom.xml
 *** https://randomascii.wordpress.com/feed/
 *** https://sachachua.com/blog/category/emacs/feed/
@@ -23,6 +24,7 @@
 *** https://jlongster.com/atom.xml
 *** https://www.daemonology.net/blog/index.rss
 *** https://www.coryzue.com/feed.xml
+*** http://j.yud.co.za/stories/atom.xml
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
@@ -57,7 +59,6 @@
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC4E98HDsPXrf5kTKIgrSmtQ][Special Books by Special Kids]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC5bnzGuTw7jQQVZgWYRGeEQ][Jonathan Sidego]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC6LTUrKPUb-AlXXRCSz6YSw][Frankie Fardette]]
-*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC72zCOrxkfXxZAnqQoS43Qw][Kyle Hates Hiking]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC7CUgivJP7KGLSuJrhQ2Exw][#NewTechBerlin]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC7IcJI8PUf5Z3zKxnZvTBog][The School of Life]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC8bM_y2J-rhv1FL3hdP2VSA][Nomad's Trails]]
@@ -112,3 +113,4 @@
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCzH5n3Ih5kgQoiDAQt2FwLw][Pro Home Cooks]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCzdg4pZb-viC3EdA1zxRl4A][Hundred Rabbits]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCBr_Fu6q9iHYQCh13jmpbrg][Errichto]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA][Computerphile]]
