@@ -512,6 +512,10 @@
 
 (use-package notmuch)
 
+(use-package messages-are-flowing
+  :config
+  (add-hook 'message-mode-hook 'messages-are-flowing-use-and-mark-hard-newlines))
+
 (use-package gnus
   :init
   (setq
