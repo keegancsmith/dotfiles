@@ -490,6 +490,8 @@
     (setq word-wrap t))
   (add-hook 'gfm-mode-hook #'my-gfm-mode-hook))
 
+(use-package typescript-mode)
+
 ;; https://addons.mozilla.org/en-US/firefox/addon/edit-with-emacs1/
 ;; https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en
 (use-package edit-server
@@ -565,7 +567,14 @@
    youtube-dl-arguments (list "--no-mtime" "--restrict-filenames" "-f" "[height<=?720]/best")
    youtube-dl-directory "~/youtube/feed"))
 
+(use-package olivetti
+  :hook (elfeed-show-mode . olivetti-mode))
+
 (use-package pass)
+
+(use-package auth-source-pass
+  :config
+  (auth-source-pass-enable))
 
 (use-package ledger-mode)
 
