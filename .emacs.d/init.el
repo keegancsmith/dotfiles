@@ -597,7 +597,7 @@
 
 (use-package elpher)
 
-(setq browse-url-browser-function
+(setq browse-url-handlers
       '(
         ;; Open youtube links directly in mpv
         ("https:\\/\\/www\\.youtu\\.*be." . browse-url-mpv)
