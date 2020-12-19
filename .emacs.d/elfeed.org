@@ -25,6 +25,8 @@ Started following him on gemini.
 *** https://www.daemonology.net/blog/index.rss
 *** https://www.coryzue.com/feed.xml
 *** http://j.yud.co.za/stories/atom.xml
+*** https://whhone.com/index.xml
+*** https://dgraph.io/blog/index.xml
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
@@ -68,15 +70,12 @@ Started following him on gemini.
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCAGWBQwGEIU7MI6mwkW95cw][ScaleConf]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCAL3JXZSzSm8AlZyD3nQdBA][Primitive Technology]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCBa659QWEk1AI4Tg--mrJ2A][Tom Scott]]
-*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCEFW1E8QzP-hKxjO2Rj68wg][Nat's What I Reckon]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCGPCtbLDO1bNcF75LVl3P_Q][People Of]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCJTTv1UsG-VWifFOl6DB3nA][allenpalin]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCMb0O2CdPBNi-QqPk5T3gsQ][James Hoffmann]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCNa9i8ifGJRlK2yWgM9DcOA][DNSL]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCO8DQrSp5yEP937qNqTooOw][Strange Parts]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCQEzBGVcHU5Md7n-92AMI4A][Stranger Kitchens]]
-*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCQG4cX86zZ51IU2cerZgPSA][Awkward Puppets]]
-*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCQL5ABUvwY7YoW5lgMyAS_w][WheezyWaiter]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCSuT9FSddzI6W5Bij9XwtmA][Internet Shaquille]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCUFbPMD-Y2y4Wy0EuCJ_I9A][GameDevVlog]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCVDB8kPzvpssfHci9rXgSig][TwoFoolsWalking]]
@@ -103,7 +102,6 @@ Started following him on gemini.
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCsvn_Po0SmunchJYOWpOxMg][videogamedunkey]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCt54Hzhj7RpCWOYpoFJLKAQ][steveo]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCtiFWOeRSTP3M6QUnTEKwpw][Robust Perception]]
-*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCu2oaGQ6Dds6g9lqfexUFbQ][Squidge Rugby]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCuSEN52fnqKmD99JkfexTGA][Always Another Adventure]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCuu8jzt29J5rfGvo1cBiuog][DevOps Cape Town]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCvRQKXtIGcK1yEnQ4Te8hWQ][Drugslab]]
@@ -114,4 +112,4 @@ Started following him on gemini.
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCzdg4pZb-viC3EdA1zxRl4A][Hundred Rabbits]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCBr_Fu6q9iHYQCh13jmpbrg][Errichto]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA][Computerphile]]
-*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCaUTYzTetUF3BdeESZbIntA][The Wild Food Revolution]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCtqxG9IrHFU_ID1khGvx9sA][All Gas No Brakes]]
