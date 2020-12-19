@@ -90,11 +90,16 @@
         (count-lines (point-min) (point-max)))
     (error 0)))
 
+(defun my-notmuch-new-process-sentinel (proc msg)
+  (message "Polling mail...done")
+  (notmuch-hello-update))
+
 (defun my-notmuch-send-poll-and-refresh-this-buffer ()
   "sends queued email and refreshes current notmuch buffer."
   (interactive)
   (smtpmail-send-queued-mail)
-  (notmuch-poll-and-refresh-this-buffer))
+  (message "Polling mail...")
+  (notmuch-start-notmuch "notmuch-new" nil #'my-notmuch-new-process-sentinel "new"))
 
 (add-to-list 'notmuch-hello-sections #'my-notmuch-hello-queued-mail)
 (define-key notmuch-hello-mode-map (kbd "G") #'my-notmuch-send-poll-and-refresh-this-buffer)
