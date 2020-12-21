@@ -451,7 +451,7 @@
 ;;   (add-hook 'lisp-interaction-mode-hook #'paredit-mode))
 
 (use-package magit
-  :bind (("C-x g" . magit-status))
+  :bind (("C-x g" . magit-file-dispatch))
   :config
   (defun my-git-commit-mode-hook ()
     "sets fill-column to the suggested git convention."
