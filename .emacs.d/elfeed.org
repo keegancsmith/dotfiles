@@ -27,6 +27,7 @@ Started following him on gemini.
 *** http://j.yud.co.za/stories/atom.xml
 *** https://whhone.com/index.xml
 *** https://dgraph.io/blog/index.xml
+*** https://www.slowernews.com/rss.xml
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
