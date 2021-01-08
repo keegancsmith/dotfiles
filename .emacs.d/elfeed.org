@@ -46,7 +46,6 @@ Started following him on gemini.
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCqrBKQHQVEvD2Q9FP0DCP2g][benny blanco]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCy3DbVl0K1qj0e8jGAOYgPg][Future Classic]]
 *** Chess                                                             :chess:
-**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCQHX6ViZmPsWiYSFAyS0a3Q][GothamChess]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCHP9CdeguNUI-_nBv_UXBhw][Daniel Naroditsky]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC6hOVYvNn79Sl1Fc1vx2mYA][John Bartholomew]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCkJdvwRC-oGPhRHW_XPNokg][Hanging Pawns]]
@@ -101,7 +100,6 @@ Started following him on gemini.
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCruZAttYMe_WlVpQ-WplFQw][Mike Jones]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCs82FH2GAsj8XOuseu52FJA][IsaacApp]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCsvn_Po0SmunchJYOWpOxMg][videogamedunkey]]
-*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCt54Hzhj7RpCWOYpoFJLKAQ][steveo]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCtiFWOeRSTP3M6QUnTEKwpw][Robust Perception]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCuSEN52fnqKmD99JkfexTGA][Always Another Adventure]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCuu8jzt29J5rfGvo1cBiuog][DevOps Cape Town]]
