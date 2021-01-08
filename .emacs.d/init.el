@@ -66,6 +66,7 @@
  save-interprogram-paste-before-kill t
  font-lock-maximum-decoration t
  vc-follow-symlinks t
+ ispell-dictionary "british"
  calendar-location-name "Cape Town"
  calendar-longitude 18.46
  calendar-latitude -33.98
