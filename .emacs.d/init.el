@@ -451,8 +451,17 @@
 ;;   (add-hook 'emacs-lisp-mode-hook #'paredit-mode)
 ;;   (add-hook 'lisp-interaction-mode-hook #'paredit-mode))
 
+;; from https://www.bennee.com/~alex/blog/2020/12/14/magit-file-dispatch/
+(defun my-magit-dispatch (&optional prefix)
+  (interactive "P")
+  (if (or prefix
+          (not (buffer-file-name))
+          (not (functionp 'magit-file-dispatch)))
+      (magit-status)
+    (magit-file-dispatch)))
+
 (use-package magit
-  :bind (("C-x g" . magit-file-dispatch))
+  :bind (("C-x g" . my-magit-dispatch))
   :config
   (defun my-git-commit-mode-hook ()
     "sets fill-column to the suggested git convention."
