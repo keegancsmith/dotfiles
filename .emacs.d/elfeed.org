@@ -28,6 +28,7 @@ Started following him on gemini.
 *** https://whhone.com/index.xml
 *** https://dgraph.io/blog/index.xml
 *** https://www.slowernews.com/rss.xml
+*** https://devlog.hexops.com/feed.xml
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
@@ -112,3 +113,4 @@ Started following him on gemini.
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCBr_Fu6q9iHYQCh13jmpbrg][Errichto]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA][Computerphile]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCtqxG9IrHFU_ID1khGvx9sA][All Gas No Brakes]]
+*** [[https://www.youtube.com/user/g297125009/videos][Gavin Freeborn]]
