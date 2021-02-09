@@ -8,6 +8,5 @@ export PATH=/Users/keegan/src/github.com/gauteh/lieer:"$PATH"
 cd ~/.mail/gmail
 gmi sync
 
-# Vacation
-# cd ~/.mail/sourcegraph
-# gmi sync
+cd ~/.mail/sourcegraph
+gmi sync

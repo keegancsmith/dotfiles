@@ -24,11 +24,13 @@ notmuch tag -unread -inbox +muted -- tag:new and 'thread:{tag:muted}'
 
 #### Notify bots
 notmuch tag -unread -flagged -- tag:new and tag:gh and from:sourcegraph-bot and "codenotify report"
+notmuch tag -unread -flagged -- tag:new and tag:gh and 'from:github-actions[bot]' and 'label was applied to the issue'
 
 #### Low signal
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:renovate[bot]'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:codecov[bot]'
 notmuch tag -unread -inbox -- tag:new and 'from:"Linter for Gerrit"'
+notmuch tag -unread -inbox -- tag:new and from:no-reply@pganalyze and subject:"critical issues"
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into master")'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into main")'
 notmuch tag -unread -inbox -- tag:new and tag:gh and to:your_activity@noreply.github.com
