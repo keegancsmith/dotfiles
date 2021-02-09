@@ -337,7 +337,7 @@
     (interactive)
     (org-clock-in '(4)))
   (global-set-key (kbd "C-c i") 'my-org-clock-in-list)
-  
+
   (require 'org-protocol)
 
   (defun my-safari-url ()
@@ -363,9 +363,17 @@
   (require 'ob-shell)
   (require 'ob-awk)
 
+  (setq current-journal-filename "~/org-files/journals/2021/2021-02-Feb.org")
+
   (setq
-   org-agenda-files '("~/org-files")
-   org-refile-targets '((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1))
+   org-agenda-files '("~/org-files"
+                      "~/org-files/work/projects/2020/streaming/streaming.org"
+                      "~/org-files/work/projects/2021/exhaustive/exhaustive.org"
+                      "~/org-files/journals/2021/2021-02-Feb.org")
+   org-refile-targets '((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
+                        (("~/org-files/work/projects/2020/streaming/streaming.org"
+                          "~/org-files/work/projects/2021/exhaustive/exhaustive.org"
+                          "~/org-files/journals/2021/2021-02-Feb.org") :maxlevel . 1))
    org-archive-location "%s_archive::datetree/"
    org-deadline-warning-days 14
    org-default-notes-file "~/org-files/inbox.org"
@@ -391,11 +399,11 @@
       "* TODO %?\n  %U\n%a")
      ("b" "Browser" entry (file "~/org-files/inbox.org")
       "* TODO %(my-browser-link)\n%U")
-     ("n" "Note" entry (file "~/org-files/notes.org")
+     ("n" "Note" entry (file+headline "~/org-files/notes.org" "Notes")
       "* %?\n  %U\n%a")
-     ("d" "Day Plan" entry (file+olp+datetree "~/org-files/journal.org")
+     ("d" "Day Plan" entry (file+olp+datetree current-journal-filename)
       (file "~/org-files/plan.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
-     ("e" "End of day" entry (file+olp+datetree "~/org-files/journal.org")
+     ("e" "End of day" entry (file+olp+datetree current-journal-filename)
       (file "~/org-files/eod.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
      ("a" "Appointment today" entry (file+olp+datetree "~/org-files/meetings.org")
         "* %?\n  %^t" :tree-type week)
@@ -403,8 +411,11 @@
       "* P0 Ops :urgent:ops:\n  %t\n  %u" :clock-in t :clock-keep t :empty-lines 1)
      ("m" "Meeting now" entry (file+olp+datetree "~/org-files/meetings.org")
       "* %? :meeting:\n  %T" :clock-in t :clock-keep t :jump-to-captured t :empty-lines 1 :tree-type week)
-     ("j" "Journal" entry (file+olp+datetree "~/org-files/journal.org")
-      "* %^{title} %^g\n    %U\n\n%?")
+     ("j" "Journal" entry (file+olp+datetree current-journal-filename)
+      "* %? %U\n"
+      :empty-lines 1)
+     ("J" "Journal HERE" entry (file+olp+datetree (lambda () (org-capture-get :original-file)))
+      "* %? %U\n" :empty-lines 1)
      ("p" "" entry (file "~/org-files/inbox.org")
       "* TODO %:description\n%U\n%:link\n\n#+BEGIN_QUOTE\n%:initial\n#+END_QUOTE" :immediate-finish t :jump-to-captured t)
      ("L" "" entry (file "~/org-files/inbox.org")
