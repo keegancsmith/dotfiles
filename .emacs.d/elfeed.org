@@ -29,6 +29,8 @@ Started following him on gemini.
 *** https://dgraph.io/blog/index.xml
 *** https://www.slowernews.com/rss.xml
 *** https://devlog.hexops.com/feed.xml
+*** https://blog.royalsloth.eu/posts/index.xml
+*** https://blog.golang.org/feed.atom
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
