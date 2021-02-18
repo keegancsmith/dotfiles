@@ -121,7 +121,7 @@
   (enable-theme 'leuven))
 
 (use-package avy
-  :bind (("C-c SPC" . avy-goto-char)))
+  :bind (("C-c SPC" . avy-goto-word-1)))
 
 (require 'subr-x)
 
