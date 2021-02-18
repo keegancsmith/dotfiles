@@ -25,6 +25,8 @@
   (set-frame-font "-*-Input Mono Narrow-normal-normal-extracondensed-*-12-*-*-*-m-0-iso10646-1")
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8")
+  ; https://github.com/d12frosted/homebrew-emacs-plus#no-titlebar
+  (setq frame-resize-pixelwise t)
   (use-package exec-path-from-shell
     :init
     (exec-path-from-shell-initialize)
