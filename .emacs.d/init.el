@@ -601,8 +601,12 @@
 (use-package pass)
 
 (use-package auth-source-pass
+  :after pass
   :config
   (auth-source-pass-enable))
+
+(use-package ivy-pass
+  :after ivy)
 
 (use-package ledger-mode)
 
@@ -638,6 +642,14 @@
 
 (defun browse-url-background (url &optional single)
   (start-process "open" nil "open" "-g" url))
+
+(use-package whole-line-or-region
+  :config
+  (whole-line-or-region-global-mode))
+
+(use-package dumb-jump
+  :config
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
