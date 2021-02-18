@@ -96,6 +96,12 @@
 (when window-system
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
+;; isearch whitespaces is means .*
+(setq
+ search-whitespace-regexp ".*?"
+ isearch-lax-whitespace t
+ isearch-regexp-lax-whitespace nil)
+
 ;; Hint that I use a dark background
 ;;(set-terminal-parameter nil 'background-mode 'dark)
 ;;(set-frame-parameter nil 'background-mode 'dark)
