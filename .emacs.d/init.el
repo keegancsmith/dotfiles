@@ -179,26 +179,22 @@
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
 (use-package ivy
+  :demand
   :diminish (ivy-mode . "")
   :bind (("C-c C-r" . ivy-resume))
   :config
   (ivy-mode 1))
 
 (use-package counsel
-  :bind (("M-x" . counsel-M-x)
-         ("C-x C-f" . counsel-find-file)
-         ("<f1> f" . counsel-describe-function)
-         ("<f1> v" . counsel-describe-variable)
-         ("<f1> l" . counsel-find-library)
-         ("<f2> i" . counsel-info-lookup-symbol)
-         ("<f2> u" . counsel-unicode-char)
-         ("C-c g" . counsel-git)
-         ("C-c k" . counsel-rg)
-         ("C-x l" . counsel-locate))
-  :config
-
+  :after ivy
+  :demand
+  :bind (("C-c g" . counsel-git)
+         ("C-c k" . counsel-rg))
+  :custom
   ;; Avoid long lines in counsel-rg
-  (setq counsel-rg-base-command "rg -i -g '!vendor' --no-heading --line-number --color never --max-columns 200 %s ."))
+  (counsel-rg-base-command "rg -i -g '!vendor' --no-heading --line-number --color never --max-columns 200 %s .")
+  :config
+  (counsel-mode))
 
 (straight-register-package
  '(counsel-repo :host github :repo "keegancsmith/counsel-repo"))
