@@ -431,9 +431,6 @@
      ("L" "" entry (file "~/org-files/inbox.org")
       "* TODO %:description\n%U\n%:link" :immediate-finish t :jump-to-captured t))))
 
-(use-package org-pomodoro
-  :after org)
-
 (use-package ox-gfm
   :after org)
 
