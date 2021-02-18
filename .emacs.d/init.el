@@ -25,8 +25,6 @@
   (set-frame-font "-*-Input Mono Narrow-normal-normal-extracondensed-*-12-*-*-*-m-0-iso10646-1")
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8")
-  ; https://github.com/d12frosted/homebrew-emacs-plus#no-titlebar
-  (setq frame-resize-pixelwise t)
   (use-package exec-path-from-shell
     :init
     (exec-path-from-shell-initialize)
@@ -40,10 +38,6 @@
 (setq user-mail-address "keegan.csmith@gmail.com")
 ;; Highlight matching paren
 (show-paren-mode 1)
-;; Get rid of stupid GUI stuff
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 ;; Yes-or-No queries become Y-or-N
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; Better buffer names when names conflict
@@ -53,7 +47,6 @@
 ;; Misc settings
 (setq
  vc-handled-backends '(Git Hg)
- inhibit-startup-message t
  select-enable-clipboard t
  make-backup-files nil
  column-number-mode t
