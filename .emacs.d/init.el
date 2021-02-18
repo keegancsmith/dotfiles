@@ -69,6 +69,7 @@
  font-lock-maximum-decoration t
  vc-follow-symlinks t
  ispell-dictionary "british"
+ tramp-default-method "sshx"
  calendar-location-name "Cape Town"
  calendar-longitude 18.46
  calendar-latitude -33.98
