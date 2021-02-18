@@ -207,6 +207,12 @@
    counsel-repo-srcpaths '("~/go/src" "~/src" "~/.emacs.d/straight/repos")
    counsel-repo-action #'magit-status))
 
+(use-package helpful
+  :after counsel
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable))
+
 (defun my-org-link (url name)
   "Generate an org link using URL and NAME (title of page)."
   (cond
