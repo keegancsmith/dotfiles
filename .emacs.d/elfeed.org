@@ -7,8 +7,7 @@
 *** https://nullprogram.com/feed/
 *** https://lemire.me/blog/feed/
 *** https://danluu.com/atom.xml
-*** https://drewdevault.com/feed.xml                                 :ignore:
-Started following him on gemini.
+*** https://drewdevault.com/feed.xml
 *** https://rachelbythebay.com/w/atom.xml
 *** https://randomascii.wordpress.com/feed/
 *** https://sachachua.com/blog/category/emacs/feed/
@@ -31,6 +30,7 @@ Started following him on gemini.
 *** https://devlog.hexops.com/feed.xml
 *** https://blog.royalsloth.eu/posts/index.xml
 *** https://blog.golang.org/feed.atom
+*** https://blog.qutebrowser.org/feeds/all.atom.xml
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
