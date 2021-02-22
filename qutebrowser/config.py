@@ -20,3 +20,6 @@ c.hints.selectors['story'] = [
     'a[href^="item"]', # hn comment link
 ]
 config.bind(';s', 'hint --rapid story tab-bg')
+
+# simple script to write org entry to my inbox.org
+config.bind(';w', 'spawn --userscript ~/.qutebrowser/userscripts/org-capture')
