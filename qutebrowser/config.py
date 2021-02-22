@@ -23,3 +23,6 @@ config.bind(';s', 'hint --rapid story tab-bg')
 
 # simple script to write org entry to my inbox.org
 config.bind(';w', 'spawn --userscript ~/.qutebrowser/userscripts/org-capture')
+
+# password_fill from upstream
+config.bind(';p', 'spawn --userscript ~/.qutebrowser/userscripts/password_fill')
