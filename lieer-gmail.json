@@ -5,17 +5,17 @@
   "drop_non_existing_label": false,
   "ignore_empty_history": true,
   "ignore_tags": [
+    "personal",
     "important",
-    "new",
-    "personal"
+    "new"
   ],
   "ignore_remote_labels": [
-    "CATEGORY_FORUMS",
-    "CATEGORY_PERSONAL",
-    "CATEGORY_PROMOTIONS",
-    "CATEGORY_SOCIAL",
     "CATEGORY_UPDATES",
-    "IMPORTANT"
+    "CATEGORY_PROMOTIONS",
+    "CATEGORY_FORUMS",
+    "IMPORTANT",
+    "CATEGORY_SOCIAL",
+    "CATEGORY_PERSONAL"
   ],
   "file_extension": ""
 }

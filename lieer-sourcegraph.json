@@ -3,18 +3,18 @@
   "account": "keegan@sourcegraph.com",
   "timeout": 0,
   "drop_non_existing_label": false,
-  "ignore_empty_history": false,
   "ignore_tags": [
-    "new",
-    "important"
+    "important",
+    "new"
   ],
   "ignore_remote_labels": [
     "CATEGORY_SOCIAL",
+    "CATEGORY_PROMOTIONS",
+    "CATEGORY_PERSONAL",
     "CATEGORY_FORUMS",
     "CATEGORY_UPDATES",
-    "CATEGORY_PERSONAL",
-    "CATEGORY_PROMOTIONS",
     "IMPORTANT"
   ],
+  "remove_local_messages": true,
   "file_extension": ""
 }
