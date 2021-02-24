@@ -19,6 +19,7 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'use-package)
+(defvar straight-use-package-by-default)
 (setq straight-use-package-by-default t)
 
 (when (memq window-system '(mac ns x))
