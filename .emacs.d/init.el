@@ -23,7 +23,7 @@
 (setq straight-use-package-by-default t)
 
 (when (memq window-system '(mac ns x))
-  (set-frame-font "-*-Input Mono Narrow-normal-normal-extracondensed-*-12-*-*-*-m-0-iso10646-1")
+  (set-frame-font "-*-Hack-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8")
   (use-package exec-path-from-shell
