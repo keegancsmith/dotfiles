@@ -557,14 +557,6 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
 
 (use-package typescript-mode)
 
-;; https://addons.mozilla.org/en-US/firefox/addon/edit-with-emacs1/
-;; https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en
-(use-package edit-server
-  :config
-  (setq edit-server-url-major-mode-alist '(("github\\.com" . gfm-mode))
-        edit-server-new-frame nil)
-  (edit-server-start))
-
 (use-package unfill
   :bind ("M-Q" . unfill-paragraph))
 
