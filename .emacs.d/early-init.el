@@ -15,3 +15,5 @@
 (setq
  inhibit-startup-screen t
  inhibit-startup-buffer-menu t)
+
+(setq package-enable-at-startup nil)
