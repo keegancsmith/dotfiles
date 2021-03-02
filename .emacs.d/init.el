@@ -397,6 +397,7 @@
    org-log-done 'time
    org-log-redeadline 'time
    org-log-reschedule 'time
+   org-todo-keywords '((sequence "TODO(t!)" "WAIT(w@/!)" "|" "DONE(d@)" "CANCELLED(c@)"))
    org-babel-load-languages '((emacs-lisp . t) (shell . t) (awk . t))
    ;org-confirm-babel-evaluate nil
    org-capture-templates
