@@ -1,7 +1,5 @@
 config.load_autoconfig()
 
-c.window.hide_decoration = True
-
 c.editor.command = ['/usr/local/bin/emacsclient', '+{line}:{column}', '{file}']
 
 # comment sections of reddit/hackernews
