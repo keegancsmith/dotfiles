@@ -32,6 +32,8 @@
 *** https://blog.golang.org/feed.atom
 *** https://blog.qutebrowser.org/feeds/all.atom.xml
 *** https://ghuntley.com/rss
+*** https://benhoyt.com/writings/rss.xml
+*** https://lucumr.pocoo.org/feed.atom
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
