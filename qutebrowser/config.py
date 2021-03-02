@@ -24,3 +24,5 @@ config.bind(';w', 'spawn --userscript ~/.qutebrowser/userscripts/org-capture')
 
 # password_fill from upstream
 config.bind(';p', 'spawn --userscript ~/.qutebrowser/userscripts/password_fill')
+
+config.bind(';a', 'insert-text Co-authored-by: Stefan Hengl <stefan@sourcegraph.com>')
