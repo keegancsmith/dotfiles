@@ -16,7 +16,7 @@ def remove_prefix(s, prefix):
 
 def org_headline(url, title):
     p = url.split('/')
-    if len(p) < 7 or p[2] != 'github.com' or p[5] not in ('pull', 'issue'):
+    if len(p) < 7 or p[2] != 'github.com' or p[5] not in ('pull', 'issues'):
         return None
 
     repo = p[3] + '/' + p[4]
@@ -35,11 +35,18 @@ def org_headline(url, title):
     return f'{title} [[{url}][{repo}#{pid}]]'
 
 def test_org_headline():
-    url = 'https://github.com/sourcegraph/zoekt/pull/10'
-    title = 'index: Use roaring bitmaps for content posting lists by keegancsmith · Pull Request #10 · sourcegraph/zoekt'
-    want = 'index: Use roaring bitmaps for content posting lists [[https://github.com/sourcegraph/zoekt/pull/10][zoekt#10]]'
-    got = org_headline(url, title)
-    assert want == got, f'\nwant: {want}\ngot:  {got}'
+    cases = ((
+        'https://github.com/sourcegraph/zoekt/pull/10',
+        'index: Use roaring bitmaps for content posting lists by keegancsmith · Pull Request #10 · sourcegraph/zoekt',
+        'index: Use roaring bitmaps for content posting lists [[https://github.com/sourcegraph/zoekt/pull/10][zoekt#10]]',
+    ), (
+        'https://github.com/sourcegraph/sourcegraph/issues/6031',
+        'Core Services: 3.10 tracking issue · Issue #6031 · sourcegraph/sourcegraph',
+        'Core Services: 3.10 tracking issue [[https://github.com/sourcegraph/sourcegraph/issues/6031][#6031]]',
+    ))
+    for url, title, want in cases:
+        got = org_headline(url, title)
+        assert want == got
     
 def org_entry(url, title):
     time = datetime.datetime.now().strftime('[%Y-%m-%d %a %H:%M]')
