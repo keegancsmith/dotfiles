@@ -68,7 +68,5 @@ def main():
         fifo.flush()
 
 
-test_org_headline()
-
 if __name__ == '__main__':
     main()

@@ -20,7 +20,7 @@ c.hints.selectors['story'] = [
 config.bind(';s', 'hint --rapid story tab-bg')
 
 # simple script to write org entry to my inbox.org
-config.bind(';w', 'spawn --userscript ~/.qutebrowser/userscripts/org-capture')
+config.bind(';w', 'spawn --userscript ~/.qutebrowser/userscripts/org-capture.py')
 
 # password_fill from upstream
 config.bind(';p', 'spawn --userscript ~/.qutebrowser/userscripts/password_fill')
