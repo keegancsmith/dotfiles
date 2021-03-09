@@ -27,10 +27,12 @@
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8")
   (use-package exec-path-from-shell
-    :init
-    (exec-path-from-shell-initialize)
-    (exec-path-from-shell-copy-env "GOPATH")
-    (exec-path-from-shell-copy-env "GOROOT")))
+    :defer 1
+    :custom
+    (exec-path-from-shell-arguments '("-l"))
+    (exec-path-from-shell-variables '("PATH" "MANPATH" "GOPATH" "GOROOT"))
+    :config
+    (exec-path-from-shell-initialize)))
 
 (server-start)
 
