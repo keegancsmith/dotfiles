@@ -15,7 +15,7 @@ c.hints.selectors['story'] = [
     'a[class~="title"]',
     'a[class~="storylink"]',
     'a[class~="comments"]',
-    'a[href^="item"]', # hn comment link
+    '.subtext > a[href^="item"]', # hn comment link
 ]
 config.bind(';s', 'hint --rapid story tab-bg')
 
