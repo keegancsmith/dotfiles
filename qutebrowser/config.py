@@ -2,6 +2,8 @@ config.load_autoconfig()
 
 c.editor.command = ['/usr/local/bin/emacsclient', '+{line}:{column}', '{file}']
 
+c.auto_save.session = True
+
 # comment sections of reddit/hackernews
 c.hints.selectors['comments'] = [
     '[class*="expand"]',
