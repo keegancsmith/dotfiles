@@ -549,12 +549,14 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
+         ("qutebrowser-editor-[^/]+\\'" . gfm-mode)
          ("\\.md\\'" . gfm-mode)
          ("\\.markdown\\'" . markdown-mode))
   :config
   (defun my-gfm-mode-hook ()
     (visual-line-mode)
     (visual-fill-column-mode)
+    (flyspell-mode)
     (setq word-wrap t))
   (add-hook 'gfm-mode-hook #'my-gfm-mode-hook))
 
