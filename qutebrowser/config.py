@@ -1,8 +1,17 @@
 config.load_autoconfig()
 
-c.editor.command = ['/usr/local/bin/emacsclient', '+{line}:{column}', '{file}']
+# Add /usr/local/bin to PATH
+import os
+if '/usr/local/bin:' not in os.environ['PATH']:
+    os.environ['PATH'] = '/usr/local/bin:' + os.environ['PATH']
+
+c.editor.command = ['emacsclient', '+{line}:{column}', '{file}']
 
 c.auto_save.session = True
+
+# mpv
+config.bind(';m', 'spawn mpv {url}')
+config.bind(';M', 'hint links spawn mpv {hint-url}')
 
 # comment sections of reddit/hackernews
 c.hints.selectors['comments'] = [
