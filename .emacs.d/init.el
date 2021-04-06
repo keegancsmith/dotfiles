@@ -370,17 +370,17 @@
   (require 'ob-shell)
   (require 'ob-awk)
 
-  (setq current-journal-filename "~/org-files/journals/2021/2021-03-Mar.org")
+  (setq current-journal-filename "~/org-files/journals/2021/2021-04-Apr.org")
 
   (setq
    org-agenda-files '("~/org-files"
                       "~/org-files/work/projects/2020/streaming/streaming.org"
                       "~/org-files/work/projects/2021/exhaustive/exhaustive.org"
-                      "~/org-files/journals/2021/2021-03-Mar.org")
+                      "~/org-files/journals/2021/2021-04-Apr.org")
    org-refile-targets '((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
                         (("~/org-files/work/projects/2020/streaming/streaming.org"
                           "~/org-files/work/projects/2021/exhaustive/exhaustive.org"
-                          "~/org-files/journals/2021/2021-03-Mar.org") :maxlevel . 1))
+                          "~/org-files/journals/2021/2021-04-Apr.org") :maxlevel . 1))
    org-archive-location "%s_archive::datetree/"
    org-deadline-warning-days 14
    org-default-notes-file "~/org-files/inbox.org"
