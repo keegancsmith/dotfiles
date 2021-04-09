@@ -98,6 +98,11 @@ def main():
         fifo.write(f'message-info {message!r}\n')
         fifo.flush()
 
+    # Always append to the tmp file, just incase I worry that org-files
+    # overwrote what I put into inbox.org
+    with open('/tmp/inbox-log.org', 'a') as f:
+        f.write(entry)
+
 
 if __name__ == '__main__':
     main()
