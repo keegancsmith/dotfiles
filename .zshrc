@@ -26,8 +26,6 @@ zplug "lib/git",          from:oh-my-zsh
 zplug "lib/history",      from:oh-my-zsh
 zplug "lib/key-bindings", from:oh-my-zsh
 
-zplug 'dracula/zsh', as:theme
-
 zplug load
 
 # The next line enables shell command completion for gcloud.
