@@ -43,6 +43,7 @@ notmuch tag --remove-all +trash tag:new from:admin@sourcegraph.com subject:"Name
 notmuch tag --remove-all +trash tag:new from:support@buildkite.com subject:"Invoice"
 notmuch tag --remove-all +trash tag:new from:dev@sourcegraph.com subject:"Tracking Issue"
 notmuch tag --remove-all +trash tag:new from:dev@sourcegraph.com subject:"renovate/docker-sourcegraph-docker-insiders-images"
+notmuch tag --remove-all +trash tag:new from:no-reply@zoom.us subject:'has joined your meeting'
 
 echo
 echo "processed $(notmuch count tag:new) email(s)"
