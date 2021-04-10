@@ -33,6 +33,7 @@ notmuch tag -unread -inbox -- tag:new and 'from:"Linter for Gerrit"'
 notmuch tag -unread -inbox -- tag:new and from:no-reply@pganalyze and subject:"critical issues"
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into master")'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into main")'
+notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into release")'
 notmuch tag -unread -inbox -- tag:new and tag:gh and to:your_activity@noreply.github.com
 notmuch tag -unread -inbox -- tag:new and tag:gh and to:push@noreply.github.com
 
@@ -44,6 +45,7 @@ notmuch tag --remove-all +trash tag:new from:support@buildkite.com subject:"Invo
 notmuch tag --remove-all +trash tag:new from:dev@sourcegraph.com subject:"Tracking Issue"
 notmuch tag --remove-all +trash tag:new from:dev@sourcegraph.com subject:"renovate/docker-sourcegraph-docker-insiders-images"
 notmuch tag --remove-all +trash tag:new from:no-reply@zoom.us subject:'has joined your meeting'
+notmuch tag --remove-all +trash tag:new to:sourcegraph/deploy-sourcegraph-dogfood-k8s-2
 
 echo
 echo "processed $(notmuch count tag:new) email(s)"
