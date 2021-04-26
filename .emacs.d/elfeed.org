@@ -50,7 +50,6 @@
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UClqoxjo1S73pcBTJs39KYHA][Future Islands]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCqnMk5GA1spXDiHYFcPN-eA][Mac DeMarco]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCXAhoI7XO2kafTMjocm0jCg][Flume]]
-**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCqrBKQHQVEvD2Q9FP0DCP2g][benny blanco]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCy3DbVl0K1qj0e8jGAOYgPg][Future Classic]]
 *** Chess                                                             :chess:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCHP9CdeguNUI-_nBv_UXBhw][Daniel Naroditsky]]
@@ -69,7 +68,6 @@
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC5bnzGuTw7jQQVZgWYRGeEQ][Jonathan Sidego]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC6LTUrKPUb-AlXXRCSz6YSw][Frankie Fardette]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC7CUgivJP7KGLSuJrhQ2Exw][#NewTechBerlin]]
-*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC7IcJI8PUf5Z3zKxnZvTBog][The School of Life]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC8bM_y2J-rhv1FL3hdP2VSA][Nomad's Trails]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9RM-iSvTu1uPJb8X5yp3EQ][Wendover Productions]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9TOJlW5ZLaiWdMjAUoTpqQ][arghdos]]
