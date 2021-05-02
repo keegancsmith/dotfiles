@@ -14,6 +14,12 @@ alias cd-sg="cd ~/go/src/github.com/sourcegraph/sourcegraph"
 alias cd-infra="cd ~/go/src/github.com/sourcegraph/infrastructure"
 alias cd-zoekt="cd ~/go/src/github.com/google/zoekt"
 
+# Set window title to current dir
+function set_win_title(){
+    echo -ne "\033]0; $(basename "$PWD") \007"
+}
+precmd_functions+=(set_win_title)
+
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 
