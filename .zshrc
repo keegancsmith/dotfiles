@@ -14,6 +14,17 @@ alias cd-sg="cd ~/go/src/github.com/sourcegraph/sourcegraph"
 alias cd-infra="cd ~/go/src/github.com/sourcegraph/infrastructure"
 alias cd-zoekt="cd ~/go/src/github.com/google/zoekt"
 
+# jump to repo
+function repo {
+    d=$(counsel-repo ${(s.:.)SRCPATH} | fzf --no-sort --select-1 --query="$1")
+    for base in ${(s.:.)SRCPATH}; do
+        if [ -d $base/$d ]; then
+            cd $base/$d
+            return 0
+        fi
+    done
+}
+
 # Set window title to current dir
 function set_win_title(){
     echo -ne "\033]0; $(basename "$PWD") \007"
