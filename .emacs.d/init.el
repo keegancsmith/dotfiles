@@ -150,7 +150,7 @@
               ("C-c C-o h". lsp-symbol-highlight)
               ("C-c C-o j". lsp-goto-type-definition)
               ("C-c C-o r". lsp-find-references)
-              ("C-c C-o s". counsel-imenu)
+              ("C-c C-o s". consult-imenu)
               ("C-c C-o x". lsp-rename)
               ("C-c C-o z". lsp-describe-session))
   :config
@@ -175,40 +175,88 @@
   ; just hack at stuff.
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
-(use-package ivy
-  :demand
-  :diminish (ivy-mode . "")
-  :bind (("C-c C-r" . ivy-resume))
-  :config
-  (ivy-mode 1))
+(use-package selectrum
+  :init
+  (selectrum-mode +1))
 
-(use-package counsel
-  :after ivy
-  :demand
-  :bind (("C-c g" . counsel-git)
-         ("C-c k" . counsel-rg))
-  :custom
-  ;; Avoid long lines in counsel-rg
-  (counsel-rg-base-command "rg -i -g '!vendor' --no-heading --line-number --color never --max-columns 200 %s .")
-  :config
-  (counsel-mode))
+(use-package selectrum-prescient
+  :init
+  (selectrum-prescient-mode +1)
+  (prescient-persist-mode +1))
 
-(straight-register-package
- '(counsel-repo :host github :repo "keegancsmith/counsel-repo"))
+(use-package marginalia
+  :bind (("M-A" . marginalia-cycle)
+         :map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
 
-(use-package counsel-repo
-  :bind (("C-c j" . counsel-repo))
-  :after counsel
+  :init
+  (marginalia-mode))
+
+;; consult version of my counsel-repo elisp.
+(defun consult-project ()
+  "jump to a repo"
+  (interactive)
+  (let* ((selectrum-should-sort nil)
+         (dirs '("~/go/src" "~/src" "~/.emacs.d/straight/repos"))
+         (cmd (string-join (cons "counsel-repo" dirs) " "))
+         (cands (split-string (shell-command-to-string cmd)))
+         (repo (completing-read "Find repo: " cands nil t)))
+    (magit-status (car
+                   (seq-filter #'file-directory-p
+                               (mapcar
+                                (lambda (dir) (expand-file-name (concat dir "/" repo)))
+                                dirs))))))
+
+(use-package consult
+  :bind (("C-x b" . consult-buffer)
+         ("M-y" . consult-yank-pop)
+         ("<help> a" . consult-apropos)
+
+         ;; M-g bindings (goto-map)
+         ("M-g g" . consult-goto-line)
+         ("M-g o" . consult-outline)
+         ("M-g m" . consult-mark)
+         ("M-g k" . consult-global-mark)
+         ("M-g i" . consult-imenu)
+         ("M-g I" . consult-project-imenu)
+
+         ;; M-s bindings (search-map)
+         ("M-s f" . consult-find)
+         ("M-s L" . consult-locate)
+         ("M-s g" . consult-grep)
+         ("M-s G" . consult-git-grep)
+         ("M-s r" . consult-ripgrep)
+         ("M-s l" . consult-line)
+         ("M-s m" . consult-multi-occur)
+         ("M-s k" . consult-keep-lines)
+         ("M-s u" . consult-focus-lines)
+         ("M-s p" . consult-project)
+
+         ;; Isearch integration
+         ("M-s e" . consult-isearch)
+         :map isearch-mode-map
+         ("M-e" . consult-isearch)
+         ("M-s e" . consult-isearch)
+         ("M-s l" . consult-line))
+
   :config
-  (setq
-   counsel-repo-srcpaths '("~/go/src" "~/src" "~/.emacs.d/straight/repos")
-   counsel-repo-action #'magit-status))
+
+  ;; Use Consult to select xref locations with preview
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref)
+
+  ;; Configure a function which returns the project root directory.
+  (setq consult-project-root-function
+        (lambda ()
+          (when-let (project (project-current))
+            (car (project-roots project))))))
 
 (use-package helpful
-  :after counsel
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable))
+  :bind (("C-h f" . helpful-callable)
+         ("C-h v" . helpful-variable)
+         ("C-h k" . helpful-key)
+         ("C-c C-d" . helpful-at-point)
+         ("C-h C" . helpful-command)))
 
 (defun my-org-link (url name)
   "Generate an org link using URL and NAME (title of page)."
@@ -638,9 +686,6 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
   :after pass
   :config
   (auth-source-pass-enable))
-
-(use-package ivy-pass
-  :after ivy)
 
 (use-package ledger-mode)
 
