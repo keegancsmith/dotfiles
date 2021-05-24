@@ -393,8 +393,6 @@
 
 ;(package-install (cadr (assq 'org package-archive-contents)))
 
-(straight-use-package 'org-plus-contrib)
-
 (use-package org
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
@@ -504,6 +502,9 @@
       "* TODO %:description\n%U\n%:link\n\n#+BEGIN_QUOTE\n%:initial\n#+END_QUOTE" :immediate-finish t :jump-to-captured t)
      ("L" "" entry (file "~/org-files/inbox.org")
       "* TODO %:description\n%U\n%:link" :immediate-finish t :jump-to-captured t))))
+
+(use-package org-contrib
+  :after org)
 
 (use-package ox-gfm
   :after org)
