@@ -239,6 +239,7 @@
   :bind (("C-x b" . consult-buffer)
          ("M-y" . consult-yank-pop)
          ("<help> a" . consult-apropos)
+         ("C-c k" . consult-ripgrep)
 
          ;; M-g bindings (goto-map)
          ("M-g g" . consult-goto-line)
@@ -253,7 +254,6 @@
          ("M-s L" . consult-locate)
          ("M-s g" . consult-grep)
          ("M-s G" . consult-git-grep)
-         ("M-s r" . consult-ripgrep)
          ("M-s l" . consult-line)
          ("M-s m" . consult-multi-occur)
          ("M-s k" . consult-keep-lines)
@@ -729,6 +729,7 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
    rg-default-alias-fallback "all")
 
   :bind (("M-s g" . rg)
+         ("M-s r" . rg-dwim-project-dir)
          :map rg-mode-map
          ("C-n" . next-line)
          ("C-p" . previous-line)
