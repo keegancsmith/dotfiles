@@ -9,6 +9,12 @@ c.editor.command = ['emacsclient', '+{line}:{column}', '{file}']
 
 c.auto_save.session = True
 
+c.url.searchengines = {
+    'DEFAULT': 'https://duckduckgo.com/?q={}',
+    'g': 'https://www.google.com/search?q={}',
+    's': 'https://sourcegraph.com/search?q=context:%40keegan+{}&patternType=regexp',
+}
+
 # mpv
 config.bind(';m', 'spawn mpv {url}')
 config.bind(';M', 'hint links spawn mpv {hint-url}')
