@@ -443,6 +443,7 @@
 
   (require 'ob-shell)
   (require 'ob-awk)
+  (require 'ob-python)
 
   (setq current-journal-filename "~/org-files/journals/2021/2021-05-May.org")
 
@@ -474,7 +475,8 @@
    org-log-redeadline 'time
    org-log-reschedule 'time
    org-todo-keywords '((sequence "TODO(t!)" "WAIT(w@/!)" "|" "DONE(d@)" "CANCELLED(c@)"))
-   org-babel-load-languages '((emacs-lisp . t) (shell . t) (awk . t))
+   org-babel-load-languages '((emacs-lisp . t) (shell . t) (awk . t) (python . t))
+   org-babel-python-command "python3"
    ;org-confirm-babel-evaluate nil
    org-capture-templates
    '(("c" "Task" entry (file "~/org-files/inbox.org")
