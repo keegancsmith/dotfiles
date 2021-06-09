@@ -241,11 +241,24 @@
                                 (lambda (dir) (expand-file-name (concat dir "/" repo)))
                                 dirs))))))
 
+;; consult version of counsel-git. Faster than using consult-find. No need for
+;; the fancy async stuff for the repos I work on. Probably could configure
+;; consult-find-command instead.
+(defun consult-git ()
+  "Find file in the current Git repository."
+  (interactive)
+  (let* ((default-directory (funcall consult-project-root-function))
+         (cmd "git ls-files -z --full-name --")
+         (cands (split-string (shell-command-to-string cmd) "\0" t))
+         (file (completing-read "Find file: " cands nil t)))
+    (find-file file)))
+
 (use-package consult
   :bind (("C-x b" . consult-buffer)
          ("M-y" . consult-yank-pop)
          ("<help> a" . consult-apropos)
          ("C-c k" . consult-ripgrep)
+         ("C-c g" . consult-git)
 
          ;; M-g bindings (goto-map)
          ("M-g g" . consult-goto-line)
@@ -272,6 +285,10 @@
          ("M-e" . consult-isearch)
          ("M-s e" . consult-isearch)
          ("M-s l" . consult-line))
+
+  :custom
+  ;; smaller max-columns and smart-case
+  (consult-ripgrep-command "rg --null --line-buffered --color=never --max-columns=200 --no-heading --smart-case --line-number . -e ARG OPTS")
 
   :config
 
