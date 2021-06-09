@@ -164,9 +164,15 @@
    lsp-enable-file-watchers nil
    lsp-enable-snippet nil))
 
-;; if you use company-mode for completion (otherwise, complete-at-point works out of the box):
-(use-package company-lsp
-  :commands company-lsp)
+(use-package consult-lsp
+  :after (lsp-mode consult))
+
+;; lsp-mode performance tuning [[file:straight/repos/lsp-mode/docs/page/performance.md]]
+(use-package emacs
+  :config
+
+  (setq read-process-output-max (* 1024 1024) ;; 1mb
+        gc-cons-threshold 100000000))
 
 (use-package flycheck
   :init
