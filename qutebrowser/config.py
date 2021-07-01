@@ -15,6 +15,10 @@ c.url.searchengines = {
     's': 'https://sourcegraph.com/search?q=context:%40keegan+{}&patternType=regexp',
 }
 
+# stop closing tabs by mistake
+config.unbind("d")
+config.bind(",d", "tab-close")
+
 # mpv
 config.bind(';m', 'spawn mpv {url}')
 config.bind(';M', 'hint links spawn mpv {hint-url}')
