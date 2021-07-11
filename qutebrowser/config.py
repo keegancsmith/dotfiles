@@ -11,7 +11,7 @@ c.auto_save.session = True
 
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
-    'g': 'https://sourcegraph.com/search?q=context:%40global+{}&patternType=regexp',
+    'g': 'https://sourcegraph.com/search?q=context:global+{}&patternType=regexp',
     's': 'https://sourcegraph.com/search?q=context:%40keegan+{}&patternType=regexp',
 }
 
