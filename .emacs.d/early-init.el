@@ -1,3 +1,6 @@
+;; perf: use more memory to reduce GC rate
+(setq gc-cons-threshold 100000000)
+
 (setq frame-inhibit-implied-resize t)
 
 ;; https://github.com/d12frosted/homebrew-emacs-plus#no-titlebar
