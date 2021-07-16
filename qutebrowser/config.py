@@ -10,9 +10,10 @@ c.editor.command = ['emacsclient', '+{line}:{column}', '{file}']
 c.auto_save.session = True
 
 c.url.searchengines = {
-    'DEFAULT': 'https://www.google.com/search?q={}',
-    'g': 'https://sourcegraph.com/search?q=context:global+{}&patternType=regexp',
-    's': 'https://sourcegraph.com/search?q=context:%40keegan+{}&patternType=regexp',
+    'DEFAULT': 'https://search.brave.com/search?q={}',
+    'g': 'https://www.google.com/search?q={}',
+    's': 'https://sourcegraph.com/search?q=context:global+{}&patternType=regexp',
+    'ss': 'https://sourcegraph.com/search?q=context:%40keegan+{}&patternType=regexp',
 }
 
 # stop closing tabs by mistake
