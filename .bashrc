@@ -26,6 +26,17 @@ case $TERM in
         ;;
 esac
 
+# jump to repo
+function repo {
+    IFS=':' read -a srcpaths <<< ${SRCPATH}
+    d=$(counsel-repo ${srcpaths[@]} | fzf --no-sort --select-1 --query="$1")
+    for base in ${srcpaths[@]}; do
+        if [ -d $base/$d ]; then
+            cd $base/$d
+            return 0
+        fi
+    done
+}
 
 # Alias's
 alias la="ls -A"
