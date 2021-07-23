@@ -51,23 +51,27 @@
  current-language-environment "English"
  confirm-nonexistent-file-or-buffer nil
  compilation-window-height 10
- compilation-scroll-output 'first-error
- dabbrev-case-fold-search t
  save-abbrevs nil
  dired-listing-switches "-Al"
  save-interprogram-paste-before-kill t
  font-lock-maximum-decoration t
- vc-follow-symlinks t
- ispell-dictionary "british"
- tramp-default-method "sshx"
- calendar-location-name "Cape Town"
- calendar-longitude 18.46
- calendar-latitude -33.98
- display-time-world-list
- '(("Africa/Johannesburg" "Cape Town")
+ vc-follow-symlinks t)
+(use-package emacs
+  :custom
+  (dabbrev-case-fold-search t)
+  (compilation-scroll-output 'first-error)
+  (tramp-default-method "sshx")
+  (ispell-dictionary "british")
+  (world-clock-list '(("Africa/Johannesburg" "Cape Town")
    ("America/Los_Angeles" "San Francisco")
    ("Europe/London" "London")
-   ("Europe/Berlin" "Berlin")))
+   ("Europe/Berlin" "Berlin"))))
+(use-package calendar
+  :custom
+  (calendar-date-style 'iso)
+  (calendar-location-name "Cape Town")
+  (calendar-longitude 18.46)
+  (calendar-latitude -33.98))
 ;; Misc buffer settings
 (setq-default
  fill-column 78
