@@ -22,17 +22,11 @@
 (defvar straight-use-package-by-default)
 (setq straight-use-package-by-default t)
 
-(when (memq window-system '(mac ns x))
-  (set-frame-font "-*-Hack-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
+(when (memq window-system '(mac ns x pgtk))
+  (set-frame-font "Hack" nil t)
+  (set-face-attribute 'default nil :font "Hack" :height 130)
   (setenv "LANG" "en_US.UTF-8")
-  (setenv "LC_ALL" "en_US.UTF-8")
-  (use-package exec-path-from-shell
-    :defer 1
-    :custom
-    (exec-path-from-shell-arguments '("-l"))
-    (exec-path-from-shell-variables '("PATH" "MANPATH" "GOPATH" "GOROOT"))
-    :config
-    (exec-path-from-shell-initialize)))
+  (setenv "LC_ALL" "en_US.UTF-8"))
 
 (server-start)
 
@@ -121,6 +115,15 @@
   :bind (("C-c SPC" . avy-goto-word-1)))
 
 (require 'subr-x)
+
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns x pgtk))
+  :defer 1
+  :custom
+  (exec-path-from-shell-arguments '("-l"))
+  (exec-path-from-shell-variables '("PATH" "MANPATH" "GOPATH" "GOROOT"))
+  :config
+  (exec-path-from-shell-initialize))
 
 (use-package go-mode
   :config
