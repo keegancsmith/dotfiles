@@ -1,3 +1,35 @@
+# Some customizations
+export LC_ALL=en_US.UTF-8
+export EDITOR=vim
+export HISTCONTROL=ignoreboth:erasedups
+export HISTFILESIZE=80000
+export HISTSIZE=20000
+export MAILCHECK=0
+
+# I hate it when I accidently lock the terminal in screen
+export LOCKPRG=/bin/true
+
+# Go
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+
+# Check for local install of gcloud
+if [[ -d ~/google-cloud-sdk ]]; then
+  source ~/google-cloud-sdk/path.bash.inc
+  source ~/google-cloud-sdk/completion.bash.inc
+fi
+
+# PATH dirs to add if they exist
+paths=(
+    "/usr/local/bin"
+    "/usr/local/opt/go/libexec/bin"
+    "$GOBIN"
+    "$HOME/bin"
+)
+for p in "${paths[@]}"; do
+    [ -d "$p" ] && export PATH="$p":"$PATH"
+done
+
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
@@ -18,7 +50,7 @@ alias ls="ls -G"
 
 # Change the window title of X terminals
 case $TERM in
-    xterm*|rxvt*|Eterm)
+    xterm*|rxvt*|Eterm|alacritty)
         PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
         ;;
     screen)
@@ -43,15 +75,16 @@ alias la="ls -A"
 alias ll="ls -l"
 alias grep="grep --color=auto"
 alias o="xdg-open"
-alias ack-go="ack --ignore-dir=vendor --type=go"
 alias kname='kubectl get -o jsonpath={.items[0].metadata.name}'
 
 shopt -s histappend
 
-alias cd-src="cd ~/go/src/github.com/sourcegraph/sourcegraph"
-alias cd-sg="cd ~/go/src/github.com/sourcegraph/sourcegraph"
-alias cd-infra="cd ~/go/src/github.com/sourcegraph/infrastructure"
-alias cd-zoekt="cd ~/go/src/github.com/google/zoekt"
-
 eval "$(direnv hook bash)"
-eval "$(starship init bash)"
+
+# avoid fancy prompt for automated interactive ssh such as tramp.
+[[ $TERM == "dumb" ]] || eval "$(starship init bash)"
+
+# Completion
+[ -f /etc/bash_completion ] && . /etc/bash_completion
+
+true
