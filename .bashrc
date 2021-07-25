@@ -58,6 +58,8 @@ case $TERM in
         ;;
 esac
 
+export SRCPATH="$HOME/go/src:$HOME/src"
+
 # jump to repo
 function repo {
     IFS=':' read -a srcpaths <<< ${SRCPATH}
