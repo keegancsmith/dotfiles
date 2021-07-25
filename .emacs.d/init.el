@@ -65,7 +65,10 @@
   (world-clock-list '(("Africa/Johannesburg" "Cape Town")
    ("America/Los_Angeles" "San Francisco")
    ("Europe/London" "London")
-   ("Europe/Berlin" "Berlin"))))
+   ("Europe/Berlin" "Berlin")))
+  :config
+  (add-to-list 'backup-directory-alist
+               (cons tramp-file-name-regexp nil)))
 (use-package calendar
   :custom
   (calendar-date-style 'iso)
