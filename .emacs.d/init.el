@@ -148,7 +148,8 @@
               ("C-c C-o f". go-fill-struct))
   :commands (go-fill-struct))
 
-(use-package company)
+(use-package company
+  :hook (nix-mode . company-mode))
 
 (use-package lsp-ui)
 
@@ -754,6 +755,11 @@
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (use-package nix-mode)
+
+(use-package company-nixos-options
+  :after nix-mode
+  :config
+  (add-to-list 'company-backends 'company-nixos-options))
 
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
