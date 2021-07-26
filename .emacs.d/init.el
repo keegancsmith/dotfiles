@@ -130,7 +130,7 @@
   :defer 1
   :custom
   (exec-path-from-shell-arguments '("-l"))
-  (exec-path-from-shell-variables '("PATH" "MANPATH" "GOPATH" "GOROOT"))
+  (exec-path-from-shell-variables '("PATH" "MANPATH" "GOPATH" "GOROOT" "SRCPATH"))
   :config
   (exec-path-from-shell-initialize))
 
@@ -244,8 +244,9 @@
   "jump to a repo"
   (interactive)
   (let* ((selectrum-should-sort nil)
-         (dirs '("~/go/src" "~/src" "~/.emacs.d/straight/repos"))
-         (cmd (string-join (cons "counsel-repo" dirs) " "))
+         (dirs (or (parse-colon-path (getenv "SRCPATH"))
+                   '("~/src")))
+         (cmd (string-join (cons "~/go/bin/counsel-repo" dirs) " "))
          (cands (split-string (shell-command-to-string cmd)))
          (repo (completing-read "Find repo: " cands nil t)))
     (magit-status (car

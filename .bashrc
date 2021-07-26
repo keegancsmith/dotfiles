@@ -6,6 +6,8 @@ export HISTFILESIZE=80000
 export HISTSIZE=20000
 export MAILCHECK=0
 
+export SRCPATH="$HOME/go/src:$HOME/src"
+
 # I hate it when I accidently lock the terminal in screen
 export LOCKPRG=/bin/true
 
@@ -65,8 +67,6 @@ case $TERM in
         PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
         ;;
 esac
-
-export SRCPATH="$HOME/go/src:$HOME/src"
 
 # jump to repo
 function repo {
