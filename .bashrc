@@ -30,6 +30,14 @@ for p in "${paths[@]}"; do
     [ -d "$p" ] && export PATH="$p":"$PATH"
 done
 
+# Fallback to more general TERM for terminal emulators I use. Mostly useful
+# for SSH onto machines without the corresponding terminfo.
+case $TERM in
+    alacritty*|kitty*)
+        export TERM=xterm-256color
+        ;;
+esac
+
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
