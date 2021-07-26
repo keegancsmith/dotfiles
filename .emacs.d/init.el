@@ -763,6 +763,8 @@
   :config
   (add-to-list 'company-backends 'company-nixos-options))
 
+(use-package systemd)
+
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
   (if (file-exists-p file)
