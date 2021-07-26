@@ -105,7 +105,9 @@
 ;;(set-frame-parameter nil 'background-mode 'dark)
 
 (display-time-mode 1)
-(display-battery-mode 1)
+
+(unless (string= (system-name) "habitat")
+  (display-battery-mode 1))
 
 (global-set-key (kbd "C-c C-c") 'compile)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
