@@ -772,7 +772,12 @@
   :config
   (add-to-list 'company-backends 'company-nixos-options))
 
-(use-package systemd)
+(use-package tree-sitter
+  :config
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+(use-package tree-sitter-langs)
 
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
