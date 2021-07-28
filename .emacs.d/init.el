@@ -22,9 +22,11 @@
 (defvar straight-use-package-by-default)
 (setq straight-use-package-by-default t)
 
-(when (memq window-system '(mac ns x pgtk))
-  (set-frame-font "Hack" nil t)
-  (set-face-attribute 'default nil :font "Hack" :height 130)
+(setq my-is-gui (memq window-system '(mac ns x pgtk)))
+
+(when my-is-gui
+  (set-frame-font "Go Mono" nil t)
+  (set-face-attribute 'default nil :font "Go Mono" :height 100)
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8"))
 
@@ -117,8 +119,14 @@
 (add-to-list 'auto-mode-alist '("\\.slide\\'" . text-mode))
 
 (use-package leuven-theme
+  :if my-is-gui
   :config
   (enable-theme 'leuven))
+
+(use-package dracula-theme
+  :if (not my-is-gui)
+  :config
+  (enable-theme 'dracula))
 
 (use-package avy
   :bind (("C-c SPC" . avy-goto-word-1)))
@@ -126,7 +134,7 @@
 (require 'subr-x)
 
 (use-package exec-path-from-shell
-  :if (memq window-system '(mac ns x pgtk))
+  :if my-is-gui
   :defer 1
   :custom
   (exec-path-from-shell-arguments '("-l"))
