@@ -15,8 +15,7 @@ with config.pattern('*://github.com') as p:
     p.content.javascript.can_access_clipboard = True
 
 c.url.searchengines = {
-    'DEFAULT': 'https://search.brave.com/search?q={}',
-    'g': 'https://www.google.com/search?q={}',
+    'DEFAULT': 'https://www.google.com/search?q={}',
     's': 'https://sourcegraph.com/search?q=context:global+{}&patternType=regexp',
     'ss': 'https://sourcegraph.com/search?q=context:%40keegan+{}&patternType=regexp',
 }
