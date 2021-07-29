@@ -40,6 +40,12 @@ case $TERM in
         ;;
 esac
 
+# Enable colors for ls, etc.
+if hash dircolors 2>/dev/null; then
+    eval "`dircolors -b`"
+fi
+alias ls="ls -G"
+
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
@@ -47,16 +53,6 @@ if [[ $- != *i* ]] ; then
     # Shell is non-interactive.  Be done now!
     return
 fi
-
-# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
-if [[ -f ~/.dir_colors ]]; then
-    eval `dircolors -b ~/.dir_colors`
-elif [[ -f /etc/DIR_COLORS ]]; then
-    eval `dircolors -b /etc/DIR_COLORS`
-elif hash dircolors 2>/dev/null; then
-    eval "`dircolors -b`"
-fi
-alias ls="ls -G"
 
 # Change the window title of X terminals
 case $TERM in
