@@ -43,7 +43,14 @@ conditionallink "${REPO}/mpv.conf" "${HOME}/.config/mpv/mpv.conf"
 conditionallink "${REPO}/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
 
 # qutebrowser
-conditionallink "${REPO}/qutebrowser" "${HOME}/.qutebrowser"
+case $OSTYPE in
+    darwin*)
+        conditionallink "${REPO}/qutebrowser" "${HOME}/.qutebrowser"
+        ;;
+    *)
+        conditionallink "${REPO}/qutebrowser" "${HOME}/.config/qutebrowser"
+        ;;
+esac
 
 # notmuch hooks
 conditionallink "${REPO}/notmuch-hooks" "${HOME}/.mail/.notmuch/hooks"
