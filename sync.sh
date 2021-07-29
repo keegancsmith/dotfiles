@@ -52,6 +52,10 @@ case $OSTYPE in
         ;;
 esac
 
+# i3
+conditionallink "${REPO}/i3" "${HOME}/.config/i3"
+conditionallink "${REPO}/i3status" "${HOME}/.config/i3status"
+
 # notmuch hooks
 conditionallink "${REPO}/notmuch-hooks" "${HOME}/.mail/.notmuch/hooks"
 
