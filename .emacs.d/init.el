@@ -755,7 +755,9 @@
         (start-process "mpv" "mpv" "mpv" url)))
 
 (defun browse-url-background (url &optional single)
-  (start-process "open" nil "open" "-g" url))
+  (if (string= system-type "darwin")
+      (start-process "open" nil "open" "-g" url)
+    (start-process "qutebrowser" nil "qutebrowser" url)))
 
 (use-package whole-line-or-region
   :config
