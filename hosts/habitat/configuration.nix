@@ -79,6 +79,7 @@ in {
     htop
     emacsPgtkGcc
     notmuch
+    gmailieer
     ripgrep
     bash
     starship
