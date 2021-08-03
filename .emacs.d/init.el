@@ -61,6 +61,7 @@
 (use-package emacs
   :custom
   (dabbrev-case-fold-search t)
+  (epg-pinentry-mode 'loopback)
   (compilation-scroll-output 'first-error)
   (tramp-default-method "sshx")
   (ispell-dictionary "british")
