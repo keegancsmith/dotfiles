@@ -109,6 +109,8 @@ in {
     spotifydMpris
     nixfmt
     zoom-us
+    mupdf
+    gv
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
