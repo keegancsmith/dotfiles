@@ -25,8 +25,8 @@
 (setq my-is-gui (memq window-system '(mac ns x pgtk)))
 
 (when my-is-gui
-  (set-frame-font "Go Mono" nil t)
-  (set-face-attribute 'default nil :font "Go Mono" :height 100)
+  (set-frame-font "Hack" nil t)
+  (set-face-attribute 'default nil :font "Hack" :height 120)
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8"))
 
