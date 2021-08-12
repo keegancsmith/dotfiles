@@ -40,7 +40,7 @@ excludesfile = ~/.gitignore_global
 compactionHeuristic = true
 
 [http]
-	cookiefile = /Users/keegan/.gitcookies
+	cookiefile = ~/.gitcookies
 
 [github]
 	user = keegancsmith
