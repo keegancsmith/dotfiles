@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-let spotifydMpris = (pkgs.spotifyd.override { withMpris = true; });
+let unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
   imports = [ ./hardware-configuration.nix ];
 
@@ -42,6 +42,9 @@ in {
       extraPackages = with pkgs; [ rofi dmenu i3status i3lock ];
     };
   };
+
+  # compositor
+  services.picom.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -106,11 +109,10 @@ in {
     kubectl
     google-cloud-sdk
     lsof
-    spotifydMpris
     nixfmt
-    zoom-us
     mupdf
     gv
+    unstable.zoom-us
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
@@ -159,29 +161,7 @@ in {
 
   virtualisation.docker.enable = true;
 
-  # TODO this doesn't work. Try out a user service but I read bad things about
-  # them that I don't yet understand. If that doesn't work, try out
-  # home-manager.
-  #
-  #systemd.services.spotifyd = {
-  #    wantedBy = [ "multi-user.target" ];
-  #    after = [ "network.target" "sound.target" ];
-  #    wants = [ "network.target" "sound.target" ];
-  #    description = "Start spotifyd.";
-  #    serviceConfig = {
-  #      User = "keegan";
-  #      ExecStart = ''${spotifydMpris}/bin/spotifyd --no-daemon --zeroconf-port 8701'';
-  #      Restart = "always";
-  #      RestartSec = "12";
-  #    };
-  # };
-
   networking.firewall = {
-
-    allowedTCPPorts = [
-      # spotifyd zeroconf port
-      8701
-    ];
 
     # Limit most stuff to tailscale network
     interfaces.tailscale0 = {
