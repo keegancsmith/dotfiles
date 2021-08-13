@@ -33,9 +33,16 @@ in {
 
     videoDrivers = [ "nvidia" ];
 
-    desktopManager = { xterm.enable = false; };
+    desktopManager = {
+      xterm.enable = false;
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
+    };
 
-    displayManager = { defaultSession = "none+i3"; };
+    displayManager = { defaultSession = "xfce+i3"; };
 
     windowManager.i3 = {
       enable = true;
