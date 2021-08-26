@@ -120,6 +120,7 @@ in {
     mupdf
     gv
     unstable.zoom-us
+    kbfs # provides git-remote-keybase
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
@@ -154,6 +155,8 @@ in {
   services.avahi.publish.addresses = true;
   services.avahi.publish.domain = true;
   services.avahi.publish.enable = true;
+
+  services.keybase.enable = true;
 
   security.sudo = {
     enable = true;
