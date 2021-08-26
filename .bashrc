@@ -44,7 +44,7 @@ esac
 if hash dircolors 2>/dev/null; then
     eval "`dircolors -b`"
 fi
-alias ls="ls -G"
+alias ls="ls --color=auto"
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
