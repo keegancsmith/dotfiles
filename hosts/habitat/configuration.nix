@@ -112,6 +112,7 @@ in {
     gcc
     mosh
     maim
+    xclip
     alacritty
     kubectl
     google-cloud-sdk
