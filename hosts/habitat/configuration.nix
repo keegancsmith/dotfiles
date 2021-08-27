@@ -86,6 +86,7 @@ in {
     git
     go
     direnv
+    nix-direnv
     gopls
     htop
     emacsPgtkGcc
@@ -126,6 +127,13 @@ in {
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
+
+  # Needed for nix-direnv. Prevents GC.
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
+  environment.pathsToLink = [ "/share/nix-direnv" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
