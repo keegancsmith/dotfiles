@@ -34,6 +34,7 @@
 *** https://benhoyt.com/writings/rss.xml
 *** https://lucumr.pocoo.org/feed.atom
 *** https://nautil.us/rss/all
+*** https://www.fredrikholmqvist.com/posts/index.xml
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
