@@ -85,6 +85,7 @@ in {
     wget
     git
     go
+    python3
     direnv
     nix-direnv
     gopls
@@ -117,10 +118,12 @@ in {
     xclip
     alacritty
     kubectl
+    kubectx
     google-cloud-sdk
     lsof
     nixfmt
     mupdf
+    ghostscript
     gv
     unstable.zoom-us
     kbfs # provides git-remote-keybase
