@@ -52,9 +52,10 @@ import os.path
 userscript = lambda p : os.path.join(os.path.dirname(__file__), 'userscripts', p)
 
 # simple script to write org entry to my inbox.org
-config.bind(';w', 'spawn --userscript ' + userscript('org-capture.py'))
+config.bind(',w', 'spawn --userscript ' + userscript('org-capture.py'))
 
 # password_fill from upstream
-config.bind(';p', 'spawn --userscript ' + userscript('password_fill'))
+config.bind(',p', 'spawn --userscript ' + userscript('password_fill'))
 
-config.bind(';a', 'insert-text Co-authored-by: Stefan Hengl <stefan@sourcegraph.com>')
+config.bind(',a', 'insert-text Co-authored-by: Stefan Hengl <stefan@sourcegraph.com>')
+config.bind(',A', 'insert-text Co-authored-by: @stefanhengl')
