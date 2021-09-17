@@ -127,6 +127,8 @@ in {
     gv
     unstable.zoom-us
     kbfs # provides git-remote-keybase
+    man-pages
+    man-pages-posix
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
