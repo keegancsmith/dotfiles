@@ -24,7 +24,6 @@
 *** https://www.coryzue.com/feed.xml
 *** http://j.yud.co.za/stories/atom.xml
 *** https://whhone.com/index.xml
-*** https://dgraph.io/blog/index.xml
 *** https://www.slowernews.com/rss.xml
 *** https://devlog.hexops.com/feed.xml
 *** https://blog.royalsloth.eu/posts/index.xml
