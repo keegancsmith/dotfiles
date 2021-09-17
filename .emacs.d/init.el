@@ -97,6 +97,11 @@
 (when window-system
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
+(defun my/stefan ()
+  ""
+  (interactive)
+  (insert "Co-authored-by: Stefan Hengl <stefan@sourcegraph.com>"))
+
 ;; isearch whitespaces is means .*
 (setq
  search-whitespace-regexp ".*?"
