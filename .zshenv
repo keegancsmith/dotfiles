@@ -22,3 +22,4 @@ export GOBIN=$GOPATH/bin
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/keegan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/keegan/google-cloud-sdk/path.zsh.inc'; fi
+if [ -e /Users/keegan/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/keegan/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
