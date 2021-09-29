@@ -664,7 +664,8 @@
   :bind
   ("C-c o" . link-hint-open-link))
 
-(use-package notmuch)
+(use-package notmuch
+  :if (string= (system-name) "habitat"))
 
 (use-package messages-are-flowing
   :config
