@@ -81,6 +81,7 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    graphviz
     curl
     wget
     git
@@ -91,7 +92,7 @@ in {
     gopls
     htop
     emacsPgtkGcc
-    notmuch
+    unstable.notmuch # follow master in emacs
     gmailieer
     ripgrep
     bash
@@ -117,6 +118,7 @@ in {
     maim
     xclip
     alacritty
+    kitty
     kubectl
     kubectx
     google-cloud-sdk
