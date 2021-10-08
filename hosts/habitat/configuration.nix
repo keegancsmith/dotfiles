@@ -65,13 +65,13 @@ in {
     extraGroups = [ "wheel" "docker" "sound" ];
   };
 
-  # build newer emacs with native-comp and pgtk. overlay sha commit date: 17
-  # Sept 2021
+  # build newer emacs with native-comp and pgtk. overlay sha commit date: 8
+  # Oct 2021
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url =
-        "https://github.com/nix-community/emacs-overlay/archive/cfda2bf84e0b6f8a32f2742591d4c16a1a424160.tar.gz";
-      sha256 = "1dsig22yqh8q93g819xd2xlj5zsm2wwxw4ylxw67qc4ri52ddf86";
+        "https://github.com/nix-community/emacs-overlay/archive/abf2413c6dd8e41aef416cae25740d3a001e3f93.tar.gz";
+      sha256 = "0n0fcbkdy5gbnb4gn34ywndp0fr2h8xyd8fa2xip7xinj2m33hvq";
     }))
   ];
 
@@ -94,6 +94,7 @@ in {
     emacsPgtkGcc
     unstable.notmuch # follow master in emacs
     gmailieer
+    aspell
     ripgrep
     bash
     starship
@@ -131,6 +132,7 @@ in {
     kbfs # provides git-remote-keybase
     man-pages
     man-pages-posix
+    signal-desktop
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
