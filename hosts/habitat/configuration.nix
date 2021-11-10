@@ -85,6 +85,8 @@ in {
     curl
     wget
     git
+    git-up
+    unstable.git-branchless
     go
     python3
     direnv
@@ -123,6 +125,7 @@ in {
     kubectl
     kubectx
     google-cloud-sdk
+    cloud-sql-proxy
     lsof
     nixfmt
     mupdf
