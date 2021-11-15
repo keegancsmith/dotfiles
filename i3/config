@@ -155,3 +155,7 @@ bar {
         status_command i3status
         mode hide
 }
+
+# luckily seems to just float the "meeting loading" and the zoom
+# notifications.
+for_window [title="^zoom$"] floating enable
