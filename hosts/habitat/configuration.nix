@@ -65,13 +65,12 @@ in {
     extraGroups = [ "wheel" "docker" "sound" ];
   };
 
-  # build newer emacs with native-comp and pgtk. overlay sha commit date: 8
-  # Oct 2021
+  # build newer emacs with native-comp and pgtk. commit date: 2021-11-25
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url =
-        "https://github.com/nix-community/emacs-overlay/archive/abf2413c6dd8e41aef416cae25740d3a001e3f93.tar.gz";
-      sha256 = "0n0fcbkdy5gbnb4gn34ywndp0fr2h8xyd8fa2xip7xinj2m33hvq";
+        "https://github.com/nix-community/emacs-overlay/archive/640ff172f47d3c6ae959494b888f19a75d41ffbd.tar.gz";
+      sha256 = "1r9fnd9kc8vgkr9d4w29zmc534ks5a9dqh096h667l12n7vlyjvx";
     }))
   ];
 
