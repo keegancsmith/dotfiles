@@ -171,7 +171,9 @@
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-  :hook (go-mode . lsp-deferred)
+  :hook
+  (go-mode  . lsp-deferred)
+  (zig-mode . lsp-deferred)
   :bind (:map lsp-mode-map
               ("C-c C-j" . lsp-find-definition)
               ("C-c C-o d". lsp-describe-thing-at-point)
@@ -783,6 +785,8 @@
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 (use-package tree-sitter-langs)
+
+(use-package zig-mode)
 
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
