@@ -87,6 +87,7 @@ in {
     git-up
     unstable.git-branchless
     go
+    golangci-lint
     python3
     direnv
     nix-direnv
@@ -114,6 +115,7 @@ in {
     screen
     watchman
     youtube-dl
+    python39Packages.yt-dlp
     k9s
     gcc
     mosh
@@ -135,6 +137,8 @@ in {
     man-pages
     man-pages-posix
     signal-desktop
+    obs-studio
+    btrfs-progs
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
