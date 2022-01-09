@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -23,6 +23,13 @@
       fsType = "vfat";
     };
 
+  fileSystems."/var/lib/plex" =
+    { device = "/dev/disk/by-uuid/6b501d20-8d36-4afa-82c0-b57513426263";
+      fsType = "btrfs";
+      options = [ "subvol=plex" "compress=zstd" ];
+    };
+
   swapDevices = [ ];
 
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

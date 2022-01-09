@@ -62,7 +62,7 @@ in {
 
   users.users.keegan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "sound" ];
+    extraGroups = [ "wheel" "docker" "sound" "plex" ];
   };
 
   # build newer emacs with native-comp and pgtk. commit date: 2021-11-25
@@ -178,6 +178,34 @@ in {
   services.avahi.publish.enable = true;
 
   services.keybase.enable = true;
+
+  services.plex = {
+    enable = true;
+    openFirewall = true;
+    package = unstable.plex;
+  };
+
+  services.sonarr = {
+    enable = true;
+    openFirewall = true;
+    user = "plex";
+    group = "plex";
+    dataDir = "/var/lib/plex/.config/NzbDrone";
+  };
+
+  services.transmission = {
+    enable = true;
+    openFirewall = true;
+    openRPCPort = true;
+    user = "plex";
+    group = "plex";
+    home = "/var/lib/plex/transmission";
+    settings = {
+      rpc-bind-address = "0.0.0.0";
+      rpc-whitelist = "127.0.0.1,100.*.*.*";
+      rpc-host-whitelist = "habitat,habitat.local";
+    };
+  };
 
   security.sudo = {
     enable = true;
