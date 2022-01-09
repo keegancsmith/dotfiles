@@ -30,7 +30,9 @@
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8"))
 
-(server-start)
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 ;; General config
 (setq user-full-name "Keegan Carruthers-Smith")
