@@ -58,8 +58,13 @@
  save-abbrevs nil
  dired-listing-switches "-Al"
  save-interprogram-paste-before-kill t
+ sentence-end-double-space nil
  font-lock-maximum-decoration t
  vc-follow-symlinks t)
+(setq-default
+ show-trailing-whitespace t
+ indicate-empty-lines t
+ indicate-buffer-boundaries 'left)
 (use-package emacs
   :custom
   (dabbrev-case-fold-search t)
