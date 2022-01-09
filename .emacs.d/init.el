@@ -22,9 +22,7 @@
 (defvar straight-use-package-by-default)
 (setq straight-use-package-by-default t)
 
-(setq my-is-gui (memq window-system '(mac ns x pgtk)))
-
-(when my-is-gui
+(when (display-graphic-p)
   (set-frame-font "Hack" nil t)
   (set-face-attribute 'default nil :font "Hack" :height 120)
   (setenv "LANG" "en_US.UTF-8")
@@ -132,14 +130,16 @@
 (add-to-list 'auto-mode-alist '("\\.slide\\'" . text-mode))
 
 (use-package leuven-theme
-  :if my-is-gui
+  :if (display-graphic-p)
   :config
   (enable-theme 'leuven))
 
-(use-package dracula-theme
-  :if (not my-is-gui)
+(use-package modus-themes
+  :if (not (display-graphic-p))
+  :init
+  (load-theme 'modus-vivendi t t)
   :config
-  (enable-theme 'dracula))
+  (enable-theme 'modus-vivendi))
 
 (use-package avy
   :bind (("C-c SPC" . avy-goto-word-1)))
@@ -147,7 +147,7 @@
 (require 'subr-x)
 
 (use-package exec-path-from-shell
-  :if my-is-gui
+  :if (display-graphic-p)
   :defer 1
   :custom
   (exec-path-from-shell-arguments '("-l"))
