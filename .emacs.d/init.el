@@ -700,6 +700,11 @@
 
 (use-package youtube-dl
   :after elfeed
+  :custom
+  (youtube-dl-program "yt-dlp")
+  (youtube-dl-arguments (list "--no-colors" "--no-mtime" "--restrict-filenames" "-f" "[height<=?720]/best"))
+  (youtube-dl-directory "~/youtube/feed")
+
   :config
 
   (require 'cl-lib)
@@ -725,14 +730,7 @@
 
   (define-key elfeed-show-mode-map "d" 'elfeed-show-youtube-dl)
   (define-key elfeed-search-mode-map "d" 'elfeed-search-youtube-dl)
-  (define-key elfeed-search-mode-map "L" 'youtube-dl-list)
-
-  (setq
-   youtube-dl-arguments (list "--no-mtime" "--restrict-filenames" "-f" "[height<=?720]/best")
-   youtube-dl-directory "~/youtube/feed"))
-
-(use-package olivetti
-  :hook (elfeed-show-mode . olivetti-mode))
+  (define-key elfeed-search-mode-map "L" 'youtube-dl-list))
 
 (use-package pass)
 
