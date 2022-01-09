@@ -787,11 +787,6 @@
 
 (use-package nix-mode)
 
-(use-package company-nixos-options
-  :after nix-mode
-  :config
-  (add-to-list 'company-backends 'company-nixos-options))
-
 (use-package tree-sitter
   :config
   (global-tree-sitter-mode)
