@@ -34,7 +34,7 @@ config.bind(';M', 'hint links spawn mpv {hint-url}')
 # comment sections of reddit/hackernews
 c.hints.selectors['comments'] = [
     '[class*="expand"]',
-    '[class="togg"]',
+    '[class*="togg"]',
     '[class="comment-meta"]',
 ]
 config.bind(';c', 'hint comments')
