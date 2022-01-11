@@ -69,8 +69,8 @@ in {
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url =
-        "https://github.com/nix-community/emacs-overlay/archive/640ff172f47d3c6ae959494b888f19a75d41ffbd.tar.gz";
-      sha256 = "1r9fnd9kc8vgkr9d4w29zmc534ks5a9dqh096h667l12n7vlyjvx";
+        "https://github.com/nix-community/emacs-overlay/archive/d223b464c6edffe88015c390cc137ee2eab64090.tar.gz";
+      sha256 = "0sf9w7a15f504lwpcml76rav3chvzdhf63m3mkc1qycfrh32r5cj";
     }))
   ];
 
@@ -94,7 +94,7 @@ in {
     gopls
     htop
     emacsPgtkGcc
-    unstable.notmuch # follow master in emacs
+    notmuch
     gmailieer
     aspell
     ripgrep
