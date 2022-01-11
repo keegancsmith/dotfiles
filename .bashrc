@@ -76,6 +76,13 @@ function repo {
     done
 }
 
+# pass with fzf
+function pass-fzf {
+    d=$(find ~/.password-store/ -name '*.gpg' -printf '%P\n' | rev | cut -b 5- | rev | fzf --select-1)
+    echo
+    pass "$@" "$d"
+}
+
 # Alias's
 alias la="ls -A"
 alias ll="ls -l"
