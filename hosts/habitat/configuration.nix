@@ -176,11 +176,15 @@ in {
 
   services.unbound.enable = true;
 
-  services.avahi.enable = true;
-  services.avahi.nssmdns = true;
-  services.avahi.publish.addresses = true;
-  services.avahi.publish.domain = true;
-  services.avahi.publish.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    publish = {
+      addresses = true;
+      domain = true;
+      enable = true;
+    };
+  };
 
   services.keybase.enable = true;
 
@@ -235,7 +239,7 @@ in {
       ];
 
       allowedUDPPortRanges = [
-        # mosh 
+        # mosh
         {
           from = 60000;
           to = 60010;
