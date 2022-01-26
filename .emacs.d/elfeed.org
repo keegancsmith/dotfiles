@@ -34,6 +34,7 @@
 *** https://nautil.us/rss/all
 *** https://www.fredrikholmqvist.com/posts/index.xml
 *** https://christine.website/blog.rss
+*** https://philipjoubert.com/rss/
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
