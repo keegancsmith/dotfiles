@@ -9,3 +9,6 @@
 # Home and end
 "\e[H": beginning-of-line
 "\e[F": end-of-line
+
+# Couldn't copy paste into psql without this
+set enable-bracketed-paste on
