@@ -27,6 +27,9 @@ c.url.searchengines = {
     'ss': 'https://sourcegraph.com/search?q=context:%40keegan+{}&patternType=regexp',
 }
 
+# yank org-mode link
+config.bind('yo', 'yank inline [[{url}][{title}]]')
+
 # stop closing tabs by mistake
 config.unbind("d")
 config.bind(",d", "tab-close")
