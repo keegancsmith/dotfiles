@@ -17,7 +17,8 @@ with config.pattern('*://github.com') as p:
 with config.pattern('*://sourcegraph.grafana.net') as p:
     p.content.javascript.can_access_clipboard = True
 
-with config.pattern('*://www.powerlanguage.co.uk') as p:
+# Wordle
+with config.pattern('*://www.nytimes.com') as p:
     p.content.javascript.can_access_clipboard = True
 
 c.url.searchengines = {
