@@ -137,7 +137,7 @@ in {
     man-pages
     man-pages-posix
     signal-desktop
-    obs-studio
+    unstable.obs-studio
     btrfs-progs
   ];
 
