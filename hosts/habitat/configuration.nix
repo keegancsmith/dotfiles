@@ -246,6 +246,17 @@ in {
         }
       ];
     };
+
+    interfaces.enp5s0 = {
+      allowedUDPPortRanges = [
+        # mosh
+        {
+          from = 60000;
+          to = 60010;
+        }
+      ];
+    };
+
   };
 
   networking.hosts = { "127.0.0.1" = [ "sourcegraph.test" ]; };
