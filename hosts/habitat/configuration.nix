@@ -69,8 +69,8 @@ in {
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url =
-        "https://github.com/nix-community/emacs-overlay/archive/588aced1ae8ad4107d9705649c69a35e7919f409.tar.gz";
-      sha256 = "08v9gb6q4lvczgb5mmj46q23n4gfcxnqzjamb4ld20iwmh07s6id";
+        "https://github.com/nix-community/emacs-overlay/archive/ba0e667840fabccfac038e2150c302f0d1e98fe1.tar.gz";
+      sha256 = "0y6lf09rslm7nwgpxrfszfvh1rqxsx5f8p2hv28przmal553yjv6";
     }))
   ];
 
