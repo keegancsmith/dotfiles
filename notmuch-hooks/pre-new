@@ -6,4 +6,4 @@ cd ~/.mail/gmail
 gmi sync
 
 cd ~/.mail/sourcegraph
-gmi sync
+test -f ~/VACATION || gmi sync
