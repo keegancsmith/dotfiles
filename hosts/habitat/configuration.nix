@@ -139,6 +139,7 @@ in {
     signal-desktop
     unstable.obs-studio
     btrfs-progs
+    unstable.minecraft
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
