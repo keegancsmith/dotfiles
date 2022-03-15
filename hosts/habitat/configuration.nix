@@ -140,6 +140,8 @@ in {
     unstable.obs-studio
     btrfs-progs
     unstable.minecraft
+    xautolock
+    xss-lock
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
@@ -174,6 +176,9 @@ in {
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.forwardX11 = true;
+
+  # SOC2 compliance requires an AV
+  services.clamav.daemon.enable = true;
 
   services.tailscale.enable = true;
 

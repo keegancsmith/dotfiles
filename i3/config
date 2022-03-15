@@ -13,6 +13,9 @@ font pango:Hack 8
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+# SOC2 compliance requires a screen locker
+exec xautolock -time 5 -locker i3lock
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
