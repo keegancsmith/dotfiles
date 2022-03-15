@@ -143,11 +143,13 @@ in {
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
 
-  # Needed for nix-direnv. Prevents GC.
+  # Needed for nix-direnv. Prevents GC. Also try out nix flakes
   nix.extraOptions = ''
     keep-outputs = true
     keep-derivations = true
+    experimental-features = nix-command flakes
   '';
+  nix.package = unstable.nixFlakes;
   environment.pathsToLink = [ "/share/nix-direnv" ];
 
   # Some programs need SUID wrappers, can be configured further or are
