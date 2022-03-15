@@ -38,7 +38,7 @@ notmuch tag -unread -inbox -- tag:new and tag:gh and to:your_activity@noreply.gi
 notmuch tag -unread -inbox -- tag:new and tag:gh and to:push@noreply.github.com
 
 #### Emails to shared inbox I can't unsubscribe to
-notmuch tag --remove-all +trash tag:new from:notifications@npmjs.com subject:"Successfully published @sourcegraph"
+notmuch tag --remove-all +trash tag:new from:"'npm' via dev" subject:"Successfully published @sourcegraph"
 notmuch tag --remove-all +trash tag:new from:nobody@mozilla.org subject:"signed and ready to download"
 notmuch tag --remove-all +trash tag:new from:admin@sourcegraph.com subject:"Namecheap Renewals"
 notmuch tag --remove-all +trash tag:new from:support@buildkite.com subject:"Invoice"
