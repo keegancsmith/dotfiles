@@ -142,6 +142,7 @@ in {
     unstable.minecraft
     xautolock
     xss-lock
+    unstable.difftastic
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
