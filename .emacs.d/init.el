@@ -181,6 +181,8 @@
   :hook
   (go-mode  . lsp-deferred)
   (zig-mode . lsp-deferred)
+  :custom
+  (lsp-client-packages '(lsp-go lsp-zig))
   :bind (:map lsp-mode-map
               ("C-c C-j" . lsp-find-definition)
               ("C-c C-o d". lsp-describe-thing-at-point)
