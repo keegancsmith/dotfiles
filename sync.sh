@@ -22,7 +22,8 @@ REPO=$(pwd)
 
 dotfiles=".bash_logout .bash_profile .bashrc .emacs.d \
           .hgrc .inputrc .screenrc .vimrc .gitconfig \
-          .bash_darwin .gitignore_global .zshrc .zshenv .notmuch-config"
+          .bash_darwin .gitignore_global .zshrc .zshenv \
+          .notmuch-config .tmux.conf"
 for f in $dotfiles; do
     conditionallink "${REPO}/${f}" "${HOME}/${f}"
 done
