@@ -7,7 +7,7 @@ l = log --color --graph --pretty=format:'%C(yellow)%h%Creset %s%C(yellow)%d\n%C(
 st = status
 b = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(align:20,left)%(color:yellow)%(refname:short)%(color:reset)%(end) %(objectname:short)%(color:reset) %(color:blue)%(upstream:track)%(color:reset) %(contents:subject) (%(color:green)%(committerdate:relative)%(color:reset))'
 br = branch -vv
-feature = !sh -c 'git checkout --no-track -b $0 origin/main'
+feature = !sh -c 'git checkout --no-track -b k/`date "+%Y%m%d"`-$0 origin/main'
 set-upstream = !sh -c 'git branch --set-upstream-to=origin/master `git rev-parse --abbrev-ref HEAD`'
 cherry-pick-branch = !sh -c 'git cherry-pick `git merge-base HEAD $0`..$0'
 	pr = !github-push-pr
