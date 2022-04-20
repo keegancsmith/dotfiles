@@ -28,5 +28,8 @@ disabled = true
 [gcloud]
 disabled = true
 
+[buf]
+disabled = true
+
 [nix_shell]
 format = '[❄️ $name]($style) '
