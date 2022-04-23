@@ -1,6 +1,6 @@
 # Some customizations
 export LC_ALL=en_US.UTF-8
-export EDITOR=vim
+export EDITOR=nvim
 export HISTCONTROL=ignoreboth:erasedups
 export HISTFILESIZE=80000
 export HISTSIZE=20000
@@ -89,6 +89,7 @@ alias ll="ls -l"
 alias grep="grep --color=auto"
 alias o="xdg-open"
 alias kname='kubectl get -o jsonpath={.items[0].metadata.name}'
+alias vim=nvim
 
 if ! command -v open &> /dev/null; then
     alias open='xdg-open'
