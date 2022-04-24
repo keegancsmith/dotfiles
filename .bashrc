@@ -38,6 +38,9 @@ case $TERM in
     alacritty*|kitty*)
         export TERM=xterm-256color
         ;;
+    screen*)
+        export TERM=screen-256color
+        ;;
 esac
 
 # Enable colors for ls, etc.

@@ -113,6 +113,7 @@ in {
     (pass.withExtensions (ext: [ ext.pass-otp ]))
     rofi-pass
     screen
+    tmux
     watchman
     youtube-dl
     python39Packages.yt-dlp
