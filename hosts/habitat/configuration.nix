@@ -179,9 +179,6 @@ in {
   services.openssh.enable = true;
   services.openssh.forwardX11 = true;
 
-  # SOC2 compliance requires an AV
-  services.clamav.daemon.enable = true;
-
   services.tailscale.enable = true;
 
   services.unbound.enable = true;
