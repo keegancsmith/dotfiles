@@ -64,5 +64,8 @@ config.bind(',w', 'spawn --userscript ' + userscript('org-capture.py'))
 # password_fill from upstream
 config.bind(',p', 'spawn --userscript ' + userscript('password_fill'))
 
+# send URL to my work macbook
+config.bind(',m', 'spawn ssh 100.116.165.93 open {url}')
+
 config.bind(',a', 'insert-text Co-authored-by: Stefan Hengl <stefan@sourcegraph.com>')
 config.bind(',A', 'insert-text Co-authored-by: @stefanhengl')
