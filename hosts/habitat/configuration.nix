@@ -103,7 +103,6 @@ in {
     qutebrowser
     google-chrome
     spotify
-    slack
     mpv
     ledger
     jq
@@ -144,6 +143,7 @@ in {
     xautolock
     xss-lock
     unstable.difftastic
+    synergy
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
@@ -243,6 +243,9 @@ in {
       allowedTCPPorts = [
         # rclone webdav port for org-files <-> beorg
         8780
+
+        # synergy
+        24800
       ];
 
       allowedUDPPortRanges = [
