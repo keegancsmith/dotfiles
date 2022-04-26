@@ -71,7 +71,7 @@ def test_org_headline():
     for url, title, want in cases:
         got = org_headline(url, title)
         assert want == got
-    
+
 def org_entry(url, title):
     time = datetime.datetime.now().strftime('[%Y-%m-%d %a %H:%M]')
     if headline := org_headline(url, title):
@@ -89,7 +89,7 @@ def main():
         has_trailing_newline = f.read()[-1] == '\n'
     if not has_trailing_newline:
         entry = '\n' + entry
-    
+
     with open(inbox, 'a') as f:
         f.write(entry)
 

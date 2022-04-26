@@ -123,10 +123,6 @@ in {
     xclip
     alacritty
     kitty
-    kubectl
-    kubectx
-    google-cloud-sdk
-    cloud-sql-proxy
     lsof
     nixfmt
     mupdf
