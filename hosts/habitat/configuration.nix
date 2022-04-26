@@ -86,12 +86,12 @@ in {
     git
     git-up
     unstable.git-branchless
-    go
-    golangci-lint
+    unstable.go
+    unstable.golangci-lint
     python3
     direnv
     nix-direnv
-    gopls
+    unstable.gopls
     htop
     emacsPgtkGcc
     notmuch
@@ -99,7 +99,7 @@ in {
     aspell
     ripgrep
     bash
-    starship
+    unstable.starship
     qutebrowser
     google-chrome
     spotify
