@@ -140,6 +140,7 @@ in {
     xss-lock
     unstable.difftastic
     synergy
+    unzip
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
@@ -265,7 +266,11 @@ in {
 
   };
 
-  networking.hosts = { "127.0.0.1" = [ "sourcegraph.test" ]; };
+  networking.hosts = {
+    "127.0.0.1" = [ "sourcegraph.test" ];
+    "100.100.74.50" = [ "cliche" ];
+    "100.116.165.93" = [ "real" ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
