@@ -35,7 +35,7 @@ done
 # Fallback to more general TERM for terminal emulators I use. Mostly useful
 # for SSH onto machines without the corresponding terminfo.
 case $TERM in
-    alacritty*|kitty*)
+    alacritty*|*kitty*)
         export TERM=xterm-256color
         ;;
     screen*)
