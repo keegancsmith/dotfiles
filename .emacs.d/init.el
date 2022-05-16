@@ -174,7 +174,8 @@
 (use-package company
   :hook (nix-mode . company-mode))
 
-(use-package lsp-ui)
+(use-package lsp-ui
+  :after lsp-mode)
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
@@ -655,8 +656,6 @@
     (setq word-wrap t))
   (add-hook 'gfm-mode-hook #'my-gfm-mode-hook))
 
-(use-package typescript-mode)
-
 (use-package unfill
   :bind ("M-Q" . unfill-paragraph))
 
@@ -672,6 +671,8 @@
   ("C-c o" . link-hint-open-link))
 
 (use-package notmuch
+  :commands (notmuch)
+  :bind (("C-c m" . notmuch))
   :if (string= (system-name) "habitat"))
 
 (use-package messages-are-flowing
@@ -685,7 +686,8 @@
    nndraft-directory "~/.news/drafts"))
 
 ;; https://github.com/skeeto/.emacs.d/blob/master/etc/feed-setup.el
-(use-package elfeed)
+(use-package elfeed
+  :commands (elfeed))
 
 (use-package elfeed-org
   :after elfeed
@@ -733,7 +735,9 @@
   :config
   (auth-source-pass-enable))
 
-(use-package ledger-mode)
+(use-package ledger-mode
+  :commands (ledger-mode)
+  :mode (("\\.ledger\\'" . ledger-mode)))
 
 (use-package rg
   :config
