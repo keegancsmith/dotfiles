@@ -155,6 +155,16 @@
   :config
   (exec-path-from-shell-initialize))
 
+(use-package savehist
+  :unless noninteractive
+  :config
+  (savehist-mode 1))
+
+(use-package saveplace
+  :unless noninteractive
+  :config
+  (save-place-mode 1))
+
 (use-package go-mode
   :config
   (defun my-go-mode-hook ()
