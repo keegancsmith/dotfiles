@@ -794,6 +794,14 @@
 
 (use-package zig-mode)
 
+(use-package bongo
+  :custom
+  (bongo-custom-backend-matchers '((mpv (local-file) "opus")))
+  (bongo-default-directory "~/youtube/music/feed")
+  :config
+  (add-to-list 'bongo-audio-file-name-extensions "opus")
+  :commands (bongo))
+
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
   (if (file-exists-p file)
