@@ -21,6 +21,10 @@ with config.pattern('*://sourcegraph.grafana.net') as p:
 with config.pattern('*://www.nytimes.com') as p:
     p.content.javascript.can_access_clipboard = True
 
+# I pretty much never say yes here. Also bypasses sourcegraph dev env wanting
+# to speak to wss even on http.
+c.content.tls.certificate_errors = 'ask-block-thirdparty'
+
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
     's': 'https://sourcegraph.com/search?q=context:global+{}&patternType=regexp',
