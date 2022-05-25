@@ -162,3 +162,8 @@ bar {
 # luckily seems to just float the "meeting loading" and the zoom
 # notifications.
 for_window [title="^zoom$"] floating enable
+
+assign [class="emacs"] 1
+assign [class="qutebrowser"] 2
+assign [class="zoom"] 3
+assign [class="mpv"] 4
