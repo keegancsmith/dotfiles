@@ -97,6 +97,9 @@ in {
     notmuch
     gmailieer
     aspell
+    aspellDicts.en
+    aspellDicts.en-computers
+    aspellDicts.en-science
     ripgrep
     bash
     unstable.starship
