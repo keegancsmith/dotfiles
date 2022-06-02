@@ -86,7 +86,7 @@ in {
     git
     git-up
     unstable.git-branchless
-    unstable.go
+    unstable.go_1_18
     unstable.golangci-lint
     python3
     direnv
