@@ -297,7 +297,7 @@
 (defun consult-git ()
   "Find file in the current Git repository."
   (interactive)
-  (let* ((default-directory (funcall consult-project-root-function))
+  (let* ((default-directory (funcall consult-project-function))
          (cmd "git ls-files -z --full-name --")
          (cands (split-string (shell-command-to-string cmd) "\0" t))
          (file (completing-read "Find file: " cands nil t)))
@@ -352,13 +352,7 @@
 
   ;; Use Consult to select xref locations with preview
   (setq xref-show-xrefs-function #'consult-xref
-        xref-show-definitions-function #'consult-xref)
-
-  ;; Configure a function which returns the project root directory.
-  (setq consult-project-root-function
-        (lambda ()
-          (when-let (project (project-current))
-            (car (project-roots project))))))
+        xref-show-definitions-function #'consult-xref))
 
 (use-package helpful
   :bind (("C-h f" . helpful-callable)
