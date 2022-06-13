@@ -12,7 +12,7 @@ Just run `./sync.sh` and make sure the external programs are installed.
 OS X
 ====
 
-I use brew to install all the program I care about: `./brew-install.sh`
+I use brew to install all the program I care about: `brew bundle`
 
 Additionally the following settings are toggled:
 
