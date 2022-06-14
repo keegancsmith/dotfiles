@@ -24,6 +24,7 @@ notmuch tag -unread -inbox +muted -- tag:new and 'thread:{tag:muted}'
 
 #### Notify bots
 notmuch tag -unread -flagged -- tag:new and tag:gh and from:sourcegraph-bot and "codenotify report"
+notmuch tag -unread -flagged -- tag:new and tag:gh and 'from:sourcegraph-bot-2' and 'label was applied to the issue'
 notmuch tag -unread -flagged -- tag:new and tag:gh and 'from:github-actions[bot]' and 'label was applied to the issue'
 
 #### Low signal
