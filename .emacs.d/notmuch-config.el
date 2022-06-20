@@ -7,7 +7,7 @@
 (global-set-key (kbd "C-c m") 'notmuch)
 
 ;; org notmuch links
-(require 'ol-notmuch)
+(straight-use-package 'ol-notmuch)
 
 (setq
  ;; when archiving a thread I like to also mark it as read
