@@ -555,6 +555,8 @@
       "* TODO %?\n  %U")
      ("C" "Task with context" entry (file "~/org-files/inbox.org")
       "* TODO %?\n  %U\n%a")
+     ("b" "Browser" entry (file "~/org-files/inbox.org")
+      "* TODO %(my-browser-link)\n%U")
      ("w" "Week Plan" entry (file+olp+datetree current-journal-filename)
       (file "~/org-files/week-plan.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
      ("d" "Day Plan" entry (file+olp+datetree current-journal-filename)
