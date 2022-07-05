@@ -24,7 +24,7 @@
 
 (when (display-graphic-p)
   (set-frame-font "Hack" nil t)
-  (set-face-attribute 'default nil :font "Hack" :height 120)
+  (set-face-attribute 'default nil :font "Hack" :height 140)
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8"))
 
