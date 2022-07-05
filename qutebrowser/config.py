@@ -17,8 +17,7 @@ with config.pattern('*://github.com') as p:
 with config.pattern('*://sourcegraph.grafana.net') as p:
     p.content.javascript.can_access_clipboard = True
 
-# Wordle
-with config.pattern('*://www.nytimes.com') as p:
+with config.pattern('*://pkg.go.dev') as p:
     p.content.javascript.can_access_clipboard = True
 
 # I pretty much never say yes here. Also bypasses sourcegraph dev env wanting
