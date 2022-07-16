@@ -144,6 +144,8 @@ in {
     unstable.difftastic
     synergy
     unzip
+    comma
+    nix-index
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
