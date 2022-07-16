@@ -2,6 +2,9 @@
 
 # OS X specific bash config
 
+# Don't use qutebrowser on mac
+unset BROWSER
+
 # /usr/local is brew --prefix
 if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion

@@ -1,6 +1,7 @@
 # Some customizations
 export LC_ALL=en_US.UTF-8
 export EDITOR=nvim
+export BROWSER=qutebrowser
 export HISTCONTROL=ignoreboth:erasedups
 export HISTFILESIZE=80000
 export HISTSIZE=20000
