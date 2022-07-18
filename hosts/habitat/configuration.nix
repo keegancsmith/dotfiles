@@ -272,7 +272,7 @@ in {
   };
 
   networking.hosts = {
-    "127.0.0.1" = [ "sourcegraph.test" ];
+    "127.0.0.1" = [ "sourcegraph" "sourcegraph.test" ];
     "100.100.74.50" = [ "cliche" ];
     "100.116.165.93" = [ "real" ];
   };
