@@ -6,9 +6,6 @@
 
 (global-set-key (kbd "C-c m") 'notmuch)
 
-;; org notmuch links
-(straight-use-package 'ol-notmuch)
-
 (setq
  ;; when archiving a thread I like to also mark it as read
  notmuch-archive-tags '("-inbox" "-unread")

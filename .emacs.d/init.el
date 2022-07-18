@@ -682,6 +682,10 @@
   :bind (("C-c m" . notmuch))
   :if (string= (system-name) "habitat"))
 
+;; org notmuch links
+(use-package ol-notmuch
+  :after notmuch)
+
 (use-package messages-are-flowing
   :config
   (add-hook 'message-mode-hook 'messages-are-flowing-use-and-mark-hard-newlines))
