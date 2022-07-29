@@ -476,6 +476,11 @@
          ("C-c C-x C-j" . org-clock-goto))
   :config
 
+  ;; use my fork of ox-gfm which supports backticks in example export.
+  (straight-use-package
+   '(ox-gfm :type git :host github :repo "keegancsmith/ox-gfm"))
+  (require 'ox-gfm)
+
   (defun org-insert-inactive-time-stamp ()
     "Insert an inactive time stamp."
     (interactive)
@@ -572,9 +577,6 @@
       "* %? %U\n" :empty-lines 1))))
 
 (use-package org-contrib
-  :after org)
-
-(use-package ox-gfm
   :after org)
 
 (use-package ob-go
