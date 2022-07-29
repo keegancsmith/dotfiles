@@ -682,7 +682,7 @@
 (use-package notmuch
   :commands (notmuch)
   :bind (("C-c m" . notmuch))
-  :if (string= (system-name) "habitat"))
+  :if (string= (system-name) "real.local"))
 
 ;; org notmuch links
 (use-package ol-notmuch
