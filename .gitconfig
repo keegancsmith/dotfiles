@@ -52,3 +52,5 @@ compactionHeuristic = true
 	conflictStyle = diff3
 [pull]
   rebase = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
