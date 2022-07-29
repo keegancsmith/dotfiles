@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+# manually installed gmi on mac
+export PATH="/Users/keegan/src/github.com/gauteh/lieer/venv/bin:$PATH"
+
 cd ~/.mail/gmail
 gmi sync
 
