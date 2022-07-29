@@ -69,8 +69,8 @@ in {
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url =
-        "https://github.com/nix-community/emacs-overlay/archive/ba0e667840fabccfac038e2150c302f0d1e98fe1.tar.gz";
-      sha256 = "0y6lf09rslm7nwgpxrfszfvh1rqxsx5f8p2hv28przmal553yjv6";
+        "https://github.com/nix-community/emacs-overlay/archive/26386599653aa6040645f99a7446c47eefee05c4.tar.gz";
+      sha256 = "00sc540a8dmn0ya3kngi9risk6cins2ww8cj9hr57p49443h49ag";
     }))
   ];
 
@@ -85,7 +85,6 @@ in {
     wget
     git
     git-up
-    unstable.git-branchless
     unstable.go_1_18
     unstable.golangci-lint
     python3
