@@ -93,8 +93,6 @@ in {
     unstable.gopls
     htop
     emacsPgtkGcc
-    notmuch
-    gmailieer
     aspell
     aspellDicts.en
     aspellDicts.en-computers
