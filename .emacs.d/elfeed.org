@@ -36,6 +36,7 @@
 *** https://christine.website/blog.rss
 *** https://philipjoubert.com/rss/
 *** https://commaok.xyz/index.xml
+*** https://herman.bearblog.dev/feed/
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
