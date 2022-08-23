@@ -70,6 +70,7 @@
   (compilation-scroll-output 'first-error)
   (tramp-default-method "sshx")
   (ispell-dictionary "british")
+  (warning-minimum-level :error)
   (world-clock-list '(("Africa/Johannesburg" "Cape Town")
    ("America/Los_Angeles" "San Francisco")
    ("Europe/London" "London")
