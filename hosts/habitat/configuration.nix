@@ -92,7 +92,7 @@ in {
     nix-direnv
     unstable.gopls
     htop
-    emacsPgtkGcc
+    emacsPgtkNativeComp
     aspell
     aspellDicts.en
     aspellDicts.en-computers
@@ -170,7 +170,7 @@ in {
 
   documentation.dev.enable = true;
 
-  services.emacs.package = pkgs.emacsPgtkGcc;
+  services.emacs.package = pkgs.emacsPgtkNativeComp;
 
   # List services that you want to enable:
 
