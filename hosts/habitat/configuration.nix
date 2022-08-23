@@ -85,7 +85,7 @@ in {
     wget
     git
     git-up
-    unstable.go_1_18
+    unstable.go_1_19
     unstable.golangci-lint
     python3
     direnv
