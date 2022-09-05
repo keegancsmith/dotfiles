@@ -38,6 +38,9 @@ notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into release
 notmuch tag -unread -inbox -- tag:new and tag:gh and to:your_activity@noreply.github.com
 notmuch tag -unread -inbox -- tag:new and tag:gh and to:push@noreply.github.com
 
+#### Finally put all GitHub notifications in own inbox
+notmuch tag -inbox +gh-inbox -- tag:new and tag:gh and tag:inbox
+
 #### Emails to shared inbox I can't unsubscribe to
 notmuch tag --remove-all +trash tag:new from:"'npm' via dev" subject:"Successfully published @sourcegraph"
 notmuch tag --remove-all +trash tag:new from:nobody@mozilla.org subject:"signed and ready to download"

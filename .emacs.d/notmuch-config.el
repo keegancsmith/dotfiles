@@ -8,7 +8,7 @@
 
 (setq
  ;; when archiving a thread I like to also mark it as read
- notmuch-archive-tags '("-inbox" "-unread")
+ notmuch-archive-tags '("-inbox" "-unread" "-gh-inbox")
 
  ;; on gmail sync we will get the file, we don't need to create the sent mail
  notmuch-fcc-dirs nil)
