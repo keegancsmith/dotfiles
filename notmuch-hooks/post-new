@@ -8,7 +8,7 @@ notmuch tag -unread -inbox -- tag:new and from:keegan@sourcegraph.com
 notmuch tag +gh -- tag:new and from:notifications@github.com
 
 #### GitHub flag when people mention me
-notmuch tag +flagged +gh/mention -- tag:new and tag:gh and -from:keegan and '(body:keegan or body:keegancsmith)'
+notmuch tag +flagged +gh/mention -- tag:new and tag:gh and -from:keegan and '(body:keegan or body:keegancsmith)' and -from:sourcegraph-bot
 
 #### Gerrit
 notmuch tag +gerrit -- tag:new and from:gerritcodereview
