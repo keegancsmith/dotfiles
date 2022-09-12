@@ -26,6 +26,7 @@ fi
 paths=(
     "/usr/local/bin"
     "/usr/local/opt/go/libexec/bin"
+    "$HOME/.cargo/bin"
     "$GOBIN"
     "$HOME/bin"
 )
