@@ -23,6 +23,7 @@ in {
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware.opengl.enable = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   services.xserver = {
     enable = true;
