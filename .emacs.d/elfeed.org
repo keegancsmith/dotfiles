@@ -31,7 +31,7 @@
 *** https://blog.qutebrowser.org/feeds/all.atom.xml
 *** https://benhoyt.com/writings/rss.xml
 *** https://lucumr.pocoo.org/feed.atom
-*** https://nautil.us/rss/all
+*** https://nautil.us/rss/
 *** https://www.fredrikholmqvist.com/posts/index.xml
 *** https://christine.website/blog.rss
 *** https://philipjoubert.com/rss/
