@@ -527,14 +527,13 @@
   (require 'ob-awk)
   (require 'ob-python)
 
-  (setq current-journal-filename "~/org-files/journals/2022/2022-09-Sep.org")
-
   (setq
+   current-journal-filename "~/org-files/journals/2022/2022-10-Oct.org"
    org-agenda-files '("~/org-files"
                       "~/org-files/journals/2021"
                       "~/org-files/journals/2022")
-   org-refile-targets '((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
-                        (("~/org-files/journals/2022/2022-09-Sep.org") :maxlevel . 1))
+   org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
+                        ((,current-journal-filename) :maxlevel . 1))
    org-archive-location "%s_archive::datetree/"
    org-deadline-warning-days 14
    org-default-notes-file "~/org-files/inbox.org"
