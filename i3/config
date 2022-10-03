@@ -162,8 +162,10 @@ assign [class="emacs"] 1
 assign [class="qutebrowser"] 2
 assign [class="zoom"] 3
 assign [class="mpv"] 4
+assign [class="discord"] 5
 
 exec emacs
 exec qutebrowser
 exec synergy
 exec caffeine
+exec discord

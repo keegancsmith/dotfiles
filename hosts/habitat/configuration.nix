@@ -145,6 +145,7 @@ in {
     comma
     nix-index
     caffeine-ng
+    unstable.discord
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
