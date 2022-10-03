@@ -15,6 +15,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # screen locker
 exec xautolock -time 30 -locker i3lock
+bindsym $mod+l exec "loginctl lock-session"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -32,12 +33,6 @@ bindsym $mod+d exec "rofi -modi combi -combi-modi window,drun,run -show combi"
 bindsym $mod+p exec "rofi-pass"
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
