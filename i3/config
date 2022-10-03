@@ -166,3 +166,4 @@ assign [class="mpv"] 4
 exec emacs
 exec qutebrowser
 exec synergy
+exec caffeine

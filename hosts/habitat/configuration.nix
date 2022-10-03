@@ -144,6 +144,7 @@ in {
     unzip
     comma
     nix-index
+    caffeine-ng
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font ];
