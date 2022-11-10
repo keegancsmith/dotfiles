@@ -166,6 +166,5 @@ assign [class="discord"] 5
 
 exec emacs
 exec qutebrowser
-exec synergy
 exec caffeine
 exec discord
