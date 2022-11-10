@@ -44,6 +44,7 @@ notmuch tag -inbox +gh-inbox -- tag:new and tag:gh and tag:inbox
 #### Emails to shared inbox I can't unsubscribe to
 notmuch tag --remove-all +trash tag:new from:"'npm' via dev" subject:"Successfully published @sourcegraph"
 notmuch tag --remove-all +trash tag:new from:nobody@mozilla.org subject:"signed and ready to download"
+notmuch tag --remove-all +trash tag:new from:nobody@mozilla.org subject:"Sourcegraph for Firefox" and subject:"updated"
 notmuch tag --remove-all +trash tag:new from:admin@sourcegraph.com subject:"Namecheap Renewals"
 notmuch tag --remove-all +trash tag:new from:support@buildkite.com subject:"Invoice"
 notmuch tag --remove-all +trash tag:new from:dev@sourcegraph.com subject:"Tracking Issue"
