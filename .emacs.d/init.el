@@ -528,7 +528,7 @@
   (require 'ob-python)
 
   (setq
-   current-journal-filename "~/org-files/journals/2022/2022-10-Oct.org"
+   current-journal-filename "~/org-files/journals/2022/2022-11-Nov.org"
    org-agenda-files '("~/org-files"
                       "~/org-files/journals/2021"
                       "~/org-files/journals/2022")
