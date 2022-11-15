@@ -180,44 +180,26 @@
 (use-package go-fill-struct
   :after go-mode
   :bind (:map go-mode-map
-              ("C-c C-o f". go-fill-struct))
+              ("C-c C-o f" . go-fill-struct))
   :commands (go-fill-struct))
 
 (use-package company
   :hook (nix-mode . company-mode))
 
-(use-package lsp-ui
-  :after lsp-mode)
-
-(use-package lsp-mode
-  :commands (lsp lsp-deferred)
+(use-package eglot
+  :after company
+  :commands (eglot-ensure)
   :hook
-  (go-mode  . lsp-deferred)
-  (zig-mode . lsp-deferred)
-  :custom
-  (lsp-client-packages '(lsp-go lsp-zig))
-  :bind (:map lsp-mode-map
-              ("C-c C-j" . lsp-find-definition)
-              ("C-c C-o d". lsp-describe-thing-at-point)
-              ("C-c C-o h". lsp-symbol-highlight)
-              ("C-c C-o j". lsp-goto-type-definition)
-              ("C-c C-o r". lsp-find-references)
-              ("C-c C-o s". consult-imenu)
-              ("C-c C-o x". lsp-rename)
-              ("C-c C-o z". lsp-describe-session))
+  (go-mode . eglot-ensure)
+
   :config
 
-  (defun lsp-go-install-save-hooks ()
-    (add-hook 'before-save-hook #'lsp-format-buffer t t)
-    (add-hook 'before-save-hook #'lsp-organize-imports t t))
-  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-
-  (setq
-   lsp-enable-file-watchers nil
-   lsp-enable-snippet nil))
-
-(use-package consult-lsp
-  :after (lsp-mode consult))
+  (defun k/eglot-organize-imports ()
+    (call-interactively 'eglot-code-action-organize-imports))
+  (defun k/eglot-format-and-organize ()
+    (add-hook 'before-save-hook #'eglot-format-buffer -10 t)
+    (add-hook 'before-save-hook #'k/eglot-organize-imports nil t))
+  (add-hook 'go-mode-hook #'k/eglot-format-and-organize))
 
 ;; lsp-mode performance tuning [[file:straight/repos/lsp-mode/docs/page/performance.md]]
 (use-package emacs
