@@ -505,6 +505,14 @@
     (interactive)
     (insert-before-markers (my-browser-link)))
 
+  (defun my-org-pull ()
+    "Updates org-files from git remote."
+    (interactive)
+    (org-save-all-org-buffers)
+    (let ((default-directory "~/org-files/"))
+      (magit-pull-from-pushremote '()))
+    (revbufs))
+
   (require 'ob-shell)
   (require 'ob-awk)
   (require 'ob-python)
