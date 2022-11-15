@@ -120,7 +120,7 @@
 
 (display-time-mode 1)
 
-(if (string= (system-name) "cliche")
+(if (not (string= (system-name) "habitat"))
   (display-battery-mode 1))
 
 (global-set-key (kbd "C-c C-c") 'compile)
