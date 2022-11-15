@@ -23,8 +23,8 @@
 (setq straight-use-package-by-default t)
 
 (when (display-graphic-p)
-  (set-frame-font "Hack" nil t)
-  (set-face-attribute 'default nil :font "Hack" :height 140)
+  (set-frame-font "Iosevka" nil t)
+  (set-face-attribute 'default nil :font "Iosevka" :height 120)
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8"))
 

@@ -4,7 +4,7 @@
 
 set $mod Mod4
 
-font pango:Hack 8
+font pango:Iosevka 10
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.

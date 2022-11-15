@@ -148,7 +148,7 @@ in {
     unstable.discord
   ];
 
-  fonts.fonts = with pkgs; [ hack-font go-font ];
+  fonts.fonts = with pkgs; [ hack-font go-font iosevka ];
 
   # Needed for nix-direnv. Prevents GC. Also try out nix flakes
   nix.extraOptions = ''
