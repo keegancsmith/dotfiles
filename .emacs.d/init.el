@@ -167,6 +167,7 @@
   (save-place-mode 1))
 
 (use-package go-mode
+  :hook (before-save . gofmt-before-save)
   :config
   (defun my-go-mode-hook ()
     (if (not (string-match "go" compile-command))
@@ -184,22 +185,13 @@
   :commands (go-fill-struct))
 
 (use-package company
-  :hook (nix-mode . company-mode))
+  :config
+  (global-company-mode))
 
 (use-package eglot
-  :after company
-  :commands (eglot-ensure)
+  :commands (eglot eglot-ensure)
   :hook
-  (go-mode . eglot-ensure)
-
-  :config
-
-  (defun k/eglot-organize-imports ()
-    (call-interactively 'eglot-code-action-organize-imports))
-  (defun k/eglot-format-and-organize ()
-    (add-hook 'before-save-hook #'eglot-format-buffer -10 t)
-    (add-hook 'before-save-hook #'k/eglot-organize-imports nil t))
-  (add-hook 'go-mode-hook #'k/eglot-format-and-organize))
+  (go-mode . eglot-ensure))
 
 ;; lsp-mode performance tuning [[file:straight/repos/lsp-mode/docs/page/performance.md]]
 (use-package emacs
