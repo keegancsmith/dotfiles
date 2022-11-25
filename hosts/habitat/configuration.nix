@@ -56,6 +56,8 @@ in {
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  hardware.sane.enable = true;
+  hardware.sane.extraBackends = [ pkgs.sane-airscan ];
 
   # Enable sound.
   sound.enable = true;
@@ -63,7 +65,7 @@ in {
 
   users.users.keegan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "sound" "plex" ];
+    extraGroups = [ "wheel" "docker" "sound" "plex" "scanner" "lp" ];
   };
 
   # build newer emacs with native-comp and pgtk.
@@ -146,6 +148,7 @@ in {
     nix-index
     caffeine-ng
     unstable.discord
+    gnome.simple-scan
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font iosevka ];
