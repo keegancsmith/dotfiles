@@ -72,8 +72,8 @@ in {
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url =
-        "https://github.com/nix-community/emacs-overlay/archive/26386599653aa6040645f99a7446c47eefee05c4.tar.gz";
-      sha256 = "00sc540a8dmn0ya3kngi9risk6cins2ww8cj9hr57p49443h49ag";
+        "https://github.com/nix-community/emacs-overlay/archive/234b19572a6c0fd9af8f911bdd1ec4dde6e0a7e5.tar.gz";
+      sha256 = "1iz6s1gmk3cp3xgnw9lkxzwrv8iwssvz6k83ixgk8mgmggnkvfwy";
     }))
   ];
 
@@ -237,7 +237,7 @@ in {
   # though this is a desktop machine.
   powerManagement.cpuFreqGovernor = "schedutil";
 
-  nix.allowedUsers = [ "@wheel" ];
+  nix.settings.allowed-users = [ "@wheel" ];
 
   virtualisation.docker.enable = true;
 
