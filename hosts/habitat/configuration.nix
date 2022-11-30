@@ -2,7 +2,7 @@
 
 let unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ./cachix.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
