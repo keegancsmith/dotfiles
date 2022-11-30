@@ -68,7 +68,7 @@ in {
     extraGroups = [ "wheel" "docker" "sound" "plex" "scanner" "lp" ];
   };
 
-  # build newer emacs with native-comp and pgtk.
+  # build newer emacs.
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url =
@@ -95,7 +95,7 @@ in {
     nix-direnv
     unstable.gopls
     htop
-    emacsPgtkNativeComp
+    emacsGitNativeComp
     aspell
     aspellDicts.en
     aspellDicts.en-computers
@@ -176,7 +176,7 @@ in {
 
   documentation.dev.enable = true;
 
-  services.emacs.package = pkgs.emacsPgtkNativeComp;
+  services.emacs.package = pkgs.emacsGitNativeComp;
 
   # List services that you want to enable:
 
