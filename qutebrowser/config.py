@@ -72,5 +72,8 @@ config.bind(',m', 'spawn ssh real open {url}')
 # get URL from my work macbook
 config.bind(',M', 'spawn --userscript ' + userscript('get_url.sh'))
 
+# JH says this is what the cool kids do
+config.bind('tt', 'set-cmd-text -s :tab-select')
+
 config.bind(',a', 'insert-text Co-authored-by: Stefan Hengl <stefan@sourcegraph.com>')
 config.bind(',A', 'insert-text Co-authored-by: @stefanhengl')
