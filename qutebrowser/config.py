@@ -12,13 +12,13 @@ c.auto_save.session = True
 c.content.autoplay = False
 
 with config.pattern('*://github.com') as p:
-    p.content.javascript.can_access_clipboard = True
+    p.content.javascript.clipboard = 'access'
 
 with config.pattern('*://sourcegraph.grafana.net') as p:
-    p.content.javascript.can_access_clipboard = True
+    p.content.javascript.clipboard = 'access'
 
 with config.pattern('*://pkg.go.dev') as p:
-    p.content.javascript.can_access_clipboard = True
+    p.content.javascript.clipboard = 'access'
 
 # I pretty much never say yes here. Also bypasses sourcegraph dev env wanting
 # to speak to wss even on http.
