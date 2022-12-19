@@ -513,8 +513,11 @@
    current-journal-filename "~/org-files/journals/2022/2022-12-Dec.org"
    org-agenda-files '("~/org-files"
                       "~/org-files/journals/2021"
-                      "~/org-files/journals/2022")
+                      "~/org-files/journals/2022"
+                      "~/org-files/journals/2023")
    org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
+                        ;; temp until it is Jan
+                        (("~/org-files/journals/2023/2023-01-Jan.org") :maxlevel . 1)
                         ((,current-journal-filename) :maxlevel . 1))
    org-archive-location "%s_archive::datetree/"
    org-deadline-warning-days 14
