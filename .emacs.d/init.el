@@ -130,6 +130,11 @@
 ;; are opened as text files.
 (add-to-list 'auto-mode-alist '("\\.slide\\'" . text-mode))
 
+;; GC hacks
+(use-package gcmh
+  :config
+  (gcmh-mode 1))
+
 (use-package leuven-theme
   :if (display-graphic-p)
   :config
