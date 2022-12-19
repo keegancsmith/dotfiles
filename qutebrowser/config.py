@@ -13,7 +13,7 @@ c.content.autoplay = False
 
 def enableClipboard(pattern):
     with config.pattern(pattern) as p:
-        if hasattr(p.content.javascript, 'clipboard'): # PyQT6
+        if 'clipboard' in dir(p.content.javascript): # PyQT6
             p.content.javascript.clipboard = 'access'
         else: # Older API
             p.content.javascript.can_access_clipboard = True
