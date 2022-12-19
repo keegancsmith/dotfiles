@@ -11,14 +11,16 @@ c.auto_save.session = True
 
 c.content.autoplay = False
 
-with config.pattern('*://github.com') as p:
-    p.content.javascript.clipboard = 'access'
+def enableClipboard(pattern):
+    with config.pattern(pattern) as p:
+        if hasattr(p.content.javascript, 'clipboard'): # PyQT6
+            p.content.javascript.clipboard = 'access'
+        else: # Older API
+            p.content.javascript.can_access_clipboard = True
 
-with config.pattern('*://sourcegraph.grafana.net') as p:
-    p.content.javascript.clipboard = 'access'
-
-with config.pattern('*://pkg.go.dev') as p:
-    p.content.javascript.clipboard = 'access'
+enableClipboard('*://github.com')
+enableClipboard('*://sourcegraph.grafana.net')
+enableClipboard('*://pkg.go.dev')
 
 # I pretty much never say yes here. Also bypasses sourcegraph dev env wanting
 # to speak to wss even on http.
