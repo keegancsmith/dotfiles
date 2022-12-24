@@ -11,9 +11,13 @@ c.auto_save.session = True
 
 c.content.autoplay = False
 
+# dir or hasattr doesn't work on the config classes, so this is how we check
+# if a config option exists.
+from qutebrowser.config import configdata
+
 def enableClipboard(pattern):
     with config.pattern(pattern) as p:
-        if 'clipboard' in dir(p.content.javascript): # PyQT6
+        if 'content.javascript.clipboard' in configdata.DATA: # PyQT6
             p.content.javascript.clipboard = 'access'
         else: # Older API
             p.content.javascript.can_access_clipboard = True
