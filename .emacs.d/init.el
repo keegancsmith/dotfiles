@@ -516,8 +516,7 @@
 
   (setq
    current-journal-filename "~/org-files/journals/2022/2022-12-Dec.org"
-   org-agenda-files '("~/org-files"
-                      "~/org-files/journals/2021"
+   org-agenda-files '("~/org-files/inbox.org"
                       "~/org-files/journals/2022"
                       "~/org-files/journals/2023")
    org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
