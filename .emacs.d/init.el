@@ -804,6 +804,10 @@
   (add-to-list 'bongo-audio-file-name-extensions "opus")
   :commands (bongo))
 
+(use-package expand-region
+  :bind (("C-+" . er/contract-region)
+         ("C-=" . er/expand-region)))
+
 ;; trying out clojure
 (progn
   (use-package rainbow-delimiters)
