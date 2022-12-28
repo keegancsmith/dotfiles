@@ -50,7 +50,7 @@ config.bind(';M', 'hint links spawn mpv {hint-url}')
 # comment sections of reddit/hackernews
 c.hints.selectors['comments'] = [
     '[class*="expand"]',
-    '[class*="togg"]',
+    '.togg', # hn
     '[class="comment-meta"]',
 ]
 config.bind(';c', 'hint comments')
@@ -60,7 +60,8 @@ c.hints.selectors['story'] = [
     'a[class~="title"]',
     'a[class~="storylink"]',
     'a[class~="comments"]',
-    '.subtext > a[href^="item"]', # hn comment link
+    '.titleline > a', # hn story
+    '.subline > a[href^="item"]', # hn comment link
 ]
 config.bind(';s', 'hint --rapid story tab-bg')
 
