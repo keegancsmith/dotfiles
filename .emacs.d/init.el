@@ -482,11 +482,9 @@
    '(ox-gfm :type git :host github :repo "keegancsmith/ox-gfm"))
   (require 'ox-gfm)
 
-  (defun org-insert-inactive-time-stamp ()
-    "Insert an inactive time stamp."
-    (interactive)
-    (org-insert-time-stamp (current-time) t t))
-  (define-key org-mode-map (kbd "C-c .") 'org-insert-inactive-time-stamp)
+  ;; For some reason "C-c !" doesn't work, so rebind to a key similiar to
+  ;; org-time-stamp
+  (define-key org-mode-map (kbd "C-c C-.") 'org-time-stamp-inactive)
 
   ;; disable org-table-blank-field i'd rather have avy
   (define-key org-mode-map (kbd "C-c SPC") nil)
