@@ -546,6 +546,8 @@
                         ;; temp until it is Jan
                         (("~/org-files/journals/2023/2023-01-Jan.org") :maxlevel . 1)
                         ((,current-journal-filename) :maxlevel . 1))
+   org-refile-use-outline-path 'file
+   org-outline-path-complete-in-steps nil
    org-archive-location "%s_archive::datetree/"
    org-deadline-warning-days 14
    org-default-notes-file "~/org-files/inbox.org"
