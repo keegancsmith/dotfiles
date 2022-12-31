@@ -12,6 +12,7 @@
  ("dired-hacks" . "41d3eb42195d9f0894c20d18cc8e722b099aa1c1")
  ("dockerfile-mode" . "52c6c00da1d31c0b6c29c74335b3af63ed6bf06c")
  ("dumb-jump" . "0a783d1db610ff1dc4e1b7869589cff16ff92f7a")
+ ("eat" . "9a432eef114ecc4f78b6e49dd1c25d11e1143571")
  ("editorconfig-emacs" . "ffd331da5f760723c09e8bc9dd45602a1f5ec488")
  ("eglot" . "e501275e06952889056268dabe08ccd0dbaf23e5")
  ("el-get" . "11affb52e2fb593195dbf64c6439c21f79a18464")

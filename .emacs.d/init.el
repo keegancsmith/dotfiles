@@ -63,6 +63,10 @@
  show-trailing-whitespace t
  indicate-empty-lines t
  indicate-buffer-boundaries 'left)
+(defun my-hide-trailing-whitespace-hook ()
+  (setq show-trailing-whitespace nil
+        indicate-empty-lines nil
+        indicate-buffer-boundaries nil))
 (use-package emacs
   :custom
   (dabbrev-case-fold-search t)
@@ -833,7 +837,8 @@
   :bind (("C-a" . mosey-backward-bounce)
          ("C-e" . mosey-forward-bounce)))
 
-
+(use-package eat
+  :hook (eat-mode . my-hide-trailing-whitespace-hook))
 
 ;; trying out clojure
 (progn
