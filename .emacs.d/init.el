@@ -716,7 +716,8 @@
 
 ;; https://github.com/skeeto/.emacs.d/blob/master/etc/feed-setup.el
 (use-package elfeed
-  :commands (elfeed))
+  :commands (elfeed)
+  :hook (elfeed-show . my-hide-trailing-whitespace-hook))
 
 (use-package elfeed-org
   :after elfeed
