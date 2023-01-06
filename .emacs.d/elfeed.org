@@ -24,14 +24,12 @@
 *** https://www.coryzue.com/feed.xml
 *** http://j.yud.co.za/stories/atom.xml
 *** https://whhone.com/index.xml
-*** https://www.slowernews.com/rss.xml
 *** https://devlog.hexops.com/feed.xml
 *** https://blog.royalsloth.eu/posts/index.xml
 *** https://blog.golang.org/feed.atom
 *** https://blog.qutebrowser.org/feeds/all.atom.xml
 *** https://benhoyt.com/writings/rss.xml
 *** https://lucumr.pocoo.org/feed.atom
-*** https://nautil.us/rss/
 *** https://www.fredrikholmqvist.com/posts/index.xml
 *** https://christine.website/blog.rss
 *** https://philipjoubert.com/rss/
@@ -53,7 +51,6 @@
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UClqoxjo1S73pcBTJs39KYHA][Future Islands]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCqnMk5GA1spXDiHYFcPN-eA][Mac DeMarco]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCXAhoI7XO2kafTMjocm0jCg][Flume]]
-**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCy3DbVl0K1qj0e8jGAOYgPg][Future Classic]]
 *** Skate                                                             :skate:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCt16NSYjauKclK67LCXvQyA][ThrasherMagazine]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCndVTMFzqnWRWR1VggXTM1w][jenkemmag]]
