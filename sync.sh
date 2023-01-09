@@ -60,6 +60,9 @@ esac
 conditionallink "${REPO}/i3" "${HOME}/.config/i3"
 conditionallink "${REPO}/i3status" "${HOME}/.config/i3status"
 
+# rofi-pass
+conditionallink "${REPO}/rofi-pass.conf" "${HOME}/.config/rofi-pass/config"
+
 # notmuch hooks
 conditionallink "${REPO}/notmuch-hooks" "${HOME}/.mail/.notmuch/hooks"
 
