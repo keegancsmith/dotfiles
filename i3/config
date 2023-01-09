@@ -30,7 +30,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -modi combi -combi-modi window,drun,run -show combi"
 
 # rofi-pass
-bindsym $mod+p exec "rofi-pass"
+bindsym $mod+p exec "rofi-pass --last-used"
 
 # change focus
 bindsym $mod+Left focus left
