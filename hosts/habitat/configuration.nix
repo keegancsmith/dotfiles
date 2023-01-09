@@ -123,6 +123,7 @@ in {
     gcc
     mosh
     maim
+    mcfly
     xclip
     alacritty
     kitty

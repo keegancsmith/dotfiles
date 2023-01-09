@@ -104,6 +104,8 @@ shopt -s histappend
 
 eval "$(direnv hook bash)"
 
+[[ $TERM == "dumb" ]] || eval "$(mcfly init bash)"
+
 # avoid fancy prompt for automated interactive ssh such as tramp.
 [[ $TERM == "dumb" ]] || eval "$(starship init bash)"
 
