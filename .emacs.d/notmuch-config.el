@@ -121,7 +121,16 @@
           (my-notmuch-show-browse))
     (notmuch-search-archive-thread)))
 
+(defun my-notmuch-tree-browse ()
+  "Browse to the last URL in a thread. Useful for GitHub notifications."
+  (interactive)
+  (when (save-window-excursion
+          (notmuch-tree-show-message-out)
+          (my-notmuch-show-browse))
+    (notmuch-tree-archive-thread-then-next)))
+
 (define-key notmuch-show-mode-map "B" #'my-notmuch-show-browse)
 (define-key notmuch-search-mode-map "B" #'my-notmuch-search-browse)
+(define-key notmuch-tree-mode-map "B" #'my-notmuch-tree-browse)
 
 ;;; notmuch-config.el ends here
