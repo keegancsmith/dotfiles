@@ -286,6 +286,12 @@ in {
   # Testing default for 23.05
   services.nscd.enableNsncd = true;
 
+  # Plex has a bug which means it never cleanly shutsdown. Use a more
+  # aggressive timeout instead of the default 1m30s.
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=10s
+  '';
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
