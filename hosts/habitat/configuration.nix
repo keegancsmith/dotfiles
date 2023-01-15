@@ -114,6 +114,7 @@ in {
     nmap
     (pass.withExtensions (ext: [ ext.pass-otp ]))
     rofi-pass
+    dtach
     screen
     tmux
     watchman
