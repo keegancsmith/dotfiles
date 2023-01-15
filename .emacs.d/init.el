@@ -544,8 +544,8 @@
                       "~/org-files/journals/2022/2022-12-Dec.org"
                       "~/org-files/journals/2023")
    org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
-                        (("~/org-files/work/projects/2023/single-binary/single-binary.org") :maxlevel . 1)
-                        ((,current-journal-filename) :maxlevel . 1))
+                        (("~/org-files/work/projects/2023/single-binary/single-binary.org") :level . 1)
+                        ((,current-journal-filename) :level . 1))
    org-refile-use-outline-path 'file
    org-outline-path-complete-in-steps nil
    org-archive-location "%s_archive::datetree/"
