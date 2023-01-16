@@ -112,17 +112,6 @@ eval "$(direnv hook bash)"
 # Completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 
-if [[ "$INSIDE_EMACS" = 'vterm' ]] \
-       && [[ -n ${EMACS_VTERM_PATH} ]] \
-       && [[ -f ${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh ]]; then
-	  source ${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh
-
-    find_file() {
-        vterm_cmd find-file "$(realpath "${@:-.}")"
-    }
-fi
-
-# With straight.el the var points at build but we want src
 [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
     source "$EAT_SHELL_INTEGRATION_DIR/bash"
 
