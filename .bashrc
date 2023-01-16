@@ -124,6 +124,6 @@ fi
 
 # With straight.el the var points at build but we want src
 [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
-    source "$HOME/.emacs.d/straight/repos/eat/integration/bash"
+    source "$EAT_SHELL_INTEGRATION_DIR/bash"
 
 true

@@ -840,6 +840,19 @@
   :bind (("C-a" . mosey-backward-bounce)
          ("C-e" . mosey-forward-bounce)))
 
+;; The build recipe in the package registary doesn't include terminfo and
+;; integration dirs which breaks shell integration.
+(straight-register-package
+ '(eat :type git
+       :host codeberg
+       :repo "akib/emacs-eat"
+       :files ("*.el" ("term" "term/*.el") "*.texi"
+               "*.ti" ("terminfo/e" "terminfo/e/*")
+               ("terminfo/65" "terminfo/65/*")
+               ("integration" "integration/*")
+               (:exclude ".dir-locals.el" "*-tests.el")))
+ )
+
 (use-package eat
   :hook (eat-mode . my-hide-trailing-whitespace-hook))
 
