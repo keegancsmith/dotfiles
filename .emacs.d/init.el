@@ -305,7 +305,6 @@
 (use-package consult
   :bind (("C-x b" . consult-buffer)
          ("M-y" . consult-yank-pop)
-         ("<help> a" . consult-apropos)
          ("C-c k" . consult-ripgrep)
          ("C-c g" . consult-git)
 
