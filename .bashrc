@@ -41,7 +41,12 @@ done
 # Fallback to more general TERM for terminal emulators I use. Mostly useful
 # for SSH onto machines without the corresponding terminfo.
 case $TERM in
-    alacritty*|*kitty*|eat*)
+    eat*)
+        # I use a white background in emacs
+        export MCFLY_LIGHT=TRUE
+        export TERM=xterm-256color
+        ;;
+    alacritty*|*kitty*)
         export TERM=xterm-256color
         ;;
     screen*)
