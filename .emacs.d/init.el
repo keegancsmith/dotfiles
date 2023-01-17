@@ -59,14 +59,6 @@
  sentence-end-double-space nil
  font-lock-maximum-decoration t
  vc-follow-symlinks t)
-(setq-default
- show-trailing-whitespace t
- indicate-empty-lines t
- indicate-buffer-boundaries 'left)
-(defun my-hide-trailing-whitespace-hook ()
-  (setq show-trailing-whitespace nil
-        indicate-empty-lines nil
-        indicate-buffer-boundaries nil))
 (use-package emacs
   :custom
   (dabbrev-case-fold-search t)
@@ -112,7 +104,7 @@
   (interactive)
   (insert "Co-authored-by: Stefan Hengl <stefan@sourcegraph.com>"))
 
-;; isearch whitespaces is means .*
+;; isearch whitespaces means .*
 (setq
  search-whitespace-regexp ".*?"
  isearch-lax-whitespace t
@@ -162,6 +154,16 @@
   :unless noninteractive
   :config
   (save-place-mode 1))
+
+;; Allow list for using showing whitespace. Too many modes I don't want it to
+;; do globally.
+(progn
+  (defun show-trailing-whitespace-hook ()
+    (setq show-trailing-whitespace t
+          indicate-empty-lines t
+          indicate-buffer-boundaries 'left))
+  (add-hook 'prog-mode-hook #'show-trailing-whitespace-hook)
+  (add-hook 'org-mode-hook #'show-trailing-whitespace-hook))
 
 (use-package go-mode
   :hook (before-save . gofmt-before-save)
@@ -595,12 +597,12 @@
 (use-package htmlize)
 
 (use-package dired-open
-  :config
-  (setq dired-open-extensions
-        '(
-          ("mp4" . "mpv")
-          ("mkv" . "mpv")
-          )))
+  :custom
+  (dired-open-extensions
+   '(
+     ("mp4" . "mpv")
+     ("mkv" . "mpv")
+     )))
 
 (use-package direnv
  :config
@@ -707,8 +709,7 @@
 
 ;; https://github.com/skeeto/.emacs.d/blob/master/etc/feed-setup.el
 (use-package elfeed
-  :commands (elfeed)
-  :hook (elfeed-show . my-hide-trailing-whitespace-hook))
+  :commands (elfeed))
 
 (use-package elfeed-org
   :after elfeed
@@ -844,8 +845,7 @@
                (:exclude ".dir-locals.el" "*-tests.el")))
  )
 
-(use-package eat
-  :hook (eat-mode . my-hide-trailing-whitespace-hook))
+(use-package eat)
 
 ;; trying out clojure
 (progn
