@@ -139,15 +139,6 @@
   :config
   (gcmh-mode 1))
 
-(use-package leuven-theme
-  :if (display-graphic-p)
-  :config
-  (enable-theme 'leuven))
-
-(unless (display-graphic-p)
-  (load-theme 'modus-vivendi t t)
-  (enable-theme 'modus-vivendi))
-
 (use-package avy
   :bind (("C-c SPC" . avy-goto-word-1)))
 
