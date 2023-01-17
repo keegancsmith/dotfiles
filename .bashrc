@@ -34,10 +34,14 @@ for p in "${paths[@]}"; do
     [ -d "$p" ] && export PATH="$p":"$PATH"
 done
 
+# eat checks that TERM is eat-*, so source it before changing our TERM below.
+[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
+    source "$EAT_SHELL_INTEGRATION_DIR/bash"
+
 # Fallback to more general TERM for terminal emulators I use. Mostly useful
 # for SSH onto machines without the corresponding terminfo.
 case $TERM in
-    alacritty*|*kitty*)
+    alacritty*|*kitty*|eat*)
         export TERM=xterm-256color
         ;;
     screen*)
@@ -111,8 +115,5 @@ eval "$(direnv hook bash)"
 
 # Completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
-
-[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
-    source "$EAT_SHELL_INTEGRATION_DIR/bash"
 
 true
