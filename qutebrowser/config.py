@@ -75,8 +75,13 @@ config.bind(',w', 'spawn --userscript ' + userscript('org-capture.py'))
 # password_fill from upstream
 config.bind(',p', 'spawn --userscript ' + userscript('password_fill'))
 
-# send URL to my work macbook
-config.bind(',m', 'spawn ssh real open {url}')
+# send URL to to either macbook or linux desktop
+import platform
+if platform.node() == 'habitat':
+    config.bind(',m', 'spawn ssh real open {url}')
+else:
+    config.bind(',m', 'spawn ssh habitat DISPLAY=:0 xdg-open {url}')
+
 # get URL from my work macbook
 config.bind(',M', 'spawn --userscript ' + userscript('get_url.sh'))
 
