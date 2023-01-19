@@ -478,6 +478,8 @@
    '(ox-gfm :type git :host github :repo "keegancsmith/ox-gfm"))
   (require 'ox-gfm)
 
+  (use-package ox-slack)
+
   ;; For some reason "C-c !" doesn't work, so rebind to a key similiar to
   ;; org-time-stamp
   (define-key org-mode-map (kbd "C-c C-.") 'org-time-stamp-inactive)
