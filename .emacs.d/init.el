@@ -473,11 +473,7 @@
          ("C-c C-x C-j" . org-clock-goto))
   :config
 
-  ;; use my fork of ox-gfm which supports backticks in example export.
-  (straight-use-package
-   '(ox-gfm :type git :host github :repo "keegancsmith/ox-gfm"))
-  (require 'ox-gfm)
-
+  (use-package ox-gfm)
   (use-package ox-slack)
 
   ;; For some reason "C-c !" doesn't work, so rebind to a key similiar to
