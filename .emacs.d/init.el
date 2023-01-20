@@ -484,7 +484,6 @@
   (define-key org-mode-map (kbd "C-c SPC") nil)
 
   (add-to-list 'org-modules 'org-habit)
-  (add-to-list 'org-modules 'org-mac-link)
   (add-to-list 'org-modules 'org-tempo)
 
   (defun my-org-clock-in-list ()
