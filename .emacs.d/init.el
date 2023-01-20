@@ -649,9 +649,10 @@
 (use-package yaml-mode)
 
 (use-package guide-key
+  :custom
+  (guide-key/guide-key-sequence t)
+  (guide-key/polling-time 0.5)
   :config
-  (setq guide-key/guide-key-sequence t
-        guide-key/idle-delay 0.5)
   (guide-key-mode 1))
 
 ;; For visual wrapping at 80 columns when editing markdown.
