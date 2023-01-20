@@ -815,6 +815,7 @@
 
 (use-package bongo
   :custom
+  (bongo-enabled-backends '(mpv))
   (bongo-custom-backend-matchers '((mpv (local-file) "opus")))
   (bongo-default-directory "~/youtube/feed/music")
   :config
