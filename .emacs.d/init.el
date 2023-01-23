@@ -876,7 +876,8 @@
          ;; Replace built in completion of sessions with `consult'
          ([remap detached-open-session] . detached-consult-session))
   :custom ((detached-show-output-on-attach t)
-           (detached-terminal-data-command system-type)))
+           (detached-terminal-data-command system-type)
+           (detached-notification-function #'detached-state-transitionion-echo-message)))
 
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
