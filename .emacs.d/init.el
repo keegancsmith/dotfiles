@@ -843,7 +843,9 @@
                (:exclude ".dir-locals.el" "*-tests.el")))
  )
 
-(use-package eat)
+(use-package eat
+  :bind (("C-c h" . eat-project)
+         ("C-c j" . eat)))
 
 ;; trying out clojure
 (progn
