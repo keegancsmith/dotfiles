@@ -844,8 +844,12 @@
  )
 
 (use-package eat
-  :bind (("C-c h" . eat-project)
-         ("C-c j" . eat)))
+  :bind (("C-c h" . eat-project))
+  :config
+  (defun my-eat-shell ()
+    (interactive)
+    (eat "bash"))
+  (bind-key "C-c j" #'my-eat-shell))
 
 ;; trying out clojure
 (progn
