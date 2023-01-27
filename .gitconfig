@@ -10,9 +10,9 @@ br = branch -vv
 feature = !sh -c 'git checkout --no-track -b k/`date "+%Y%m%d"`-$0 origin/main'
 set-upstream = !sh -c 'git branch --set-upstream-to=origin/master `git rev-parse --abbrev-ref HEAD`'
 cherry-pick-branch = !sh -c 'git cherry-pick `git merge-base HEAD $0`..$0'
-	pr = !github-push-pr
 gc-all = -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc
 me = log --author=keegan
+pr = !sh -c 'git fetch -fu origin refs/pull/$0/head:pr/$0 && git checkout pr/$0'
 
 [color]
 ui = auto
