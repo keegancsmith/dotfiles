@@ -55,5 +55,6 @@ notmuch tag --remove-all +trash tag:new to:sourcegraph/deploy-sourcegraph-dogfoo
 echo
 echo "processed $(notmuch count tag:new) email(s)"
 echo "inbox $(notmuch count tag:inbox) email(s)"
+echo "gh $(notmuch count tag:gh-inbox) email(s)"
 
 notmuch tag -new -- tag:new
