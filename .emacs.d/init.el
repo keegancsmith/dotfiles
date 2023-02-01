@@ -526,13 +526,14 @@
   (require 'ob-python)
 
   (setq
-   current-journal-filename "~/org-files/journals/2023/2023-01-Jan.org"
+   current-journal-filename "~/org-files/journals/2023/2023-02-Feb.org"
    org-agenda-files '("~/org-files/inbox.org"
                       "~/org-files/work/projects/2023/single-binary/single-binary.org"
                       "~/org-files/journals/2022/2022-12-Dec.org"
                       "~/org-files/journals/2023")
    org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
                         (("~/org-files/work/projects/2023/single-binary/single-binary.org") :level . 1)
+                        (("~/org-files/journals/2023/2023-01-Jan.org") :level . 1)
                         ((,current-journal-filename) :level . 1))
    org-refile-use-outline-path 'file
    org-outline-path-complete-in-steps nil
