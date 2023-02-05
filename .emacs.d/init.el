@@ -525,16 +525,70 @@
   (require 'ob-awk)
   (require 'ob-python)
 
+  ;; decoded-time-add doesn't seem to work across year boundaries when month
+  ;; is negative. So gotta implement myself.
+  (defun my-decoded-time-add-month (time month-delta)
+    "adds month-delta to time. Will always set day to 15 for edge cases."
+    (let ((time (copy-sequence time)))
+      (setf (decoded-time-day time) 15)
+      (setf (decoded-time-month time) (+ (decoded-time-month time) month-delta))
+
+      (while (<= (decoded-time-month time) 0)
+        (setf (decoded-time-year time) (1- (decoded-time-year time)))
+        (setf (decoded-time-month time) (+ (decoded-time-month time) 12)))
+
+      (while (> (decoded-time-month time) 12)
+        (setf (decoded-time-year time) (1+ (decoded-time-year time)))
+        (setf (decoded-time-month time) (- (decoded-time-month time) 12)))
+
+      time))
+
+  ;; Dynamically calculate the list of journals to include. I normally include
+  ;; the previous 2 months and 1 month in the future.
+  (require 'time-date)
+  (let* ((from-month-delta -2)
+         (to-month-delta    1)
+         (time (decode-time (current-time)))
+         (month (decoded-time-month time))
+         active-projects journals current-journal)
+
+    (setq journals (mapcar (lambda (month-delta)
+                             (format-time-string "~/org-files/journals/%Y/%Y-%m-%b.org"
+                                                 (encode-time
+                                                  (my-decoded-time-add-month time month-delta))))
+                           (number-sequence from-month-delta to-month-delta))
+          current-journal (nth (abs from-month-delta) journals))
+
+    ;; Only include journals that exist
+    (setq journals (seq-filter #'file-exists-p journals))
+
+    (setq
+     active-projects '("~/org-files/work/projects/2023/single-binary/single-binary.org")
+     org-agenda-files (append '("~/org-files/inbox.org") active-projects journals)
+     org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
+                          (,active-projects :level . 1)
+                          (,journals :level . 1))
+     org-capture-templates
+     `(("c" "Task" entry (file "~/org-files/inbox.org")
+        "* TODO %?\n  %U")
+       ("C" "Task with context" entry (file "~/org-files/inbox.org")
+        "* TODO %?\n  %U\n%a")
+       ("b" "Browser" entry (file "~/org-files/inbox.org")
+        "* TODO %(my-browser-link)\n%U")
+       ("w" "Week Plan" entry (file+olp+datetree ,current-journal)
+        (file "~/org-files/week-plan.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
+       ("d" "Day Plan" entry (file+olp+datetree ,current-journal)
+        (file "~/org-files/plan.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
+       ("e" "End of day" entry (file+olp+datetree ,current-journal)
+        (file "~/org-files/eod.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
+       ("o" "P0 ops work scheduled and clocked in now" entry (file+headline "~/org-files/work.org" "Ops")
+        "* P0 Ops :urgent:ops:\n  %t\n  %u" :clock-in t :clock-keep t :empty-lines 1)
+       ("j" "Journal" entry (file+olp+datetree ,current-journal)
+        "* %? %U\n" :empty-lines 1)
+       ("J" "Journal HERE" entry (file+olp+datetree (lambda () (org-capture-get :original-file)))
+        "* %? %U\n" :empty-lines 1))))
+
   (setq
-   current-journal-filename "~/org-files/journals/2023/2023-02-Feb.org"
-   org-agenda-files '("~/org-files/inbox.org"
-                      "~/org-files/work/projects/2023/single-binary/single-binary.org"
-                      "~/org-files/journals/2022/2022-12-Dec.org"
-                      "~/org-files/journals/2023")
-   org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
-                        (("~/org-files/work/projects/2023/single-binary/single-binary.org") :level . 1)
-                        (("~/org-files/journals/2023/2023-01-Jan.org") :level . 1)
-                        ((,current-journal-filename) :level . 1))
    org-refile-use-outline-path 'file
    org-outline-path-complete-in-steps nil
    org-archive-location "%s_archive::datetree/"
@@ -556,28 +610,9 @@
    org-log-redeadline 'time
    org-log-reschedule 'time
    org-todo-keywords '((sequence "TODO(t!)" "WAIT(w@/!)" "|" "DONE(d@)" "CANCELLED(c@)"))
-   org-babel-load-languages '((emacs-lisp . t) (shell . t) (awk . t) (python . t))
-   org-babel-python-command "python3"
    ;org-confirm-babel-evaluate nil
-   org-capture-templates
-   '(("c" "Task" entry (file "~/org-files/inbox.org")
-      "* TODO %?\n  %U")
-     ("C" "Task with context" entry (file "~/org-files/inbox.org")
-      "* TODO %?\n  %U\n%a")
-     ("b" "Browser" entry (file "~/org-files/inbox.org")
-      "* TODO %(my-browser-link)\n%U")
-     ("w" "Week Plan" entry (file+olp+datetree current-journal-filename)
-      (file "~/org-files/week-plan.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
-     ("d" "Day Plan" entry (file+olp+datetree current-journal-filename)
-      (file "~/org-files/plan.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
-     ("e" "End of day" entry (file+olp+datetree current-journal-filename)
-      (file "~/org-files/eod.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
-     ("o" "P0 ops work scheduled and clocked in now" entry (file+headline "~/org-files/work.org" "Ops")
-      "* P0 Ops :urgent:ops:\n  %t\n  %u" :clock-in t :clock-keep t :empty-lines 1)
-     ("j" "Journal" entry (file+olp+datetree current-journal-filename)
-      "* %? %U\n" :empty-lines 1)
-     ("J" "Journal HERE" entry (file+olp+datetree (lambda () (org-capture-get :original-file)))
-      "* %? %U\n" :empty-lines 1))))
+   org-babel-load-languages '((emacs-lisp . t) (shell . t) (awk . t) (python . t))
+   org-babel-python-command "python3"))
 
 (use-package org-contrib
   :after org)
