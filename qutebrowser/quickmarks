@@ -1,12 +1,11 @@
 hacker news https://news.ycombinator.com/news
 r/programming https://old.reddit.com/r/programming/
-whatsapp https://web.whatsapp.com/
 pulls https://github.com/pulls
 chess https://www.chess.com/home
-weather http://wttr.in/
 eservices https://eservices.capetown.gov.za/irj/portal
-gcal https://calendar.google.com/calendar/u/0/r?pli=1
-core backlog https://github.com/orgs/sourcegraph/projects/204/views/3
+gcal https://calendar.google.com/calendar/u/0/r
+sggcal https://calendar.google.com/calendar/u/1/r
 sourcegraph https://github.com/sourcegraph/sourcegraph
 sgslack https://sourcegraph.slack.com/
 zatech https://zatech.slack.com/
+okta https://sourcegraph.okta.com/
