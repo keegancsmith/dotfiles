@@ -920,6 +920,10 @@
            (detached-terminal-data-command system-type)
            (detached-notification-function #'detached-state-transitionion-echo-message)))
 
+(use-package mastodon
+  :custom ((mastodon-instance-url "https://emacs.ch")
+           (mastodon-active-user "keegan")))
+
 (use-package proced
   :ensure nil
   :commands proced
