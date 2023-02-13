@@ -109,6 +109,7 @@ in {
     mpv
     ledger
     jq
+    file
     fzf
     fd
     nmap
