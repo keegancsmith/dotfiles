@@ -306,6 +306,7 @@
     (find-file file)))
 
 (use-package consult
+  :demand t
   :bind (("C-x b" . consult-buffer)
          ("M-y" . consult-yank-pop)
          ("C-c k" . consult-ripgrep)
@@ -883,6 +884,7 @@
  )
 
 (use-package eat
+  :demand t
   :bind (("C-c h" . eat-project))
   :config
   (defun my-eat-shell ()
