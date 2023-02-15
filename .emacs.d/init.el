@@ -204,6 +204,10 @@
   ; just hack at stuff.
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
+;; weird workaround. On latest vertico it fails since it can't find compat
+;; library. But just requiring it seems to sort it out.
+(use-package compat)
+
 (use-package vertico
   :init
   (vertico-mode))
