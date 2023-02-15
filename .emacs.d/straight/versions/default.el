@@ -64,7 +64,7 @@
  ("ob-go" . "2067ed55f4c1d33a43cb3f6948609d240a8915f5")
  ("ol-notmuch" . "ee3646627e47312a0c6ab0a5f6eba3baf8b20cb6")
  ("orderless" . "d09aab37951b25627b96660f429eaec969d16d8a")
- ("org" . "e6353d5b9cfe113a124da00b3ff803808842fc6b")
+ ("org" . "74eb0f8bc9e39fc0acd871fb3767ba357dab7fad")
  ("org-contrib" . "223390ea2c2f728ca4bfd1c4a33cac25d003693a")
  ("ox-gfm" . "46faa67dbb3fb0cd7a76c3fe518f16e4195c22c7")
  ("ox-slack" . "bd797dcc58851d5051dc3516c317706967a44721")
