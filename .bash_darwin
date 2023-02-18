@@ -5,6 +5,10 @@
 # Don't use qutebrowser on mac
 unset BROWSER
 
+# Homebrew config
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_GOOGLE_ANALYTICS=1
+
 # /usr/local is brew --prefix
 if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
