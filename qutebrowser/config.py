@@ -56,18 +56,15 @@ c.hints.selectors['comments'] = [
 ]
 config.bind(';c', 'hint comments')
 
-# links on reddit/hackernews
-c.hints.selectors['story'] = [
-    'a[class~="title"]',
-    'a[class~="storylink"]',
-    'a[class~="comments"]',
-    '.titleline > a', # hn story
-    '.subline > a[href^="item"]', # hn comment link
-]
-config.bind(';s', 'hint --rapid story tab-bg')
-
 import os.path
 userscript = lambda p : os.path.join(os.path.dirname(__file__), 'userscripts', p)
+
+# links on reddit/hackernews
+c.hints.selectors['story'] = [
+    '.athing', # hn
+    '.thing',  # reddit
+]
+config.bind(';s', 'hint --rapid story userscript ' + userscript('hn.py'))
 
 # simple script to write org entry to my inbox.org
 config.bind(',w', 'spawn --userscript ' + userscript('org-capture.py'))
