@@ -152,6 +152,7 @@ in {
     caffeine-ng
     unstable.discord
     gnome.simple-scan
+    steam-run
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font iosevka ];
