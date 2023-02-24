@@ -34,7 +34,6 @@ c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
     's': 'https://sourcegraph.sourcegraph.com/search?q=context:global+{}&patternType=regexp',
     'ss': 'https://sourcegraph.com/search?q={}',
-    'go': 'https://app.golinks.io/{}',
 }
 
 # yank org-mode link
