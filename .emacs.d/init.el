@@ -853,6 +853,8 @@
 
 (use-package zig-mode)
 
+(use-package graphql-mode)
+
 (use-package bongo
   :custom
   (bongo-enabled-backends '(mpv))
