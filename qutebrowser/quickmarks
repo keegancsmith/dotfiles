@@ -9,3 +9,5 @@ sourcegraph https://github.com/sourcegraph/sourcegraph
 sgslack https://sourcegraph.slack.com/
 zatech https://zatech.slack.com/
 okta https://sourcegraph.okta.com/
+transmission http://habitat:9091/transmission/web/
+sonarr http://habitat:8989/
