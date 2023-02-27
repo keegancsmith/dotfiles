@@ -7,7 +7,6 @@
 *** https://nullprogram.com/feed/
 *** https://lemire.me/blog/feed/
 *** [[https://danluu.com/atom.xml][Dan Luu]]
-*** https://drewdevault.com/feed.xml
 *** https://rachelbythebay.com/w/atom.xml
 *** https://randomascii.wordpress.com/feed/
 *** https://sachachua.com/blog/category/emacs/feed/
