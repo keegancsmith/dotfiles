@@ -555,24 +555,28 @@
          (to-month-delta    1)
          (time (decode-time (current-time)))
          (month (decoded-time-month time))
-         active-projects journals current-journal)
+         active-projects agenda-journals refile-journals current-journal)
 
-    (setq journals (mapcar (lambda (month-delta)
+    (cl-flet ((journals (from-month-delta to-month-delta)
+                (mapcar (lambda (month-delta)
                              (format-time-string "~/org-files/journals/%Y/%Y-%m-%b.org"
                                                  (encode-time
                                                   (my-decoded-time-add-month time month-delta))))
-                           (number-sequence from-month-delta to-month-delta))
-          current-journal (nth (abs from-month-delta) journals))
+                        (number-sequence from-month-delta to-month-delta))))
 
-    ;; Only include journals that exist
-    (setq journals (seq-filter #'file-exists-p journals))
+      (setq agenda-journals (journals -2 1)
+            refile-journals (journals 0 1)
+            current-journal (car refile-journals)))
+
+    ;; Agenda only wants files that exist
+    (setq agenda-journals (seq-filter #'file-exists-p agenda-journals))
 
     (setq
      active-projects '("~/org-files/work/projects/2023/single-binary/single-binary.org")
-     org-agenda-files (append '("~/org-files/inbox.org") active-projects journals)
+     org-agenda-files (append '("~/org-files/inbox.org") active-projects agenda-journals)
      org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
                           (,active-projects :level . 1)
-                          (,journals :level . 1))
+                          (,refile-journals :level . 1))
      org-capture-templates
      `(("c" "Task" entry (file "~/org-files/inbox.org")
         "* TODO %?\n  %U")
