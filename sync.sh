@@ -28,9 +28,6 @@ for f in $dotfiles; do
     conditionallink "${REPO}/${f}" "${HOME}/${f}"
 done
 
-# fish
-conditionallink "${REPO}/config.fish" "${HOME}/.config/fish/config.fish"
-
 # kitty
 conditionallink "${REPO}/kitty" "${HOME}/.config/kitty"
 
