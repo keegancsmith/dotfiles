@@ -42,8 +42,6 @@ done
 # for SSH onto machines without the corresponding terminfo.
 case $TERM in
     eat*)
-        # I use a white background in emacs
-        export MCFLY_LIGHT=TRUE
         export TERM=xterm-256color
         ;;
     alacritty*|*kitty*)
@@ -59,6 +57,9 @@ if hash dircolors 2>/dev/null; then
     eval "`dircolors -b`"
 fi
 export CLICOLOR=1
+
+# White background
+export MCFLY_LIGHT=TRUE
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from

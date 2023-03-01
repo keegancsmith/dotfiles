@@ -32,7 +32,7 @@ done
 conditionallink "${REPO}/config.fish" "${HOME}/.config/fish/config.fish"
 
 # kitty
-conditionallink "${REPO}/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
+conditionallink "${REPO}/kitty" "${HOME}/.config/kitty"
 
 # starship
 conditionallink "${REPO}/starship.toml" "${HOME}/.config/starship.toml"
