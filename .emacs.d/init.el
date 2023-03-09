@@ -729,19 +729,24 @@
   :bind
   ("C-c o" . link-hint-open-link))
 
-(use-package notmuch
-  :commands (notmuch)
-  :bind (("C-c m" . notmuch))
-  :if (string= (system-name) "real.local"))
+(defmacro defun-shell (name command)
+  `(defun ,name ()
+     ""
+     (interactive)
+     (async-shell-command ,command)))
+
+;; only install notmuch on work laptop
+(when (string= (system-name) "real.local")
+  (bind-key "C-c m n" (defun-shell notmuch-new         "notmuch new"))
+  (bind-key "C-c m g" (defun-shell notmuch-github      "notmuch github | xargs open"))
+  (bind-key "C-c m d" (defun-shell notmuch-github-done "notmuch github done"))
+
+  (use-package notmuch
+    :commands (notmuch)
+    :bind (("C-c m m" . notmuch))))
 
 ;; ssh into work machine to run mail commands
 (when (string= (system-name) "habitat")
-  (defmacro defun-shell (name command)
-    `(defun ,name ()
-       ""
-       (interactive)
-       (async-shell-command ,command)))
-
   (bind-key "C-c m m" (defun-shell notmuch             "kitty ssh -t real.local emacsclient -nw --eval '\\(notmuch\\)'"))
   (bind-key "C-c m n" (defun-shell notmuch-new         "ssh real.local notmuch new"))
   (bind-key "C-c m g" (defun-shell notmuch-github      "ssh real.local notmuch github | xargs qutebrowser"))
