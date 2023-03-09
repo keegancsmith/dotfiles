@@ -733,7 +733,8 @@
   `(defun ,name ()
      ""
      (interactive)
-     (async-shell-command ,command)))
+     (let ((shell-command-buffer-name-async (concat "*" (symbol-name ',name) "*")))
+       (async-shell-command ,command))))
 
 ;; only install notmuch on work laptop
 (when (string= (system-name) "real.local")
