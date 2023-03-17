@@ -12,6 +12,7 @@ set-upstream = !sh -c 'git branch --set-upstream-to=origin/master `git rev-parse
 cherry-pick-branch = !sh -c 'git cherry-pick `git merge-base HEAD $0`..$0'
 gc-all = -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc
 me = log --author=keegan
+checkout-branch = !sh -c 'git fetch origin $0 && git checkout -b $0 FETCH_HEAD'
 pr = !sh -c 'git fetch -fu origin refs/pull/$0/head:pr/$0 && git checkout pr/$0'
 
 [color]
