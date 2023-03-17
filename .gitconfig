@@ -41,17 +41,17 @@ excludesfile = ~/.gitignore_global
 compactionHeuristic = true
 
 [http]
-	cookiefile = ~/.gitcookies
+  cookiefile = ~/.gitcookies
 
 [github]
-	user = keegancsmith
+  user = keegancsmith
 
 [ghq]
-	root = /Users/keegan/src
-	root = /Users/keegan/go/src
+  root = /Users/keegan/src
+  root = /Users/keegan/go/src
 [merge]
-	conflictStyle = diff3
+  conflictStyle = diff3
 [pull]
   rebase = true
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
