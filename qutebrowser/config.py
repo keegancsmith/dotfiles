@@ -81,6 +81,12 @@ else:
 # get URL from my work macbook
 config.bind(',M', 'spawn --userscript ' + userscript('get_url.sh'))
 
+# Open in chrome
+if platform.system() == 'Darwin':
+    config.bind(',c', 'spawn /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome {url}')
+else:
+    config.bind(',c', 'spawn google-chrome-stable {url}')
+
 # JH says this is what the cool kids do
 config.bind('tt', 'set-cmd-text -s :tab-select')
 
