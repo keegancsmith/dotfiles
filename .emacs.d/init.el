@@ -968,6 +968,8 @@
    'proced-format-alist
    '(custom user pid ppid sess tree pcpu pmem rss start time state (args comm))))
 
+(use-package gptel)
+
 (use-package bazel)
 
 (defun load-file-exists (file)
