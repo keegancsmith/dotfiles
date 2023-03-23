@@ -18,5 +18,3 @@ if [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.i
     export USE_GKE_GCLOUD_AUTH_PLUGIN=True
     . /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
 fi
-
-export PATH="/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/openjdk/bin:/usr/local/sbin:$PATH"

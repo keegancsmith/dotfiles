@@ -24,6 +24,9 @@ fi
 
 # PATH dirs to add if they exist
 paths=(
+    "/usr/local/opt/findutils/libexec/gnubin"
+    "/usr/local/opt/openjdk/bin"
+    "/usr/local/sbin"
     "/usr/local/bin"
     "/usr/local/opt/go/libexec/bin"
     "$HOME/.nix-profile/bin"
