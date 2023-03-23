@@ -26,12 +26,13 @@ fi
 paths=(
     "/usr/local/bin"
     "/usr/local/opt/go/libexec/bin"
+    "$HOME/.nix-profile/bin"
     "$HOME/.cargo/bin"
     "$GOBIN"
     "$HOME/bin"
 )
 for p in "${paths[@]}"; do
-    [ -d "$p" ] && export PATH="$p":"$PATH"
+    [ -d "$p" ] && [[ ":$PATH:" != *":$p:"* ]] && export PATH="$p":"$PATH"
 done
 
 # eat checks that TERM is eat-*, so source it before changing our TERM below.
