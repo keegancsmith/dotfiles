@@ -7,7 +7,7 @@ export HISTFILESIZE=80000
 export HISTSIZE=20000
 export MAILCHECK=0
 
-export SRCPATH="$HOME/go/src:$HOME/src"
+export SRCPATH="$HOME/src"
 
 # I hate it when I accidently lock the terminal in screen
 export LOCKPRG=/bin/true
