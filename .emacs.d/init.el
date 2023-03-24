@@ -744,7 +744,11 @@
 
   (use-package notmuch
     :commands (notmuch)
-    :bind (("C-c m m" . notmuch))))
+    :bind (("C-c m m" . notmuch)))
+
+  ;; org notmuch links
+  (use-package ol-notmuch
+    :after notmuch))
 
 ;; ssh into work machine to run mail commands
 (when (string= (system-name) "habitat")
@@ -752,10 +756,6 @@
   (bind-key "C-c m n" (defun-shell notmuch-new         "ssh real.local notmuch new"))
   (bind-key "C-c m g" (defun-shell notmuch-github      "ssh real.local notmuch github | xargs qutebrowser"))
   (bind-key "C-c m d" (defun-shell notmuch-github-done "ssh real.local notmuch github done")))
-
-;; org notmuch links
-(use-package ol-notmuch
-  :after notmuch)
 
 (use-package messages-are-flowing
   :config
