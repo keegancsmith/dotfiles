@@ -1,27 +1,48 @@
 { config, pkgs, ... }:
 
 {
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    aspell
+    aspellDicts.en
+    aspellDicts.en-computers
+    aspellDicts.en-science
+    bashInteractive
+    cachix
+    comma
     coreutils
     curl
-    fzf
-    ripgrep
-    wget
-    git
-    cachix
-    neovim
-    emacs
-    starship
-    mcfly
-    bash
-    slack
-    vscode
-    go
-    kitty
-    bash
     direnv
+    dtach
+    emacs
+    fd
+    file
+    fzf
+    git
+    go
+    htop
+    jq
+    kitty
+    ledger
+    lieer
+    man-pages
+    man-pages-posix
+    mcfly
+    mpv
+    neovim
+    nix-direnv
+    nix-index
+    nixfmt
+    notmuch
+    python39Packages.yt-dlp
+    ripgrep
+    screen
+    slack
+    starship
+    tmux
+    unzip
+    vscode
+    watchman
+    wget
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font iosevka ];
@@ -32,9 +53,8 @@
     remapCapsLockToEscape = true;
   };
 
-  # Use a custom configuration.nix location.
-  # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
-  # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
+  # For some reason symlinking it into the default location doesn't work.
+  environment.darwinConfig = "/Users/keegan/src/github.com/keegancsmith/dotfiles/hosts/fa/darwin-configuration.nix";
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -42,10 +62,14 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # Create /etc/zshrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;  # default shell on catalina
   programs.bash.enable = true;
-  # programs.fish.enable = true;
+  programs.bash.enableCompletion = true;
+
+  programs.vim.package = pkgs.neovim;
+
+  services.tailscale.enable = true;
+
+  security.pam.enableSudoTouchIdAuth = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
