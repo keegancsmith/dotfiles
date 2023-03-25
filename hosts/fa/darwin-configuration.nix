@@ -19,6 +19,7 @@
     fzf
     git
     go
+    gopls
     htop
     jq
     kitty
@@ -59,6 +60,15 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   nix.package = pkgs.nix;
+
+  # For nix-direnv
+  nix.settings = {
+    keep-outputs = true;
+    keep-derivations = true;
+  };
+  environment.pathsToLink = [
+    "/share/nix-direnv"
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
