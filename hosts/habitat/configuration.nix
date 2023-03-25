@@ -284,6 +284,7 @@ in {
     "127.0.0.1" = [ "sourcegraph" "sourcegraph.test" "bitbucket" ];
     "100.100.74.50" = [ "cliche" ];
     "100.116.165.93" = [ "real" ];
+    "100.71.23.116" = [ "fa" ];
   };
 
   networking.firewall.checkReversePath = "loose";

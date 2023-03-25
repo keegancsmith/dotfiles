@@ -74,7 +74,7 @@ config.bind(',p', 'spawn --userscript ' + userscript('password_fill'))
 # send URL to to either macbook or linux desktop
 import platform
 if platform.node() == 'habitat':
-    config.bind(',m', 'spawn ssh real open {url}')
+    config.bind(',m', 'spawn ssh fa.local open {url}')
 else:
     config.bind(',m', 'spawn ssh habitat DISPLAY=:0 xdg-open {url}')
 
