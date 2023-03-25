@@ -54,6 +54,8 @@
     remapCapsLockToEscape = true;
   };
 
+  environment.shells = [ pkgs.bashInteractive ];
+
   # For some reason symlinking it into the default location doesn't work.
   environment.darwinConfig = "/Users/keegan/src/github.com/keegancsmith/dotfiles/hosts/fa/darwin-configuration.nix";
 
