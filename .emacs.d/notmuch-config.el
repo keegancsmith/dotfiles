@@ -6,12 +6,21 @@
 
 (global-set-key (kbd "C-c m") 'notmuch)
 
-(setq
+(custom-set-variables
+ '(notmuch-saved-searches
+   '((:name "gh-inbox" :query "tag:gh-inbox" :key "I")
+     (:name "inbox" :query "tag:inbox" :key "i")
+     (:name "unread" :query "tag:unread" :key "u")
+     (:name "flagged" :query "tag:flagged" :key "f")
+     (:name "sent" :query "tag:sent" :key "t")
+     (:name "drafts" :query "tag:draft" :key "d")
+     (:name "all mail" :query "*" :key "a")))
+
  ;; when archiving a thread I like to also mark it as read
- notmuch-archive-tags '("-inbox" "-unread" "-gh-inbox")
+ '(notmuch-archive-tags '("-inbox" "-unread" "-gh-inbox"))
 
  ;; on gmail sync we will get the file, we don't need to create the sent mail
- notmuch-fcc-dirs nil)
+ '(notmuch-fcc-dirs nil))
 
 ;; I like to jump to tag searches from notmuch-hello
 (defun notmuch-search-by-tag (tag)

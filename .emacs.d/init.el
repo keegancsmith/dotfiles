@@ -70,6 +70,8 @@
    ("America/Los_Angeles" "San Francisco")
    ("Europe/London" "London")
    ("Europe/Berlin" "Berlin")))
+  (warning-suppress-log-types '((comp) (comp)))
+  (warning-suppress-types '((comp)))
   :config
   (add-to-list 'backup-directory-alist
                (cons tramp-file-name-regexp nil)))
@@ -883,6 +885,7 @@
   (bongo-enabled-backends '(mpv))
   (bongo-custom-backend-matchers '((mpv (local-file) "opus")))
   (bongo-default-directory "~/youtube/feed/music")
+  (bongo-mpv-extra-arguments '("--no-video" "--no-audio-display"))
   :config
   (add-to-list 'bongo-audio-file-name-extensions "opus")
   :commands (bongo))
