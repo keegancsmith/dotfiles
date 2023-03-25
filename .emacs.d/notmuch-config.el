@@ -4,8 +4,6 @@
 
 ;;; Code:
 
-(global-set-key (kbd "C-c m") 'notmuch)
-
 (custom-set-variables
  '(notmuch-saved-searches
    '((:name "gh-inbox" :query "tag:gh-inbox" :key "I")
