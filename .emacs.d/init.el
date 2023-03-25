@@ -135,6 +135,9 @@
 (use-package avy
   :bind (("C-c SPC" . avy-goto-word-1)))
 
+(use-package ace-window
+  :bind ("C-x o" . ace-window))
+
 (require 'subr-x)
 
 (use-package exec-path-from-shell
