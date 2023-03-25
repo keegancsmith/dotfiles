@@ -77,6 +77,10 @@
 
   programs.vim.package = pkgs.neovim;
 
+  documentation.enable = true;
+  programs.info.enable = true;
+  programs.man.enable = true;
+
   services.tailscale.enable = true;
 
   security.pam.enableSudoTouchIdAuth = true;
