@@ -57,7 +57,8 @@
   environment.shells = [ pkgs.bashInteractive ];
 
   # For some reason symlinking it into the default location doesn't work.
-  environment.darwinConfig = "/Users/keegan/src/github.com/keegancsmith/dotfiles/hosts/fa/darwin-configuration.nix";
+  environment.darwinConfig =
+    "/Users/keegan/src/github.com/keegancsmith/dotfiles/hosts/fa/darwin-configuration.nix";
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -68,9 +69,7 @@
     keep-outputs = true;
     keep-derivations = true;
   };
-  environment.pathsToLink = [
-    "/share/nix-direnv"
-  ];
+  environment.pathsToLink = [ "/share/nix-direnv" ];
 
   nixpkgs.config.allowUnfree = true;
 
