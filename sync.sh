@@ -31,6 +31,9 @@ done
 # kitty
 conditionallink "${REPO}/kitty" "${HOME}/.config/kitty"
 
+# direnv
+conditionallink "${REPO}/direnvrc" "${HOME}/.config/direnv/direnvrc"
+
 # starship
 conditionallink "${REPO}/starship.toml" "${HOME}/.config/starship.toml"
 
