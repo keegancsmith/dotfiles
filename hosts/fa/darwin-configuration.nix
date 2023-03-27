@@ -68,6 +68,7 @@
   nix.settings = {
     keep-outputs = true;
     keep-derivations = true;
+    experimental-features = "nix-command flakes";
   };
   environment.pathsToLink = [ "/share/nix-direnv" ];
 
