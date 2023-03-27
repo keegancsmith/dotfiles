@@ -848,9 +848,7 @@
 
 (setq browse-url-handlers
       '(
-        ;; Open youtube links directly in mpv
-        ("https:\\/\\/www\\.youtu\\.*be." . browse-url-mpv)
-        ;; Otherwise open URLs without taking focus from emacs
+        ;; open URLs without taking focus from emacs
         ("." . browse-url-background)))
 
 (defun browse-url-mpv (url &optional single)
