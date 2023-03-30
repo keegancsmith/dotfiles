@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, emacs-overlay, ... }: {
 
   imports = [ ./hardware-configuration.nix ./cachix.nix ];
 
@@ -67,13 +67,7 @@
   };
 
   # build newer emacs.
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url =
-        "https://github.com/nix-community/emacs-overlay/archive/234b19572a6c0fd9af8f911bdd1ec4dde6e0a7e5.tar.gz";
-      sha256 = "1iz6s1gmk3cp3xgnw9lkxzwrv8iwssvz6k83ixgk8mgmggnkvfwy";
-    }))
-  ];
+  nixpkgs.overlays = [ emacs-overlay.overlay ];
 
   # google-chrome is unfree.
   nixpkgs.config.allowUnfree = true;
@@ -93,7 +87,7 @@
     nix-direnv
     gopls
     htop
-    emacsGitNativeComp
+    emacsGit
     aspell
     aspellDicts.en
     aspellDicts.en-computers
