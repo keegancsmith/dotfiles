@@ -1,7 +1,5 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ... }: {
 
-let unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-in {
   imports = [ ./hardware-configuration.nix ./cachix.nix ];
 
   # Use the systemd-boot EFI boot loader.
@@ -88,12 +86,12 @@ in {
     wget
     git
     git-up
-    unstable.go_1_19
-    unstable.golangci-lint
+    go
+    golangci-lint
     python3
     direnv
     nix-direnv
-    unstable.gopls
+    gopls
     htop
     emacsGitNativeComp
     aspell
@@ -102,7 +100,7 @@ in {
     aspellDicts.en-science
     ripgrep
     bash
-    unstable.starship
+    starship
     qutebrowser
     google-chrome
     spotify
@@ -134,23 +132,23 @@ in {
     mupdf
     ghostscript
     gv
-    unstable.zoom-us
+    zoom-us
     kbfs # provides git-remote-keybase
     man-pages
     man-pages-posix
     signal-desktop
-    unstable.obs-studio
+    obs-studio
     btrfs-progs
-    unstable.minecraft
+    minecraft
     xautolock
     xss-lock
-    unstable.difftastic
+    difftastic
     synergy
     unzip
     comma
     nix-index
     caffeine-ng
-    unstable.discord
+    discord
     gnome.simple-scan
     steam-run
   ];
@@ -163,7 +161,7 @@ in {
     keep-derivations = true
     experimental-features = nix-command flakes
   '';
-  nix.package = unstable.nixFlakes;
+  nix.package = pkgs.nixFlakes;
   environment.pathsToLink = [ "/share/nix-direnv" ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -209,7 +207,6 @@ in {
   services.plex = {
     enable = true;
     openFirewall = true;
-    package = unstable.plex;
   };
 
   services.sonarr = {
