@@ -180,7 +180,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.openssh.forwardX11 = true;
+  services.openssh.settings.X11Forwarding = true;
 
   services.tailscale.enable = true;
 
