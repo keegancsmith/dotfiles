@@ -58,7 +58,7 @@
 
   # For some reason symlinking it into the default location doesn't work.
   environment.darwinConfig =
-    "/Users/keegan/src/github.com/keegancsmith/dotfiles/hosts/fa/darwin-configuration.nix";
+    "/Users/keegan/src/github.com/keegancsmith/dotfiles/flake.nix";
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
