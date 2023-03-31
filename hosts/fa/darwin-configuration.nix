@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, emacs-overlay, ... }:
 
 {
   imports = [ ../../lib/cachix.nix ];
@@ -15,7 +15,7 @@
     curl
     direnv
     dtach
-    emacs
+    emacsGit
     fd
     file
     fzf
@@ -73,6 +73,10 @@
     experimental-features = "nix-command flakes";
   };
   environment.pathsToLink = [ "/share/nix-direnv" ];
+
+  # build newer emacs.
+  nixpkgs.overlays = [ emacs-overlay.overlay ];
+  services.emacs.package = pkgs.emacsGit;
 
   nixpkgs.config.allowUnfree = true;
 
