@@ -1,6 +1,6 @@
 { config, pkgs, emacs-overlay, ... }: {
 
-  imports = [ ./hardware-configuration.nix ./cachix.nix ];
+  imports = [ ./hardware-configuration.nix ../../lib/cachix.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ ../../lib/cachix.nix ];
+
   environment.systemPackages = with pkgs; [
     aspell
     aspellDicts.en
