@@ -174,7 +174,7 @@
 
   programs.nix-ld.enable = true;
 
-  services.emacs.package = pkgs.emacsGit;
+  services.emacs.package = pkgs.emacsGitNativeComp;
 
   # List services that you want to enable:
 
