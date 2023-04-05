@@ -40,7 +40,6 @@
     python39Packages.yt-dlp
     ripgrep
     screen
-    slack
     starship
     tmux
     unzip
@@ -51,6 +50,13 @@
 
   fonts.fonts = with pkgs; [ hack-font go-font iosevka ];
   fonts.fontDir.enable = true;
+
+  homebrew.enable = true;
+  homebrew.masApps = {
+    "1password" = 1333542190;
+    "slack" = 803453959;
+    "tailscale" = 1475387142;
+  };
 
   system.keyboard = {
     enableKeyMapping = true;
