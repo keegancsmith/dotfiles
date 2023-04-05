@@ -75,76 +75,77 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    graphviz
-    curl
-    wget
-    git
-    git-up
-    go
-    golangci-lint
-    python3
-    direnv
-    nix-direnv
-    gopls
-    htop
-    emacsGit
+    (pass.withExtensions (ext: [ ext.pass-otp ]))
+    alacritty
     aspell
     aspellDicts.en
     aspellDicts.en-computers
     aspellDicts.en-science
-    ripgrep
     bash
-    starship
-    qutebrowser
-    google-chrome
-    spotify
-    mpv
-    ledger
-    jq
+    btrfs-progs
+    caffeine-ng
+    comma
+    curl
+    difftastic
+    direnv
+    discord
+    dtach
+    emacsGit
+    fd
     file
     fzf
-    fd
-    nmap
-    (pass.withExtensions (ext: [ ext.pass-otp ]))
-    rofi-pass
-    dtach
-    screen
-    tmux
-    watchman
-    youtube-dl
-    python39Packages.yt-dlp
-    k9s
     gcc
-    mosh
-    maim
-    mcfly
-    xclip
-    alacritty
-    kitty
-    lsof
-    nixfmt
-    mupdf
     ghostscript
+    git
+    git-up
+    gnome.simple-scan
+    go
+    golangci-lint
+    google-chrome
+    gopls
+    graphviz
     gv
-    zoom-us
+    htop
+    jq
+    k9s
     kbfs # provides git-remote-keybase
+    kitty
+    ledger
+    lsof
+    maim
     man-pages
     man-pages-posix
-    signal-desktop
-    obs-studio
-    btrfs-progs
+    mcfly
     minecraft
-    xautolock
-    xss-lock
-    difftastic
-    synergy
-    unzip
-    comma
+    mosh
+    mpv
+    mupdf
+    nix-direnv
     nix-index
-    caffeine-ng
-    discord
-    gnome.simple-scan
+    nixfmt
+    nmap
+    obs-studio
+    python3
+    python39Packages.yt-dlp
+    qutebrowser
+    ripgrep
+    rofi-pass
+    screen
+    signal-desktop
+    spotify
+    starship
     steam-run
+    synergy
+    tmux
+    unzip
+    vscode
+    watchman
+    wget
+    xautolock
+    xclip
+    xss-lock
+    youtube-dl
+    zoom-us
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font iosevka ];
