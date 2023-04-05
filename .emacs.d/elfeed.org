@@ -35,6 +35,7 @@
 *** https://commaok.xyz/index.xml
 *** https://herman.bearblog.dev/feed/
 *** http://fastcompression.blogspot.com/feeds/posts/default
+*** https://mitchellh.com/feed.xml
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
