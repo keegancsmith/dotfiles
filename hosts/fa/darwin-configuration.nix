@@ -56,6 +56,21 @@
     remapCapsLockToEscape = true;
   };
 
+  system.defaults.NSGlobalDomain = {
+    AppleKeyboardUIMode = 3;
+    ApplePressAndHoldEnabled = false;
+    InitialKeyRepeat = 10;
+    KeyRepeat = 1;
+    NSAutomaticCapitalizationEnabled = false;
+    NSAutomaticDashSubstitutionEnabled = false;
+    NSAutomaticPeriodSubstitutionEnabled = false;
+    NSAutomaticQuoteSubstitutionEnabled = false;
+    NSAutomaticSpellingCorrectionEnabled = false;
+    NSNavPanelExpandedStateForSaveMode = true;
+    NSNavPanelExpandedStateForSaveMode2 = true;
+    _HIHideMenuBar = true;
+  };
+
   environment.shells = [ pkgs.bashInteractive ];
 
   # For some reason symlinking it into the default location doesn't work.
