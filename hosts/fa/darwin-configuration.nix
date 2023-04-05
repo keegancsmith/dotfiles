@@ -21,6 +21,7 @@
     fzf
     git
     go
+    google-cloud-sdk
     gopls
     htop
     jq
