@@ -21,7 +21,10 @@
     fzf
     git
     go
-    google-cloud-sdk
+    (google-cloud-sdk.withExtraComponents [
+      google-cloud-sdk.components.cloud_sql_proxy
+      google-cloud-sdk.components.gke-gcloud-auth-plugin
+    ])
     gopls
     htop
     jq
