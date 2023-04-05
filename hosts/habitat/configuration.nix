@@ -177,6 +177,8 @@
 
   services.emacs.package = pkgs.emacsGit;
 
+  services.gnome.gnome-keyring.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
