@@ -14,6 +14,7 @@
     coreutils
     curl
     direnv
+    discord
     dtach
     emacs
     fd
