@@ -41,3 +41,4 @@ Thumbs.db
 
 _scratch
 flymake_*
+.direnv
