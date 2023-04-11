@@ -406,6 +406,14 @@
           (title (match-string 2 name))
           (url   (replace-regexp-in-string "/edit.*" "" url)))
       (format "%s: %s [[%s][%s]]" id title url id)))
+   ;; Other Google Doc links
+   ((string-match
+     (rx (submatch (one-or-more anything)) ;; Title: eg "Zoekt Horizontal Scaling"
+         " - Google Docs")
+     name)
+    (let ((title (match-string 1 name))
+          (url   (replace-regexp-in-string "/edit.*" "" url)))
+      (format "[[%s][%s]]" url title)))
    ;; titles that look like jira issues
    ((string-match
      (rx "["
