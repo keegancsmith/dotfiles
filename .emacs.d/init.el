@@ -823,12 +823,13 @@
   (define-key elfeed-search-mode-map "d" 'elfeed-search-youtube-dl)
   (define-key elfeed-search-mode-map "L" 'youtube-dl-list))
 
-(use-package pass)
+(unless (string= (system-name) "fa.local")
+  (use-package pass)
 
-(use-package auth-source-pass
-  :after pass
-  :config
-  (auth-source-pass-enable))
+  (use-package auth-source-pass
+    :after pass
+    :config
+    (auth-source-pass-enable)))
 
 (use-package ledger-mode
   :commands (ledger-mode)
