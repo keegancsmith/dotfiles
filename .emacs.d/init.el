@@ -655,6 +655,7 @@
    '(
      ("mp4" . "mpv")
      ("mkv" . "mpv")
+     ("webm" . "mpv")
      )))
 
 (use-package direnv
