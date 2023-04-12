@@ -56,6 +56,11 @@
   fonts.fontDir.enable = true;
 
   homebrew.enable = true;
+  homebrew.casks = [
+    "karabiner-elements"
+    "raycast"
+    "spotify"
+  ];
   homebrew.masApps = {
     "1password" = 1333542190;
     "slack" = 803453959;
