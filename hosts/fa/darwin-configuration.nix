@@ -63,6 +63,7 @@
   ];
   homebrew.masApps = {
     "1password" = 1333542190;
+    "okta verify" = 490179405;
     "slack" = 803453959;
     "tailscale" = 1475387142;
   };
