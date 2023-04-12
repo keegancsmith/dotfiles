@@ -66,6 +66,7 @@
     "okta verify" = 490179405;
     "slack" = 803453959;
     "tailscale" = 1475387142;
+    "vimari" = 1480933944;
   };
 
   system.keyboard = {
