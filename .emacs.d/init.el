@@ -646,6 +646,21 @@
 (use-package ob-async
   :after org)
 
+;; https://www.reddit.com/r/orgmode/comments/oiui2v/comment/h503cbg/
+(defun hr/paste-html-to-org ()
+  "Takes the contents of the system clip/paste-board, and uses
+`pandoc' to convert it to the org-mode format."
+  (interactive)
+  (let* ((clip (if (eq system-type 'darwin)
+                   "pbv public.html"
+                 "xclip -out -selection 'clipboard' -t text/html"))
+         (format (if (eq major-mode 'org-mode) "org" "markdown"))
+         (pandoc (concat "pandoc -f html -t " format))
+         (cmd    (concat clip " | " pandoc))
+         (text   (shell-command-to-string cmd)))
+    (kill-new text)
+    (yank)))
+
 ; Highlight code when exporting
 (use-package htmlize)
 

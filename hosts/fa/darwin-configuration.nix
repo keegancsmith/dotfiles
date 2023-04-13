@@ -10,6 +10,7 @@
     aspellDicts.en-science
     bashInteractive
     cachix
+    (callPackage ../../lib/pbv.nix {})
     comma
     coreutils
     curl
@@ -41,6 +42,7 @@
     nix-index
     nixfmt
     notmuch
+    pandoc
     python39Packages.yt-dlp
     ripgrep
     screen
