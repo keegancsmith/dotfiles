@@ -677,6 +677,8 @@
  :config
  (direnv-mode))
 
+(use-package lua-mode)
+
 (use-package python
   :config
   (setq

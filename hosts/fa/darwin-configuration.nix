@@ -59,6 +59,7 @@
 
   homebrew.enable = true;
   homebrew.casks = [
+    "hammerspoon"
     "karabiner-elements"
     "raycast"
     "spotify"
