@@ -978,20 +978,6 @@
   :custom ((mastodon-instance-url "https://emacs.ch")
            (mastodon-active-user "keegan")))
 
-(use-package proced
-  :ensure nil
-  :commands proced
-  :custom
-  (proced-auto-update-flag t)
-  (proced-goal-attribute nil)
-  (proced-show-remote-processes t)
-  (proced-enable-color-flag t)
-  (proced-format 'custom)
-  :config
-  (add-to-list
-   'proced-format-alist
-   '(custom user pid ppid sess tree pcpu pmem rss start time state (args comm))))
-
 (use-package gptel)
 
 (use-package bazel
