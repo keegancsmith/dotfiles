@@ -994,7 +994,8 @@
 
 (use-package gptel)
 
-(use-package bazel)
+(use-package bazel
+  :mode ("\\.bazelrc\\'" . bazelrc-mode)) ; sourcegraph uses .bazelrc as an extension
 
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
