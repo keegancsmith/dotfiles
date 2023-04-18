@@ -59,6 +59,7 @@
 
   homebrew.enable = true;
   homebrew.casks = [
+    "adobe-acrobat-reader"
     "hammerspoon"
     "karabiner-elements"
     "raycast"
