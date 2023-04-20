@@ -15,3 +15,7 @@ hs.hotkey.bind({ "alt" }, "5", function()
   local win = zoom:findWindow("Zoom Meeting")
   win:focus()
 end)
+
+hs.hotkey.bind({ "cmd", "shift" }, "v", function()
+  hs.eventtap.keyStrokes(hs.pasteboard.getContents())
+end)
