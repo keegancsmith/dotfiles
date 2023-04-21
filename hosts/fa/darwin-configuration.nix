@@ -22,6 +22,7 @@
     file
     fzf
     git
+    ghostscript
     go
     (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.cloud_sql_proxy
