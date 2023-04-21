@@ -62,6 +62,7 @@
   homebrew.casks = [
     "adobe-acrobat-reader"
     "hammerspoon"
+    "insomnia"
     "karabiner-elements"
     "raycast"
     "spotify"
