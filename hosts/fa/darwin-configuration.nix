@@ -66,6 +66,7 @@
     "karabiner-elements"
     "raycast"
     "spotify"
+    "steam"
   ];
   homebrew.masApps = {
     "1password" = 1333542190;
