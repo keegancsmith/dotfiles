@@ -983,6 +983,8 @@
 (use-package bazel
   :mode ("\\.bazelrc\\'" . bazelrc-mode)) ; sourcegraph uses .bazelrc as an extension
 
+(use-package presentation)
+
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
   (if (file-exists-p file)
