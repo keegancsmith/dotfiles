@@ -19,6 +19,7 @@
     dtach
     emacs
     fd
+    ffmpeg
     file
     fzf
     git
