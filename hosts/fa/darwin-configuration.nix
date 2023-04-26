@@ -4,10 +4,7 @@
   imports = [ ../../lib/cachix.nix ];
 
   environment.systemPackages = with pkgs; [
-    aspell
-    aspellDicts.en
-    aspellDicts.en-computers
-    aspellDicts.en-science
+    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     bashInteractive
     cachix
     (callPackage ../../lib/pbv.nix {})
