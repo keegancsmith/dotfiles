@@ -7,7 +7,7 @@
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     bashInteractive
     cachix
-    (callPackage ../../lib/pbv.nix {})
+    (callPackage ../../lib/pbv.nix { })
     comma
     coreutils
     curl
