@@ -627,6 +627,7 @@
    org-adapt-indentation 'headline-data
    org-catch-invisible-edits 'show-and-error
    org-hide-leading-stars t
+   org-html-validation-link nil
    org-enforce-todo-dependencies t
    org-log-done 'time
    org-log-redeadline 'time
