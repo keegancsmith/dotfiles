@@ -979,7 +979,12 @@
   :custom ((mastodon-instance-url "https://emacs.ch")
            (mastodon-active-user "keegan")))
 
-(use-package gptel)
+(use-package chatgpt-shell
+  :ensure t
+  :custom
+  ((chatgpt-shell-openai-key
+    (lambda ()
+      (auth-source-pick-first-password :host "api.openai.com")))))
 
 (use-package bazel
   :mode ("\\.bazelrc\\'" . bazelrc-mode)) ; sourcegraph uses .bazelrc as an extension
