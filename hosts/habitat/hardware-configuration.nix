@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
@@ -14,17 +15,20 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/9eeb05b2-ee26-496a-b29a-888cda20d3ef";
+    {
+      device = "/dev/disk/by-uuid/9eeb05b2-ee26-496a-b29a-888cda20d3ef";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E34A-1588";
+    {
+      device = "/dev/disk/by-uuid/E34A-1588";
       fsType = "vfat";
     };
 
   fileSystems."/var/lib/plex" =
-    { device = "/dev/disk/by-uuid/6b501d20-8d36-4afa-82c0-b57513426263";
+    {
+      device = "/dev/disk/by-uuid/6b501d20-8d36-4afa-82c0-b57513426263";
       fsType = "btrfs";
       options = [ "subvol=plex" "compress=zstd" ];
     };

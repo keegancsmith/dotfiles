@@ -39,7 +39,7 @@
     neovim
     nix-direnv
     nix-index
-    nixfmt
+    nixpkgs-fmt
     notmuch
     pandoc
     python39Packages.yt-dlp

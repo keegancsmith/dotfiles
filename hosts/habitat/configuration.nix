@@ -122,7 +122,7 @@
     mupdf
     nix-direnv
     nix-index
-    nixfmt
+    nixpkgs-fmt
     nmap
     obs-studio
     python3

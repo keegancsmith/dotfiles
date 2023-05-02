@@ -12,19 +12,20 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/sda1";
+    {
+      device = "/dev/sda1";
       fsType = "btrfs";
       options = [ "subvol=nixos" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/1DAD-F2ED";
+    {
+      device = "/dev/disk/by-uuid/1DAD-F2ED";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/83d98cda-cabe-433b-b1c9-28509c8a0361"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/83d98cda-cabe-433b-b1c9-28509c8a0361"; }];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

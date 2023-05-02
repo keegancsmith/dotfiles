@@ -16,5 +16,9 @@
       specialArgs = attrs;
       modules = [ ./hosts/fa/darwin-configuration.nix ];
     };
+    formatter = {
+      x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
+    };
   };
 }
