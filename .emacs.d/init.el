@@ -920,6 +920,15 @@
   (add-to-list 'bongo-audio-file-name-extensions "opus")
   :commands (bongo))
 
+(defun k/kill-word-or-region ()
+  "kills region if region is active otherwise kills word"
+  (interactive)
+  (if (use-region-p)
+      (call-interactively #'kill-region)
+    (call-interactively #'backward-kill-word)))
+
+(global-set-key (kbd "C-w") 'k/kill-word-or-region)
+
 (use-package expand-region
   :bind (("C-+" . er/contract-region)
          ("C-=" . er/expand-region)))
