@@ -704,6 +704,7 @@
 
 (use-package magit
   :bind (("C-x g" . my-magit-dispatch))
+  :custom (magit-auto-revert-mode nil)
   :config
   (defun my-git-commit-mode-hook ()
     "sets fill-column to the suggested git convention."
