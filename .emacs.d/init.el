@@ -937,6 +937,10 @@
   :bind (("C-a" . mosey-backward-bounce)
          ("C-e" . mosey-forward-bounce)))
 
+(use-package move-text
+  :bind (("M-p" . move-text-up)
+         ("M-n" . move-text-down)))
+
 (use-package eat
   :demand t
   ;; The build recipe in the package registary doesn't include terminfo and
