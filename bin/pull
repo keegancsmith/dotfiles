@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -ex
+
+cd ~/org-files
+git pull
+
+cd ~/src/github.com/sourcegraph/sourcegraph
+git pull
+go mod download
+
+cd ~/src/github.com/sourcegraph/zoekt
+git pull
+go mod download

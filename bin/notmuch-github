@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+cmd=${1-urls}
+query='tag:gh and tag:gh-inbox body:"Reply to this email directly or view it on GitHub"'
+
+case "$cmd" in
+
+  "urls")
+    notmuch show "$query" | egrep -o '^https://github\.com.*/(issues|pull)/[0-9]+' | sort | uniq
+    ;;
+
+  "done")
+    notmuch tag -gh-inbox -unread "$query"
+    ;;
+
+  *)
+    echo "Unknown command $cmd"
+    echo "USAGE: notmuch github urls|done"
+
+esac
