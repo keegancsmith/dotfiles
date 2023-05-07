@@ -43,6 +43,8 @@
     nixpkgs-fmt
     notmuch
     pandoc
+    (pass.withExtensions (ext: [ ext.pass-otp ]))
+    pinentry
     python39Packages.yt-dlp
     ripgrep
     screen
@@ -117,6 +119,11 @@
 
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
+
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   programs.vim.package = pkgs.neovim;
 
