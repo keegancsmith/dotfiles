@@ -21,7 +21,7 @@ cd $(dirname $0)
 REPO=$(pwd)
 
 dotfiles=".bash_logout .bash_profile .bashrc .emacs.d \
-          .hgrc .inputrc .screenrc .vimrc .gitconfig \
+          .inputrc .screenrc .vimrc .gitconfig \
           .bash_darwin .gitignore_global .zshrc .zshenv \
           .notmuch-config .tmux.conf .hammerspoon"
 for f in $dotfiles; do
@@ -72,9 +72,3 @@ conditionallink "${REPO}/lieer-sourcegraph.json" "${HOME}/.mail/sourcegraph/.gma
 
 # Ensure we have maildirs setup for lieer
 mkdir -p "${HOME}"/.mail/{gmail,sourcegraph}/mail/{new,cur,tmp}
-
-# misc files used by configs
-cd "${REPO}/misc"
-for f in *; do
-    conditionallink "${REPO}/misc/${f}" "${HOME}/.misc/${f}"
-done
