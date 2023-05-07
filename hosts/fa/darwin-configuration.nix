@@ -27,6 +27,7 @@
       google-cloud-sdk.components.gke-gcloud-auth-plugin
     ])
     gopls
+    graphviz
     htop
     jq
     kitty
