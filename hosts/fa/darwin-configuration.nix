@@ -21,6 +21,7 @@
     fzf
     git
     ghostscript
+    gnupg
     go
     (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.cloud_sql_proxy
@@ -65,9 +66,11 @@
     "hammerspoon"
     "insomnia"
     "karabiner-elements"
+    "keybase"
     "raycast"
     "spotify"
     "steam"
+    "wkhtmltopdf"
   ];
   homebrew.masApps = {
     "1password" = 1333542190;
