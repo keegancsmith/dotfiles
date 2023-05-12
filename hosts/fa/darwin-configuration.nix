@@ -63,6 +63,7 @@
   homebrew.enable = true;
   homebrew.casks = [
     "adobe-acrobat-reader"
+    "google-chrome"
     "hammerspoon"
     "insomnia"
     "karabiner-elements"
