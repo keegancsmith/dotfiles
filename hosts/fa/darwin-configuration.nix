@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs, ... }:
 
 {
   imports = [ ../../lib/cachix.nix ];
@@ -118,6 +118,17 @@
     experimental-features = "nix-command flakes";
   };
   environment.pathsToLink = [ "/share/nix-direnv" ];
+
+  # Pin flake system version of nixpkgs to the input version.
+  nix.registry.nixpkgs.flake = nixpkgs;
+
+  # Pin nix-channel for nixpkgs to flake input.
+  nix.nixPath = [{
+    nixpkgs = nixpkgs.outPath;
+
+    # Default value in nix-darwin
+    darwin-config = "${config.environment.darwinConfig}";
+  }];
 
   nixpkgs.config.allowUnfree = true;
 
