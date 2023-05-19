@@ -24,6 +24,7 @@ fi
 
 # PATH dirs to add if they exist
 paths=(
+    "/opt/homebrew/bin"
     "/usr/local/opt/findutils/libexec/gnubin"
     "/usr/local/opt/openjdk/bin"
     "/usr/local/sbin"
