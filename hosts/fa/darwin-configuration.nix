@@ -12,7 +12,6 @@
     coreutils
     curl
     direnv
-    discord
     dtach
     emacs
     fd
@@ -52,7 +51,6 @@
     starship
     tmux
     unzip
-    vscode
     watchman
     wget
   ];
@@ -63,6 +61,7 @@
   homebrew.enable = true;
   homebrew.casks = [
     "adobe-acrobat-reader"
+    "discord"
     "google-chrome"
     "hammerspoon"
     "insomnia"
@@ -71,6 +70,7 @@
     "raycast"
     "spotify"
     "steam"
+    "visual-studio-code"
     "wkhtmltopdf"
   ];
   homebrew.masApps = {
@@ -129,8 +129,6 @@
     # Default value in nix-darwin
     darwin-config = "${config.environment.darwinConfig}";
   }];
-
-  nixpkgs.config.allowUnfree = true;
 
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
