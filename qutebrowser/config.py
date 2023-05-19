@@ -10,6 +10,7 @@ c.editor.command = ['emacsclient', '+{line}:{column}', '{file}']
 c.auto_save.session = True
 
 c.content.autoplay = False
+c.content.blocking.method = 'both'
 
 # dir or hasattr doesn't work on the config classes, so this is how we check
 # if a config option exists.
