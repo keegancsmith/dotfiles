@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, ... }:
+{ config, pkgs, nixpkgs, lib, ... }:
 
 {
   imports = [ ../../lib/cachix.nix ];
@@ -7,7 +7,6 @@
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     bashInteractive
     cachix
-    (callPackage ../../lib/pbv.nix { })
     comma
     coreutils
     curl
@@ -53,7 +52,7 @@
     unzip
     watchman
     wget
-  ];
+  ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") [ (pkgs.callPackage ../../lib/pbv.nix { }) ];
 
   fonts.fonts = with pkgs; [ hack-font go-font iosevka ];
   fonts.fontDir.enable = true;
