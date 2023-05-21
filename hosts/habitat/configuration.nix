@@ -67,7 +67,10 @@
   };
 
   # build newer emacs.
-  nixpkgs.overlays = [ emacs-overlay.overlay ];
+  nixpkgs.overlays = [
+    (import ../../lib/overlay.nix)
+    emacs-overlay.overlay
+  ];
 
   # google-chrome is unfree.
   nixpkgs.config.allowUnfree = true;
@@ -85,6 +88,7 @@
     btrfs-progs
     caffeine-ng
     comma
+    counsel-repo
     curl
     difftastic
     direnv

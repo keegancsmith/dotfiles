@@ -289,7 +289,7 @@
   (let* ((selectrum-should-sort nil)
          (dirs (or (parse-colon-path (getenv "SRCPATH"))
                    '("~/src")))
-         (cmd (string-join (cons "~/go/bin/counsel-repo" dirs) " "))
+         (cmd (string-join (cons "counsel-repo" dirs) " "))
          (cands (split-string (shell-command-to-string cmd)))
          (repo (completing-read "Find repo: " cands nil t)))
     (magit-status (car

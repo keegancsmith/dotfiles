@@ -13,6 +13,7 @@
     cachix
     comma
     coreutils
+    counsel-repo
     curl
     direnv
     dtach
