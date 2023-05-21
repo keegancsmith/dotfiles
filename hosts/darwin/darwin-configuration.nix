@@ -3,6 +3,10 @@
 {
   imports = [ ../../lib/cachix.nix ];
 
+  nixpkgs.overlays = [
+    (import ../../lib/overlay.nix)
+  ];
+
   environment.systemPackages = with pkgs; [
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     bashInteractive
@@ -52,7 +56,7 @@
     unzip
     watchman
     wget
-  ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") [ (pkgs.callPackage ../../lib/pbv.nix { }) ];
+  ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") [ pbv ];
 
   fonts.fonts = with pkgs; [ hack-font go-font iosevka ];
   fonts.fontDir.enable = true;
