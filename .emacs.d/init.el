@@ -194,13 +194,16 @@
 (use-package eglot
   :commands (eglot eglot-ensure)
   :hook
-  (go-mode . eglot-ensure))
+  (go-mode . eglot-ensure)
+  (typescript-mode . eglot-ensure))
 
 ;; lsp-mode performance tuning [[file:straight/repos/lsp-mode/docs/page/performance.md]]
 (use-package emacs
   :config
 
   (setq read-process-output-max (* 1024 1024))) ;; 1mb
+
+(use-package typescript-mode)
 
 (use-package flycheck
   :init

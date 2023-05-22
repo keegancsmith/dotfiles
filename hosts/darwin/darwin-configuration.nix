@@ -45,6 +45,8 @@
     nix-direnv
     nix-index
     nixpkgs-fmt
+    nodePackages.typescript
+    nodePackages.typescript-language-server
     notmuch
     pandoc
     (pass.withExtensions (ext: [ ext.pass-otp ]))

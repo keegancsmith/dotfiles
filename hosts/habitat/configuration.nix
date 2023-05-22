@@ -128,6 +128,8 @@
     nix-index
     nixpkgs-fmt
     nmap
+    nodePackages.typescript
+    nodePackages.typescript-language-server
     obs-studio
     python3
     python39Packages.yt-dlp
