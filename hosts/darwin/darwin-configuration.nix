@@ -69,6 +69,7 @@
     "google-chrome"
     "hammerspoon"
     "insomnia"
+    "kap"
     "karabiner-elements"
     "keybase"
     "raycast"
