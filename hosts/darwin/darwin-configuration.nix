@@ -57,7 +57,7 @@
     unzip
     watchman
     wget
-  ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") [ pbv ];
+  ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") pbv;
 
   fonts.fonts = with pkgs; [ hack-font go-font iosevka ];
   fonts.fontDir.enable = true;
