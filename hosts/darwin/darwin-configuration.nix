@@ -105,7 +105,8 @@
     NSAutomaticSpellingCorrectionEnabled = false;
     NSNavPanelExpandedStateForSaveMode = true;
     NSNavPanelExpandedStateForSaveMode2 = true;
-    _HIHideMenuBar = true;
+    # New macbooks have notch for camera so no point hiding menubar for them.
+    _HIHideMenuBar = (pkgs.stdenv.hostPlatform.system == "x86_64-darwin");
   };
 
   environment.shells = [ pkgs.bashInteractive ];
