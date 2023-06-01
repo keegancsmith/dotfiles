@@ -1007,6 +1007,11 @@
 
 (use-package presentation)
 
+(use-package yasnippet
+  :init (yas-global-mode t))
+
+(use-package yasnippet-snippets)
+
 (defun load-file-exists (file)
   "Load the Lisp file named FILE if it exists."
   (if (file-exists-p file)

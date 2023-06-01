@@ -1,0 +1,30 @@
+# -*- mode: snippet -*-
+# name: weeklyupdate
+# key: weeklyupdate
+# --
+# Status Update
+
+**Date:** `(format-time-string "%B %-d, %Y")`
+
+**Overall Status:**
+- 🟢 on track to make it into the release.
+- 🟡 might make it in, need help, or need to trim scope.
+- 🔴 deprioritized, project on fire, unable to move forward.
+- 🟤 won't make it in, but on track for next release.
+- 🏁 completed and merged
+
+**Progress last week:**
+- pushed pixels1
+- pushed pixels2
+
+**Plans for this week:**
+- plan1
+- plan2
+
+**Blockers/Risks/Concerns:**
+- blocker1
+- blocker2
+
+**Highlights/Wins/Shoutouts:**
+
+**Anything else you think we should know?:**
