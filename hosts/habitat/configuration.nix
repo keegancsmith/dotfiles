@@ -94,7 +94,7 @@
     direnv
     discord
     dtach
-    emacsGit
+    emacs-git
     fd
     file
     fzf
@@ -181,7 +181,7 @@
 
   programs.nix-ld.enable = true;
 
-  services.emacs.package = pkgs.emacsGit;
+  services.emacs.package = pkgs.emacs-git;
 
   services.gnome.gnome-keyring.enable = true;
 
