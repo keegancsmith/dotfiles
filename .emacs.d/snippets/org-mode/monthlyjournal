@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: monthlyjournal
+# key: monthlyjournal
+# --
+#+TITLE: `(format-time-string "%Y-%m %B")` month journal
+
+* Tasks
+  :PROPERTIES:
+  :CATEGORY: Tasks
+  :END:
+* Review
+  :PROPERTIES:
+  :CATEGORY: Review
+  :END:
+** Slack/Github/Email
