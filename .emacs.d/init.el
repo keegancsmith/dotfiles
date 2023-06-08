@@ -916,7 +916,10 @@
 
 (use-package zig-mode)
 
-(use-package graphql-mode)
+(use-package graphql-mode
+  :custom
+  ;; sourcegraph style
+  (graphql-indent-level 4))
 
 (use-package bongo
   :custom
