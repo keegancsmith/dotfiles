@@ -78,6 +78,7 @@
     "karabiner-elements"
     "keybase"
     "raycast"
+    "sloth"
     "spotify"
     "steam"
     "visual-studio-code"
