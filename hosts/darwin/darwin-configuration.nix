@@ -35,6 +35,9 @@
     htop
     jq
     kitty
+    k9s
+    kubectl
+    kubectx
     ledger
     lieer
     man-pages
