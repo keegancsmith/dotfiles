@@ -298,14 +298,12 @@
   (let* ((selectrum-should-sort nil)
          (dirs (or (parse-colon-path (getenv "SRCPATH"))
                    '("~/src")))
-         (cmd (string-join (cons "counsel-repo" dirs) " "))
-         (cands (split-string (shell-command-to-string cmd)))
-         (repo (completing-read "Find repo: " cands nil t)))
-    (magit-status (car
-                   (seq-filter #'file-directory-p
-                               (mapcar
-                                (lambda (dir) (expand-file-name (concat dir "/" repo)))
-                                dirs))))))
+         (cmd (string-join (cons "counsel-repo -verbose" dirs) " "))
+         (cands (mapcar (lambda (line) (butlast (split-string line)))
+                        (split-string (shell-command-to-string cmd) "\n")))
+         (repo (completing-read "Find repo: " cands nil t))
+         (path (cadr (assoc repo cands))))
+    (magit-status path)))
 
 ;; consult version of counsel-git. Faster than using consult-find. No need for
 ;; the fancy async stuff for the repos I work on. Probably could configure
