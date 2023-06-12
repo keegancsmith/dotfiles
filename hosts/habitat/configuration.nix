@@ -94,6 +94,7 @@
     counsel-repo
     curl
     difftastic
+    dig
     direnv
     discord
     dtach
