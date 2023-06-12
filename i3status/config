@@ -3,14 +3,14 @@ general {
         interval = 5
 }
 
-order += "ethernet _first_"
+order += "wireless _first_"
 order += "load"
 order += "memory"
 order += "tztime local"
 
-ethernet _first_ {
-        format_up = "E: %ip"
-        format_down = "E: down"
+wireless _first_ {
+        format_up = "W: (%quality at %essid) %ip"
+        format_down = "W: down"
 }
 
 load {

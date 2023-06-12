@@ -16,6 +16,9 @@
 
   networking.useDHCP = false;
   networking.interfaces.enp5s0.useDHCP = true;
+  networking.interfaces.wlp4s0.useDHCP = true;
+  networking.wireless.enable = true;
+  networking.wireless.userControlled.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
