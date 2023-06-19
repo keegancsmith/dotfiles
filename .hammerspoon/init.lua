@@ -19,3 +19,17 @@ end)
 hs.hotkey.bind({ "cmd", "shift" }, "v", function()
   hs.eventtap.keyStrokes(hs.pasteboard.getContents())
 end)
+
+local hyper = {"ctrl", "alt", "cmd"}
+
+hs.loadSpoon("MiroWindowsManager")
+
+hs.window.animationDuration = 0
+spoon.MiroWindowsManager:bindHotkeys({
+  up = {hyper, "up"},
+  right = {hyper, "right"},
+  down = {hyper, "down"},
+  left = {hyper, "left"},
+  fullscreen = {hyper, "f"},
+  nextscreen = {hyper, "n"}
+})
