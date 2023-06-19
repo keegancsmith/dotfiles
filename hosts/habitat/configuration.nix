@@ -123,7 +123,6 @@
     maim
     man-pages
     man-pages-posix
-    mcfly
     minecraft
     mosh
     mpv

@@ -42,7 +42,6 @@
     lieer
     man-pages
     man-pages-posix
-    mcfly
     mpv
     neovim
     nix-direnv
