@@ -30,6 +30,8 @@ paths=(
     "/usr/local/sbin"
     "/usr/local/bin"
     "/usr/local/opt/go/libexec/bin"
+    "/nix/var/nix/profiles/default/bin"
+    "/run/current-system/sw/bin"
     "$HOME/.nix-profile/bin"
     "$HOME/.cargo/bin"
     "$GOBIN"
