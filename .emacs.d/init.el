@@ -368,6 +368,10 @@
   (setq xref-show-xrefs-function #'consult-xref
         xref-show-definitions-function #'consult-xref))
 
+(use-package wgrep
+  :custom
+  (wgrep-auto-save-buffer t))
+
 (use-package helpful
   :bind (("C-h f" . helpful-callable)
          ("C-h v" . helpful-variable)
