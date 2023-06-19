@@ -88,6 +88,7 @@
     "1password" = 1333542190;
     "golinks" = 1478821913;
     "okta verify" = 490179405;
+    "print to pdf" = 1639234272;
     "slack" = 803453959;
     "tailscale" = 1475387142;
     "vimari" = 1480933944;
