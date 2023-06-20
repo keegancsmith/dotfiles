@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -ex
+
+bazel configure
+git add '*BUILD.bazel'
+git commit -m 'bazel configure'
+git push
