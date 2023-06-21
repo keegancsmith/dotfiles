@@ -18,7 +18,11 @@
   networking.interfaces.enp5s0.useDHCP = true;
   networking.interfaces.wlp4s0.useDHCP = true;
   networking.wireless.enable = true;
-  networking.wireless.userControlled.enable = true;
+  networking.wireless.networks = {
+    Zimbo = {
+      pskRaw = "12a81d2ad096e5906e1556222a25be33137802145b97eab335dde6c0e92c431b";
+    };
+  };
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
