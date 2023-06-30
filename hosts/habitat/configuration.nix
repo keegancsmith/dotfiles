@@ -104,6 +104,7 @@
     dtach
     emacs-git
     fd
+    ffmpeg
     file
     fzf
     gcc
@@ -159,6 +160,7 @@
     xss-lock
     youtube-dl
     zoom-us
+    zstd
   ];
 
   fonts.fonts = with pkgs; [ hack-font go-font iosevka ];
