@@ -1013,6 +1013,8 @@
     (lambda ()
       (auth-source-pick-first-password :host "api.openai.com")))))
 
+(use-package protobuf-mode)
+
 (use-package bazel
   :mode ("\\.bazelrc\\'" . bazelrc-mode)) ; sourcegraph uses .bazelrc as an extension
 
