@@ -77,6 +77,7 @@
     "kap"
     "karabiner-elements"
     "keybase"
+    "qutebrowser"
     "raycast"
     "sloth"
     "spotify"
