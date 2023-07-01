@@ -84,7 +84,7 @@ config.bind(',M', 'spawn --userscript ' + userscript('get_url.sh'))
 
 # Open in chrome
 if platform.system() == 'Darwin':
-    config.bind(',c', 'spawn /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome {url}')
+    config.bind(',c', 'spawn /Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome {url}')
 else:
     config.bind(',c', 'spawn google-chrome-stable {url}')
 
