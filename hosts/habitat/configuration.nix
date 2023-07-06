@@ -19,8 +19,8 @@
   networking.interfaces.wlp4s0.useDHCP = true;
   networking.wireless.enable = true;
   networking.wireless.networks = {
-    Zimbo = {
-      pskRaw = "12a81d2ad096e5906e1556222a25be33137802145b97eab335dde6c0e92c431b";
+    Growlers = {
+      pskRaw = "e665af462c0f24d421e8870dea7c8877d9f777ff61afc08ccc7e3a51000d78d7";
     };
   };
 
