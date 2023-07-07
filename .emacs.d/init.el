@@ -65,6 +65,7 @@
   (compilation-scroll-output 'first-error)
   (tramp-default-method "sshx")
   (ispell-dictionary "british")
+  (set-mark-command-repeat-pop t)
   (warning-minimum-level :error)
   (world-clock-list '(("Africa/Johannesburg" "Cape Town")
    ("America/Los_Angeles" "San Francisco")
@@ -157,6 +158,8 @@
 
 (use-package savehist
   :unless noninteractive
+  :custom
+  (savehist-additional-variables '(register-alist kill-ring))
   :config
   (savehist-mode 1))
 
@@ -234,11 +237,6 @@
   (setq completion-styles '(orderless)
         completion-category-defaults nil
         completion-category-overrides '((file (styles . (partial-completion))))))
-
-;; Persist history over Emacs restarts. Vertico sorts by history position.
-(use-package savehist
-  :init
-  (savehist-mode))
 
 ;; A few more useful configurations for completing-read
 (use-package emacs
@@ -363,6 +361,9 @@
    consult-bookmark consult-recent-file consult-xref
    consult--source-recent-file consult--source-project-recent-file consult--source-bookmark
    :preview-key "M-.")
+
+  (setq register-preview-delay 0.8
+        register-preview-function #'consult-register-format)
 
   ;; Use Consult to select xref locations with preview
   (setq xref-show-xrefs-function #'consult-xref
