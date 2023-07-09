@@ -5,7 +5,6 @@ eservices https://eservices.capetown.gov.za/irj/portal
 gcal https://calendar.google.com/calendar/u/0/r
 sggcal https://calendar.google.com/calendar/u/1/r
 sourcegraph https://github.com/sourcegraph/sourcegraph
-sgslack https://sourcegraph.slack.com/
 zatech https://zatech.slack.com/
 okta https://sourcegraph.okta.com/
 transmission http://habitat:9091/transmission/web/
