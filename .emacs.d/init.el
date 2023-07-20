@@ -75,7 +75,9 @@
   (warning-suppress-types '((comp)))
   :config
   (add-to-list 'backup-directory-alist
-               (cons tramp-file-name-regexp nil)))
+               (cons tramp-file-name-regexp nil))
+
+  (recentf-mode 1))
 (use-package calendar
   :custom
   (calendar-date-style 'iso)
