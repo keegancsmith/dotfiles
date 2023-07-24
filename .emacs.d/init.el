@@ -545,14 +545,6 @@
     (interactive)
     (insert-before-markers (my-browser-link)))
 
-  (defun my-org-pull ()
-    "Updates org-files from git remote."
-    (interactive)
-    (org-save-all-org-buffers)
-    (let ((default-directory "~/org-files/"))
-      (magit-pull-from-pushremote '()))
-    (revbufs))
-
   (require 'ob-shell)
   (require 'ob-awk)
   (require 'ob-python)
@@ -717,9 +709,17 @@
       (magit-status)
     (magit-file-dispatch)))
 
+(defun my-magit-clone-default-directory (repo)
+  "Lay out clones under ~/src."
+  (if (string-match "git@github.com:\\(.+\\)\\.git" repo)
+      (expand-file-name (concat "~/src/github.com/" (match-string 1 repo)))
+    default-directory))
+
 (use-package magit
   :bind (("C-x g" . my-magit-dispatch))
-  :custom (magit-auto-revert-mode nil)
+  :custom
+  (magit-auto-revert-mode nil)
+  (magit-clone-default-directory #'my-magit-clone-default-directory)
   :config
   (defun my-git-commit-mode-hook ()
     "sets fill-column to the suggested git convention."
