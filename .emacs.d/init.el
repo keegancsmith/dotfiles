@@ -64,6 +64,8 @@
   (epg-pinentry-mode 'loopback)
   (compilation-scroll-output 'first-error)
   (tramp-default-method "sshx")
+  (image-converter 'imagemagick) ; prefer over ffmpeg
+  (image-use-external-converter t)
   (ispell-dictionary "british")
   (set-mark-command-repeat-pop t)
   (warning-minimum-level :error)

@@ -119,6 +119,7 @@
     graphviz
     gv
     htop
+    imagemagick
     jq
     k9s
     kbfs # provides git-remote-keybase

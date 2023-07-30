@@ -33,6 +33,7 @@
     gopls
     graphviz
     htop
+    imagemagick
     jq
     kitty
     k9s
