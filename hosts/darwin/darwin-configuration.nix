@@ -17,7 +17,7 @@
     curl
     direnv
     dtach
-    emacs
+    emacs29
     fd
     ffmpeg
     file
