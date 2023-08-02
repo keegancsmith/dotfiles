@@ -714,7 +714,11 @@
 
 (defun my-magit-clone-default-directory (repo)
   "Lay out clones under ~/src."
-  (if (string-match "git@github.com:\\(.+\\)\\.git" repo)
+  (if (string-match
+       (rx "git@github.com:"
+           (submatch (+? anything) "/")
+           (+? anything))
+       repo)
       (expand-file-name (concat "~/src/github.com/" (match-string 1 repo)))
     default-directory))
 
