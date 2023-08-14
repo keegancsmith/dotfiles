@@ -142,7 +142,7 @@
     obs-studio
     python3
     python39Packages.yt-dlp
-    qutebrowser
+    qutebrowser-qt6
     ripgrep
     rofi-pass
     screen
