@@ -94,6 +94,7 @@
     "slack" = 803453959;
     "tailscale" = 1475387142;
     "vimari" = 1480933944;
+    "xcode" = 497799835;
   };
 
   system.keyboard = {

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ "$HOSTNAME" == "fa.local" ]]; then
+    pbpaste | ssh habitat xclip -i -d :0 -verbose -selection clipboard -l 1
+else
+    xclip -o | ssh fa.local pbcopy
+fi
