@@ -92,11 +92,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1692015923,
-        "narHash": "sha256-+u+3/Q/CryDslgz0XVRSDVfQkBFeQWDsycLOT9Fe4r4=",
+        "lastModified": 1692370941,
+        "narHash": "sha256-Vff9G3Ff0ZDwOmwarjqzl+KVkrFGYhUFD/TCI3I00KA=",
         "owner": "keegancsmith",
         "repo": "nixpkgs",
-        "rev": "fb1b4a4454042c89d17012cee55d8d693fff6e46",
+        "rev": "baea699afb2a6bd205d691d051e3e1739d71ee9b",
         "type": "github"
       },
       "original": {
