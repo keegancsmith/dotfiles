@@ -53,7 +53,7 @@
  confirm-nonexistent-file-or-buffer nil
  compilation-window-height 10
  save-abbrevs nil
- dired-listing-switches "-Al"
+ dired-listing-switches "-Alh"
  save-interprogram-paste-before-kill t
  sentence-end-double-space nil
  font-lock-maximum-decoration t
