@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+
+import re
+
+def transform_slack_from_user(part):
+    part = part.strip()
+    if not part:
+        return ''
+    lines = part.splitlines()
+    name = lines[0].split()[0].lower()
+    timestamp = re.compile(r'^ *\d+:\d+( AM| PM)?$')
+    messages = [line.rstrip() for line in lines[1:] if not timestamp.match(line.strip())]
+    return name + ': ' + '\n'.join(messages)
+
+def transform_slack_transcript(data):
+    parts = (transform_slack_from_user(part) for part in data.split('\n\n'))
+    return '\n\n'.join(p for p in parts if p)
+
+if __name__ == '__main__':
+    import fileinput
+    data = ''.join(fileinput.input())
+    print(transform_slack_transcript(data))
