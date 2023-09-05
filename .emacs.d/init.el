@@ -976,6 +976,8 @@
                            ("integration" "integration/*")
                            (:exclude ".dir-locals.el" "*-tests.el")))
   :bind (("C-c h" . eat-project))
+  :custom
+  (eat-kill-buffer-on-exit t)
   :config
   (defun my-eat-shell ()
     (interactive)
