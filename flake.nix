@@ -1,8 +1,6 @@
 {
   inputs = {
-    # Temporarily use my own fork which contains a fix for lieer on darwin
-    # https://github.com/NixOS/nixpkgs/pull/246103
-    nixpkgs.url = "github:keegancsmith/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
