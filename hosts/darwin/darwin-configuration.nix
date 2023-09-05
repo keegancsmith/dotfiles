@@ -48,6 +48,7 @@
     nix-direnv
     nix-index
     nixpkgs-fmt
+    nodejs_20
     nodePackages.typescript
     nodePackages.typescript-language-server
     notmuch
