@@ -1,4 +1,4 @@
-{ config, pkgs, emacs-overlay, ... }: {
+{ config, pkgs, nixpkgs-unstable, emacs-overlay, ... }: {
 
   imports = [ ./hardware-configuration.nix ../../lib/cachix.nix ];
 
@@ -84,7 +84,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     (pass.withExtensions (ext: [ ext.pass-otp ]))
     alacritty
     aspell
@@ -142,7 +142,6 @@
     obs-studio
     python3
     python39Packages.yt-dlp
-    qutebrowser-qt6
     ripgrep
     rofi-pass
     screen
@@ -162,7 +161,9 @@
     youtube-dl
     zoom-us
     zstd
-  ];
+  ]) ++ (with nixpkgs-unstable.legacyPackages.x86_64-linux; [
+    qutebrowser
+  ]);
 
   fonts.fonts = with pkgs; [ hack-font go-font iosevka ];
 
