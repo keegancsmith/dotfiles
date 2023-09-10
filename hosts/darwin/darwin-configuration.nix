@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, lib, ... }:
+{ config, pkgs, nixpkgs, nixpkgs-unstable, lib, ... }:
 
 {
   imports = [ ../../lib/cachix.nix ];
@@ -7,7 +7,7 @@
     (import ../../lib/overlay.nix)
   ];
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     bashInteractive
     cachix
@@ -40,7 +40,6 @@
     kubectl
     kubectx
     ledger
-    lieer
     man-pages
     man-pages-posix
     mpv
@@ -51,7 +50,6 @@
     nodejs_20
     nodePackages.typescript
     nodePackages.typescript-language-server
-    notmuch
     pandoc
     (pass.withExtensions (ext: [ ext.pass-otp ]))
     pinentry
@@ -64,7 +62,10 @@
     watchman
     wget
     zstd
-  ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") pbv;
+  ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") pbv) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
+    lieer
+    notmuch
+  ]);
 
   fonts.fonts = with pkgs; [ hack-font go-font iosevka ];
   fonts.fontDir.enable = true;
