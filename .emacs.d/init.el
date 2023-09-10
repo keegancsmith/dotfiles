@@ -1038,6 +1038,8 @@
 
 (use-package yasnippet-snippets)
 
+(use-package revbufs)
+
 (defun eshell-here ()
   "Opens up a new shell in the directory associated with the
 current buffer's file. The eshell is renamed to match that
@@ -1067,8 +1069,6 @@ directory to make multiple eshell windows easier."
   "Load the Lisp file named FILE if it exists."
   (if (file-exists-p file)
     (load-file file)))
-
-(load-file "~/.emacs.d/revbufs.el")
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file-exists custom-file)
