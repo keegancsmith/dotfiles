@@ -595,7 +595,7 @@
     (setq
      active-projects '("~/org-files/work/projects/2023/guardrails/guardrails.org"
                        "~/org-files/work/projects/2023/context-quality/context-quality.org"
-                       "~/org-files/work/projects/2023/exhaustive/exhaustive.org")
+                       "~/org-files/work/projects/2023/jobs/jobs.org")
      org-agenda-files (append '("~/org-files/inbox.org") active-projects agenda-journals)
      org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
                           (,active-projects :level . 1)
