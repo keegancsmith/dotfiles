@@ -141,7 +141,7 @@
   :config
   ;; Disable all other themes to avoid awkward blending
   (mapc #'disable-theme custom-enabled-themes)
-  (ef-themes-select 'ef-frost))
+  (ef-themes-select 'ef-spring))
 
 (use-package avy
   :bind (("C-c SPC" . avy-goto-word-1)))
