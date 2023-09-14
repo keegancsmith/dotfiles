@@ -71,6 +71,9 @@
   fonts.fontDir.enable = true;
 
   homebrew.enable = true;
+  homebrew.brews = [
+    "bazelisk"
+  ];
   homebrew.casks = [
     "adobe-acrobat-reader"
     "discord"
