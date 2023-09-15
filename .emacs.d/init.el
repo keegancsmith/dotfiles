@@ -23,7 +23,7 @@
 (setq straight-use-package-by-default t)
 
 (when (display-graphic-p)
-  (set-frame-font "Iosevka 14" nil t)
+  (set-frame-font "JetBrains Mono Light 12" nil t)
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8"))
 
