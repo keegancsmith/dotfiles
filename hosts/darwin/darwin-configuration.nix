@@ -31,6 +31,7 @@
       google-cloud-sdk.components.gke-gcloud-auth-plugin
     ])
     gopls
+    graphite-cli
     graphviz
     htop
     imagemagick

@@ -133,10 +133,12 @@
     mosh
     mpv
     mupdf
+    graphite-cli
     nix-direnv
     nix-index
     nixpkgs-fmt
     nmap
+    nodejs_20
     nodePackages.typescript
     nodePackages.typescript-language-server
     obs-studio
