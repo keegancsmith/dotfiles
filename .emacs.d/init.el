@@ -23,7 +23,11 @@
 (setq straight-use-package-by-default t)
 
 (when (display-graphic-p)
-  (set-frame-font "JetBrains Mono Light 12" nil t)
+  (set-frame-font
+   (pcase (system-name)
+     ("fa.local" "JetBrains Mono Light 14")
+     (_          "JetBrains Mono Light 12"))
+   nil t)
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8"))
 
