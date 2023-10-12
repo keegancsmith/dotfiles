@@ -1,9 +1,9 @@
 config.load_autoconfig()
 
-# Add /usr/local/bin to PATH
+# Add nix controlled tools to PATH
 import os
-if '/usr/local/bin:' not in os.environ['PATH']:
-    os.environ['PATH'] = '/usr/local/bin:' + os.environ['PATH']
+if '/var/run/current-system/sw/bin:' not in os.environ['PATH']:
+    os.environ['PATH'] = '/var/run/current-system/sw/bin:' + os.environ['PATH']
 
 c.editor.command = ['emacsclient', '+{line}:{column}', '{file}']
 
