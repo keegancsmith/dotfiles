@@ -25,12 +25,10 @@
     git
     ghostscript
     gnupg
-    go
     (google-cloud-sdk.withExtraComponents [
       google-cloud-sdk.components.cloud_sql_proxy
       google-cloud-sdk.components.gke-gcloud-auth-plugin
     ])
-    gopls
     graphite-cli
     graphviz
     htop
@@ -64,6 +62,8 @@
     wget
     zstd
   ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") pbv) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
+    go_1_21
+    gopls
     lieer
     notmuch
   ]);

@@ -112,10 +112,8 @@
     git
     git-up
     gnome.simple-scan
-    go
     golangci-lint
     google-chrome
-    gopls
     graphviz
     gv
     htop
@@ -164,6 +162,8 @@
     zoom-us
     zstd
   ]) ++ (with nixpkgs-unstable.legacyPackages.x86_64-linux; [
+    go_1_21
+    gopls
     qutebrowser
   ]);
 
