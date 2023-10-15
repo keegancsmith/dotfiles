@@ -10,7 +10,6 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Homebrew config
 export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_NO_GOOGLE_ANALYTICS=1
 eval "$(brew shellenv)"
 
 # /usr/local is brew --prefix
