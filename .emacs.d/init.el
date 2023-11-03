@@ -985,7 +985,12 @@
   (defun my-eat-shell ()
     (interactive)
     (eat "bash"))
-  (bind-key "C-c j" #'my-eat-shell))
+  (bind-key "C-c j" #'my-eat-shell)
+
+  (defun my-eat-ssh (&optional arg)
+    (interactive)
+    (let ((host (if (string= (system-name) "habitat") "fa.local" "habitat")))
+      (eat (concat "ssh " host) arg))))
 
 ;; trying out clojure
 (progn
