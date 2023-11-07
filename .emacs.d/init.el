@@ -993,26 +993,6 @@
            (eat-buffer-name (concat "*ssh-" host "-eat*")))
       (eat (concat "ssh " host) arg))))
 
-;; trying out clojure
-(progn
-  (use-package rainbow-delimiters)
-
-  (use-package clojure-mode
-    :ensure t
-    :config
-    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
-
-  (use-package inf-clojure
-    :ensure t
-    :config
-    (add-hook 'inf-clojure-mode-hook #'rainbow-delimiters-mode))
-
-  (use-package cider
-    :ensure t
-    :config
-    (setq nrepl-log-messages t)
-    (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)))
-
 (use-package detached
   :init
   (detached-init)
