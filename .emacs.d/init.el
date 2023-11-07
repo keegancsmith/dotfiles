@@ -989,7 +989,8 @@
 
   (defun my-eat-ssh (&optional arg)
     (interactive)
-    (let ((host (if (string= (system-name) "habitat") "fa.local" "habitat")))
+    (let* ((host (if (string= (system-name) "habitat") "fa.local" "habitat"))
+           (eat-buffer-name (concat "*ssh-" host "-eat*")))
       (eat (concat "ssh " host) arg))))
 
 ;; trying out clojure
