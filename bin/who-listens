@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec lsof -n -sTCP:LISTEN -P -i4TCP${1/#/:}
