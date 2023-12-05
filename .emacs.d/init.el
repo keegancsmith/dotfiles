@@ -31,6 +31,11 @@
   (setenv "LANG" "en_US.UTF-8")
   (setenv "LC_ALL" "en_US.UTF-8"))
 
+;; use cocoa bindings since that is what I am used to.
+(when (eq window-system 'mac)
+  (setq mac-option-modifier 'meta)
+  (setq mac-command-modifier 'super))
+
 (require 'server)
 (unless (server-running-p)
   (server-start))
