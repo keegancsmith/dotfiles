@@ -85,6 +85,7 @@
     "keybase"
     "qutebrowser"
     "raycast"
+    "scratch"
     "sloth"
     "spotify"
     "steam"
