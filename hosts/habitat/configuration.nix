@@ -167,7 +167,7 @@
     qutebrowser
   ]);
 
-  fonts.fonts = with pkgs; [ hack-font iosevka jetbrains-mono];
+  fonts.fonts = with pkgs; [ hack-font iosevka jetbrains-mono ];
 
   # Needed for nix-direnv. Prevents GC. Also try out nix flakes
   nix.extraOptions = ''
