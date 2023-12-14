@@ -20,4 +20,15 @@ final: prev: rec {
         --zsh <(ZSH_NAME=zsh $out/bin/gt completion)
     '';
   };
+
+  # Emacs 29.1 has issues saving with latest version of gnupg
+  # https://www.masteringemacs.org/article/keeping-secrets-in-emacs-gnupg-auth-sources
+  gnupg = prev.gnupg.overrideAttrs
+    (orig: {
+      version = "2.4.0";
+      src = prev.fetchurl {
+        url = "mirror://gnupg/gnupg/gnupg-2.4.0.tar.bz2";
+        hash = "sha256-HXkVjdAdmSQx3S4/rLif2slxJ/iXhOosthDGAPsMFIM=";
+      };
+    });
 }
