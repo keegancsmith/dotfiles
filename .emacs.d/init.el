@@ -880,6 +880,27 @@
   :config
   (auth-source-pass-enable))
 
+(use-package erc
+  :ensure nil
+  :demand t
+  :custom
+  (erc-autojoin-channels-alist '((Libera.Chat "#nix-darwin" "#zig" "#emacs" "#nixos" "#notmuch" "#qutebrowser")))
+  (erc-hide-list '("JOIN" "PART" "QUIT"))
+  (erc-join-buffer 'bury)
+  :config
+  (defun my-libera-erc ()
+    "Connect to libera.chat"
+    (interactive)
+    (let* ((server "irc.libera.chat")
+           (found (seq-first (auth-source-search
+                              :host server
+                              :max-tokens 1
+                              :require '(:user :secret)))))
+      (erc-tls :server server
+               :port "6697"
+               :nick (plist-get found :user)
+               :password (auth-info-password found)))))
+
 (use-package ledger-mode
   :commands (ledger-mode)
   :mode (("\\.ledger\\'" . ledger-mode)))
