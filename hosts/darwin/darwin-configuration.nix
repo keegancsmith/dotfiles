@@ -91,6 +91,7 @@
     "steam"
     "visual-studio-code"
     "wkhtmltopdf"
+    "zed"
   ];
   homebrew.masApps = {
     "1password" = 1333542190;
