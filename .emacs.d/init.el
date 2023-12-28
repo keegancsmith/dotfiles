@@ -94,7 +94,22 @@
   (calendar-date-style 'iso)
   (calendar-location-name "Cape Town")
   (calendar-longitude 18.46)
-  (calendar-latitude -33.98))
+  (calendar-latitude -33.98)
+  ;; Republic of South Africa's National Holidays.
+  ;; https://www.emacswiki.org/emacs/CalendarLocalization#h5o-52
+  (holiday-local-holidays
+   '((holiday-fixed 1 1 "New Year's Day")
+	   (holiday-fixed 3 21 "Human Rights Day")
+	   (holiday-easter-etc -2 "Good Friday")
+     (holiday-easter-etc +1 "Family Day")
+	   (holiday-fixed 4 27 "Freedom Day")
+	   (holiday-fixed 5 1 "Workers' Day")
+	   (holiday-fixed 6 16 "Youth Day")
+	   (holiday-fixed 8 9 "National Women's Day")
+	   (holiday-fixed 9 24 "Heritage Day")
+	   (holiday-fixed 12 16 "Day of Reconciliation")
+	   (holiday-fixed 12 25 "Christmas Day")
+	   (holiday-fixed 12 26 "Day of Goodwill"))))
 ;; Misc buffer settings
 (setq-default
  fill-column 78
