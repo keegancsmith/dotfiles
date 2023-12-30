@@ -12,6 +12,8 @@ c.auto_save.session = True
 c.content.autoplay = False
 c.content.blocking.method = 'both'
 
+c.window.hide_decoration = True
+
 # dir or hasattr doesn't work on the config classes, so this is how we check
 # if a config option exists.
 from qutebrowser.config import configdata
