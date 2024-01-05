@@ -3,15 +3,9 @@ general {
         interval = 5
 }
 
-order += "wireless _first_"
 order += "load"
 order += "memory"
 order += "tztime local"
-
-wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
-}
 
 load {
         format = "%1min"
