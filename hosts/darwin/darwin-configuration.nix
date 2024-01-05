@@ -157,7 +157,6 @@
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
 
-  programs.gnupg.package = pkgs.gnupg240;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
