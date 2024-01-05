@@ -23,7 +23,9 @@ final: prev: rec {
 
   # Emacs 29.1 has issues saving with latest version of gnupg
   # https://www.masteringemacs.org/article/keeping-secrets-in-emacs-gnupg-auth-sources
-  gnupg = prev.gnupg.overrideAttrs
+  #
+  # I do not override gnupg since that causes me to rebuild the world.
+  gnupg240 = prev.gnupg.overrideAttrs
     (orig: {
       version = "2.4.0";
       src = prev.fetchurl {
