@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs-unstable, emacs-overlay, ... }: {
+{ config, pkgs, nixpkgs-unstable, ... }: {
 
   imports = [ ./hardware-configuration.nix ../../lib/cachix.nix ];
 
@@ -66,10 +66,8 @@
     extraGroups = [ "wheel" "docker" "sound" "plex" "scanner" "lp" ];
   };
 
-  # build newer emacs.
   nixpkgs.overlays = [
     (import ../../lib/overlay.nix)
-    emacs-overlay.overlay
   ];
 
   # google-chrome is unfree.
@@ -95,7 +93,7 @@
     direnv
     discord
     dtach
-    emacs-git
+    emacs29
     fd
     ffmpeg
     file
@@ -187,7 +185,7 @@
 
   programs.nix-ld.enable = true;
 
-  services.emacs.package = pkgs.emacs-git;
+  services.emacs.package = pkgs.emacs29;
 
   services.gnome.gnome-keyring.enable = true;
 

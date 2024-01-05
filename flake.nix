@@ -4,7 +4,6 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
   outputs = { self, nixpkgs, darwin, ... }@attrs: {
     nixosConfigurations.habitat = nixpkgs.lib.nixosSystem {
