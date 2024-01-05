@@ -16,13 +16,6 @@
 
   networking.useDHCP = false;
   networking.interfaces.enp5s0.useDHCP = true;
-  networking.interfaces.wlp4s0.useDHCP = true;
-  networking.wireless.enable = true;
-  networking.wireless.networks = {
-    Growlers = {
-      pskRaw = "e665af462c0f24d421e8870dea7c8877d9f777ff61afc08ccc7e3a51000d78d7";
-    };
-  };
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
