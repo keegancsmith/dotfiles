@@ -250,6 +250,15 @@
     };
   };
 
+  # Roughly Cape Town for redshift.
+  location = {
+    latitude = -34.0;
+    longitude = 18.5;
+  };
+
+  # touch ~/.config/systemd/user/default.target.wants/redshift.service
+  services.redshift.enable = true;
+
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false;
