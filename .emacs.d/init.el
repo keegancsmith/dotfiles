@@ -663,8 +663,6 @@
    org-html-validation-link nil
    org-enforce-todo-dependencies t
    org-log-done 'time
-   org-log-redeadline 'time
-   org-log-reschedule 'time
    org-todo-keywords '((sequence "TODO(t!)" "WAIT(w@/!)" "|" "DONE(d@)" "CANCELLED(c@)"))
    ;org-confirm-babel-evaluate nil
    org-babel-load-languages '((emacs-lisp . t) (shell . t) (awk . t) (python . t))
