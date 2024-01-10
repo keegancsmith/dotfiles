@@ -552,15 +552,19 @@
   (require 'org-protocol)
 
   (defun my-safari-url ()
-    (do-applescript "tell application \"Safari\" to get the URL of front document"))
+    (json-read-from-string
+     (do-applescript "tell application \"Safari\" to get the URL of front document")))
   (defun my-safari-name ()
-    (do-applescript "tell application \"Safari\" to get the name of front window"))
+    (json-read-from-string
+     (do-applescript "tell application \"Safari\" to get the name of front window")))
   (defun my-safari-link ()
     (my-org-link (my-safari-url) (my-safari-name)))
   (defun my-chrome-url ()
-    (do-applescript "tell application \"Google Chrome\" to get URL of active tab of first window"))
+    (json-read-from-string
+     (do-applescript "tell application \"Google Chrome\" to get URL of active tab of first window")))
   (defun my-chrome-name ()
-    (do-applescript "tell application \"Google Chrome\" to get name of active tab of first window"))
+    (json-read-from-string
+     (do-applescript "tell application \"Google Chrome\" to get name of active tab of first window")))
   (defun my-chrome-link ()
     (my-org-link (my-chrome-url) (my-chrome-name)))
   (defun my-browser-link ()
