@@ -103,7 +103,9 @@
     git
     git-up
     gnome.simple-scan
+    go
     golangci-lint
+    gopls
     google-chrome
     graphviz
     gv
@@ -132,7 +134,6 @@
     nodePackages.typescript-language-server
     obs-studio
     python3
-    python39Packages.yt-dlp
     ripgrep
     rofi-pass
     screen
@@ -149,13 +150,11 @@
     xautolock
     xclip
     xss-lock
-    youtube-dl
     zoom-us
     zstd
   ]) ++ (with nixpkgs-unstable.legacyPackages.x86_64-linux; [
-    go_1_21
-    gopls
     qutebrowser
+    yt-dlp
   ]);
 
   fonts.packages = with pkgs; [ hack-font iosevka jetbrains-mono ];
