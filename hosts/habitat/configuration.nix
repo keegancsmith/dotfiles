@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs-unstable, ... }: {
+{ config, pkgs, nixpkgs, nixpkgs-unstable, ... }: {
 
   imports = [ ./hardware-configuration.nix ../../lib/cachix.nix ];
 
@@ -168,6 +168,11 @@
   '';
   nix.package = pkgs.nixFlakes;
   environment.pathsToLink = [ "/share/nix-direnv" ];
+
+  # set <nixpkgs> on NIX_PATH for users to flake input rather than using
+  # channels.
+  environment.etc."nix/inputs/nixpkgs".source = nixpkgs.outPath;
+  nix.nixPath = ["/etc/nix/inputs"];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
