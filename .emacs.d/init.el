@@ -232,7 +232,8 @@
   :commands (eglot eglot-ensure)
   :hook
   (go-mode . eglot-ensure)
-  (typescript-mode . eglot-ensure))
+  (typescript-mode . eglot-ensure)
+  (zig-mode . eglot-ensure))
 
 ;; lsp-mode performance tuning [[file:straight/repos/lsp-mode/docs/page/performance.md]]
 (use-package emacs
