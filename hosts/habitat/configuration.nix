@@ -139,6 +139,8 @@
     screen
     signal-desktop
     spotify
+    sqlite
+    sqlitebrowser
     starship
     steam-run
     synergy
