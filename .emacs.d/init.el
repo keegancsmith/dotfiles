@@ -862,7 +862,7 @@
   :custom
   (youtube-dl-program "yt-dlp")
   (youtube-dl-arguments (list "--no-colors" "--no-mtime" "--restrict-filenames" "-f" "[height<=?720]/best"))
-  (youtube-dl-directory "~/youtube/feed")
+  (youtube-dl-directory (expand-file-name "~/youtube/feed"))
 
   :config
 
