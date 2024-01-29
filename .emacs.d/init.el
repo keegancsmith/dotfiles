@@ -552,6 +552,8 @@
 
   (require 'org-protocol)
 
+  (defun my-pgrep-exact? (name)
+    (equal 0 (call-process "pgrep" nil nil nil "-q" "-x" name)))
   (defun my-safari-url ()
     (json-read-from-string
      (do-applescript "tell application \"Safari\" to get the URL of front document")))
@@ -569,9 +571,9 @@
   (defun my-chrome-link ()
     (my-org-link (my-chrome-url) (my-chrome-name)))
   (defun my-browser-link ()
-    (if (equal 0 (call-process "pgrep" nil nil nil "-q" "^Safari$"))
-        (my-safari-link)
-      (my-chrome-link)))
+    (cond
+     ((my-pgrep-exact? "Google Chrome") (my-chrome-link))
+     ((my-pgrep-exact? "Safari") (my-safari-link))))
   (defun my-insert-link ()
     (interactive)
     (insert-before-markers (my-browser-link)))

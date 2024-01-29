@@ -79,8 +79,8 @@ config.bind(',M', 'spawn --userscript ' + userscript('get_url.sh'))
 
 # Open in chrome
 if platform.system() == 'Darwin':
-    config.bind(',c', 'spawn open -a Safari {url}')
-    config.bind(',C', 'spawn open -a "Google Chrome" {url}')
+    config.bind(',c', 'spawn open -a "Google Chrome" {url}')
+    config.bind(',C', 'spawn open -a Safari {url}')
 else:
     config.bind(',c', 'spawn google-chrome-stable {url}')
 
