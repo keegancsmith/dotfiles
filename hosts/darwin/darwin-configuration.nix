@@ -23,6 +23,9 @@
     file
     fzf
     git
+    go
+    golangci-lint
+    gopls
     ghostscript
     gnupg240
     (google-cloud-sdk.withExtraComponents [
@@ -55,6 +58,8 @@
     python39Packages.yt-dlp
     ripgrep
     screen
+    sqlite
+    sqlitebrowser
     starship
     tmux
     unzip
@@ -62,7 +67,6 @@
     wget
     zstd
   ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") pbv) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
-    go_1_21
     lieer
     notmuch
   ]);
