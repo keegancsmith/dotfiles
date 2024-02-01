@@ -14,7 +14,10 @@
     darwinConfigurations.fa = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       specialArgs = attrs;
-      modules = [ ./hosts/darwin/darwin-configuration.nix ];
+      modules = [
+        ./hosts/darwin/darwin-configuration.nix
+        ./hosts/darwin/work.nix
+      ];
     };
     darwinConfigurations.cliche = darwin.lib.darwinSystem {
       system = "x86_64-darwin";

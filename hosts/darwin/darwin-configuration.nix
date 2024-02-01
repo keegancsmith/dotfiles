@@ -28,19 +28,12 @@
     gopls
     ghostscript
     gnupg240
-    (google-cloud-sdk.withExtraComponents [
-      google-cloud-sdk.components.cloud_sql_proxy
-      google-cloud-sdk.components.gke-gcloud-auth-plugin
-    ])
     graphite-cli
     graphviz
     htop
     imagemagick
     jq
     kitty
-    k9s
-    kubectl
-    kubectx
     ledger
     man-pages
     man-pages-posix
@@ -49,9 +42,6 @@
     nix-direnv
     nix-index
     nixpkgs-fmt
-    nodejs_20
-    nodePackages.typescript
-    nodePackages.typescript-language-server
     pandoc
     (pass.withExtensions (ext: [ ext.pass-otp ]))
     pinentry
@@ -75,9 +65,6 @@
   fonts.fontDir.enable = true;
 
   homebrew.enable = true;
-  homebrew.brews = [
-    "bazelisk"
-  ];
   homebrew.casks = [
     "adobe-acrobat-reader"
     "discord"
@@ -98,9 +85,6 @@
     "zed"
   ];
   homebrew.masApps = {
-    "1password" = 1333542190;
-    "golinks" = 1478821913;
-    "okta verify" = 490179405;
     "print to pdf" = 1639234272;
     "slack" = 803453959;
     "tailscale" = 1475387142;
