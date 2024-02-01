@@ -173,7 +173,7 @@
   # set <nixpkgs> on NIX_PATH for users to flake input rather than using
   # channels.
   environment.etc."nix/inputs/nixpkgs".source = nixpkgs.outPath;
-  nix.nixPath = ["/etc/nix/inputs"];
+  nix.nixPath = [ "/etc/nix/inputs" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
