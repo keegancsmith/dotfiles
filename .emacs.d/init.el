@@ -346,10 +346,23 @@
 
 (use-package consult
   :demand t
-  :bind (("C-x b" . consult-buffer)
-         ("M-y" . consult-yank-pop)
+  :bind (("M-y" . consult-yank-pop)
          ("C-c k" . consult-ripgrep)
          ("C-c g" . consult-git)
+
+         ;; C-x bindings in `ctl-x-map'
+         ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+         ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+         ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+         ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+         ("C-x t b" . consult-buffer-other-tab)    ;; orig. switch-to-buffer-other-tab
+         ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+         ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+
+         ;; Custom M-# bindings for fast register access
+         ("M-#" . consult-register-load)
+         ("M-'" . consult-register-store)  ;; orig. abbrev-prefix-mark (unrelated)
+         ("C-M-#" . consult-register)
 
          ;; M-g bindings (goto-map)
          ("M-g g" . consult-goto-line)
