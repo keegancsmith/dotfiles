@@ -124,6 +124,7 @@
     mosh
     mpv
     mupdf
+    gh
     graphite-cli
     nix-direnv
     nix-index
