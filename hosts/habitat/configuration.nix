@@ -76,13 +76,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
-    (pass.withExtensions (ext: [ ext.pass-otp ]))
-    alacritty
-    aspell
-    aspellDicts.en
-    aspellDicts.en-computers
-    aspellDicts.en-science
-    bash
+    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
+    bashInteractive
     btrfs-progs
     caffeine-ng
     comma
@@ -112,7 +107,6 @@
     htop
     imagemagick
     jq
-    k9s
     kbfs # provides git-remote-keybase
     kitty
     ledger
@@ -134,6 +128,7 @@
     nodePackages.typescript
     nodePackages.typescript-language-server
     obs-studio
+    (pass.withExtensions (ext: [ ext.pass-otp ]))
     python3
     ripgrep
     rofi-pass
