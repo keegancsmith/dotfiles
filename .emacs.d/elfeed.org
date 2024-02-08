@@ -37,6 +37,7 @@
 *** http://fastcompression.blogspot.com/feeds/posts/default
 *** https://mitchellh.com/feed.xml
 *** https://xenodium.com/rss.xml
+*** https://tailucas.github.io/feed.xml
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
