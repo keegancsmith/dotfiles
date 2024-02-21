@@ -260,6 +260,9 @@
   # touch ~/.config/systemd/user/default.target.wants/redshift.service
   services.redshift.enable = true;
 
+  # Run TRIM for my SSD
+  services.fstrim.enable = true;
+
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false;
