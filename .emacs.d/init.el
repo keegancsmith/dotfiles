@@ -214,7 +214,7 @@
         (set (make-local-variable 'compile-command)
              "go test")))
   (add-hook 'go-mode-hook #'my-go-mode-hook)
-  (setq gofmt-command "goimports")
+  (setq gofmt-command (expand-file-name "~/go/bin/goimports"))
   (setenv "GOPATH" (string-trim (shell-command-to-string "go env GOPATH"))))
 
 ;; GO111MODULE=on go get github.com/davidrjenni/reftools/cmd/fillstruct
