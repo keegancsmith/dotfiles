@@ -232,7 +232,7 @@
              "go test")))
   (add-hook 'go-mode-hook #'my-go-mode-hook)
   (setq gofmt-command (expand-file-name "~/go/bin/goimports"))
-  (setenv "GOPATH" (string-trim (shell-command-to-string "go env GOPATH"))))
+  (setenv "GOPATH" (string-trim (shell-command-to-string "go env GOPATH")))
   (when (bound-and-true-p consult-imenu-config)
     (add-to-list 'consult-imenu-config '(go-mode :toplevel "Function"
                                                  :types ((?s "Struct"    font-lock-type-face)
