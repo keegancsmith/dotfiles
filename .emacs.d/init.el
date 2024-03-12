@@ -233,6 +233,15 @@
   (add-hook 'go-mode-hook #'my-go-mode-hook)
   (setq gofmt-command (expand-file-name "~/go/bin/goimports"))
   (setenv "GOPATH" (string-trim (shell-command-to-string "go env GOPATH"))))
+  (when (bound-and-true-p consult-imenu-config)
+    (add-to-list 'consult-imenu-config '(go-mode :toplevel "Function"
+                                                 :types ((?s "Struct"    font-lock-type-face)
+                                                         (?i "Interface" font-lock-type-face)
+                                                         (?f "Function"  font-lock-function-name-face)
+                                                         (?m "Method"    font-lock-function-name-face)
+                                                         (?o "Field"     font-lock-variable-name-face)
+                                                         (?c "Constant"  font-lock-constant-face)
+                                                         (?v "Variable"  font-lock-variable-name-face))))))
 
 ;; GO111MODULE=on go get github.com/davidrjenni/reftools/cmd/fillstruct
 (use-package go-fill-struct
