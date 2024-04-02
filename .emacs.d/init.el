@@ -663,7 +663,7 @@
     (setq agenda-journals (seq-filter #'file-exists-p agenda-journals))
 
     (setq
-     active-projects '("~/org-files/work/projects/2023/jobs/jobs.org"
+     active-projects '("~/org-files/work/projects/2024/noodle/noodle.org"
                        "~/org-files/work/projects/2023/keyword/keyword.org")
      org-agenda-files (append '("~/org-files/inbox.org") active-projects agenda-journals)
      org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
