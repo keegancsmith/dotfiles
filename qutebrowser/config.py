@@ -21,6 +21,7 @@ def enableClipboard(pattern):
 enableClipboard('*://github.com')
 enableClipboard('*://sourcegraph.grafana.net')
 enableClipboard('*://pkg.go.dev')
+enableClipboard('*://login.tailscale.com')
 
 # I pretty much never say yes here. Also bypasses sourcegraph dev env wanting
 # to speak to wss even on http.
