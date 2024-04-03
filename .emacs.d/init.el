@@ -857,7 +857,15 @@
 
 (use-package link-hint
   :bind
-  ("C-c o" . link-hint-open-link))
+  ("C-c o" . my-link-hint-open-link)
+  :commands (link-hint-open-link link-hint-copy-link)
+  :init
+  (defun my-link-hint-open-link ()
+    "use link-hint-copy-link with prefix-arg otherwise link-hint-open-link"
+    (interactive)
+    (if current-prefix-arg
+        (link-hint-copy-link)
+      (link-hint-open-link))))
 
 (defmacro defun-shell (name command)
   `(defun ,name ()
@@ -992,9 +1000,15 @@
 
 (use-package elpher)
 
+;; I always open URLs without taking focus from emacs.
 (setq browse-url-handlers
       '(
-        ;; open URLs without taking focus from emacs
+        ;; Youtube works better in Chrome
+        ("https:\\/\\/www\\.youtu\\.*be." . browse-url-background-chrome)
+        ;; Work URLs which require Okta (so Chrome)
+        ("https:\\/\\/docs\\.google" . browse-url-background-chrome)
+        ("https:\\/\\/sourcegraph\\.slack" . browse-url-background-chrome)
+        ;; Default browser for everything else.
         ("." . browse-url-background)))
 
 (defun browse-url-mpv (url &optional single)
@@ -1005,6 +1019,11 @@
   (if (string= system-type "darwin")
       (start-process "open" nil "open" "-g" url)
     (start-process "qutebrowser" nil "qutebrowser" url)))
+
+(defun browse-url-background-chrome (url &optional single)
+  (if (string= system-type "darwin")
+      (start-process "open" nil "open" "-a" "Google Chrome" "-g" url)
+    (start-process "google-chrome-stable" nil "google-chrome-stable" url)))
 
 (use-package whole-line-or-region
   :config
