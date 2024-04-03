@@ -22,6 +22,7 @@
     ffmpeg
     file
     fzf
+    gh
     git
     go
     golangci-lint
@@ -68,6 +69,7 @@
   homebrew.casks = [
     "adobe-acrobat-reader"
     "discord"
+    "figma"
     "google-chrome"
     "hammerspoon"
     "insomnia"
