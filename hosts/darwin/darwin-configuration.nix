@@ -133,10 +133,13 @@
 
   # Pin flake system version of nixpkgs to the input version.
   nix.registry.nixpkgs.flake = nixpkgs;
+  nix.registry.nixpkgs-unstable.flake = nixpkgs-unstable;
 
   # Pin nix-channel for nixpkgs to flake input.
   nix.nixPath = [{
     nixpkgs = nixpkgs.outPath;
+
+    nixpkgs-unstable = nixpkgs-unstable.outPath;
 
     # Default value in nix-darwin
     darwin-config = "${config.environment.darwinConfig}";
