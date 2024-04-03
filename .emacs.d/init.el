@@ -231,6 +231,7 @@
         (set (make-local-variable 'compile-command)
              "go test")))
   (add-hook 'go-mode-hook #'my-go-mode-hook)
+  (add-hook 'go-ts-mode-hook #'my-go-mode-hook)
   (setq gofmt-command (expand-file-name "~/go/bin/goimports"))
   (setenv "GOPATH" (string-trim (shell-command-to-string "go env GOPATH")))
   (when (bound-and-true-p consult-imenu-config)
