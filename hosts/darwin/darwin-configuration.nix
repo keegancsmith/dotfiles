@@ -82,6 +82,7 @@
     "sloth"
     "spotify"
     "steam"
+    "telegram"
     "visual-studio-code"
     "wkhtmltopdf"
     "zed"
