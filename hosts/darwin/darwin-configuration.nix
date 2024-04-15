@@ -43,6 +43,8 @@
     nix-direnv
     nix-index
     nixpkgs-fmt
+    nodejs_20
+    nodePackages.pnpm
     pandoc
     (pass.withExtensions (ext: [ ext.pass-otp ]))
     pinentry
