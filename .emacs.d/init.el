@@ -188,7 +188,9 @@
   :bind (("C-c SPC" . avy-goto-word-1)))
 
 (use-package ace-window
-  :bind ("C-x o" . ace-window))
+  :bind ("C-x o" . ace-window)
+  :custom
+  (aw-scope . 'frame))
 
 (require 'subr-x)
 
