@@ -44,7 +44,8 @@
     nix-index
     nixpkgs-fmt
     nodejs_20
-    nodePackages.pnpm
+    nodejs_20.pkgs.pnpm
+    nodejs_20.pkgs.typescript
     pandoc
     (pass.withExtensions (ext: [ ext.pass-otp ]))
     pinentry
