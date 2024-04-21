@@ -79,6 +79,7 @@
     "kap"
     "karabiner-elements"
     "keybase"
+    "notion"
     "qutebrowser"
     "raycast"
     "scratch"
