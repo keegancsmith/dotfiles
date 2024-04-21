@@ -31,6 +31,7 @@ paths=(
     "/usr/local/bin"
     "/usr/local/opt/go/libexec/bin"
     "/nix/var/nix/profiles/default/bin"
+    "/var/run/current-system/sw/bin"
     "/run/current-system/sw/bin"
     "$HOME/.nix-profile/bin"
     "$HOME/.cargo/bin"
