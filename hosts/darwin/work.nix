@@ -10,8 +10,9 @@
     kubectl
     kubectx
     nodejs_20
-    nodePackages.typescript
-    nodePackages.typescript-language-server
+    nodejs_20.pkgs.pnpm
+    nodejs_20.pkgs.typescript
+    nodejs_20.pkgs.typescript-language-server
   ]) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     lieer
     notmuch
@@ -20,6 +21,8 @@
   homebrew.enable = true;
   homebrew.brews = [
     "bazelisk"
+    "figma"
+    "notion"
   ];
   homebrew.masApps = {
     "1password" = 1333542190;

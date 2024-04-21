@@ -43,9 +43,6 @@
     nix-direnv
     nix-index
     nixpkgs-fmt
-    nodejs_20
-    nodejs_20.pkgs.pnpm
-    nodejs_20.pkgs.typescript
     pandoc
     (pass.withExtensions (ext: [ ext.pass-otp ]))
     pinentry
@@ -72,14 +69,12 @@
   homebrew.casks = [
     "adobe-acrobat-reader"
     "discord"
-    "figma"
     "google-chrome"
     "hammerspoon"
     "insomnia"
     "kap"
     "karabiner-elements"
     "keybase"
-    "notion"
     "qutebrowser"
     "raycast"
     "scratch"
