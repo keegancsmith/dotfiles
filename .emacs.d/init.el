@@ -189,8 +189,8 @@
 
 (use-package ace-window
   :bind ("C-x o" . ace-window)
-  :custom
-  (aw-scope . 'frame))
+  :config
+  (setq aw-scope 'frame))
 
 (require 'subr-x)
 
