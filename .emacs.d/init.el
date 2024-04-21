@@ -1013,6 +1013,7 @@
         ("https:\\/\\/console\\.cloud\\.google\\.com" . browse-url-background-chrome)
         ("https:\\/\\/ui\\.honeycomb\\.io" . browse-url-background-chrome)
         ("https:\\/\\/www\\.figma\\.com" . browse-url-background-chrome)
+        ("https:\\/\\/linear\\.app" . browse-url-background-chrome)
         ;; Default browser for everything else.
         ("." . browse-url-background)))
 
