@@ -909,7 +909,23 @@
 
 ;; https://github.com/skeeto/.emacs.d/blob/master/etc/feed-setup.el
 (use-package elfeed
-  :commands (elfeed))
+  :commands (elfeed)
+  :config
+  ;; I only care about the Full Performance videos from KEXP, not the
+  ;; individual song performances.
+  (add-hook 'elfeed-new-entry-hook
+            (elfeed-make-tagger :feed-title "KEXP"
+                                :entry-title '(not "Full Performance")
+                                :add 'junk
+                                :remove 'unread))
+
+  ;; Shorts from Thrasher always start with an emoji. Haven't found a more
+  ;; generic solution to remove shorts from my feeds
+  (add-hook 'elfeed-new-entry-hook
+            (elfeed-make-tagger :feed-title "ThrasherMagazine"
+                                :entry-title (rx string-start nonascii)
+                                :add 'junk
+                                :remove 'unread)))
 
 (use-package elfeed-org
   :after elfeed
