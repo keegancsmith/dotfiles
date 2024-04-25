@@ -5,6 +5,7 @@ final: prev: rec {
 
   myNodePackages = import ./node-packages/default.nix {
     pkgs = prev;
+    nodejs = prev.nodejs_20;
   };
 
   # override snippet from overrides.nix in nixpkgs
