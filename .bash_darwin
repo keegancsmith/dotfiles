@@ -8,9 +8,9 @@ unset BROWSER
 # Mac warnings to use zsh
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# Homebrew config
+# Homebrew config. We do PATH config in .bashrc
 export HOMEBREW_NO_AUTO_UPDATE=1
-eval "$(brew shellenv)"
+eval "$(brew shellenv | grep -v 'export PATH')"
 
 # /usr/local is brew --prefix
 if [ -f /usr/local/etc/bash_completion ]; then
