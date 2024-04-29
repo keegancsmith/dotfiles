@@ -10,10 +10,9 @@
     kubectl
     kubectx
     nodejs_20
+    nodejs_20.pkgs.pnpm
     nodejs_20.pkgs.typescript
     nodejs_20.pkgs.typescript-language-server
-
-    myNodePackages.pnpm
   ]) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     lieer
     notmuch

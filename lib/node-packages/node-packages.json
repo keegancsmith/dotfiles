@@ -1,4 +1,3 @@
 [
-    "@withgraphite/graphite-cli",
-    "pnpm"
+  "@withgraphite/graphite-cli"
 ]
