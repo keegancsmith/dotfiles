@@ -33,6 +33,7 @@ paths=(
     "/nix/var/nix/profiles/default/bin"
     "/var/run/current-system/sw/bin"
     "/run/current-system/sw/bin"
+    "/var/run/wrappers/bin"
     "$HOME/.nix-profile/bin"
     "$HOME/.cargo/bin"
     "$GOBIN"
