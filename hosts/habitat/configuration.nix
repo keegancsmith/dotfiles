@@ -142,7 +142,6 @@
     synergy
     tmux
     unzip
-    vscode
     watchman
     wget
     xautolock
@@ -150,8 +149,9 @@
     xss-lock
     zoom-us
     zstd
-  ]) ++ (with nixpkgs-unstable.legacyPackages.x86_64-linux; [
+  ]) ++ (with (import nixpkgs-unstable { system = "x86_64-linux"; config = { allowUnfree = true; }; }); [
     qutebrowser
+    vscode
     yt-dlp
   ]);
 
