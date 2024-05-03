@@ -29,8 +29,9 @@ c.content.tls.certificate_errors = 'ask-block-thirdparty'
 
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
-    's': 'https://sourcegraph.sourcegraph.com/search?patternType=keyword&q={}',
+    's': 'https://sourcegraph.com/search?patternType=keyword&q={}',
     'ss': 'https://sourcegraph.sourcegraph.com/search?patternType=keyword&q=repo%3A%5Egithub%5C.com%2Fsourcegraph%2Fsourcegraph%24+{}',
+    'sc': 'https://sourcegraph.sourcegraph.com/search?patternType=keyword&q=repo%3A%5Egithub%5C.com%2Fsourcegraph%2Fcody%24+{}',
 }
 
 # yank org-mode link
