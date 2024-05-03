@@ -21,6 +21,8 @@
   homebrew.enable = true;
   homebrew.brews = [
     "bazelisk"
+  ];
+  homebrew.casks = [
     "figma"
     "linear-linear"
     "notion"
