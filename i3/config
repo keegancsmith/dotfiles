@@ -160,9 +160,8 @@ for_window [title="^zoom$"] floating enable
 
 assign [class="emacs"] 1
 assign [class="qutebrowser"] 2
-assign [class="zoom"] 3
-assign [class="mpv"] 4
-assign [class="discord"] 5
+assign [class="code"] 3
+assign [class="zoom"] 4
 
 exec emacs
 exec qutebrowser
