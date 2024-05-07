@@ -440,6 +440,14 @@
   (setq xref-show-xrefs-function #'consult-xref
         xref-show-definitions-function #'consult-xref))
 
+(use-package consult-eglot
+  :after eglot
+  :commands (consult-eglot-symbols))
+
+(use-package consult-eglot-embark
+  :after consult-eglot
+  :config (consult-eglot-embark-mode))
+
 (use-package wgrep
   :custom
   (wgrep-auto-save-buffer t))
