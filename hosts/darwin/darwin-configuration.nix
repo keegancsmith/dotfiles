@@ -28,7 +28,7 @@
     golangci-lint
     gopls
     ghostscript
-    gnupg240
+    gnupg
     graphite-cli
     graphviz
     htop

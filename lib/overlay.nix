@@ -20,20 +20,4 @@ final: prev: rec {
         --zsh <(ZSH_NAME=zsh $out/bin/gt completion)
     '';
   };
-
-  # Emacs 29.1 has issues saving with latest version of gnupg
-  # https://www.masteringemacs.org/article/keeping-secrets-in-emacs-gnupg-auth-sources
-  gnupg240 = prev.gnupg.overrideAttrs
-    (orig: {
-      version = "2.4.0";
-      src = prev.fetchurl {
-        url = "mirror://gnupg/gnupg/gnupg-2.4.0.tar.bz2";
-        hash = "sha256-HXkVjdAdmSQx3S4/rLif2slxJ/iXhOosthDGAPsMFIM=";
-      };
-    });
-
-  # I do not override gnupg on nixos since that causes me to rebuild the
-  # world. For darwin I have to since there isn't a way to override the gnupg
-  # program as a config option.
-  gnupg = if prev.stdenv.isDarwin then gnupg240 else prev.gnupg;
 }
