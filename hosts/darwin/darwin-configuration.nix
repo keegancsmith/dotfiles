@@ -102,8 +102,8 @@
   system.defaults.NSGlobalDomain = {
     AppleKeyboardUIMode = 3;
     ApplePressAndHoldEnabled = false;
-    InitialKeyRepeat = 10;
-    KeyRepeat = 1;
+    InitialKeyRepeat = 25;
+    KeyRepeat = 6;
     NSAutomaticCapitalizationEnabled = false;
     NSAutomaticDashSubstitutionEnabled = false;
     NSAutomaticPeriodSubstitutionEnabled = false;
