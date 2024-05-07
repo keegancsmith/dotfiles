@@ -72,7 +72,7 @@ config.bind(',p', 'spawn --userscript ' + userscript('password_fill'))
 # send URL to to either macbook or linux desktop
 import platform
 if platform.node() == 'habitat':
-    config.bind(',m', 'spawn ssh fa.local open {url}')
+    config.bind(',m', 'spawn ssh fa.local open -b com.google.chrome {url}')
 else:
     config.bind(',m', 'spawn ssh habitat DISPLAY=:0 xdg-open {url}')
 
@@ -81,7 +81,7 @@ config.bind(',M', 'spawn --userscript ' + userscript('get_url.sh'))
 
 # Open in chrome
 if platform.system() == 'Darwin':
-    config.bind(',c', 'spawn open -a "Google Chrome" {url}')
+    config.bind(',c', 'spawn open -b com.google.chrome {url}')
     config.bind(',C', 'spawn open -a Safari {url}')
 else:
     config.bind(',c', 'spawn google-chrome-stable {url}')
