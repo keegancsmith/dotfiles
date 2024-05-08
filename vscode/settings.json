@@ -1,0 +1,12 @@
+{
+  "workbench.colorTheme": "Default Light Modern",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.startupEditor": "none",
+  "editor.minimap.enabled": false,
+  "workbench.editor.empty.hint": "hidden",
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "vim.smartRelativeLine": true,
+  "cody.experimental.noodle": true
+}

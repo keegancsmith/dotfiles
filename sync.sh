@@ -46,6 +46,10 @@ conditionallink "${REPO}/mpv.conf" "${HOME}/.config/mpv/mpv.conf"
 # Karabiner-Elements
 conditionallink "${REPO}/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
 
+# vscode
+conditionallink "${REPO}/vscode/settings.json" "${HOME}/.config/Code/User/settings.json"
+conditionallink "${REPO}/vscode/keybindings.json" "${HOME}/.config/Code/User/keybindings.json"
+
 # qutebrowser
 case $OSTYPE in
     darwin*)
