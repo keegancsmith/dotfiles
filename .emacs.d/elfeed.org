@@ -30,7 +30,6 @@
 *** https://benhoyt.com/writings/rss.xml
 *** https://lucumr.pocoo.org/feed.atom
 *** https://www.fredrikholmqvist.com/posts/index.xml
-*** https://christine.website/blog.rss
 *** https://philipjoubert.com/rss/
 *** https://commaok.xyz/index.xml
 *** https://herman.bearblog.dev/feed/
