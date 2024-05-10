@@ -46,20 +46,6 @@ conditionallink "${REPO}/mpv.conf" "${HOME}/.config/mpv/mpv.conf"
 # Karabiner-Elements
 conditionallink "${REPO}/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
 
-# vscode
-conditionallink "${REPO}/vscode/settings.json" "${HOME}/.config/Code/User/settings.json"
-conditionallink "${REPO}/vscode/keybindings.json" "${HOME}/.config/Code/User/keybindings.json"
-
-# qutebrowser
-case $OSTYPE in
-    darwin*)
-        conditionallink "${REPO}/qutebrowser" "${HOME}/.qutebrowser"
-        ;;
-    *)
-        conditionallink "${REPO}/qutebrowser" "${HOME}/.config/qutebrowser"
-        ;;
-esac
-
 # i3
 conditionallink "${REPO}/i3" "${HOME}/.config/i3"
 conditionallink "${REPO}/i3status" "${HOME}/.config/i3status"
@@ -82,3 +68,22 @@ cd bin
 for f in *; do
     conditionallink "${REPO}/bin/${f}" "${HOME}/bin/${f}"
 done
+
+# Per OS destinations
+case $OSTYPE in
+    darwin*)
+        qutebrowser="${HOME}/.qutebrowser"
+        vscode="${HOME}/Library/Application Support/Code/User"
+        ;;
+    *)
+        qutebrowser="${HOME}/.config/qutebrowser"
+        vscode="${HOME}/.config/Code/User"
+        ;;
+esac
+
+# vscode
+conditionallink "${REPO}/vscode/settings.json" "${vscode}/settings.json"
+conditionallink "${REPO}/vscode/keybindings.json" "${vscode}/keybindings.json"
+
+# qutebrowser
+conditionallink "${REPO}/qutebrowser" "${qutebrowser}"
