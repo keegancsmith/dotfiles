@@ -33,3 +33,21 @@ spoon.MiroWindowsManager:bindHotkeys({
   fullscreen = {hyper, "f"},
   nextscreen = {hyper, "n"}
 })
+
+hs.loadSpoon("URLDispatcher")
+
+spoon.URLDispatcher.default_handler = "org.qutebrowser.qutebrowser"
+spoon.URLDispatcher.url_patterns = {
+   -- Youtube works better in Chrome
+   { "https?://www.youtube.com", "com.google.chrome" },
+   -- Work URLs which require Okta (so Chrome)
+   { "https?://sourcegraph.slack.com", "com.google.chrome" },
+   { "https?://docs.google.com", "com.google.chrome" },
+   { "https?://console.cloud.google.com", "com.google.chrome" },
+   { "https?://ui.honeycomb.io", "com.google.chrome" },
+   { "https?://figma.com", "com.google.chrome" },
+   { "https?://linear.app", "com.google.chrome" },
+   { "https?://notion.so", "com.google.chrome" }
+}
+--spoon.URLDispatcher.logger.setLogLevel("debug")
+spoon.URLDispatcher:start()
