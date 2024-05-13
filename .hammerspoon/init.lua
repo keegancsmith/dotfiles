@@ -43,7 +43,8 @@ spoon.URLDispatcher.url_patterns = {
    { "https?://linear.app", "com.google.chrome" },
    { "https?://www.figma.com", "com.google.chrome" },
    { "https?://www.notion.so", "com.google.chrome" },
-   { "https?://www.loom.com", "com.google.chrome" }
+   { "https?://www.loom.com", "com.google.chrome" },
+   { "https?://sourcegraph.okta.com", "com.google.chrome" }
 }
 --spoon.URLDispatcher.logger.setLogLevel("debug")
 spoon.URLDispatcher:start()
