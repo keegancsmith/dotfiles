@@ -4,23 +4,35 @@
 
 ;;; Code:
 
-;; straight.el bootstrap code
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 5))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
+;; Use built in package manager. Copied from https://sourcegraph.com/github.com/Crandel/home@e36d7d8aa77d9a2cb4435567c3250d308c14b9ae/-/blob/.config/emacs/init.el
+(eval-when-compile
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+  (add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages/") t)
+  (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t)
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+  (setq package-enable-at-startup        nil
+        package-install-upgrade-built-in t
+        package-archive-priorities '(("melpa"        . 200)
+                                     ("elpa"         . 100)
+                                     ("org"          . 75)
+                                     ("nongnu"       . 65)
+                                     ("gnu"          . 50)))  ;; Higher values are searched first.
+  (require 'use-package)
+  (put 'use-package 'lisp-indent-function 1)
 
-(straight-use-package 'use-package)
-(defvar straight-use-package-by-default)
-(setq straight-use-package-by-default t)
+  (unless (package-installed-p 'vc-use-package)
+    (package-vc-install "https://github.com/slotThe/vc-use-package"))
+  (use-package use-package-core
+    :custom
+    ; (use-package-verbose t)
+    (use-package-minimum-reported-time 0.005)
+    (use-package-enable-imenu-support t))
+
+  (require 'use-package-ensure)
+  (setq use-package-always-ensure t)
+)
 
 (when (display-graphic-p)
   (set-frame-font
@@ -264,7 +276,6 @@
   (typescript-mode . eglot-ensure)
   (zig-mode . eglot-ensure))
 
-;; lsp-mode performance tuning [[file:straight/repos/lsp-mode/docs/page/performance.md]]
 (use-package emacs
   :config
 
@@ -822,9 +833,7 @@
     (setq fill-column 72))
   (add-hook 'git-commit-mode-hook #'my-git-commit-mode-hook))
 
-;; recipe still points to gitlab for git-timemachine
-(straight-use-package
- '(git-timemachine :host codeberg :repo "pidu/git-timemachine"))
+(use-package git-timemachine)
 
 (use-package browse-at-remote)
 
@@ -866,8 +875,8 @@
   :config
   (editorconfig-mode 1))
 
-(straight-use-package
- '(promql-mode :host github :repo "Andor/promql-mode"))
+(use-package promql-mode
+  :vc (:fetcher github :repo Andor/promql-mode))
 
 (use-package link-hint
   :bind
@@ -945,6 +954,7 @@
   (elfeed-org))
 
 (use-package youtube-dl
+  :vc (:fetcher github :repo skeeto/youtube-dl-emacs)
   :after elfeed
   :custom
   (youtube-dl-program "yt-dlp")
@@ -1116,14 +1126,6 @@
 
 (use-package eat
   :demand t
-  ;; The build recipe in the package registary doesn't include terminfo and
-  ;; integration dirs which breaks shell integration.
-  :straight (:type git :host codeberg :repo "akib/emacs-eat"
-                   :files ("*.el" ("term" "term/*.el") "*.texi"
-                           "*.ti" ("terminfo/e" "terminfo/e/*")
-                           ("terminfo/65" "terminfo/65/*")
-                           ("integration" "integration/*")
-                           (:exclude ".dir-locals.el" "*-tests.el")))
   :bind (("C-c h" . eat-project))
   :custom
   (eat-kill-buffer-on-exit t)
