@@ -1061,12 +1061,12 @@
 
 (defun browse-url-background (url &optional single)
   (if (string= system-type "darwin")
-      (start-process "open" nil "open" "-g" url)
+      (start-process "open" nil "open" "-b" "org.qutebrowser.qutebrowser" "-g" url)
     (start-process "qutebrowser" nil "qutebrowser" url)))
 
 (defun browse-url-background-chrome (url &optional single)
   (if (string= system-type "darwin")
-      (start-process "open" nil "open" "-a" "Google Chrome" "-g" url)
+      (start-process "open" nil "open" "-b" "com.google.chrome" "-g" url)
     (start-process "google-chrome-stable" nil "google-chrome-stable" url)))
 
 (use-package whole-line-or-region
