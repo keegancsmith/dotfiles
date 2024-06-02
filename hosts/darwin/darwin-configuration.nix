@@ -45,7 +45,6 @@
     nixpkgs-fmt
     pandoc
     (pass.withExtensions (ext: [ ext.pass-otp ]))
-    pinentry
     python39Packages.yt-dlp
     ripgrep
     screen
