@@ -495,6 +495,15 @@
                         ((equal owner "sourcegraph") repo)
                         (t (format "%s/%s" owner repo)))))
       (format "%s [[%s][%s#%s]]" title url desc id)))
+   ;; linear issue
+   ((string-match
+     (rx (submatch (+ upper) "-" (+ digit)) ; id: eg "CODY-123"
+         " "
+         (submatch (+ anything)))           ; title: eg "my issue title"
+     name)
+    (let* ((id    (match-string 1 name))
+           (title (match-string 2 name)))
+      (format "[[%s][%s]] %s" url id title)))
    ;; Sourcegraph RFC
    ((string-match
      (rx (submatch "RFC " (one-or-more digit)) ;; RFC number: eg "RFC 30"
