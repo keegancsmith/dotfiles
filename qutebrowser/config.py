@@ -63,6 +63,10 @@ c.hints.selectors['story'] = [
 ]
 config.bind(';s', 'hint --rapid story userscript ' + userscript('hn.py'))
 
+# Open in emacs or vscode
+config.bind(',e', 'spawn --userscript ' + userscript('open-code.py') + ' emacsclient --no-wait')
+config.bind(',v', 'spawn --userscript ' + userscript('open-code.py') + ' code')
+
 # simple script to write org entry to my inbox.org
 config.bind(',w', 'spawn --userscript ' + userscript('org-capture.py'))
 
