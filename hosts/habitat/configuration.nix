@@ -23,12 +23,15 @@
   hardware.opengl.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
+  services.displayManager.defaultSession = "xfce+i3";
+
   services.xserver = {
     enable = true;
 
-    layout = "us";
-
-    xkbOptions = "caps:escape";
+    xkb = {
+      layout = "us";
+      options = "caps:escape";
+    };
 
     videoDrivers = [ "nvidia" ];
 
@@ -40,8 +43,6 @@
         enableXfwm = false;
       };
     };
-
-    displayManager = { defaultSession = "xfce+i3"; };
 
     windowManager.i3 = {
       enable = true;
@@ -115,7 +116,6 @@
     maim
     man-pages
     man-pages-posix
-    minecraft
     mosh
     mpv
     mupdf
@@ -214,7 +214,7 @@
 
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     publish = {
       addresses = true;
       domain = true;
