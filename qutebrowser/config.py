@@ -30,9 +30,23 @@ c.content.tls.certificate_errors = 'ask-block-thirdparty'
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
     's': 'https://sourcegraph.com/search?patternType=keyword&q={}',
-    'ss': 'https://sourcegraph.sourcegraph.com/search?patternType=keyword&q=repo%3A%5Egithub%5C.com%2Fsourcegraph%2Fsourcegraph%24+{}',
-    'sc': 'https://sourcegraph.sourcegraph.com/search?patternType=keyword&q=repo%3A%5Egithub%5C.com%2Fsourcegraph%2Fcody%24+{}',
 }
+
+# Common repos I search
+import re
+import urllib.parse
+sourcegraph = {
+    'ss': 'sourcegraph/sourcegraph',
+    'sc': 'sourcegraph/cody',
+    'sg': 'golang/go',
+    'sn': 'NixOS/nixpkgs',
+    'sv': 'microsoft/vscode',
+}
+for k, repo in sourcegraph.items():
+    q = 'repo:^' + re.escape('github.com/' + repo) + '$'
+    host = 'sourcegraph.sourcegraph.com' if 'sourcegraph' in repo else 'sourcegraph.com'
+    url_prefix = f'https://{host}/search?patternType=keyword&q={urllib.parse.quote_plus(q)}'
+    c.url.searchengines[k] = url_prefix + '+{}'
 
 # yank org-mode link
 config.bind('yo', 'yank inline [[{url}][{title}]]')
