@@ -135,6 +135,7 @@
     rofi-pass
     screen
     signal-desktop
+    simplescreenrecorder
     spotify
     sqlite
     sqlitebrowser
