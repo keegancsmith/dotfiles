@@ -213,6 +213,17 @@
   services.unbound.enable = true;
   services.unbound.settings.remote-control.control-enable = true;
 
+  services.netatalk = {
+    enable = true;
+    settings = {
+      timemachine_fa = {
+        path = "/timemachine/fa";
+        "valid users" = "keegan";
+        "time machine" = true;
+      };
+    };
+  };
+
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -220,6 +231,7 @@
       addresses = true;
       domain = true;
       enable = true;
+      userServices = true;
     };
   };
 
@@ -290,6 +302,11 @@
     };
 
     interfaces.enp5s0 = {
+      allowedTCPPorts = [
+        # netatalk
+        548
+      ];
+
       allowedUDPPortRanges = [
         # mosh
         {
