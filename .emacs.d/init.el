@@ -364,6 +364,7 @@
   "jump to a repo"
   (interactive)
   (let* ((selectrum-should-sort nil)
+         (default-directory (getenv "HOME")) ; disable TRAMP
          (dirs (or (parse-colon-path (getenv "SRCPATH"))
                    '("~/src")))
          (cmd (string-join (cons "counsel-repo -verbose" dirs) " "))
@@ -371,6 +372,18 @@
                         (split-string (shell-command-to-string cmd) "\n")))
          (repo (completing-read "Find repo: " cands nil t))
          (path (cadr (assoc repo cands))))
+    (magit-status path)))
+
+(defun consult-project-remote ()
+  "jump to a remote repo"
+  (interactive)
+  (let* ((selectrum-should-sort nil)
+         (host (if (string= (system-name) "habitat") "fa.local" "habitat"))
+         (default-directory (concat "/sshx:" host ":"))
+         (cmd "counsel-repo ~/src")
+         (cands (split-string (shell-command-to-string cmd) "\n" t))
+         (repo (completing-read "Find repo: " cands nil t))
+         (path (concat default-directory "src/" repo)))
     (magit-status path)))
 
 ;; consult version of counsel-git. Faster than using consult-find. No need for
