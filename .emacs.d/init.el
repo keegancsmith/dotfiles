@@ -281,7 +281,8 @@
 
   (setq read-process-output-max (* 1024 1024))) ;; 1mb
 
-(use-package typescript-mode)
+(use-package typescript-mode
+  :mode (("\\.[cm]ts\\'" . typescript-mode)))
 
 (use-package flycheck
   :init
