@@ -176,9 +176,14 @@
 (display-time-mode 1)
 
 (if (not (string= (system-name) "habitat"))
-  (display-battery-mode 1))
+    (display-battery-mode 1))
 
-(global-set-key (kbd "C-c C-c") 'compile)
+(defun my-compile ()
+  "I normally want to recompile, so prefer that"
+  (interactive)
+  (call-interactively (if (equal current-prefix-arg nil) #'recompile #'compile)))
+
+(global-set-key (kbd "C-c C-c") 'my-compile)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; go's present tool slides don't have a major mode for emacs, so ensure they
