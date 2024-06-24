@@ -1238,4 +1238,6 @@ directory to make multiple eshell windows easier."
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file-exists custom-file)
 
+(load-file "~/.emacs.d/my-linear-issues.el")
+
 ;;; init.el ends here
