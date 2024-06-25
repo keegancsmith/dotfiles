@@ -812,9 +812,14 @@
   :ensure t
   :bind (:map dired-mode-map ("C-o" . 'casual-dired-tmenu)))
 
-(use-package direnv
- :config
- (direnv-mode))
+(use-package inheritenv
+  :ensure t)
+
+;; use async fork https://github.com/purcell/envrc/issues/6#issuecomment-2187692604
+(use-package envrc
+  :after inheritenv
+  :vc (:fetcher github :repo matthewbauer/envrc :rev async)
+  :hook (after-init . envrc-global-mode))
 
 (use-package lua-mode)
 
