@@ -689,55 +689,62 @@
 
       time))
 
-  ;; Dynamically calculate the list of journals to include. I normally include
-  ;; the previous 2 months and 1 month in the future.
-  (require 'time-date)
-  (let* ((from-month-delta -2)
-         (to-month-delta    1)
-         (time (decode-time (current-time)))
-         (month (decoded-time-month time))
-         active-projects agenda-journals refile-journals current-journal)
+  (defun my-update-org-journals ()
+    "Dynamically calculate the list of journals to include. I
+ normally include the previous 2 months and 1 month in the
+ future."
+    (interactive)
+    (require 'time-date)
+    (let* ((from-month-delta -2)
+           (to-month-delta    1)
+           (time (decode-time (current-time)))
+           (month (decoded-time-month time))
+           active-projects agenda-journals refile-journals current-journal)
 
-    (cl-flet ((journals (from-month-delta to-month-delta)
-                (mapcar (lambda (month-delta)
-                             (format-time-string "~/org-files/journals/%Y/%Y-%m-%b.org"
-                                                 (encode-time
-                                                  (my-decoded-time-add-month time month-delta))))
-                        (number-sequence from-month-delta to-month-delta))))
+      (cl-flet ((journals (from-month-delta to-month-delta)
+                  (mapcar (lambda (month-delta)
+                            (format-time-string "~/org-files/journals/%Y/%Y-%m-%b.org"
+                                                (encode-time
+                                                 (my-decoded-time-add-month time month-delta))))
+                          (number-sequence from-month-delta to-month-delta))))
 
-      (setq agenda-journals (journals -2 1)
-            refile-journals (journals 0 1)
-            current-journal (car refile-journals)))
+        (setq agenda-journals (journals -2 1)
+              refile-journals (journals 0 1)
+              current-journal (car refile-journals)))
 
-    ;; Agenda only wants files that exist
-    (setq agenda-journals (seq-filter #'file-exists-p agenda-journals))
+      ;; Agenda only wants files that exist
+      (setq agenda-journals (seq-filter #'file-exists-p agenda-journals))
 
-    (setq
-     active-projects '("~/org-files/work/projects/2024/noodle/noodle.org"
-                       "~/org-files/work/projects/2023/keyword/keyword.org")
-     org-agenda-files (append '("~/org-files/inbox.org") active-projects agenda-journals)
-     org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
-                          (,active-projects :level . 1)
-                          (,refile-journals :level . 1))
-     org-capture-templates
-     `(("c" "Task" entry (file "~/org-files/inbox.org")
-        "* TODO %?\n  %U")
-       ("C" "Task with context" entry (file "~/org-files/inbox.org")
-        "* TODO %?\n  %U\n%a")
-       ("b" "Browser" entry (file "~/org-files/inbox.org")
-        "* TODO %(my-browser-link)\n%U")
-       ("w" "Week Plan" entry (file+olp+datetree ,current-journal)
-        (file "~/org-files/week-plan.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
-       ("d" "Day Plan" entry (file+olp+datetree ,current-journal)
-        (file "~/org-files/plan.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
-       ("e" "End of day" entry (file+olp+datetree ,current-journal)
-        (file "~/org-files/eod.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
-       ("o" "P0 ops work scheduled and clocked in now" entry (file+headline "~/org-files/work.org" "Ops")
-        "* P0 Ops :urgent:ops:\n  %t\n  %u" :clock-in t :clock-keep t :empty-lines 1)
-       ("j" "Journal" entry (file+olp+datetree ,current-journal)
-        "* %? %U\n" :empty-lines 1)
-       ("J" "Journal HERE" entry (file+olp+datetree (lambda () (org-capture-get :original-file)))
-        "* %? %U\n" :empty-lines 1))))
+      (setq
+       active-projects '("~/org-files/work/projects/2024/noodle/noodle.org"
+                         "~/org-files/work/projects/2023/keyword/keyword.org")
+       org-agenda-files (append '("~/org-files/inbox.org") active-projects agenda-journals)
+       org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
+                            (,active-projects :level . 1)
+                            (,refile-journals :level . 1))
+       org-capture-templates
+       `(("c" "Task" entry (file "~/org-files/inbox.org")
+          "* TODO %?\n  %U")
+         ("C" "Task with context" entry (file "~/org-files/inbox.org")
+          "* TODO %?\n  %U\n%a")
+         ("b" "Browser" entry (file "~/org-files/inbox.org")
+          "* TODO %(my-browser-link)\n%U")
+         ("w" "Week Plan" entry (file+olp+datetree ,current-journal)
+          (file "~/org-files/week-plan.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
+         ("d" "Day Plan" entry (file+olp+datetree ,current-journal)
+          (file "~/org-files/plan.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
+         ("e" "End of day" entry (file+olp+datetree ,current-journal)
+          (file "~/org-files/eod.txt") :clock-in t :clock-keep t :immediate-finish t :jump-to-captured t)
+         ("o" "P0 ops work scheduled and clocked in now" entry (file+headline "~/org-files/work.org" "Ops")
+          "* P0 Ops :urgent:ops:\n  %t\n  %u" :clock-in t :clock-keep t :empty-lines 1)
+         ("j" "Journal" entry (file+olp+datetree ,current-journal)
+          "* %? %U\n" :empty-lines 1)
+         ("J" "Journal HERE" entry (file+olp+datetree (lambda () (org-capture-get :original-file)))
+          "* %? %U\n" :empty-lines 1))))
+
+    (when (called-interactively-p 'any)
+      (message "org-agenda-files is now %s" org-agenda-files)))
+  (my-update-org-journals)
 
   ;; Trying out estimates again
   (setq
