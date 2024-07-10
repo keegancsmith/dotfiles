@@ -61,8 +61,7 @@
     notmuch
   ]);
 
-  fonts.fonts = with pkgs; [ hack-font iosevka jetbrains-mono ];
-  fonts.fontDir.enable = true;
+  fonts.packages = with pkgs; [ hack-font iosevka jetbrains-mono ];
 
   homebrew.enable = true;
   homebrew.casks = [
