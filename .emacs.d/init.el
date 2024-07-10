@@ -1217,6 +1217,11 @@
 
 (use-package revbufs)
 
+(defun my-open-in-vscode ()
+  "Open the current buffer in Visual Studio Code."
+  (interactive)
+  (start-process "code" nil "code" "--goto" (format "%s:%d" (buffer-file-name) (line-number-at-pos))))
+
 (defun eshell-here ()
   "Opens up a new shell in the directory associated with the
 current buffer's file. The eshell is renamed to match that
