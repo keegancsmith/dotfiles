@@ -8,6 +8,7 @@
 
   # append entries for other OSs detected by os-prober.
   boot.loader.grub.useOSProber = true;
+  boot.loader.grub.configurationLimit = 10;
 
   networking.hostName = "habitat";
 
@@ -131,6 +132,7 @@
     obs-studio
     (pass.withExtensions (ext: [ ext.pass-otp ]))
     python3
+    qutebrowser
     ripgrep
     rofi-pass
     screen
@@ -152,7 +154,6 @@
     zoom-us
     zstd
   ]) ++ (with (import nixpkgs-unstable { system = "x86_64-linux"; config = { allowUnfree = true; }; }); [
-    qutebrowser
     vscode
     yt-dlp
   ]);
