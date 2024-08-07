@@ -25,6 +25,7 @@
   homebrew.casks = [
     "figma"
     "linear-linear"
+    "mitmproxy"
     "notion"
   ];
   homebrew.masApps = {
