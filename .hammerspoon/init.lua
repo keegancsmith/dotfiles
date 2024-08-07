@@ -35,6 +35,7 @@ spoon.URLDispatcher.default_handler = "org.qutebrowser.qutebrowser"
 spoon.URLDispatcher.url_patterns = {
    -- Youtube works better in Chrome
    { "https?://www.youtube.com", "com.google.chrome" },
+   { "https?://youtu.be", "com.google.chrome" },
    -- Work URLs which require Okta (so Chrome)
    { "https?://sourcegraph.slack.com", "com.google.chrome" },
    { "https?://docs.google.com", "com.google.chrome" },
@@ -45,7 +46,10 @@ spoon.URLDispatcher.url_patterns = {
    { "https?://www.notion.so", "com.google.chrome" },
    { "https?://www.loom.com", "com.google.chrome" },
    { "https?://sourcegraph.okta.com", "com.google.chrome" },
-   { "https?://sourcegraph.looker.com", "com.google.chrome" }
+   { "https?://sourcegraph.looker.com", "com.google.chrome" },
+   { "https?://sourcegraph.zoom.us", "com.google.chrome" },
+   { "https?://buildkite.com", "com.google.chrome" },
+   { "https?://login.docker.com", "com.google.chrome" }
 }
 --spoon.URLDispatcher.logger.setLogLevel("debug")
 spoon.URLDispatcher:start()
