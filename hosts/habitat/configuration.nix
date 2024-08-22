@@ -10,6 +10,9 @@
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.configurationLimit = 10;
 
+  # Already using systemd, might as well use it even more.
+  boot.initrd.systemd.enable = true;
+
   networking.hostName = "habitat";
 
   # Set your time zone.
@@ -267,6 +270,8 @@
 
   # Run TRIM for my SSD
   services.fstrim.enable = true;
+
+  services.dbus.implementation = "broker";
 
   security.sudo = {
     enable = true;
