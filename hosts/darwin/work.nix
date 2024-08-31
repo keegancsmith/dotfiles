@@ -2,10 +2,6 @@
 
 {
   environment.systemPackages = (with pkgs; [
-    (google-cloud-sdk.withExtraComponents [
-      google-cloud-sdk.components.cloud_sql_proxy
-      google-cloud-sdk.components.gke-gcloud-auth-plugin
-    ])
     k9s
     kubectl
     kubectx
@@ -16,6 +12,11 @@
   ]) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     lieer
     notmuch
+    google-cloud-sql-proxy
+    (google-cloud-sdk.withExtraComponents [
+      google-cloud-sdk.components.cloud_sql_proxy
+      google-cloud-sdk.components.gke-gcloud-auth-plugin
+    ])
   ]);
 
   homebrew.enable = true;
