@@ -1261,3 +1261,4 @@ directory to make multiple eshell windows easier."
 (load-file "~/.emacs.d/my-linear-issues.el")
 
 ;;; init.el ends here
+(put 'narrow-to-region 'disabled nil)
