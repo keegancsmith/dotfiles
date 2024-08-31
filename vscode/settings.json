@@ -5,5 +5,8 @@
   "workbench.editor.empty.hint": "hidden",
   "editor.inlineSuggest.suppressSuggestions": true,
   "vim.smartRelativeLine": true,
-  "cody.experimental.noodle": true
+  "alt-editor.name": "emacs",
+  "alt-editor.binary": "emacsclient",
+  "alt-editor.args": "+{line}:{column} {filename}",
+  "alt-editor.terminal": false
 }
