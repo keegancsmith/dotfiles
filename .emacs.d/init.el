@@ -752,6 +752,10 @@
    org-columns-default-format-for-agenda "%10CATEGORY %40ITEM(Task) %17Effort(Estimated Effort){:} %CLOCKSUM"
    org-agenda-columns-add-appointments-to-effort-sum t)
 
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t) (shell . t) (awk . t) (python . t) (sql . t)))
+
   (setq
    org-refile-use-outline-path 'file
    org-outline-path-complete-in-steps nil
@@ -774,7 +778,6 @@
    org-log-done 'time
    org-todo-keywords '((sequence "TODO(t!)" "WAIT(w@/!)" "|" "DONE(d@)" "CANCELLED(c@)"))
    ;org-confirm-babel-evaluate nil
-   org-babel-load-languages '((emacs-lisp . t) (shell . t) (awk . t) (python . t))
    org-babel-python-command "python3"))
 
 (use-package org-contrib
