@@ -64,6 +64,9 @@
   fonts.packages = with pkgs; [ hack-font iosevka jetbrains-mono ];
 
   homebrew.enable = true;
+  homebrew.brews = [
+    "pinentry-mac"
+  ];
   homebrew.casks = [
     "adobe-acrobat-reader"
     "discord"
