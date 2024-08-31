@@ -9,6 +9,7 @@
     nodejs_20.pkgs.pnpm
     nodejs_20.pkgs.typescript
     nodejs_20.pkgs.typescript-language-server
+    postgresql
   ]) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     lieer
     notmuch
@@ -24,6 +25,7 @@
     "bazelisk"
   ];
   homebrew.casks = [
+    "dbeaver-community"
     "figma"
     "linear-linear"
     "mitmproxy"
