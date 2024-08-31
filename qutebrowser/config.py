@@ -30,6 +30,7 @@ c.content.tls.certificate_errors = 'ask-block-thirdparty'
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
     's': 'https://sourcegraph.com/search?patternType=keyword&q={}',
+    's2': 'https://sourcegraph.sourcegraph.com/search?patternType=keyword&q={}',
 }
 
 # Common repos I search
