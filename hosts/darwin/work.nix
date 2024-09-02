@@ -10,6 +10,11 @@
     nodejs_20.pkgs.typescript
     nodejs_20.pkgs.typescript-language-server
     postgresql
+
+    (pkgs.writeScriptBin "ibazel" ''
+      #!${pkgs.stdenv.shell}
+      exec bazelisk "$@"
+    '')
   ]) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     lieer
     notmuch
