@@ -1,6 +1,6 @@
 { config, pkgs, nixpkgs, nixpkgs-unstable, ... }: {
 
-  imports = [ ./hardware-configuration.nix ../../lib/cachix.nix ];
+  imports = [ ./hardware-configuration.nix ./disk-config.nix ../../lib/cachix.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -19,7 +19,7 @@
   time.timeZone = "Africa/Johannesburg";
 
   networking.useDHCP = false;
-  networking.interfaces.enp5s0.useDHCP = true;
+  networking.interfaces.enp6s0.useDHCP = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -307,7 +307,7 @@
       ];
     };
 
-    interfaces.enp5s0 = {
+    interfaces.enp6s0 = {
       allowedTCPPorts = [
         # netatalk
         548

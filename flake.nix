@@ -4,12 +4,14 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, darwin, ... }@attrs: {
+  outputs = { self, nixpkgs, darwin, disko, ... }@attrs: {
     nixosConfigurations.habitat = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = attrs;
-      modules = [ ./hosts/habitat/configuration.nix ];
+      modules = [ disko.nixosModules.disko ./hosts/habitat/configuration.nix ];
     };
     darwinConfigurations.fa = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
