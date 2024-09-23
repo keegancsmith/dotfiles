@@ -1199,13 +1199,6 @@
   :custom ((mastodon-instance-url "https://emacs.ch")
            (mastodon-active-user "keegan")))
 
-(use-package chatgpt-shell
-  :ensure t
-  :custom
-  ((chatgpt-shell-openai-key
-    (lambda ()
-      (auth-source-pick-first-password :host "api.openai.com")))))
-
 (use-package protobuf-mode)
 
 (use-package bazel
@@ -1219,6 +1212,8 @@
 (use-package yasnippet-snippets)
 
 (use-package revbufs)
+
+(use-package gptel)
 
 (defun my-open-in-vscode ()
   "Open the current buffer in Visual Studio Code."
