@@ -32,6 +32,7 @@
     graphite-cli
     graphviz
     htop
+    hyperfine
     imagemagick
     jq
     kitty
