@@ -1035,7 +1035,8 @@
 (use-package auth-source-pass
   :after pass
   :config
-  (auth-source-pass-enable))
+  (add-to-list 'auth-sources 'password-store t)
+  (auth-source-forget-all-cached))
 
 (use-package erc
   :ensure nil
