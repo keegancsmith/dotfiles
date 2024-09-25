@@ -17,6 +17,7 @@
         disko.nixosModules.disko
         kolide-launcher.nixosModules.kolide-launcher
         ./hosts/habitat/configuration.nix
+        ./lib/work.nix
       ];
     };
     darwinConfigurations.fa = darwin.lib.darwinSystem {
@@ -25,6 +26,7 @@
       modules = [
         ./hosts/darwin/darwin-configuration.nix
         ./hosts/darwin/work.nix
+        ./lib/work.nix
       ];
     };
     darwinConfigurations.cliche = darwin.lib.darwinSystem {
