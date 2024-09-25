@@ -268,12 +268,6 @@
 
   services.dbus.implementation = "broker";
 
-  security.pam.yubico = {
-    enable = true;
-    mode = "challenge-response";
-    id = [ "23510214" ];
-  };
-
   security.sudo = {
     enable = true;
   };
