@@ -106,7 +106,6 @@
     go
     golangci-lint
     gopls
-    google-chrome
     graphviz
     gv
     htop
@@ -155,11 +154,12 @@
     xautolock
     xclip
     xss-lock
-    zoom-us
     zstd
   ]) ++ (with (import nixpkgs-unstable { system = "x86_64-linux"; config = { allowUnfree = true; }; }); [
+    google-chrome
     vscode
     yt-dlp
+    zoom-us
   ]);
 
   fonts.packages = with pkgs; [ hack-font iosevka jetbrains-mono ];
