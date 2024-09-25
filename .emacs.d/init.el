@@ -1214,6 +1214,15 @@
 
 (use-package revbufs)
 
+(defun my-vc-github-local-checkout (name repo)
+  "helper for package-vc-install-from-checkout"
+  (let ((dir (expand-file-name repo "~/src/github.com/")))
+    (when (and
+           (file-directory-p dir)
+           (not (file-exists-p (expand-file-name name package-user-dir))))
+      (package-vc-install-from-checkout dir name))))
+
+(my-vc-github-local-checkout "gptel" "karthink/gptel")
 (use-package gptel)
 
 (defun my-open-in-vscode ()
