@@ -261,6 +261,8 @@
     };
   };
 
+  services.kolide-launcher.enable = true;
+
   # Run TRIM for my SSD
   services.fstrim.enable = true;
 
@@ -268,7 +270,6 @@
 
   security.sudo = {
     enable = true;
-    wheelNeedsPassword = false;
   };
 
   # Default is performance. This seems like a more reasonable default, even

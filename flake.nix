@@ -6,12 +6,18 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    kolide-launcher.url = "github:/kolide/nix-agent/main";
+    kolide-launcher.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, darwin, disko, ... }@attrs: {
+  outputs = { self, nixpkgs, darwin, disko, kolide-launcher, ... }@attrs: {
     nixosConfigurations.habitat = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = attrs;
-      modules = [ disko.nixosModules.disko ./hosts/habitat/configuration.nix ];
+      modules = [
+        disko.nixosModules.disko
+        kolide-launcher.nixosModules.kolide-launcher
+        ./hosts/habitat/configuration.nix
+      ];
     };
     darwinConfigurations.fa = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
