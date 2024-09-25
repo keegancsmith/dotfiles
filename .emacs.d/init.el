@@ -179,9 +179,9 @@
     (display-battery-mode 1))
 
 (defun my-compile ()
-  "I normally want to recompile, so prefer that"
+  "Make it possible to do recompile via a prefix arg"
   (interactive)
-  (call-interactively (if (equal current-prefix-arg nil) #'recompile #'compile)))
+  (call-interactively (if (equal current-prefix-arg nil) #'compile #'recompile)))
 
 (global-set-key (kbd "C-c C-c") 'my-compile)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
