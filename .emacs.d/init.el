@@ -1225,6 +1225,14 @@
 (my-vc-github-local-checkout "gptel" "karthink/gptel")
 (use-package gptel)
 
+(my-vc-github-local-checkout "gptel-cody" "sourcegraph/gptel-cody")
+(use-package gptel-cody
+  :vc (:fetcher github :repo sourcegraph/gptel-cody)
+  :after gptel
+  :config
+  (setq gptel-backend (gptel-make-cody "Cody"
+                                       :host "sourcegraph.sourcegraph.com")))
+
 (defun my-open-in-vscode ()
   "Open the current buffer in Visual Studio Code."
   (interactive)
