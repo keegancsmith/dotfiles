@@ -103,7 +103,6 @@
     git
     git-up
     gnome.simple-scan
-    go
     golangci-lint
     gopls
     graphviz
@@ -156,6 +155,7 @@
     xss-lock
     zstd
   ]) ++ (with (import nixpkgs-unstable { system = "x86_64-linux"; config = { allowUnfree = true; }; }); [
+    go_1_23
     google-chrome
     vscode
     yt-dlp
