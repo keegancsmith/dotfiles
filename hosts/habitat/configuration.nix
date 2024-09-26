@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, nixpkgs-unstable, ... }: {
+{ config, pkgs, nixpkgs, nixpkgs-unstable, lib, ... }: {
 
   imports = [ ./hardware-configuration.nix ./disk-config.nix ../../lib/cachix.nix ];
 
@@ -263,6 +263,11 @@
   };
 
   services.kolide-launcher.enable = true;
+
+  specialisation.personal.configuration = {
+    system.nixos.tags = [ "personal" ];
+    services.kolide-launcher.enable = lib.mkForce false;
+  };
 
   # Run TRIM for my SSD
   services.fstrim.enable = true;
