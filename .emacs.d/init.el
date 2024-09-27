@@ -839,6 +839,11 @@
    python-shell-completion-native-enable nil)
   (use-package blacken))
 
+(use-package ediff
+  :config
+  (setq ediff-window-setup-function 'ediff-setup-windows-plain
+        ediff-split-window-function 'split-window-horizontally))
+
 ;; (use-package paredit
 ;;   :diminish paredit-mode
 ;;   :config
