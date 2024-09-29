@@ -844,6 +844,15 @@
   (setq ediff-window-setup-function 'ediff-setup-windows-plain
         ediff-split-window-function 'split-window-horizontally))
 
+(defun my-sql-postgres ()
+  "Connect to postgres based on envvars"
+  (interactive)
+  (let ((sql-server (getenv "PGHOST"))
+        (sql-user (getenv "PGUSER"))
+        (sql-port (string-to-number (or (getenv "PGPORT") "5432")))
+        (sql-database (getenv "PGDATABASE")))
+    (call-interactively #'sql-postgres)))
+
 ;; (use-package paredit
 ;;   :diminish paredit-mode
 ;;   :config
