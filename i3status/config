@@ -3,9 +3,14 @@ general {
         interval = 5
 }
 
+order += "read_file profile"
 order += "load"
 order += "memory"
 order += "tztime local"
+
+read_file profile {
+        path = "/etc/nix/profile-name"
+}
 
 load {
         format = "%1min"

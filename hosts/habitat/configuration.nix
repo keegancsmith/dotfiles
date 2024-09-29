@@ -264,8 +264,11 @@
 
   services.kolide-launcher.enable = true;
 
+  #  Track which specialisation I have activated, shown in i3status
+  system.nixos.tags = [ "work" ];
+  environment.etc."nix/profile-name".text = builtins.concatStringsSep "-" config.system.nixos.tags;
   specialisation.personal.configuration = {
-    system.nixos.tags = [ "personal" ];
+    system.nixos.tags = lib.mkForce [ "personal" ];
     services.kolide-launcher.enable = lib.mkForce false;
   };
 
