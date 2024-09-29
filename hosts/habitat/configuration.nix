@@ -248,20 +248,6 @@
     openFirewall = true;
   };
 
-  services.transmission = {
-    enable = true;
-    openFirewall = true;
-    openRPCPort = true;
-    user = "plex";
-    group = "plex";
-    home = "/var/lib/plex/transmission";
-    settings = {
-      rpc-bind-address = "0.0.0.0";
-      rpc-whitelist = "127.0.0.1,100.*.*.*";
-      rpc-host-whitelist = "habitat,habitat.local";
-    };
-  };
-
   services.kolide-launcher.enable = true;
 
   #  Track which specialisation I have activated, shown in i3status
@@ -270,6 +256,20 @@
   specialisation.personal.configuration = {
     system.nixos.tags = lib.mkForce [ "personal" ];
     services.kolide-launcher.enable = lib.mkForce false;
+
+    services.transmission = {
+      enable = true;
+      openFirewall = true;
+      openRPCPort = true;
+      user = "plex";
+      group = "plex";
+      home = "/var/lib/plex/transmission";
+      settings = {
+        rpc-bind-address = "0.0.0.0";
+        rpc-whitelist = "127.0.0.1,100.*.*.*";
+        rpc-host-whitelist = "habitat,habitat.local";
+      };
+    };
   };
 
   # Run TRIM for my SSD
