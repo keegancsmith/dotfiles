@@ -39,6 +39,7 @@
     ledger
     man-pages
     man-pages-posix
+    mosh
     mpv
     neovim
     nix-direnv
