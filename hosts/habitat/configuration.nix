@@ -13,6 +13,10 @@
   # Already using systemd, might as well use it even more.
   boot.initrd.systemd.enable = true;
 
+  # Memtest86 reported 00099c390160 to 00099d3992b0 as the lowest and highest
+  # error address. Reserve that memory to prevent using it.
+  boot.kernelParams = [ "memmap=16M$0x99c390000" ];
+
   networking.hostName = "habitat";
 
   # Set your time zone.
