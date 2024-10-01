@@ -2,13 +2,14 @@
 
   imports = [ ./hardware-configuration.nix ./disk-config.nix ../../lib/cachix.nix ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # append entries for other OSs detected by os-prober.
-  boot.loader.grub.useOSProber = true;
-  boot.loader.grub.configurationLimit = 10;
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 10;
+    memtest86.enable = true;
+  };
 
   # Already using systemd, might as well use it even more.
   boot.initrd.systemd.enable = true;
