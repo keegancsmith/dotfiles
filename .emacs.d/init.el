@@ -1237,7 +1237,8 @@
       (package-vc-install-from-checkout dir name))))
 
 (my-vc-github-local-checkout "gptel" "karthink/gptel")
-(use-package gptel)
+(use-package gptel
+  :defer)
 
 (my-vc-github-local-checkout "gptel-cody" "sourcegraph/gptel-cody")
 (use-package gptel-cody
