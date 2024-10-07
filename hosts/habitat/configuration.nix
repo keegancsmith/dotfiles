@@ -262,6 +262,8 @@
     system.nixos.tags = lib.mkForce [ "personal" ];
     services.kolide-launcher.enable = lib.mkForce false;
 
+    security.sudo.wheelNeedsPassword = false;
+
     services.transmission = {
       enable = true;
       openFirewall = true;
