@@ -1245,6 +1245,7 @@
   :vc (:fetcher github :repo sourcegraph/gptel-cody)
   :after gptel
   :config
+  (setq gptel-log-level 'debug)
   (setq gptel-backend (gptel-make-cody "Cody"
                                        :host "sourcegraph.sourcegraph.com")))
 
