@@ -40,7 +40,6 @@
     man-pages
     man-pages-posix
     mosh
-    mpv
     neovim
     nix-direnv
     nix-index
@@ -58,7 +57,7 @@
     watchman
     wget
     zstd
-  ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") pbv) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
+  ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") [pbv mpv]) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     lieer
     notmuch
   ]);
