@@ -2,6 +2,6 @@
 # possible to trust it for the sourcegraph repo's flake.nix
 {
   nix.settings = {
-    trusted-substituters = [ "https://sourcegraph-noah.cachix.org" ];
+    trusted-substituters = [ "https://sourcegraph-noah.cachix.org" "https://sourcegraph-keegan.cachix.org" ];
   };
 }

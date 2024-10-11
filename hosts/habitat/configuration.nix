@@ -90,6 +90,7 @@
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     bashInteractive
     btrfs-progs
+    cachix
     caffeine-ng
     comma
     counsel-repo
