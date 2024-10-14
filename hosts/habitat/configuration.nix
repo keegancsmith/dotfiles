@@ -102,7 +102,7 @@
     dtach
     emacs29
     fd
-    ffmpeg
+    ffmpeg-full
     file
     fzf
     gcc
@@ -117,6 +117,9 @@
     htop
     hyperfine
     imagemagick
+    jellyfin
+    jellyfin-web
+    jellyfin-ffmpeg
     jq
     kbfs # provides git-remote-keybase
     kdenlive
@@ -249,9 +252,13 @@
 
   services.keybase.enable = true;
 
-  services.plex = {
+  services.jellyfin = {
     enable = true;
     openFirewall = true;
+    user = "plex";
+    group = "plex";
+    dataDir = "/var/lib/plex/jellyfin";
+    cacheDir = "/var/lib/plex/jellyfin-cache";
   };
 
   services.kolide-launcher.enable = true;
@@ -354,12 +361,6 @@
 
   # Testing default for 23.05
   services.nscd.enableNsncd = true;
-
-  # Plex has a bug which means it never cleanly shutsdown. Use a more
-  # aggressive timeout instead of the default 1m30s.
-  systemd.extraConfig = ''
-    DefaultTimeoutStopSec=10s
-  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
