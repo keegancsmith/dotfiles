@@ -252,6 +252,15 @@
 
   services.keybase.enable = true;
 
+  # still using the plex user, need to migrate data first
+  users.users.plex = {
+    group = "plex";
+    uid = 193;
+  };
+  users.groups.plex = {
+    gid = 193;
+  };
+
   services.jellyfin = {
     enable = true;
     openFirewall = true;
