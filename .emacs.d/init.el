@@ -216,7 +216,7 @@
   :defer 1
   :custom
   (exec-path-from-shell-arguments '("-l"))
-  (exec-path-from-shell-variables '("MANPATH" "GOPATH" "GOROOT" "SRCPATH"))
+  (exec-path-from-shell-variables '("MANPATH" "SRCPATH"))
   :config
   (exec-path-from-shell-initialize))
 
