@@ -87,6 +87,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
+    (writeShellScriptBin "switch" (
+      if builtins.elem "work" config.system.nixos.tags
+      then "sudo /nix/var/nix/profiles/system/specialisation/personal/bin/switch-to-configuration switch"
+      else "sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch"
+    ))
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     bashInteractive
     btrfs-progs
