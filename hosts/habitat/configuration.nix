@@ -99,6 +99,8 @@
     dig
     direnv
     discord
+    docker
+    docker-credential-helpers
     dtach
     emacs29
     fd
