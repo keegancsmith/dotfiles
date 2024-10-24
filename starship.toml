@@ -33,3 +33,8 @@ disabled = true
 
 [nix_shell]
 format = '[❄️ $name]($style) '
+
+[custom.cloud-display-name]
+command = "awk '/displayName:/ { print $2 }' config.yaml"
+detect_files = ['config.yaml']
+when = '[ -n "${PWD##*/sourcegraph/cloud/*}" ]'

@@ -107,6 +107,17 @@ function pass-fzf {
     pass "$@" "$d"
 }
 
+# quick jumping to directory in sourcegraph/cloud
+function cloud_jump {
+    local dir=$(git grep "displayName:" -- ":/**/config.yaml" | \
+        awk -F': *' '{print $1 "\t" $3}' | \
+        fzf --query "$1" --with-nth 2 | \
+        cut -f1)
+    if [ -n "$dir" ]; then
+        cd "$(dirname "$dir")"
+    fi
+}
+
 # Alias's
 alias la="ls -A"
 alias ll="ls -l"
