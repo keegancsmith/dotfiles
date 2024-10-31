@@ -38,6 +38,7 @@ import re
 import urllib.parse
 sourcegraph = {
     'ss': 'sourcegraph/sourcegraph',
+    'sz': 'sourcegraph/zoekt',
     'sc': 'sourcegraph/cody',
     'sg': 'golang/go',
     'sn': 'NixOS/nixpkgs',
