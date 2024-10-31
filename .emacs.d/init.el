@@ -717,7 +717,7 @@
 
       (setq
        active-projects '("~/org-files/work/projects/2024/multi-tenant/multi-tenant.org")
-       org-agenda-files (append '("~/org-files/inbox.org") active-projects agenda-journals)
+       org-agenda-files (append '("~/org-files/inbox.org" "~/org-files/home.org") active-projects agenda-journals)
        org-refile-targets `((("~/org-files/work.org" "~/org-files/home.org" "~/org-files/backlog.org" "~/org-files/notes.org" "~/org-files/learn.org") :maxlevel . 1)
                             (,active-projects :level . 1)
                             (,refile-journals :level . 1))
