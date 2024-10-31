@@ -27,6 +27,8 @@ enableClipboard('*://login.tailscale.com')
 # to speak to wss even on http.
 c.content.tls.certificate_errors = 'ask-block-thirdparty'
 
+c.url.default_page = 'https://web.tabliss.io/'
+
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
     's': 'https://sourcegraph.com/search?patternType=keyword&q={}',
