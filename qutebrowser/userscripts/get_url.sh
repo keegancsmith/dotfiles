@@ -2,6 +2,6 @@
 
 set -e
 
-url=$(echo 'tell application "Safari" to get the URL of front document' | ssh fa.local osascript)
+url=$(echo 'tell application "Google Chrome" to get the URL of front document' | ssh fa.local osascript)
 
 echo "open -t ${url}" >>"${QUTE_FIFO}"
