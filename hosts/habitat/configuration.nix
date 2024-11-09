@@ -158,7 +158,6 @@
     screen
     signal-desktop
     simplescreenrecorder
-    spotify
     sqlite
     sqlitebrowser
     starship
@@ -175,6 +174,7 @@
   ]) ++ (with (import nixpkgs-unstable { system = "x86_64-linux"; config = { allowUnfree = true; }; }); [
     go_1_23
     google-chrome
+    spotify
     vscode
     yt-dlp
     zoom-us
