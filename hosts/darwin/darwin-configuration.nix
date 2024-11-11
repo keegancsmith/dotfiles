@@ -24,6 +24,8 @@
     fzf
     gh
     git
+    git-up
+    git-spice
     go
     golangci-lint
     gopls
