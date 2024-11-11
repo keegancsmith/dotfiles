@@ -8,8 +8,9 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     kolide-launcher.url = "github:/kolide/nix-agent/main";
     kolide-launcher.inputs.nixpkgs.follows = "nixpkgs";
+    flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = { self, nixpkgs, darwin, disko, kolide-launcher, ... }@attrs: {
+  outputs = { self, nixpkgs, darwin, disko, kolide-launcher, flake-utils, ... }@attrs: {
     nixosConfigurations.habitat = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = attrs;
@@ -39,10 +40,14 @@
       specialArgs = attrs;
       modules = [ ./hosts/darwin/darwin-configuration.nix ];
     };
-    formatter = {
-      x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-      x86_64-darwin = nixpkgs.legacyPackages.x86_64-darwin.nixpkgs-fmt;
-      aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
-    };
-  };
+  } // flake-utils.lib.eachDefaultSystem (system:
+    let pkgs = nixpkgs.legacyPackages.${system}; in
+    {
+      formatter = pkgs.nixpkgs-fmt;
+      packages = {
+        counsel-repo = pkgs.callPackage ./lib/counsel-repo.nix { };
+        git-spice = pkgs.callPackage ./lib/git-spice.nix { };
+      };
+    }
+  );
 }

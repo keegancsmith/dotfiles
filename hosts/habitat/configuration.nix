@@ -116,6 +116,7 @@
     ghostscript
     git
     git-up
+    git-spice
     gnome.simple-scan
     golangci-lint
     gopls
