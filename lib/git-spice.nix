@@ -17,4 +17,9 @@ buildGo123Module rec {
   subPackages = [ "." ];
 
   doCheck = false;
+
+  # gs conflicts with ghostscript
+  postInstall = ''
+    mv $out/bin/gs $out/bin/git-spice
+  '';
 }
