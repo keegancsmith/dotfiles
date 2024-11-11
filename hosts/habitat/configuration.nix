@@ -312,6 +312,19 @@
 
   security.sudo = {
     enable = true;
+    extraRules = [{
+      commands = [
+        {
+          command = "/nix/var/nix/profiles/system/specialisation/personal/bin/switch-to-configuration switch";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+      groups = [ "wheel" ];
+    }];
   };
 
   # Default is performance. This seems like a more reasonable default, even

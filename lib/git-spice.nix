@@ -14,7 +14,7 @@ buildGo123Module rec {
   vendorHash = "sha256-JP/2v8BJrgruiW3MWEs01YwJYsKJa9h9RKkh07KLpMk=";
 
   # avoid building ./doc module.
-  subPackages = ["."];
+  subPackages = [ "." ];
 
   doCheck = false;
 }
