@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, nixpkgs-unstable, lib, ... }: {
+{ config, pkgs, nixpkgs, nixpkgs-unstable, lib, ghostty, ... }: {
 
   imports = [ ./hardware-configuration.nix ./disk-config.nix ../../lib/cachix.nix ];
 
@@ -114,6 +114,7 @@
     fzf
     gcc
     ghostscript
+    ghostty.packages.x86_64-linux.default
     git
     git-up
     git-spice

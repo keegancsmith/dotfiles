@@ -9,6 +9,7 @@
     kolide-launcher.url = "github:/kolide/nix-agent/main";
     kolide-launcher.inputs.nixpkgs.follows = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
+    ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
   };
   outputs = { self, nixpkgs, darwin, disko, kolide-launcher, flake-utils, ... }@attrs: {
     nixosConfigurations.habitat = nixpkgs.lib.nixosSystem {
