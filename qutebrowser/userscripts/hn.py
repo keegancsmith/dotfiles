@@ -32,7 +32,7 @@ def extract_links(html):
             attrs = defaultdict(str, attrs)
 
             # HN container
-            if attrs['class'] == 'athing':
+            if 'athing' in attrs['class'].split():
                 self.comments = 'https://news.ycombinator.com/item?id=' + attrs['id']
 
             # HN story
@@ -81,6 +81,14 @@ def test_extract_links():
             (
                 'https://forum.nim-lang.org/t/9906',
                 'https://news.ycombinator.com/item?id=34847941',
+            ),
+        ),
+        (
+            '''<tr class="athing submission" id="42174829">
+      <td align="right" valign="top" class="title"><span class="rank">2.</span></td>      <td valign="top" class="votelinks"><center><a id="up_42174829" href="vote?id=42174829&amp;how=up&amp;goto=news"><div class="votearrow" title="upvote"></div></a></center></td><td class="title"><span class="titleline"><a href="https://github.com/circlemind-ai/fast-graphrag">Show HN: FastGraphRAG – Better RAG using good old PageRank</a><span class="sitebit comhead"> (<a href="from?site=github.com/circlemind-ai"><span class="sitestr">github.com/circlemind-ai</span></a>)</span></span></td></tr>''',
+            (
+                'https://github.com/circlemind-ai/fast-graphrag',
+                'https://news.ycombinator.com/item?id=42174829',
             ),
         ),
         (
