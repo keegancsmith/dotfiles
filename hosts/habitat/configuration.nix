@@ -144,7 +144,6 @@
     mupdf
     gh
     gnumake
-    graphite-cli
     nix-direnv
     nix-index
     nixpkgs-fmt

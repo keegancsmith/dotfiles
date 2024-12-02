@@ -31,7 +31,6 @@
     gopls
     ghostscript
     gnupg
-    graphite-cli
     graphviz
     htop
     hyperfine
