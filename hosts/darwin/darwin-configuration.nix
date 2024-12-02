@@ -8,7 +8,7 @@
   ];
 
   environment.systemPackages = (with pkgs; [
-    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
+    (aspellWithDicts (dicts: with dicts; [ en en-computers ]))
     bashInteractive
     cachix
     comma
