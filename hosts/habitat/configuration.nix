@@ -377,6 +377,12 @@
       "default"
       "tenant1"
       "tenant2"
+      "workspaces"
+    ]) ++ (map (subdomain: "${subdomain}.sourcegraphapp.test") [
+      "default"
+      "tenant1"
+      "tenant2"
+      "workspaces"
     ]);
     "100.100.74.50" = [ "cliche" ];
     "100.116.165.93" = [ "real" ];
@@ -384,6 +390,23 @@
   };
 
   networking.firewall.checkReversePath = "loose";
+
+  # trust caddy cert. caddy start; curl localhost:2019/pki/ca/local | jq -r .root_certificate
+  security.pki.certificates = [
+    ''
+      -----BEGIN CERTIFICATE-----
+      MIIBpDCCAUmgAwIBAgIQNDgI6Wjr9aSc2wN6B2kRyTAKBggqhkjOPQQDAjAwMS4w
+      LAYDVQQDEyVDYWRkeSBMb2NhbCBBdXRob3JpdHkgLSAyMDI0IEVDQyBSb290MB4X
+      DTI0MDkyNTEyMjYwOFoXDTM0MDgwNDEyMjYwOFowMDEuMCwGA1UEAxMlQ2FkZHkg
+      TG9jYWwgQXV0aG9yaXR5IC0gMjAyNCBFQ0MgUm9vdDBZMBMGByqGSM49AgEGCCqG
+      SM49AwEHA0IABD8ajn622yi/qvA4puFdj7nvEL+nExqjL3DXLYU550wAue1uMAte
+      APcSIOeNV1emVKLmiZSdsV/N10D+4X4laO2jRTBDMA4GA1UdDwEB/wQEAwIBBjAS
+      BgNVHRMBAf8ECDAGAQH/AgEBMB0GA1UdDgQWBBTB0aLqw0Mz16ltIIZ3kUYeRp+I
+      kzAKBggqhkjOPQQDAgNJADBGAiEAlxEfmuFTDxX0RQu7NnEui6aPCO/QHBFk4l/c
+      iD6Db90CIQD4MbQdv9w2WSpTBxY65SiNhxOM+n5UC6bPtSxn+NS6nA==
+      -----END CERTIFICATE-----
+    ''
+  ];
 
   # Testing default for 23.05
   services.nscd.enableNsncd = true;
