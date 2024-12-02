@@ -47,7 +47,6 @@
     nixpkgs-fmt
     pandoc
     (pass.withExtensions (ext: [ ext.pass-otp ]))
-    python39Packages.yt-dlp
     ripgrep
     screen
     sqlite
@@ -61,6 +60,7 @@
   ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") mpv) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     lieer
     notmuch
+    yt-dlp
   ]);
 
   fonts.packages = with pkgs; [ hack-font iosevka jetbrains-mono ];
