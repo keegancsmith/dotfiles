@@ -29,8 +29,14 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  hardware.opengl.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  # Enable OpenGL
+  hardware.graphics.enable = true;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   services.displayManager.defaultSession = "xfce+i3";
   services.displayManager.autoLogin.user = "keegan";
@@ -67,10 +73,6 @@
   services.printing.enable = true;
   hardware.sane.enable = true;
   hardware.sane.extraBackends = [ pkgs.sane-airscan ];
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   users.users.keegan = {
     isNormalUser = true;
@@ -118,7 +120,6 @@
     git
     git-up
     git-spice
-    gnome.simple-scan
     golangci-lint
     gopls
     graphviz
@@ -159,6 +160,7 @@
     rofi-pass
     screen
     signal-desktop
+    simple-scan
     simplescreenrecorder
     sqlite
     sqlitebrowser
@@ -184,13 +186,12 @@
 
   fonts.packages = with pkgs; [ hack-font iosevka jetbrains-mono ];
 
-  # Needed for nix-direnv. Prevents GC. Also try out nix flakes
+  # Needed for nix-direnv. Prevents GC.
   nix.extraOptions = ''
     keep-outputs = true
     keep-derivations = true
     experimental-features = nix-command flakes
   '';
-  nix.package = pkgs.nixFlakes;
   environment.pathsToLink = [ "/share/nix-direnv" ];
 
   # set <nixpkgs> on NIX_PATH for users to flake input rather than using
