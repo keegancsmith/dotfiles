@@ -184,7 +184,13 @@
     zoom-us
   ]);
 
-  fonts.packages = with pkgs; [ hack-font iosevka jetbrains-mono ];
+  fonts.packages = with pkgs; [
+    hack-font
+    iosevka
+    jetbrains-mono
+    fira-code
+    fira-code-symbols
+  ];
 
   # Needed for nix-direnv. Prevents GC.
   nix.extraOptions = ''
