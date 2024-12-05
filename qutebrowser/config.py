@@ -48,7 +48,7 @@ sourcegraph = {
 }
 for k, repo in sourcegraph.items():
     q = 'repo:^' + re.escape('github.com/' + repo) + '$'
-    host = 'sourcegraph.sourcegraph.com' if 'sourcegraph' in repo else 'sourcegraph.com'
+    host = 'dogfood.sourcegraphdev.app' if 'sourcegraph' in repo else 'sourcegraph.com'
     url_prefix = f'https://{host}/search?patternType=keyword&q={urllib.parse.quote_plus(q)}'
     c.url.searchengines[k] = url_prefix + '+{}'
 

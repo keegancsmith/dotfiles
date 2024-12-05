@@ -1241,7 +1241,7 @@
   :config
   (setq gptel-log-level 'debug)
   (setq gptel-backend (gptel-make-cody "Cody"
-                                       :host "sourcegraph.sourcegraph.com")))
+                                       :host "dogfood.sourcegraphdev.app")))
 
 (defun my-open-in-vscode ()
   "Open the current buffer in Visual Studio Code."
