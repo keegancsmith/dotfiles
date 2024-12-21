@@ -17,7 +17,8 @@
     curl
     direnv
     dtach
-    emacs29-macport
+    emacs-macport
+    fastmod
     fd
     ffmpeg
     file

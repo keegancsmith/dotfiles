@@ -110,6 +110,7 @@
     docker-credential-helpers
     dtach
     emacs29
+    fastmod
     fd
     ffmpeg-full
     file
