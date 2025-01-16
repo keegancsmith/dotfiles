@@ -276,6 +276,9 @@
     };
   };
 
+  # pipewire uses this for realtime processing of audio.
+  security.rtkit.enable = true;
+
   services.keybase.enable = true;
 
   # still using the plex user, need to migrate data first
