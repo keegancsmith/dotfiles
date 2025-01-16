@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, nixpkgs-unstable, lib, ghostty, ... }: {
+{ config, pkgs, nixpkgs, nixpkgs-unstable, lib, ... }: {
 
   imports = [ ./hardware-configuration.nix ./disk-config.nix ../../lib/cachix.nix ];
 
@@ -117,7 +117,6 @@
     fzf
     gcc
     ghostscript
-    ghostty.packages.x86_64-linux.default
     git
     git-up
     git-spice
@@ -176,6 +175,7 @@
     xss-lock
     zstd
   ]) ++ (with (import nixpkgs-unstable { system = "x86_64-linux"; config = { allowUnfree = true; }; }); [
+    ghostty
     go_1_23
     google-chrome
     spotify
