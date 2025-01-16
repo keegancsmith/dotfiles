@@ -179,6 +179,7 @@
     go_1_23
     google-chrome
     spotify
+    volumeicon
     vscode
     yt-dlp
     zoom-us

@@ -53,6 +53,9 @@ conditionallink "${REPO}/i3status" "${HOME}/.config/i3status"
 # rofi-pass
 conditionallink "${REPO}/rofi-pass.conf" "${HOME}/.config/rofi-pass/config"
 
+# rofi-pass
+conditionallink "${REPO}/volumeicon" "${HOME}/.config/volumeicon/volumeicon"
+
 # notmuch hooks
 conditionallink "${REPO}/notmuch-hooks" "${HOME}/.mail/.notmuch/hooks"
 
