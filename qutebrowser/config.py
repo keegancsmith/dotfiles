@@ -33,6 +33,8 @@ c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
     's': 'https://sourcegraph.com/search?patternType=keyword&q={}',
     's2': 'https://sourcegraph.sourcegraph.com/search?patternType=keyword&q={}',
+    'np': 'https://search.nixos.org/packages?query={}',
+    'no': 'https://search.nixos.org/options?query={}',
 }
 
 # Common repos I search
