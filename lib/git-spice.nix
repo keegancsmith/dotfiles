@@ -2,16 +2,16 @@
 
 buildGo123Module rec {
   pname = "git-spice";
-  version = "0.8.0";
+  version = "0.9.0";
 
   src = fetchFromGitHub {
     owner = "abhinav";
     repo = "git-spice";
     rev = "v${version}";
-    sha256 = "sha256-UPGGhhxgxQvTOXmhpTZtpcE43QA52bJeA9uw57TWPrI=";
+    sha256 = "sha256-Q5cNkX6ZtNXh+qDjpR0a2FfHmk5YA9izLCBRPFRpdvs=";
   };
 
-  vendorHash = "sha256-JP/2v8BJrgruiW3MWEs01YwJYsKJa9h9RKkh07KLpMk=";
+  vendorHash = "sha256-4NkeLDToefiRYv9xta3U6O/5L2/J0d+59Er515R2zcw=";
 
   # avoid building ./doc module.
   subPackages = [ "." ];
