@@ -72,7 +72,7 @@
       (org-mode))
 
     (seq-doseq (state states)
-      (insert "* " (plist-get state :name) "\n")
+      (insert "* " (encode-coding-string (plist-get state :name) 'utf-8) "\n")
       (seq-doseq (issue issues)
         (when (equal state (plist-get issue :state))
           (insert "** TODO ")
