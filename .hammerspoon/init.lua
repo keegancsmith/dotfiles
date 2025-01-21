@@ -7,8 +7,8 @@ end
 
 hs.hotkey.bind({ "alt" }, "1", activateFn("emacs"))
 hs.hotkey.bind({ "alt" }, "2", activateFn("qutebrowser"))
-hs.hotkey.bind({ "alt" }, "3", activateFn("code"))
-hs.hotkey.bind({ "alt" }, "4", activateFn("kitty"))
+hs.hotkey.bind({ "alt" }, "3", activateFn("ghostty"))
+hs.hotkey.bind({ "alt" }, "4", activateFn("code"))
 hs.hotkey.bind({ "alt" }, "5", activateFn("slack"))
 
 hs.hotkey.bind({ "cmd", "shift" }, "v", function()
