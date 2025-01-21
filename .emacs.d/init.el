@@ -1112,7 +1112,7 @@
         (start-process "mpv" "mpv" "mpv" url)))
 
 (defun browse-url-background (url &optional single)
-  (if (string= system-type "darwin")
+  (if (and (string= system-type "darwin") nil) ;; disabled since it is currently broken
       (start-process "open" nil "open" "-b" "org.qutebrowser.qutebrowser" "-g" url)
     (start-process "qutebrowser" nil "qutebrowser" url)))
 
