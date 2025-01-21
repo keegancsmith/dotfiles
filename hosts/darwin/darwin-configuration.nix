@@ -31,6 +31,7 @@
     golangci-lint
     gopls
     ghostscript
+    gnuplot
     gnupg
     graphviz
     htop
@@ -73,6 +74,7 @@
   homebrew.casks = [
     "adobe-acrobat-reader"
     "discord"
+    "ghostty"
     "google-chrome"
     "hammerspoon"
     "insomnia"
