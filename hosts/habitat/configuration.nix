@@ -94,6 +94,7 @@
       then "sudo /nix/var/nix/profiles/system/specialisation/personal/bin/switch-to-configuration switch"
       else "sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch"
     ))
+    abiword
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     bashInteractive
     btrfs-progs
@@ -144,6 +145,7 @@
     mupdf
     gh
     gnumake
+    gnumeric
     nix-direnv
     nix-index
     nixpkgs-fmt
