@@ -401,6 +401,7 @@
   :demand t
   :bind (("M-y" . consult-yank-pop)
          ("C-c k" . consult-ripgrep)
+         ("C-c K" . (lambda () (interactive) (consult-ripgrep default-directory)))
          ("C-c g" . consult-git)
 
          ;; C-x bindings in `ctl-x-map'
