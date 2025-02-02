@@ -252,9 +252,6 @@
 
   services.tailscale.enable = true;
 
-  services.unbound.enable = true;
-  services.unbound.settings.remote-control.control-enable = true;
-
   services.netatalk = {
     enable = true;
     settings = {
