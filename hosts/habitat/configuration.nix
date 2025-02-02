@@ -18,13 +18,82 @@
   # error address. Reserve that memory to prevent using it.
   boot.kernelParams = [ "memmap=16M$0x99c390000" ];
 
-  networking.hostName = "habitat";
-
   # Set your time zone.
   time.timeZone = "Africa/Johannesburg";
 
-  networking.useDHCP = false;
-  networking.interfaces.enp6s0.useDHCP = true;
+  networking = {
+    hostName = "habitat";
+
+    useDHCP = false;
+    enableIPv6 = false;
+
+    defaultGateway = "192.168.0.1";
+    nameservers = [ "192.168.0.1" "8.8.8.8" ];
+    interfaces.enp6s0.ipv4.addresses = [{
+      address = "192.168.0.10";
+      prefixLength = 24;
+    }];
+
+    firewall = {
+      checkReversePath = "loose";
+
+      # Limit most stuff to tailscale network
+      interfaces.tailscale0 = {
+        allowedTCPPorts = [
+          # rclone webdav port for org-files <-> beorg
+          8780
+
+          # synergy
+          24800
+        ];
+
+        allowedUDPPortRanges = [
+          # mosh
+          {
+            from = 60000;
+            to = 60010;
+          }
+        ];
+      };
+
+      interfaces.enp6s0 = {
+        allowedTCPPorts = [
+          # netatalk
+          548
+        ];
+
+        allowedUDPPortRanges = [
+          # mosh
+          {
+            from = 60000;
+            to = 60010;
+          }
+        ];
+      };
+
+    };
+
+    hosts = {
+      "127.0.0.1" = [
+        "bitbucket"
+        "sourcegraph"
+        "sourcegraph.test"
+      ] ++ (map (subdomain: "${subdomain}.sourcegraph.test") [
+        "default"
+        "tenant1"
+        "tenant2"
+        "workspaces"
+      ]) ++ (map (subdomain: "${subdomain}.sourcegraphapp.test") [
+        "default"
+        "tenant1"
+        "tenant2"
+        "workspaces"
+      ]);
+      "100.100.74.50" = [ "cliche" ];
+      "100.116.165.93" = [ "real" ];
+      "100.96.124.130" = [ "fa" ];
+    };
+  };
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -339,67 +408,6 @@
   nix.settings.allowed-users = [ "@wheel" ];
 
   virtualisation.docker.enable = true;
-
-  networking.firewall = {
-
-    # Limit most stuff to tailscale network
-    interfaces.tailscale0 = {
-      allowedTCPPorts = [
-        # rclone webdav port for org-files <-> beorg
-        8780
-
-        # synergy
-        24800
-      ];
-
-      allowedUDPPortRanges = [
-        # mosh
-        {
-          from = 60000;
-          to = 60010;
-        }
-      ];
-    };
-
-    interfaces.enp6s0 = {
-      allowedTCPPorts = [
-        # netatalk
-        548
-      ];
-
-      allowedUDPPortRanges = [
-        # mosh
-        {
-          from = 60000;
-          to = 60010;
-        }
-      ];
-    };
-
-  };
-
-  networking.hosts = {
-    "127.0.0.1" = [
-      "bitbucket"
-      "sourcegraph"
-      "sourcegraph.test"
-    ] ++ (map (subdomain: "${subdomain}.sourcegraph.test") [
-      "default"
-      "tenant1"
-      "tenant2"
-      "workspaces"
-    ]) ++ (map (subdomain: "${subdomain}.sourcegraphapp.test") [
-      "default"
-      "tenant1"
-      "tenant2"
-      "workspaces"
-    ]);
-    "100.100.74.50" = [ "cliche" ];
-    "100.116.165.93" = [ "real" ];
-    "100.96.124.130" = [ "fa" ];
-  };
-
-  networking.firewall.checkReversePath = "loose";
 
   # trust caddy cert. caddy start; curl localhost:2019/pki/ca/local | jq -r .root_certificate
   security.pki.certificates = [
