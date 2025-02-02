@@ -39,7 +39,6 @@
   };
 
   services.displayManager.defaultSession = "xfce+i3";
-  services.displayManager.autoLogin.user = "keegan";
 
   services.xserver = {
     enable = true;
