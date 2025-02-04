@@ -1152,6 +1152,7 @@
   (bongo-custom-backend-matchers '((mpv (local-file) "opus")))
   (bongo-default-directory "~/Music")
   (bongo-mpv-extra-arguments '("--no-video" "--no-audio-display"))
+  (bongo-mode-line-indicator-mode nil)
   :config
   (add-to-list 'bongo-audio-file-name-extensions "opus")
   :commands (bongo))
