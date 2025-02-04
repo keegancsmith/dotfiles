@@ -237,6 +237,7 @@
     steam-run
     synergy
     tmux
+    tree-from-tags
     unzip
     watchman
     wget

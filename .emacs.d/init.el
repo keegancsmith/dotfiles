@@ -1150,7 +1150,7 @@
   :custom
   (bongo-enabled-backends '(mpv))
   (bongo-custom-backend-matchers '((mpv (local-file) "opus")))
-  (bongo-default-directory "~/youtube/feed/music")
+  (bongo-default-directory "~/Music")
   (bongo-mpv-extra-arguments '("--no-video" "--no-audio-display"))
   :config
   (add-to-list 'bongo-audio-file-name-extensions "opus")
