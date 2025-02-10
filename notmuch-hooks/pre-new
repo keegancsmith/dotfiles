@@ -10,5 +10,8 @@ if [ "$self" = 2967698721405478202 ]; then
   cd ~/.mail/sourcegraph
   test -f ~/VACATION || gmi sync
 else
+  # Send tags before doing remote notmuch new.
+  muchsync --nonew fa.local --nonew
+  # now runs gmi on fa and then we download changes.
   muchsync --nonew fa.local
 fi
