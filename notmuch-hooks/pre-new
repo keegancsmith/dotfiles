@@ -2,8 +2,13 @@
 
 set -euo pipefail
 
-cd ~/.mail/gmail
-gmi sync
+self=$(muchsync --self)
+if [ "$self" = 2967698721405478202 ]; then
+  cd ~/.mail/gmail
+  gmi sync
 
-cd ~/.mail/sourcegraph
-test -f ~/VACATION || gmi sync
+  cd ~/.mail/sourcegraph
+  test -f ~/VACATION || gmi sync
+else
+  muchsync --nonew fa.local
+fi

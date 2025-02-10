@@ -948,26 +948,17 @@
      (let ((shell-command-buffer-name-async (concat "*" (symbol-name ',name) "*")))
        (async-shell-command ,command))))
 
-;; only install notmuch on work laptop
-(when (string= (system-name) "fa.local")
-  (bind-key "C-c m n" (defun-shell notmuch-new         "notmuch new"))
-  (bind-key "C-c m g" (defun-shell notmuch-github      "notmuch github | xargs open"))
-  (bind-key "C-c m d" (defun-shell notmuch-github-done "notmuch github done"))
+(bind-key "C-c m n" (defun-shell notmuch-new         "notmuch new"))
+(bind-key "C-c m g" (defun-shell notmuch-github      "notmuch github | xargs open"))
+(bind-key "C-c m d" (defun-shell notmuch-github-done "notmuch github done"))
 
-  (use-package notmuch
-    :commands (notmuch)
-    :bind (("C-c m m" . notmuch)))
+(use-package notmuch
+  :commands (notmuch)
+  :bind (("C-c m m" . notmuch)))
 
-  ;; org notmuch links
-  (use-package ol-notmuch
-    :after notmuch))
-
-;; ssh into work machine to run mail commands
-(when (string= (system-name) "habitat")
-  (bind-key "C-c m m" (defun-shell notmuch             "kitty ssh -t fa.local emacsclient -nw --eval '\\(notmuch\\)'"))
-  (bind-key "C-c m n" (defun-shell notmuch-new         "ssh fa.local notmuch new"))
-  (bind-key "C-c m g" (defun-shell notmuch-github      "ssh fa.local notmuch github | xargs qutebrowser"))
-  (bind-key "C-c m d" (defun-shell notmuch-github-done "ssh fa.local notmuch github done")))
+;; org notmuch links
+(use-package ol-notmuch
+  :after notmuch)
 
 (use-package messages-are-flowing
   :config

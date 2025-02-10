@@ -22,4 +22,4 @@ ignore=/(.*[.](json|lock|bak)|queued-mail)$/
 exclude_tags=deleted;spam;muted;trash
 
 [maildir]
-synchronize_flags=true
+synchronize_flags=false

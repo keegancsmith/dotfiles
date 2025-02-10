@@ -43,6 +43,7 @@
     man-pages
     man-pages-posix
     mosh
+    muchsync
     neovim
     nix-direnv
     nix-index

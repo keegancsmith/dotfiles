@@ -210,6 +210,7 @@
     man-pages-posix
     mosh
     mpv
+    muchsync
     mupdf
     gh
     gnumake

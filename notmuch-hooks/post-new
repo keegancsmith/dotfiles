@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+self=$(muchsync --self)
+if [ "$self" != 2967698721405478202 ]; then
+    exit 0
+fi
+
 #### Me
 notmuch tag -unread -inbox -- tag:new and from:keegan.csmith@gmail.com
 notmuch tag -unread -inbox -- tag:new and from:keegan@sourcegraph.com
