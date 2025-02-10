@@ -50,6 +50,7 @@
     nixpkgs-fmt
     pandoc
     (pass.withExtensions (ext: [ ext.pass-otp ]))
+    python3
     ripgrep
     screen
     sqlite
