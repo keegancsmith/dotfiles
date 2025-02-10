@@ -2,7 +2,10 @@
 
 self=$(muchsync --self)
 if [ "$self" != 2967698721405478202 ]; then
-    exit 0
+  echo
+  echo "inbox $(notmuch count tag:inbox) email(s)"
+  echo "gh $(notmuch count tag:gh-inbox) email(s)"
+  exit 0
 fi
 
 #### Me
