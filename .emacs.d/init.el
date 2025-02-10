@@ -218,7 +218,15 @@
   (exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-variables '("MANPATH" "SRCPATH"))
   :config
-  (exec-path-from-shell-initialize))
+  (exec-path-from-shell-initialize)
+
+  ;; just add my ~/go/bin and ~/bin to PATH. I find including all of my PATH
+  ;; from a shell leads to other weird behaviour.
+  (let ((bins (list (expand-file-name "~/go/bin")
+                    (expand-file-name "~/bin")))
+        (paths (parse-colon-path (getenv "PATH"))))
+    (setq paths (seq-uniq (append bins paths)))
+    (exec-path-from-shell-setenv "PATH" (string-join paths path-separator))))
 
 (use-package savehist
   :unless noninteractive
@@ -949,8 +957,11 @@
        (async-shell-command ,command))))
 
 (bind-key "C-c m n" (defun-shell notmuch-new         "notmuch new"))
-(bind-key "C-c m g" (defun-shell notmuch-github      "notmuch github | xargs open"))
 (bind-key "C-c m d" (defun-shell notmuch-github-done "notmuch github done"))
+
+(if (eq system-type 'darwin)
+    (bind-key "C-c m g" (defun-shell notmuch-github "notmuch github | xargs --no-run-if-empty open"))
+  (bind-key "C-c m g"   (defun-shell notmuch-github "notmuch github | xargs --no-run-if-empty qutebrowser")))
 
 (use-package notmuch
   :commands (notmuch)
