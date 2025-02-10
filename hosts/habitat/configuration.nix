@@ -185,6 +185,7 @@
     file
     fzf
     gcc
+    gdb
     ghostscript
     git
     git-up
