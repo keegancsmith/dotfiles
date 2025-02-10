@@ -2,9 +2,9 @@
 
 set -ex
 
-bazel run //:gazelle-update-repos
-git add 'deps.bzl'
 bazel run //:gazelle
 git add '*BUILD.bazel'
+bazel mod tidy
+git add *MODULE.bazel*
 git commit -m 'bazel configure'
 git push
