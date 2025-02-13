@@ -261,13 +261,28 @@
     yt-dlp
 
     # Latest zoom hangs on nixos https://github.com/NixOS/nixpkgs/issues/371488
-    (zoom-us.overrideAttrs {
-      version = "6.2.11.5069";
+    #
+    # Trying out the fix mentioned in https://github.com/NixOS/nixpkgs/pull/381281
+    (zoom-us.overrideAttrs (final: prev: {
+      version = "6.3.6.6315";
       src = pkgs.fetchurl {
-        url = "https://zoom.us/client/6.2.11.5069/zoom_x86_64.pkg.tar.xz";
-        hash = "sha256-k8T/lmfgAFxW1nwEyh61lagrlHP5geT2tA7e5j61+qw=";
+        url = "https://zoom.us/client/${final.version}/zoom_x86_64.pkg.tar.xz";
+        hash = "sha256-QJR8SsMtyYBvd5G+mEjEEISkJJukCYeHErKrgs1uDQc=";
       };
-    })
+      postFixup = lib.replaceStrings
+        [
+          ''zopen zoom ZoomLauncher''
+          ''makeWrapper $out/opt/zoom/.zoom $out/opt/zoom/zoom''
+          '' PATH : ''
+        ]
+        [
+          ''zopen ZoomLauncher''
+          ''cp "$(cat $NIX_CC/nix-support/dynamic-linker)" $out/opt/zoom/ld.so ; makeWrapper $out/opt/zoom/{ld.so,zoom} --add-flags $out/opt/zoom/.zoom''
+          '' PATH : ${lib.makeBinPath [ pipewire ]}:''
+        ]
+        prev.postFixup
+      ;
+    }))
   ]);
 
   fonts.packages = with pkgs; [
