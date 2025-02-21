@@ -199,7 +199,9 @@
   :config
   ;; Disable all other themes to avoid awkward blending
   (mapc #'disable-theme custom-enabled-themes)
-  (ef-themes-select 'ef-spring))
+  (ef-themes-select (if (display-graphic-p)
+                        'ef-spring
+                      'ef-dream)))
 
 (use-package avy
   :bind (("C-c SPC" . avy-goto-word-1)))
