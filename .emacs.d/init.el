@@ -163,6 +163,11 @@
   (interactive)
   (insert "Co-authored-by: Stefan Hengl <stefan@sourcegraph.com>"))
 
+(defun my/william ()
+  ""
+  (interactive)
+  (insert "Co-authored-by: William Bezuidenhout <william.bezuidenhout@sourcegraph.com>"))
+
 ;; isearch whitespaces means .*
 (setq
  search-whitespace-regexp ".*?"
