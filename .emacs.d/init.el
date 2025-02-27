@@ -1247,7 +1247,8 @@
   :config
   (setq gptel-log-level 'debug)
   (setq gptel-backend (gptel-make-cody "Cody"
-                                       :host "sourcegraph.sourcegraph.com")))
+                                       :host "sourcegraph.sourcegraph.com"
+                                       :models '(anthropic::2024-10-22::claude-3-7-sonnet-latest anthropic::2024-10-22::claude-3-5-sonnet-latest))))
 
 (defun my-open-in-vscode ()
   "Open the current buffer in Visual Studio Code."
