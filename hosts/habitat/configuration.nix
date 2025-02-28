@@ -28,7 +28,7 @@
     enableIPv6 = false;
 
     defaultGateway = "192.168.0.1";
-    nameservers = [ "192.168.0.1" "8.8.8.8" ];
+    nameservers = [ "1.0.0.2" "1.1.1.2" ];
     interfaces.enp6s0.ipv4.addresses = [{
       address = "192.168.0.10";
       prefixLength = 24;
@@ -395,6 +395,9 @@
   environment.etc."nix/profile-name".text = builtins.concatStringsSep "-" config.system.nixos.tags;
   specialisation.personal.configuration = {
     system.nixos.tags = lib.mkForce [ "personal" ];
+
+    networking.nameservers = lib.mkForce [ "192.168.0.1" "8.8.8.8" ];
+
     services.kolide-launcher.enable = lib.mkForce false;
 
     security.sudo.wheelNeedsPassword = false;
