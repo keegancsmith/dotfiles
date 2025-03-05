@@ -238,7 +238,7 @@
 (use-package savehist
   :unless noninteractive
   :custom
-  (savehist-additional-variables '(register-alist kill-ring))
+  (savehist-additional-variables '(register-alist kill-ring query-replace-defaults search-ring regexp-search-ring))
   :config
   (savehist-mode 1))
 
