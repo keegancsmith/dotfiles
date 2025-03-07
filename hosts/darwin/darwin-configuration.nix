@@ -17,6 +17,7 @@
     curl
     direnv
     dtach
+    (writeShellScriptBin "docker" ''exec /opt/homebrew/bin/podman "$@"'')
     emacs-macport
     fastmod
     fd
@@ -74,6 +75,7 @@
   homebrew.enable = true;
   homebrew.brews = [
     "pinentry-mac"
+    "podman"
   ];
   homebrew.casks = [
     "adobe-acrobat-reader"
