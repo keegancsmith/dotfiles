@@ -43,6 +43,7 @@
     man-pages
     man-pages-posix
     mosh
+    mise
     muchsync
     myNodePackages."@anthropic-ai/claude-code"
     neovim
