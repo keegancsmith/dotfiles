@@ -44,6 +44,7 @@
     man-pages-posix
     mosh
     muchsync
+    myNodePackages."@anthropic-ai/claude-code"
     neovim
     nix-direnv
     nix-index
