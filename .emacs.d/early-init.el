@@ -18,3 +18,10 @@
 (setq
  inhibit-startup-screen t
  inhibit-startup-buffer-menu t)
+
+;; Native compilation settings
+(when (featurep 'native-compile)
+  (setq-default native-comp-async-report-warnings-errors nil  ;; Silence compiler warnings
+                native-comp-deferred-compilation         t    ;; Make native compilation happens asynchronously
+                native-comp-speed                        2
+                package-native-compile                   t))  ;; Compile installed packages

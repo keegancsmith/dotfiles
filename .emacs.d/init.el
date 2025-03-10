@@ -12,8 +12,7 @@
   (add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages/") t)
   (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t)
   (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-  (setq package-enable-at-startup        nil
-        package-install-upgrade-built-in t
+  (setq package-enable-at-startup  nil
         package-archive-priorities '(("melpa"        . 200)
                                      ("elpa"         . 100)
                                      ("org"          . 75)
@@ -22,16 +21,12 @@
   (require 'use-package)
   (put 'use-package 'lisp-indent-function 1)
 
-  (unless (package-installed-p 'vc-use-package)
-    (package-vc-install "https://github.com/slotThe/vc-use-package"))
   (use-package use-package-core
     :custom
     ; (use-package-verbose t)
     (use-package-minimum-reported-time 0.005)
-    (use-package-enable-imenu-support t))
-
-  (require 'use-package-ensure)
-  (setq use-package-always-ensure t)
+    (use-package-enable-imenu-support t)
+    (use-package-vc-prefer-newest t))
 )
 
 (when (display-graphic-p)
@@ -942,7 +937,7 @@
   (editorconfig-mode 1))
 
 (use-package promql-mode
-  :vc (:fetcher github :repo Andor/promql-mode))
+  :vc (:url "https://github.com/Andor/promql-mode"))
 
 (use-package link-hint
   :bind
@@ -1014,7 +1009,7 @@
   (elfeed-org))
 
 (use-package youtube-dl
-  :vc (:fetcher github :repo skeeto/youtube-dl-emacs)
+  :vc (:url "https://github.com/skeeto/youtube-dl-emacs")
   :after elfeed
   :custom
   (youtube-dl-program "yt-dlp")
@@ -1247,7 +1242,7 @@
 
 (my-vc-github-local-checkout "gptel-cody" "sourcegraph/gptel-cody")
 (use-package gptel-cody
-  :vc (:fetcher github :repo sourcegraph/gptel-cody)
+  :vc t
   :after gptel
   :config
   (setq gptel-log-level 'debug)

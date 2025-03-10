@@ -178,7 +178,7 @@
     docker
     docker-credential-helpers
     dtach
-    emacs29
+    emacs30
     fastmod
     fd
     ffmpeg-full
@@ -323,7 +323,7 @@
 
   programs.nix-ld.enable = true;
 
-  services.emacs.package = pkgs.emacs29;
+  services.emacs.package = pkgs.emacs30;
 
   services.gnome.gnome-keyring.enable = true;
 
