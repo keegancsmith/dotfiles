@@ -52,7 +52,7 @@
     nixpkgs-fmt
     pandoc
     (pass.withExtensions (ext: [ ext.pass-otp ]))
-    (python3.withPackages (ps: with ps; [ numpy pandas requests ]))
+    (python3.withPackages (ps: with ps; [ numpy pandas requests uv ]))
     ripgrep
     screen
     sqlite
