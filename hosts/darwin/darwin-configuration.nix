@@ -18,7 +18,6 @@
     direnv
     dtach
     (writeShellScriptBin "docker" ''exec /opt/homebrew/bin/podman "$@"'')
-    emacs-macport
     fastmod
     fd
     ffmpeg
@@ -73,9 +72,17 @@
   fonts.packages = with pkgs; [ hack-font iosevka jetbrains-mono ];
 
   homebrew.enable = true;
+  homebrew.taps = [
+    "d12frosted/emacs-plus"
+  ];
   homebrew.brews = [
     "pinentry-mac"
     "podman"
+    {
+      name = "emacs-plus@30";
+      args = [ "with-modern-icon" "with-mailutils" "with-imagemagick" ];
+      link = true;
+    }
   ];
   homebrew.casks = [
     "adobe-acrobat-reader"
