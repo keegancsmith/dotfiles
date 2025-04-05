@@ -22,6 +22,7 @@
     fd
     ffmpeg
     file
+    findutils
     fzf
     gh
     git
