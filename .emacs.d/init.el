@@ -225,7 +225,9 @@
   ;; just add my ~/go/bin and ~/bin to PATH. I find including all of my PATH
   ;; from a shell leads to other weird behaviour.
   (let ((bins (list (expand-file-name "~/go/bin")
-                    (expand-file-name "~/bin")))
+                    (expand-file-name "~/bin")
+                    "/var/run/current-system/sw/bin"
+                    "/run/current-system/sw/bin"))
         (paths (parse-colon-path (getenv "PATH"))))
     (setq paths (seq-uniq (append bins paths)))
     (exec-path-from-shell-setenv "PATH" (string-join paths path-separator))))
