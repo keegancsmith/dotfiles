@@ -21,12 +21,13 @@
   (require 'use-package)
   (put 'use-package 'lisp-indent-function 1)
 
-  (use-package use-package-core
-    :custom
-    ; (use-package-verbose t)
-    (use-package-minimum-reported-time 0.005)
-    (use-package-enable-imenu-support t)
-    (use-package-vc-prefer-newest t))
+  (require 'use-package-ensure)
+  (setq use-package-always-ensure t)
+
+  (custom-set-variables
+   '(use-package-minimum-reported-time 0.005)
+   '(use-package-enable-imenu-support t)
+   '(use-package-vc-prefer-newest t))
 )
 
 (when (display-graphic-p)
