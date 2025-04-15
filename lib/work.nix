@@ -5,10 +5,10 @@
     k9s
     kubectl
     kubectx
-    nodejs_20
-    nodejs_20.pkgs.pnpm
-    nodejs_20.pkgs.typescript
-    nodejs_20.pkgs.typescript-language-server
+    nodejs_22
+    nodejs_22.pkgs.pnpm
+    nodejs_22.pkgs.typescript
+    nodejs_22.pkgs.typescript-language-server
     postgresql
   ]) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     lieer

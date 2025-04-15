@@ -5,5 +5,6 @@ final: prev: rec {
 
   myNodePackages = import ./node-packages/default.nix {
     pkgs = prev;
+    nodejs = prev.nodejs_22;
   };
 }
