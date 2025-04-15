@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Default Light Modern",
+  "update.mode": "none",
   "workbench.startupEditor": "none",
   "editor.minimap.enabled": false,
   "workbench.editor.empty.hint": "hidden",
@@ -8,5 +8,18 @@
   "alt-editor.name": "emacs",
   "alt-editor.binary": "emacsclient",
   "alt-editor.args": "+{line}:{column} {filename}",
-  "alt-editor.terminal": false
+  "alt-editor.terminal": false,
+  "go.toolsManagement.autoUpdate": true,
+  "amp.debug.usage.enabled": true,
+  "amp.thread.soundNotificationOnIdle": true,
+  "amp.url": "https://ampcode.com/",
+  "amp.anthropic.thinking.enabled": true,
+  "amp.mcpServers": {
+    "fetch": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-fetch"
+      ]
+    }
+  }
 }
