@@ -1247,19 +1247,6 @@
            (not (file-exists-p (expand-file-name name package-user-dir))))
       (package-vc-install-from-checkout dir name))))
 
-(my-vc-github-local-checkout "gptel" "karthink/gptel")
-(use-package gptel
-  :defer)
-
-(my-vc-github-local-checkout "gptel-cody" "sourcegraph/gptel-cody")
-(use-package gptel-cody
-  :vc t
-  :after gptel
-  :config
-  (setq gptel-log-level 'debug)
-  (setq gptel-backend (gptel-make-cody "Cody"
-                                       :host "sourcegraph.sourcegraph.com"
-                                       :models '(anthropic::2024-10-22::claude-3-7-sonnet-latest anthropic::2024-10-22::claude-3-5-sonnet-latest))))
 
 (defun my-open-in-vscode ()
   "Open the current buffer in Visual Studio Code."
