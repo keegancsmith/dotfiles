@@ -1227,7 +1227,8 @@
 (use-package protobuf-mode)
 
 (use-package bazel
-  :mode ("\\.bazelrc\\'" . bazelrc-mode)) ; sourcegraph uses .bazelrc as an extension
+  :mode ("\\.bazelrc\\'" . bazelrc-mode)  ; sourcegraph uses .bazelrc as an extension
+  :mode ("\\.bazel\\'" . bazel-mode))
 
 (use-package presentation)
 
