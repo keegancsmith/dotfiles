@@ -242,13 +242,14 @@
     tmux
     tree-from-tags
     unzip
+    uv
     watchman
     wget
     xautolock
     xclip
     xss-lock
     zstd
-    (claude-desktop.packages.x86_64-linux.claude-desktop.overrideAttrs (final: prev: {
+    (claude-desktop.packages.x86_64-linux.claude-desktop-with-fhs.overrideAttrs (final: prev: {
       # I can't work out how to set allow unfree for this
       meta.license = lib.licenses.free;
     }))
