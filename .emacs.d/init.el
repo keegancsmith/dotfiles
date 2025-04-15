@@ -1,4 +1,4 @@
-;;; init.el --- Initialization file for Emacs
+;; init.el --- Initialization file for Emacs
 
 ;;; Commentary:
 
@@ -254,6 +254,13 @@
           indicate-buffer-boundaries 'left))
   (add-hook 'prog-mode-hook #'show-trailing-whitespace-hook)
   (add-hook 'org-mode-hook #'show-trailing-whitespace-hook))
+
+;; Editing patch files should not mess with whitespace
+(progn
+  (add-hook 'diff-mode-hook
+            (lambda ()
+              (setq-local require-final-newline nil)
+              (setq-local delete-trailing-whitespace-p nil))))
 
 (use-package go-mode
   :hook (before-save . gofmt-before-save)
