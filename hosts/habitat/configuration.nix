@@ -321,6 +321,8 @@
   programs.neovim.viAlias = true;
   programs.neovim.vimAlias = true;
 
+  programs.localsend.enable = true;
+
   documentation.dev.enable = true;
 
   programs.nix-ld.enable = true;
