@@ -46,6 +46,7 @@
     mosh
     mise
     muchsync
+    my-scripts
     myNodePackages."@anthropic-ai/claude-code"
     neovim
     nix-direnv

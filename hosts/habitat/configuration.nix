@@ -211,6 +211,7 @@
     man-pages-posix
     mosh
     mpv
+    my-scripts
     myNodePackages."@anthropic-ai/claude-code"
     muchsync
     mupdf

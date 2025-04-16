@@ -53,8 +53,11 @@ conditionallink "${REPO}/i3status" "${HOME}/.config/i3status"
 # rofi-pass
 conditionallink "${REPO}/rofi-pass.conf" "${HOME}/.config/rofi-pass/config"
 
-# rofi-pass
+# volumeicon
 conditionallink "${REPO}/volumeicon" "${HOME}/.config/volumeicon/volumeicon"
+
+# mcp for claude-desktop
+conditionallink "${REPO}/claude_desktop_config.json" "${HOME}/.config/Claude/claude_desktop_config.json"
 
 # notmuch hooks
 conditionallink "${REPO}/notmuch-hooks" "${HOME}/.mail/.notmuch/hooks"
@@ -65,12 +68,6 @@ conditionallink "${REPO}/lieer-sourcegraph.json" "${HOME}/.mail/sourcegraph/.gma
 
 # Ensure we have maildirs setup for lieer
 mkdir -p "${HOME}"/.mail/{gmail,sourcegraph}/mail/{new,cur,tmp}
-
-# scripts
-cd bin
-for f in *; do
-    conditionallink "${REPO}/bin/${f}" "${HOME}/bin/${f}"
-done
 
 # Per OS destinations
 case $OSTYPE in
