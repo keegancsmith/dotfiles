@@ -20,6 +20,18 @@
       "args": [
         "mcp-server-fetch"
       ]
+    },
+    "brave-search": {
+      "command": "passrun",
+      "args": [
+        "mcp",
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-brave-search"
+      ]
     }
-  }
+  },
+  "amp.tools.disable": [
+    "brave_local_search"
+  ]
 }

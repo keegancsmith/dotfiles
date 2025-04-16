@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# This script is a lot like envchain, except uses the unix password store. My
+# main use right now is to inject secrets into mcp config files. eg I `pass
+# edit mcp` a file that looks like an envrc file. Then:
+#
+#  passrun mcp npx -y @modelcontextprotocol/server-brave-search
+
+if [ $# -lt 2 ]; then
+  echo "Usage: $0 <pass-entry> <command> [arguments...]"
+  exit 1
+fi
+
+eval "$(direnv stdlib)"
+
+pass_entry="$1"
+shift
+
+# Get environment variables from pass
+env_vars=$(pass show "$pass_entry")
+if [ $? -ne 0 ]; then
+  echo "Error: Failed to retrieve '$pass_entry' from pass"
+  exit 1
+fi
+
+# Export the environment variables
+while IFS= read -r line; do
+  # Skip empty lines and comments
+  [[ -z "$line" || "$line" =~ ^# ]] && continue
+
+  # Check if the line is in the format KEY=VALUE
+  if [[ "$line" =~ ^([A-Za-z_][A-Za-z0-9_]*)=(.*)$ ]]; then
+    key="${BASH_REMATCH[1]}"
+    value="${BASH_REMATCH[2]}"
+    export "$key"="$value"
+  fi
+done <<< "$env_vars"
+
+exec "$@"
