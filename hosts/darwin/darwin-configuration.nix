@@ -184,6 +184,11 @@
 
   security.pam.enableSudoTouchIdAuth = true;
 
+  # Set system-wide PATH for launchctl
+  system.activationScripts.launchctlPath.text = ''
+    launchctl config user path /var/run/current-system/sw/bin:/opt/homebrew/bin:/run/current-system/sw/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin
+  '';
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
