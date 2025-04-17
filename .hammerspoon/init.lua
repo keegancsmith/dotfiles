@@ -49,7 +49,8 @@ spoon.URLDispatcher.url_patterns = {
    { "https?://sourcegraph.looker.com", "com.google.chrome" },
    { "https?://sourcegraph.zoom.us", "com.google.chrome" },
    { "https?://buildkite.com", "com.google.chrome" },
-   { "https?://login.docker.com", "com.google.chrome" }
+   { "https?://login.docker.com", "com.google.chrome" },
+   { "https?://ampcode.com", "com.google.chrome" }
 }
 --spoon.URLDispatcher.logger.setLogLevel("debug")
 spoon.URLDispatcher:start()
