@@ -14,6 +14,13 @@
         "-y",
         "@modelcontextprotocol/server-brave-search"
       ]
+    },
+    "emacs": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@keegancsmith/emacs-mcp-server"
+      ]
     }
   }
 }
