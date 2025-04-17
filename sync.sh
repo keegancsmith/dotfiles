@@ -56,9 +56,6 @@ conditionallink "${REPO}/rofi-pass.conf" "${HOME}/.config/rofi-pass/config"
 # volumeicon
 conditionallink "${REPO}/volumeicon" "${HOME}/.config/volumeicon/volumeicon"
 
-# mcp for claude-desktop
-conditionallink "${REPO}/claude_desktop_config.json" "${HOME}/.config/Claude/claude_desktop_config.json"
-
 # notmuch hooks
 conditionallink "${REPO}/notmuch-hooks" "${HOME}/.mail/.notmuch/hooks"
 
@@ -74,10 +71,12 @@ case $OSTYPE in
     darwin*)
         qutebrowser="${HOME}/.qutebrowser"
         vscode="${HOME}/Library/Application Support/Code/User"
+        claude="${HOME}/Library/Application Support/Claude"
         ;;
     *)
         qutebrowser="${HOME}/.config/qutebrowser"
         vscode="${HOME}/.config/Code/User"
+        claude="${HOME}/.config/Claude"
         ;;
 esac
 
@@ -87,3 +86,6 @@ conditionallink "${REPO}/vscode/keybindings.json" "${vscode}/keybindings.json"
 
 # qutebrowser
 conditionallink "${REPO}/qutebrowser" "${qutebrowser}"
+
+# claude-desktop
+conditionallink "${REPO}/claude_desktop_config.json" "${claude}/claude_desktop_config.json"
