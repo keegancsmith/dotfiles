@@ -15,6 +15,12 @@
   "amp.url": "https://ampcode.com/",
   "amp.anthropic.thinking.enabled": true,
   "amp.mcpServers": {
+    "fetch": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-fetch"
+      ]
+    },
     "brave-search": {
       "command": "passrun",
       "args": [
