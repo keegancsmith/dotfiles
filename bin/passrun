@@ -11,8 +11,6 @@ if [ $# -lt 2 ]; then
   exit 1
 fi
 
-eval "$(direnv stdlib)"
-
 pass_entry="$1"
 shift
 
