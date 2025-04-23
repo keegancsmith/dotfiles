@@ -98,12 +98,10 @@
     "karabiner-elements"
     "keybase"
     "qutebrowser"
-    "raycast"
     "scratch"
     "sloth"
     "spotify"
     "steam"
-    "telegram"
     "visual-studio-code"
     "zed"
   ];
