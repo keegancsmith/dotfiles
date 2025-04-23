@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = (with pkgs; [
+    biome
     k9s
     kubectl
     kubectx
