@@ -39,6 +39,7 @@
     hyperfine
     imagemagick
     jq
+    kbfs # provides git-remote-keybase
     kitty
     ledger
     man-pages
