@@ -36,6 +36,15 @@
         "-y",
         "@keegancsmith/emacs-mcp-server"
       ]
+    },
+    "linear-issues": {
+      "command": "passrun",
+      "args": [
+        "mcp",
+        "npx",
+        "-y",
+        "@keegancsmith/linear-issues-mcp-server"
+      ]
     }
   },
   "amp.tools.disable": [
