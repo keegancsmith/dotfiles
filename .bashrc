@@ -22,6 +22,14 @@ if [[ -d ~/google-cloud-sdk ]]; then
   source ~/google-cloud-sdk/completion.bash.inc
 fi
 
+# Here be dragons. I have a prefered order for my PATH. In particular I want
+# this preference of PATHS: direnv > HOME > nix > homebrew > system.
+#
+# This logic will screw things up below, especially since anything in "paths"
+# will end up less important than anything custom which may be unexpected by a
+# calling program which executes bash -c. However, this is what works so far
+# for me in the weird world of editors trying to guess your PATH + direnv.
+
 # PATH dirs to add if they exist
 paths=(
     "$HOME/bin"
@@ -38,6 +46,10 @@ paths=(
     "/usr/local/opt/openjdk/bin"
     "/usr/local/opt/findutils/libexec/gnubin"
     "/opt/homebrew/bin"
+    "/usr/bin"
+    "/bin"
+    "/usr/sbin"
+    "/sbin"
 )
 
 # Start with system PATH
@@ -57,11 +69,11 @@ for p in "${paths[@]}"; do
     fi
 done
 
-# Add any remaining paths from the original PATH
+# Add any remaining paths from the original PATH to the front
 IFS=':' read -ra OLDPATH <<< "$initPATH"
 for p in "${OLDPATH[@]}"; do
     if [ -n "$p" ] && [ -d "$p" ] && [[ ":${PATH}:" != *":$p:"* ]]; then
-        PATH="$PATH:$p"
+        PATH="$p:$PATH"
     fi
 done
 
