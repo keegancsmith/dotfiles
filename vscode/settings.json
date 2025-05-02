@@ -17,31 +17,18 @@
   "amp.mcpServers": {
     "brave-search": {
       "command": "passrun",
-      "args": [
-        "mcp",
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-brave-search"
-      ]
+      "args": ["mcp", "npx", "-y", "@modelcontextprotocol/server-brave-search"]
     },
     "emacs": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@keegancsmith/emacs-mcp-server"
-      ]
+      "args": ["-y", "@keegancsmith/emacs-mcp-server"]
     },
     "linear-issues": {
       "command": "passrun",
-      "args": [
-        "mcp",
-        "npx",
-        "-y",
-        "@keegancsmith/linear-issues-mcp-server"
-      ]
+      "args": ["mcp", "npx", "-y", "@keegancsmith/linear-issues-mcp-server"]
     }
   },
-  "amp.tools.disable": [
-    "brave_local_search"
-  ]
+  "amp.tools.disable": ["brave_local_search"],
+  // I use the direnv extension and the login shell doesn't seem to run direnv
+  "amp.loadLoginShellEnvironment": "never"
 }
