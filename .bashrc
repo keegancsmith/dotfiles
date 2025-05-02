@@ -24,24 +24,48 @@ fi
 
 # PATH dirs to add if they exist
 paths=(
-    "/opt/homebrew/bin"
-    "/usr/local/opt/findutils/libexec/gnubin"
-    "/usr/local/opt/openjdk/bin"
-    "/usr/local/sbin"
-    "/usr/local/bin"
-    "/usr/local/opt/go/libexec/bin"
-    "/nix/var/nix/profiles/default/bin"
-    "/var/run/current-system/sw/bin"
-    "/run/current-system/sw/bin"
-    "/var/run/wrappers/bin"
-    "$HOME/.nix-profile/bin"
-    "$HOME/.cargo/bin"
-    "$GOBIN"
     "$HOME/bin"
+    "$GOBIN"
+    "$HOME/.cargo/bin"
+    "$HOME/.nix-profile/bin"
+    "/var/run/wrappers/bin"
+    "/run/current-system/sw/bin"
+    "/var/run/current-system/sw/bin"
+    "/nix/var/nix/profiles/default/bin"
+    "/usr/local/opt/go/libexec/bin"
+    "/usr/local/bin"
+    "/usr/local/sbin"
+    "/usr/local/opt/openjdk/bin"
+    "/usr/local/opt/findutils/libexec/gnubin"
+    "/opt/homebrew/bin"
 )
+
+# Start with system PATH
+initPATH=$PATH
+
+# Clear PATH to rebuild it
+unset PATH
+
+# Add our preferred paths in order
 for p in "${paths[@]}"; do
-    [ -d "$p" ] && [[ "$PATH" != *"$p"* ]] && export PATH="$p":"$PATH"
+    if [ -d "$p" ]; then
+        if [ -z "${PATH}" ]; then
+            PATH="$p"
+        elif [[ ":${PATH}:" != *":$p:"* ]]; then
+            PATH="$PATH:$p"
+        fi
+    fi
 done
+
+# Add any remaining paths from the original PATH
+IFS=':' read -ra OLDPATH <<< "$initPATH"
+for p in "${OLDPATH[@]}"; do
+    if [ -n "$p" ] && [ -d "$p" ] && [[ ":${PATH}:" != *":$p:"* ]]; then
+        PATH="$PATH:$p"
+    fi
+done
+
+export PATH
 
 # eat checks that TERM is eat-*, so source it before changing our TERM below.
 [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
