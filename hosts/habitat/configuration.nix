@@ -407,6 +407,8 @@
 
     security.sudo.wheelNeedsPassword = false;
 
+    programs.steam.enable = true;
+
     services.transmission = {
       enable = true;
       openFirewall = true;
