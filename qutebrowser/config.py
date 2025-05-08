@@ -14,6 +14,11 @@ c.content.blocking.method = 'both'
 
 c.window.hide_decoration = True
 
+# Increase zoom on machine with 4k monitor
+import platform
+if platform.node() == 'habitat':
+    c.zoom.default = '125%'
+
 def enableClipboard(pattern):
     with config.pattern(pattern) as p:
         p.content.javascript.clipboard = 'access'
@@ -95,7 +100,6 @@ config.bind(',w', 'spawn --userscript ' + userscript('org-capture.py'))
 config.bind(',p', 'spawn --userscript ' + userscript('password_fill'))
 
 # send URL to to either macbook or linux desktop
-import platform
 if platform.node() == 'habitat':
     config.bind(',m', 'spawn ssh fa.local open -b com.google.chrome {url}')
 else:
