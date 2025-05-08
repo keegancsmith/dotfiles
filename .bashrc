@@ -36,6 +36,7 @@ paths=(
     "$GOBIN"
     "$HOME/.cargo/bin"
     "$HOME/.nix-profile/bin"
+    "/run/wrappers/bin"
     "/var/run/wrappers/bin"
     "/run/current-system/sw/bin"
     "/var/run/current-system/sw/bin"
