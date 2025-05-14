@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+HEADPHONES_ID=$(wpctl status | grep 'PCM2706 stereo audio DAC Analog Stereo' | awk '{print $2}' | tr -d '[]')
+if [ ! -z "$HEADPHONES_ID" ]; then
+  wpctl set-default $HEADPHONES_ID
+  echo "Switched to Headphones"
+else
+  echo "Headphones not found"
+fi

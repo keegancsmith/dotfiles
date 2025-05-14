@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+SPEAKERS_ID=$(wpctl status | grep 'Starship/Matisse HD Audio Controller Analog Stereo' | awk '{print $2}' | tr -d '[]')
+if [ ! -z "$SPEAKERS_ID" ]; then
+  wpctl set-default $SPEAKERS_ID
+  echo "Switched to Speakers"
+else
+  echo "Speakers not found"
+fi
