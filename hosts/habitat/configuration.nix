@@ -258,6 +258,7 @@
     ghostty
     go_1_23
     google-chrome
+    jujutsu
     spotify
     volumeicon
     vscode
