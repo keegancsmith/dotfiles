@@ -40,9 +40,6 @@
     }
   },
   "amp.todos.enabled": true,
-  // I use the direnv extension and the login shell doesn't seem to run direnv
-  "amp.loadLoginShellEnvironment": "never",
-  "terminal.integrated.shellIntegration.enabled": false,
   "amp.connections.disable": ["1002"],
   "amp.commands.allowlist": [
     "bazel",
