@@ -216,19 +216,9 @@
   :defer 1
   :custom
   (exec-path-from-shell-arguments '("-l"))
-  (exec-path-from-shell-variables '("MANPATH" "SRCPATH"))
+  (exec-path-from-shell-variables '("PATH" "MANPATH" "SRCPATH"))
   :config
-  (exec-path-from-shell-initialize)
-
-  ;; just add my ~/go/bin and ~/bin to PATH. I find including all of my PATH
-  ;; from a shell leads to other weird behaviour.
-  (let ((bins (list (expand-file-name "~/go/bin")
-                    (expand-file-name "~/bin")
-                    "/var/run/current-system/sw/bin"
-                    "/run/current-system/sw/bin"))
-        (paths (parse-colon-path (getenv "PATH"))))
-    (setq paths (seq-uniq (append bins paths)))
-    (exec-path-from-shell-setenv "PATH" (string-join paths path-separator))))
+  (exec-path-from-shell-initialize))
 
 (use-package savehist
   :unless noninteractive
