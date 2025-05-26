@@ -202,7 +202,6 @@
     jellyfin-ffmpeg
     jq
     kbfs # provides git-remote-keybase
-    kdenlive
     kitty
     ledger
     lsof
