@@ -113,6 +113,8 @@
     "xcode" = 497799835;
   };
 
+  system.primaryUser = "keegan";
+
   system.keyboard = {
     enableKeyMapping = true;
     remapCapsLockToEscape = true;
@@ -140,8 +142,6 @@
   environment.darwinConfig =
     "/Users/keegan/src/github.com/keegancsmith/dotfiles/flake.nix";
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
   nix.package = pkgs.nix;
 
   # For nix-direnv
@@ -182,12 +182,14 @@
 
   services.tailscale.enable = true;
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # Set system-wide PATH for launchctl
   system.activationScripts.launchctlPath.text = ''
     launchctl config user path /var/run/current-system/sw/bin:/opt/homebrew/bin:/run/current-system/sw/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin
   '';
+
+  ids.gids.nixbld = 350;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
