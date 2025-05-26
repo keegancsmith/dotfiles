@@ -89,6 +89,7 @@
   ];
   homebrew.casks = [
     "adobe-acrobat-reader"
+    "anki"
     "discord"
     "ghostty"
     "google-chrome"
