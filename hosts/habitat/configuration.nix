@@ -240,7 +240,6 @@
     steam-run
     synergy
     tmux
-    tree-from-tags
     unzip
     uv
     watchman
