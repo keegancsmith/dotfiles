@@ -53,6 +53,9 @@ conditionallink "${REPO}/i3status" "${HOME}/.config/i3status"
 # rofi-pass
 conditionallink "${REPO}/rofi-pass.conf" "${HOME}/.config/rofi-pass/config"
 
+# ghostty
+conditionallink "${REPO}/ghostty" "${HOME}/.config/ghostty/config"
+
 # volumeicon
 conditionallink "${REPO}/volumeicon" "${HOME}/.config/volumeicon/volumeicon"
 
