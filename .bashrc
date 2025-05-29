@@ -167,6 +167,10 @@ if ! command -v open &> /dev/null; then
     alias open='xdg-open'
 fi
 
+if ! command -v pbpaste &> /dev/null; then
+    alias pbpaste='xclip -o'
+fi
+
 shopt -s histappend
 
 eval "$(direnv hook bash)"
