@@ -210,6 +210,7 @@
     man-pages-posix
     mosh
     mpv
+    my-bazelisk
     my-scripts
     myNodePackages."@anthropic-ai/claude-code"
     muchsync
