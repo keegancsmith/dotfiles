@@ -44,7 +44,7 @@
 
     (setq data (my-linear-issues--graphql-request "{
   viewer {
-    assignedIssues(filter: { completedAt: { null: true } }) {
+    assignedIssues(filter: { completedAt: { null: true }, canceledAt: { null: true } }) {
       nodes {
         title
         url
