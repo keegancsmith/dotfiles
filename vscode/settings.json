@@ -18,25 +18,15 @@
   "amp.mcpServers": {
     "emacs": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@keegancsmith/emacs-mcp-server"
-      ]
+      "args": ["-y", "@keegancsmith/emacs-mcp-server"]
     },
     "linear-issues": {
       "command": "passrun",
-      "args": [
-        "mcp",
-        "npx",
-        "-y",
-        "@keegancsmith/linear-issues-mcp-server"
-      ]
+      "args": ["mcp", "npx", "-y", "@keegancsmith/linear-issues-mcp-server"]
     },
     "playwright": {
       "command": "npx",
-      "args": [
-        "@playwright/mcp@latest"
-      ]
+      "args": ["@playwright/mcp@latest"]
     }
   },
   "amp.tab.enabled": true,
@@ -53,5 +43,7 @@
     "gofmt",
     "goimports",
     "sg configure"
-  ]
+  ],
+  "terminal.integrated.shellIntegration.enabled": false,
+  "editor.wordBasedSuggestions": "off"
 }
