@@ -304,6 +304,8 @@
 
   programs.nix-ld.enable = true;
 
+  programs.i3lock.enable = true;
+
   services.emacs.package = pkgs.emacs30;
 
   services.gnome.gnome-keyring.enable = true;
