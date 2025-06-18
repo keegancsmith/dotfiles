@@ -178,6 +178,8 @@ eval "$(direnv hook bash)"
 # avoid fancy prompt for automated interactive ssh such as tramp.
 [[ $TERM == "dumb" ]] || eval "$(starship init bash)"
 
+[ -f ~/.sourcegraph/sg.bash_autocomplete ] && eval "PROG=sg source ~/.sourcegraph/sg.bash_autocomplete"
+
 # Completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 
