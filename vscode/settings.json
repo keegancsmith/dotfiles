@@ -44,7 +44,9 @@
     "goimports",
     "sg configure",
     "bash -n",
-    "shellcheck"
+    "shellcheck",
+    "nix build",
+    "nix-prefetch-url"
   ],
   "terminal.integrated.shellIntegration.enabled": false,
   "editor.wordBasedSuggestions": "off",
