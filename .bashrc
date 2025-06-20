@@ -93,6 +93,11 @@ case $TERM in
     alacritty*|*kitty*)
         export TERM=xterm-256color
         ;;
+    xterm-ghostty)
+        if [ -z "$GHOSTTY_RESOURCES_DIR" ]; then
+            export TERM=xterm-256color
+        fi
+        ;;
     screen*)
         export TERM=screen-256color
         ;;
