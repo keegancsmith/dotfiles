@@ -49,6 +49,7 @@
     "nix-prefetch-url"
   ],
   "terminal.integrated.shellIntegration.enabled": false,
+  "terminal.commands.vscodeTerminal.fileBasedExitDetection": true,
   "editor.wordBasedSuggestions": "off",
   "amp.tools.disable": [
     "browser_click",
