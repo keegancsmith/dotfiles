@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, nixpkgs-unstable, lib, claude-desktop, ... }: {
+{ config, pkgs, nixpkgs, nixpkgs-unstable, lib, ... }: {
 
   imports = [ ./hardware-configuration.nix ./disk-config.nix ../../lib/cachix.nix ];
 
@@ -249,10 +249,6 @@
     xclip
     xss-lock
     zstd
-    (claude-desktop.packages.x86_64-linux.claude-desktop-with-fhs.overrideAttrs (final: prev: {
-      # I can't work out how to set allow unfree for this
-      meta.license = lib.licenses.free;
-    }))
   ]) ++ (with (import nixpkgs-unstable { system = "x86_64-linux"; config = { allowUnfree = true; }; }); [
     ghostty
     go_1_23

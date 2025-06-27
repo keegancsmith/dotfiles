@@ -9,9 +9,6 @@
     kolide-launcher.url = "github:/kolide/nix-agent/main";
     kolide-launcher.inputs.nixpkgs.follows = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
-    claude-desktop.url = "github:k3d3/claude-desktop-linux-flake";
-    claude-desktop.inputs.nixpkgs.follows = "nixpkgs";
-    claude-desktop.inputs.flake-utils.follows = "flake-utils";
   };
   outputs = { self, nixpkgs, darwin, disko, kolide-launcher, flake-utils, ... }@attrs: {
     nixosConfigurations.habitat = nixpkgs.lib.nixosSystem {
