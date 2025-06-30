@@ -251,7 +251,8 @@
     zstd
   ]) ++ (with (import nixpkgs-unstable { system = "x86_64-linux"; config = { allowUnfree = true; }; }); [
     ghostty
-    go_1_23
+    go_1_24
+    godot
     google-chrome
     jujutsu
     spotify
