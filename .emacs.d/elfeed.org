@@ -17,7 +17,6 @@
 *** https://blog.jessfraz.com/index.xml
 *** https://awesomekling.github.io/feed.xml
 *** https://stevelosh.com/rss.xml
-*** https://irreal.org/blog/?feed=rss2
 *** https://blog.acolyer.org/feed/
 *** https://www.daemonology.net/blog/index.rss
 *** https://www.coryzue.com/feed.xml
@@ -32,6 +31,7 @@
 *** https://www.fredrikholmqvist.com/posts/index.xml
 *** https://philipjoubert.com/rss/
 *** https://commaok.xyz/index.xml
+*** https://commaok.xyz/ai/index.xml
 *** https://herman.bearblog.dev/feed/
 *** http://fastcompression.blogspot.com/feeds/posts/default
 *** https://mitchellh.com/feed.xml
@@ -40,9 +40,9 @@
 *** https://emacsredux.com/atom.xml
 *** https://brandur.org/articles.atom
 *** https://brandur.org/fragments.atom
+*** https://ampcode.com/news.rss
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
-**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCPKT_csvP72boVX0XrMtagQ][Cercle]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC4eYXhJI4-7wSWc8UNRwD4A][NPR Music]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC3I2GFN_F8WudD_2jUZbojA][KEXP]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9DkCKm4_VDztRRyge4mCJQ][Amoeba]]
@@ -56,12 +56,6 @@
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCqnMk5GA1spXDiHYFcPN-eA][Mac DeMarco]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCXAhoI7XO2kafTMjocm0jCg][Flume]]
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCVH0T3rL5q8LXb1DPon6M5w][Modern Bummers]]
-*** Skate                                                             :skate:
-**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCt16NSYjauKclK67LCXvQyA][ThrasherMagazine]]
-**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCndVTMFzqnWRWR1VggXTM1w][jenkemmag]]
-**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCt-67P8kpqTNVYt6Ohy3EwQ][william strobeck]]
-**** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCtmU6euep0ehxk85iaBRO7Q][emerica]]
-*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC0uTPqBCFIpZxlz_Lv1tk_g][Protesilaos Stavrou]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC1RVRAdiSH4qxjBgxm_plng][100days]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC2N2HqEyaVE5Tt1rFqe3_Og][straybob]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC5bnzGuTw7jQQVZgWYRGeEQ][Jonathan Sidego]]
@@ -71,7 +65,6 @@
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9TOJlW5ZLaiWdMjAUoTpqQ][arghdos]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9pO2YNforRbdwKOh09djKA][Blank on Blank]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCAGWBQwGEIU7MI6mwkW95cw][ScaleConf]]
-*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCAL3JXZSzSm8AlZyD3nQdBA][Primitive Technology]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCGPCtbLDO1bNcF75LVl3P_Q][People Of]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCJTTv1UsG-VWifFOl6DB3nA][allenpalin]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCMb0O2CdPBNi-QqPk5T3gsQ][James Hoffmann]]
