@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+REMOTE_HOST="$1"
+LOCAL_INDEX="$HOME/.elfeed/index"
+
+# Get timestamps
+LOCAL_TS=$([ -f "$LOCAL_INDEX" ] && stat -c %Y "$LOCAL_INDEX" || echo "0")
+REMOTE_TS=$(ssh "$REMOTE_HOST" "[ -f .elfeed/index ] && stat -c %Y .elfeed/index || echo '0'")
+
+# Skip if remote is older
+if [ "$REMOTE_TS" -lt "$LOCAL_TS" ]; then
+    echo "Remote index older than local. Skipping sync."
+    exit 0
+fi
+
+mkdir -p "$HOME/.elfeed"
+rsync -avzt --delete "$REMOTE_HOST:.elfeed/" "$HOME/.elfeed/"
+
+# Update remote timestamp so it shows as current
+ssh "$REMOTE_HOST" "touch .elfeed/index"
