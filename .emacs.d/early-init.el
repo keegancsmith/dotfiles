@@ -1,5 +1,7 @@
-;; perf: use more memory to reduce GC rate
-(setq gc-cons-threshold 16777216) ;; 16mb
+;; perf: use more memory to reduce GC rate. Unbounded at startup.
+(setq gc-cons-threshold most-positive-fixnum)
+(add-hook 'emacs-startup-hook
+          (lambda () (setq gc-cons-threshold (* 50 1024 1024)))) ;; 50mb
 
 (setq frame-inhibit-implied-resize t)
 
