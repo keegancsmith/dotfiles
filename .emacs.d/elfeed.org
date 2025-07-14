@@ -41,6 +41,7 @@
 *** https://brandur.org/articles.atom
 *** https://brandur.org/fragments.atom
 *** https://ampcode.com/news.rss
+*** https://www.engineersneedart.com/rss.xml
 ** Youtube                                                          :youtube:
 *** Music                                                             :music:
 **** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC4eYXhJI4-7wSWc8UNRwD4A][NPR Music]]
