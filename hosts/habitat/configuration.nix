@@ -100,6 +100,7 @@
 
   # Enable OpenGL
   hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
@@ -384,6 +385,10 @@
     security.sudo.wheelNeedsPassword = false;
 
     programs.steam.enable = true;
+    programs.steam.gamescopeSession.enable = true;
+    programs.gamemode.enable = true;
+
+    environment.systemPackages = with pkgs; [mangohud protonup-qt lutris bottles heroic];
 
     services.transmission = {
       enable = true;
