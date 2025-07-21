@@ -46,7 +46,8 @@
     "bash -n",
     "shellcheck",
     "nix build",
-    "nix-prefetch-url"
+    "nix-prefetch-url",
+    "pnpm"
   ],
   "terminal.integrated.shellIntegration.enabled": false,
   "terminal.commands.vscodeTerminal.fileBasedExitDetection": true,
@@ -77,5 +78,6 @@
     "browser_take_screenshot",
     "browser_type",
     "browser_wait_for"
-  ]
+  ],
+  "amp.terminal.commands.environment": "node-spawn"
 }
