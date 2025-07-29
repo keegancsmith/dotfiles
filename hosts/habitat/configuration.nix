@@ -213,7 +213,7 @@
     mpv
     my-bazelisk
     my-scripts
-    myNodePackages."@anthropic-ai/claude-code"
+    (writeShellScriptBin "claude" ''npx -y @anthropic-ai/claude-code "$@"'')
     muchsync
     mupdf
     gh
@@ -388,7 +388,7 @@
     programs.steam.gamescopeSession.enable = true;
     programs.gamemode.enable = true;
 
-    environment.systemPackages = with pkgs; [mangohud protonup-qt lutris bottles heroic];
+    environment.systemPackages = with pkgs; [ mangohud protonup-qt lutris bottles heroic ];
 
     services.transmission = {
       enable = true;

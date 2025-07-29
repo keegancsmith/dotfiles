@@ -48,7 +48,7 @@
     mise
     muchsync
     my-scripts
-    myNodePackages."@anthropic-ai/claude-code"
+    (writeShellScriptBin "claude" ''npx -y @anthropic-ai/claude-code "$@"'')
     neovim
     nix-direnv
     nix-index
