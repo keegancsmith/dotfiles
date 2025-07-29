@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [ "$1" = "update" ]; then
+    cd ~/src/github.com/sourcegraph/amp
+    git pull
+    eval "$(direnv export bash)"
+    pnpm install
+    cd cli
+    pnpm build:production
+else
+    if [[ "$TERM" == tmux* ]]; then
+        export FORCE_HYPERLINK=1
+    fi
+    exec node ~/src/github.com/sourcegraph/amp/cli/dist/main.js "$@"
+fi
