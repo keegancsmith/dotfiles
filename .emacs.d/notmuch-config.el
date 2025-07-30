@@ -61,7 +61,7 @@
 ;; Render Joe's name instead of his GitHub username.
 (defun my-adjust-joe-name (args)
   "Replace Joe's unicode GitHub name in ARGS with normal width chars."
-  (mapcar (apply-partially #'replace-regexp-in-string "ᴜɴᴋɴᴡᴏɴ" "Joe") args))
+  (mapcar (apply-partially #'replace-regexp-in-string "\\(ᴜɴᴋɴᴡᴏɴ\\|ᴊᴏᴇ ᴄʜᴇɴ\\)" "Joe") args))
 
 (advice-add 'notmuch-search-insert-authors :filter-args  #'my-adjust-joe-name)
 
