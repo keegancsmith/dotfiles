@@ -1,35 +1,4 @@
 {
   "mcpServers": {
-    "fetch": {
-      "command": "uvx",
-      "args": [
-        "mcp-server-fetch"
-      ]
-    },
-    "brave-search": {
-      "command": "passrun",
-      "args": [
-        "mcp",
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-brave-search"
-      ]
-    },
-    "emacs": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@keegancsmith/emacs-mcp-server"
-      ]
-    },
-    "linear-issues": {
-      "command": "passrun",
-      "args": [
-        "mcp",
-        "npx",
-        "-y",
-        "@keegancsmith/linear-issues-mcp-server"
-      ]
-    }
   }
 }
