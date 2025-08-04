@@ -121,14 +121,16 @@ if [[ $- != *i* ]] ; then
 fi
 
 # Change the window title of X terminals
-case $TERM in
-    xterm*|rxvt*|Eterm|alacritty)
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
-        ;;
-    screen*|tmux*)
-        PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
-        ;;
-esac
+function set_win_title {
+    local dir="${PWD/#$HOME/\~}"
+    if [[ "$PWD" == "$HOME/src/github.com/"* ]]; then
+        dir="${PWD#$HOME/src/github.com/}"
+        dir="${dir#*/}"  # Remove org name
+    fi
+    echo -ne "\033]0;${HOSTNAME%%.*}:${dir}\007"
+}
+
+starship_precmd_user_func="set_win_title"
 
 # jump to repo
 function repo {
