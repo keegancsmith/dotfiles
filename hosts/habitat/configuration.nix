@@ -167,6 +167,7 @@
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     bashInteractive
     btrfs-progs
+    bubblewrap
     cachix
     caffeine-ng
     comma

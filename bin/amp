@@ -11,5 +11,20 @@ else
     if [[ "$TERM" == tmux* ]]; then
         export FORCE_HYPERLINK=1
     fi
-    exec node ~/src/github.com/sourcegraph/amp/cli/dist/main.js "$@"
+
+    if command -v bwrap >/dev/null 2>&1; then
+        exec bwrap \
+            --ro-bind / / \
+            --bind "$PWD" "$PWD" \
+            --bind ~/.amp ~/.amp \
+            --bind ~/.config ~/.config \
+            --bind ~/.cache ~/.cache \
+            --bind ~/.local ~/.local \
+            --dev /dev \
+            --proc /proc \
+            --tmpfs /tmp \
+            node ~/src/github.com/sourcegraph/amp/cli/dist/main.js --dangerously-allow-all "$@"
+    else
+        exec node ~/src/github.com/sourcegraph/amp/cli/dist/main.js "$@"
+    fi
 fi
