@@ -104,6 +104,7 @@
     "spotify"
     "steam"
     "visual-studio-code"
+    "wezterm"
     "zed"
   ];
   homebrew.masApps = {

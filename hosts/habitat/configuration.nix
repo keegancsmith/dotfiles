@@ -245,6 +245,7 @@
     unzip
     uv
     watchman
+    wezterm
     wget
     xautolock
     xclip
