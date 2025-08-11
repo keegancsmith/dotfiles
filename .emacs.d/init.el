@@ -298,7 +298,9 @@
   (setq read-process-output-max (* 1024 1024))) ;; 1mb
 
 (use-package typescript-mode
-  :mode (("\\.[cm]ts\\'" . typescript-mode)))
+  :mode (("\\.[cm]ts\\'" . typescript-mode))
+  :custom
+  (typescript-indent-level 2))
 
 (use-package flycheck
   :init
