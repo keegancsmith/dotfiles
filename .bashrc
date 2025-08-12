@@ -90,9 +90,6 @@ case $TERM in
     eat*)
         export TERM=xterm-256color
         ;;
-    alacritty*|*kitty*)
-        export TERM=xterm-256color
-        ;;
     xterm-ghostty)
         if [ -z "$GHOSTTY_RESOURCES_DIR" ]; then
             export TERM=xterm-256color
