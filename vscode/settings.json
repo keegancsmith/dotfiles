@@ -32,23 +32,6 @@
   "amp.tab.enabled": true,
   "amp.todos.enabled": true,
   "amp.connections.disable": ["1002"],
-  "amp.commands.allowlist": [
-    "bazel",
-    "git add",
-    "git blame",
-    "git commit",
-    "git log",
-    "go build",
-    "go test",
-    "gofmt",
-    "goimports",
-    "sg configure",
-    "bash -n",
-    "shellcheck",
-    "nix build",
-    "nix-prefetch-url",
-    "pnpm"
-  ],
   "terminal.integrated.shellIntegration.enabled": false,
   "terminal.commands.vscodeTerminal.fileBasedExitDetection": true,
   "editor.wordBasedSuggestions": "off",
@@ -91,77 +74,70 @@
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "go doc"
+        "cmd": "go doc *"
       },
       "action": "allow"
     },
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "go build -o /dev/null"
+        "cmd": "go build *"
       },
       "action": "allow"
     },
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "bazel"
+        "cmd": "bazel *"
       },
       "action": "allow"
     },
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "git add"
+        "cmd": "git add *"
       },
       "action": "allow"
     },
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "git blame"
+        "cmd": "git blame *"
       },
       "action": "allow"
     },
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "git commit"
+        "cmd": "git commit *"
       },
       "action": "allow"
     },
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "git log"
+        "cmd": "git log *"
       },
       "action": "allow"
     },
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "go build"
+        "cmd": "go test *"
       },
       "action": "allow"
     },
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "go test"
+        "cmd": "gofmt *"
       },
       "action": "allow"
     },
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "gofmt"
-      },
-      "action": "allow"
-    },
-    {
-      "tool": "Bash",
-      "matches": {
-        "cmd": "goimports"
+        "cmd": "goimports *"
       },
       "action": "allow"
     },
@@ -175,37 +151,24 @@
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "bash -n"
+        "cmd": "nix build *"
       },
       "action": "allow"
     },
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "shellcheck"
+        "cmd": "nix-prefetch-url *"
       },
       "action": "allow"
     },
     {
       "tool": "Bash",
       "matches": {
-        "cmd": "nix build"
-      },
-      "action": "allow"
-    },
-    {
-      "tool": "Bash",
-      "matches": {
-        "cmd": "nix-prefetch-url"
-      },
-      "action": "allow"
-    },
-    {
-      "tool": "Bash",
-      "matches": {
-        "cmd": "pnpm"
+        "cmd": "pnpm *"
       },
       "action": "allow"
     }
-  ]
+  ],
+  "amp.experimental.centralizedStorage.enabled": true
 }
