@@ -12,11 +12,14 @@ else
         export FORCE_HYPERLINK=1
     fi
 
+    export EDITOR="emacsclient"
+
     if command -v bwrap >/dev/null 2>&1; then
         exec bwrap \
             --ro-bind / / \
             --bind "$PWD" "$PWD" \
             --bind ~/.amp ~/.amp \
+            --bind ~/.npm ~/.npm \
             --bind ~/.config ~/.config \
             --bind ~/.cache ~/.cache \
             --bind ~/.local ~/.local \
