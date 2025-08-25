@@ -181,7 +181,7 @@
     docker
     docker-credential-helpers
     dtach
-    emacs30
+    myEmacs
     fastmod
     fd
     ffmpeg-full
@@ -307,7 +307,7 @@
 
   programs.i3lock.enable = true;
 
-  services.emacs.package = pkgs.emacs30;
+  services.emacs.package = pkgs.myEmacs;
 
   services.gnome.gnome-keyring.enable = true;
 

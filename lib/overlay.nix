@@ -11,4 +11,8 @@ final: prev: rec {
     pkgs = prev;
     nodejs = prev.nodejs_22;
   };
+
+  myEmacs = (prev.emacsPackagesFor prev.emacs30).emacsWithPackages (
+    epkgs: [ epkgs.vterm ]
+  );
 }
