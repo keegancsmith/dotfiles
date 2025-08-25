@@ -235,6 +235,8 @@
     ripgrep
     rofi-pass
     screen
+    shellcheck
+    shfmt
     signal-desktop
     simple-scan
     simplescreenrecorder
