@@ -1,6 +1,6 @@
 { config, pkgs, nixpkgs, nixpkgs-unstable, lib, ... }: {
 
-  imports = [ ./hardware-configuration.nix ./disk-config.nix ../../lib/cachix.nix ];
+  imports = [ ./hardware-configuration.nix ./disk-config.nix ./vm.nix ../../lib/cachix.nix ];
 
   boot.loader.efi.canTouchEfiVariables = true;
 
