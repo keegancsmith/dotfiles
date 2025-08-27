@@ -158,6 +158,9 @@ bar {
 # notifications.
 for_window [title="^zoom$"] floating enable
 
+# remove titlebar
+default_border none
+
 assign [class="emacs"] 1
 assign [class="qutebrowser"] 2
 assign [class="code"] 3
