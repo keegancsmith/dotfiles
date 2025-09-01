@@ -34,6 +34,7 @@ fi
 paths=(
     "$HOME/bin"
     "$GOBIN"
+    "$HOME/.local/bin"
     "$HOME/.cargo/bin"
     "$HOME/.nix-profile/bin"
     "/run/wrappers/bin"
