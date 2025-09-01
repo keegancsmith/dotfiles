@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+if [[ "$TERM" == tmux* ]]; then
+    export FORCE_HYPERLINK=1
+fi
+
+export EDITOR="emacsclient"
+
+if command -v bwrap >/dev/null 2>&1; then
+    exec bwrap \
+        --ro-bind / / \
+        --bind "$PWD" "$PWD" \
+        --bind ~/.amp ~/.amp \
+        --bind ~/.npm ~/.npm \
+        --bind ~/.config ~/.config \
+        --bind ~/.cache ~/.cache \
+        --bind ~/.local ~/.local \
+        --dev /dev \
+        --proc /proc \
+        --tmpfs /tmp \
+        amp --dangerously-allow-all "$@"
+elif command -v sandbox-exec >/dev/null 2>&1; then
+    policy_file="$(mktemp -t amp.seatbelt.XXXXXX)"
+    trap 'rm -f "$policy_file"' EXIT
+
+    # Print a policy line with quoted path
+    policy_print() {
+        local format="$1"
+        local path="$2"
+        path="${path//\\/\\\\}"
+        path="${path//\"/\\\"}"
+        printf "$format\n" "$path"
+    }
+
+    PWD_ABS="$(pwd -P)"
+    {
+        echo "(version 1)"
+        echo "(allow default)"
+        echo "(deny file-write*)"
+
+        # Allow writes to current directory
+        policy_print '(allow file-write* (subpath "%s"))' "$PWD_ABS"
+
+        # Allow writes to amp and common tool directories
+        policy_print '(allow file-write* (subpath "%s"))' "$HOME/.amp"
+        policy_print '(allow file-write* (subpath "%s"))' "$HOME/.npm"
+        policy_print '(allow file-write* (subpath "%s"))' "$HOME/.config"
+        policy_print '(allow file-write* (subpath "%s"))' "$HOME/.cache"
+        policy_print '(allow file-write* (subpath "%s"))' "$HOME/.local"
+
+        # Temp directories
+        policy_print '(allow file-write* (subpath "%s"))' "/tmp"
+        policy_print '(allow file-write* (subpath "%s"))' "/var/tmp"
+        policy_print '(allow file-write* (subpath "%s"))' "/var/folders"
+        policy_print '(allow file-write* (subpath "%s"))' "/private/var/folders"
+        policy_print '(allow file-write* (subpath "%s"))' "/private/tmp"
+
+        # Device files
+        policy_print '(allow file-write* (literal "%s"))' "/dev/null"
+        policy_print '(allow file-write* (literal "%s"))' "/dev/zero"
+        policy_print '(allow file-write* (literal "%s"))' "/dev/random"
+        policy_print '(allow file-write* (literal "%s"))' "/dev/urandom"
+        policy_print '(allow file-write* (literal "%s"))' "/dev/tty"
+        policy_print '(allow file-write* (literal "%s"))' "/dev/stdin"
+        policy_print '(allow file-write* (literal "%s"))' "/dev/stdout"
+        policy_print '(allow file-write* (literal "%s"))' "/dev/stderr"
+        policy_print '(allow file-write* (literal "%s"))' "/dev/fd"
+
+        # User Library folders that apps commonly need
+        policy_print '(allow file-write* (subpath "%s"))' "$HOME/Library/Caches"
+        policy_print '(allow file-write* (subpath "%s"))' "$HOME/Library/Logs"
+        policy_print '(allow file-write* (subpath "%s"))' "$HOME/Library/Application Support"
+    } >"$policy_file"
+
+    exec sandbox-exec -f "$policy_file" amp --dangerously-allow-all "$@"
+else
+    exec amp "$@"
+fi
