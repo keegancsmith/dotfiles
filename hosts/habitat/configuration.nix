@@ -228,13 +228,13 @@
     nodejs_20
     nodePackages.typescript
     nodePackages.typescript-language-server
-    obs-studio
     (pass.withExtensions (ext: [ ext.pass-otp ]))
     python3
     qutebrowser
     ripgrep
     rofi-pass
     screen
+    screenkey
     shellcheck
     shfmt
     signal-desktop
@@ -308,6 +308,23 @@
   programs.nix-ld.enable = true;
 
   programs.i3lock.enable = true;
+
+  programs.obs-studio = {
+    enable = true;
+
+    package = (
+      pkgs.obs-studio.override {
+        cudaSupport = true;
+      }
+    );
+
+    plugins = with pkgs.obs-studio-plugins; [
+      input-overlay
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      obs-vaapi
+    ];
+  };
 
   services.emacs.package = pkgs.myEmacs;
 
