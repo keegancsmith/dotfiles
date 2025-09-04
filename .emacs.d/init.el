@@ -785,11 +785,10 @@
    org-agenda-span 'day
    org-agenda-dim-blocked-tasks nil
    org-adapt-indentation 'headline-data
-   org-catch-invisible-edits 'show-and-error
+   org-fold-catch-invisible-edits 'show-and-error
    org-hide-leading-stars t
    org-html-validation-link nil
    org-enforce-todo-dependencies t
-   org-log-done 'time
    org-todo-keywords '((sequence "TODO(t!)" "WAIT(w@/!)" "|" "DONE(d@)" "CANCELLED(c@)"))
    ;org-confirm-babel-evaluate nil
    org-babel-python-command "python3"))
