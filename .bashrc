@@ -167,6 +167,7 @@ alias grep="grep --color=auto"
 alias o="xdg-open"
 alias kname='kubectl get -o jsonpath={.items[0].metadata.name}'
 alias vim=nvim
+alias amp=kamp
 
 if ! command -v open &> /dev/null; then
     alias open='xdg-open'
