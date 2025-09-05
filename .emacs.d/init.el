@@ -119,7 +119,8 @@
  fill-column 78
  tab-width 2
  indent-tabs-mode nil
- js-indent-level 2)
+ js-indent-level 2
+ sh-indentation 2)
 ;; Disable annoying keys I accidently hit
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-x C-z"))
