@@ -303,6 +303,18 @@
   :custom
   (typescript-indent-level 2))
 
+(use-package prettier-js
+  :custom
+  (prettier-js-use-modules-bin t)
+  :config
+  (defun maybe-use-prettier ()
+    "Enable `prettier-js-mode' if an rc file is located."
+    (if (locate-dominating-file default-directory ".prettierrc")
+        (prettier-js-mode +1)))
+
+  (add-hook 'js-mode-hook 'maybe-use-prettier)
+  (add-hook 'typescript-mode-hook 'maybe-use-prettier))
+
 (use-package flycheck
   :init
   (global-flycheck-mode)
