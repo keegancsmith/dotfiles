@@ -5,6 +5,8 @@ if [[ "$TERM" == tmux* ]]; then
 fi
 
 export EDITOR="emacsclient"
+export AMP_DEBUG=1
+export AMP_LOG_LEVEL=debug
 
 # Shared directories between bwrap and sandbox-exec
 shared_dirs=(
