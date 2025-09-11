@@ -46,10 +46,10 @@ c.url.searchengines = {
 import re
 import urllib.parse
 sourcegraph = {
+    'sa': 'sourcegraph/amp',
+    'si': 'sourcegraph/infrastructure',
     'ss': 'sourcegraph/sourcegraph',
     'sz': 'sourcegraph/zoekt',
-    'sc': 'sourcegraph/cody',
-    'si': 'sourcegraph/infrastructure',
     'sg': 'golang/go',
     'sn': 'NixOS/nixpkgs',
     'sv': 'microsoft/vscode',
