@@ -168,6 +168,7 @@ alias o="xdg-open"
 alias kname='kubectl get -o jsonpath={.items[0].metadata.name}'
 alias vim=nvim
 alias amp=kamp
+alias pamp='pbpaste | amp'
 
 if ! command -v open &> /dev/null; then
     alias open='xdg-open'
@@ -176,6 +177,11 @@ fi
 if ! command -v pbpaste &> /dev/null; then
     alias pbpaste='xclip -o'
 fi
+
+if ! command -v pbcopy &> /dev/null; then
+    alias pbcopy='xclip -i'
+fi
+
 
 shopt -s histappend
 
