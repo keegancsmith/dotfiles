@@ -1,78 +1,23 @@
 { config, pkgs, nixpkgs, nixpkgs-unstable, lib, ... }:
 
 {
-  imports = [ ../../lib/cachix.nix ];
+  imports = [ ../../lib/cachix.nix ../../lib/packages.nix ];
 
   nixpkgs.overlays = [
     (import ../../lib/overlay.nix)
   ];
 
   environment.systemPackages = (with pkgs; [
-    (aspellWithDicts (dicts: with dicts; [ en en-computers ]))
-    bashInteractive
-    btop
-    cachix
-    comma
     coreutils
-    counsel-repo
-    curl
-    direnv
-    dtach
     (writeShellScriptBin "docker" ''exec /opt/homebrew/bin/podman "$@"'')
-    fastmod
-    fd
     ffmpeg
-    file
     findutils
-    fzf
-    gh
-    git
-    git-up
-    git-spice
-    go
-    golangci-lint
-    gopls
-    ghostscript
-    gnuplot
     gnupg
-    graphviz
-    htop
-    hyperfine
-    imagemagick
-    jq
-    kbfs # provides git-remote-keybase
-    kitty
-    ledger
-    man-pages
-    man-pages-posix
-    mosh
-    mise
-    muchsync
-    my-scripts
-    (writeShellScriptBin "claude" ''npx -y @anthropic-ai/claude-code "$@"'')
     neovim
-    nix-direnv
-    nix-index
-    nixpkgs-fmt
     pandoc
-    (pass.withExtensions (ext: [ ext.pass-otp ]))
-    (python3.withPackages (ps: with ps; [ numpy pandas requests uv ]))
-    ripgrep
-    screen
-    shellcheck
-    shfmt
-    sqlite
-    sqlitebrowser
-    starship
-    tmux
-    unzip
-    watchman
-    wget
-    zstd
   ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") mpv) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     lieer
     notmuch
-    yt-dlp
   ]);
 
   fonts.packages = with pkgs; [ hack-font iosevka jetbrains-mono ];

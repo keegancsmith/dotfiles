@@ -1,6 +1,6 @@
 { config, pkgs, nixpkgs, nixpkgs-unstable, lib, ... }: {
 
-  imports = [ ./hardware-configuration.nix ./disk-config.nix ./vm.nix ../../lib/cachix.nix ];
+  imports = [ ./hardware-configuration.nix ./disk-config.nix ./vm.nix ../../lib/cachix.nix ../../lib/packages.nix ];
 
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -164,108 +164,51 @@
       else "sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch"
     ))
     abiword
-    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     avidemux
-    bashInteractive
-    btop
     btrfs-progs
     bubblewrap
-    cachix
     caffeine-ng
-    comma
-    counsel-repo
-    curl
-    difftastic
-    dig
-    direnv
     discord
     docker
     docker-credential-helpers
-    dtach
     myEmacs
-    fastmod
-    fd
     ffmpeg-full
-    file
-    fzf
     gcc
     gdb
-    ghostscript
-    git
-    git-up
-    git-spice
-    golangci-lint
-    gopls
-    graphviz
     gv
-    htop
-    hyperfine
-    imagemagick
     jellyfin
     jellyfin-web
     jellyfin-ffmpeg
-    jq
-    kbfs # provides git-remote-keybase
-    kitty
-    ledger
     lsof
     maim
-    man-pages
-    man-pages-posix
-    mosh
     mpv
     my-bazelisk
-    my-scripts
-    (writeShellScriptBin "claude" ''npx -y @anthropic-ai/claude-code "$@"'')
-    muchsync
     mupdf
-    gh
     gnumake
     gnumeric
-    nix-direnv
-    nix-index
-    nixpkgs-fmt
     nmap
     nodejs_20
     nodePackages.typescript
     nodePackages.typescript-language-server
-    (pass.withExtensions (ext: [ ext.pass-otp ]))
-    python3
     qutebrowser
-    ripgrep
     rofi-pass
-    screen
     screenkey
-    shellcheck
-    shfmt
     signal-desktop
     simple-scan
     simplescreenrecorder
-    sqlite
-    sqlitebrowser
-    starship
     steam-run
     synergy
-    tmux
-    unzip
-    uv
-    watchman
     wezterm
-    wget
     xautolock
     xclip
     xss-lock
-    zstd
   ]) ++ (with (import nixpkgs-unstable { system = "x86_64-linux"; config = { allowUnfree = true; }; }); [
     ghostty
-    go_1_24
     godot
     google-chrome
-    jujutsu
     spotify
     volumeicon
     vscode
-    yt-dlp
     zoom-us
   ]);
 
