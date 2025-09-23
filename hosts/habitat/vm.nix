@@ -11,4 +11,6 @@
     swtpm.enable = true;
     ovmf.packages = [ pkgs.OVMFFull.fd ];
   };
+
+  environment.systemPackages = [ pkgs.virtiofsd ];
 }
