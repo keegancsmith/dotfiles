@@ -167,6 +167,7 @@
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     avidemux
     bashInteractive
+    btop
     btrfs-progs
     bubblewrap
     cachix

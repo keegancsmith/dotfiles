@@ -10,6 +10,7 @@
   environment.systemPackages = (with pkgs; [
     (aspellWithDicts (dicts: with dicts; [ en en-computers ]))
     bashInteractive
+    btop
     cachix
     comma
     coreutils
