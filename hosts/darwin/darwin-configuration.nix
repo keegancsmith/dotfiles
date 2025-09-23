@@ -59,6 +59,8 @@
     (python3.withPackages (ps: with ps; [ numpy pandas requests uv ]))
     ripgrep
     screen
+    shellcheck
+    shfmt
     sqlite
     sqlitebrowser
     starship
