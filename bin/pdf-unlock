@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+    echo "Usage: pdf-unlock <input.pdf>"
+    exit 1
+fi
+
+input_pdf="$1"
+
+if [ ! -f "$input_pdf" ]; then
+    echo "Error: File '$input_pdf' not found"
+    exit 1
+fi
+
+# Get the password from pass
+password=$(pass show passport | awk '/^ID:/ { print $2 }')
+
+if [ -z "$password" ]; then
+    echo "Error: Could not retrieve password"
+    exit 1
+fi
+
+# Generate output filename with _unlocked suffix
+base_name="${input_pdf%.*}"
+extension="${input_pdf##*.}"
+output_pdf="${base_name}_unlocked.${extension}"
+
+# Use ghostscript to remove password protection
+gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile="$output_pdf" -sPDFPassword="$password" "$input_pdf"
+
+if [ $? -eq 0 ]; then
+    echo "Successfully created unlocked PDF: $output_pdf"
+else
+    echo "Error: Failed to unlock PDF"
+    exit 1
+fi
