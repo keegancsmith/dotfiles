@@ -18,7 +18,6 @@ notmuch tag +gh -- tag:new and from:notifications@github.com
 #### GitHub flag when people mention me
 notmuch tag +flagged +gh/mention -- tag:new and tag:gh and -from:keegan and '(body:keegan or body:keegancsmith)' and -from:sourcegraph-bot
 notmuch tag +gh/review -- tag:new and tag:gh and -from:keegan and 'body:"requested your review on"'
-notmuch tag +gh/amp -- tag:new and tag:gh and -from:keegan and 'body:"requested review from @sourcegraph/amp-committers"'
 
 #### Gerrit
 notmuch tag +gerrit -- tag:new and from:gerritcodereview
@@ -47,7 +46,6 @@ notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into main")'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'body:(Merged "into release")'
 notmuch tag -unread -inbox -- tag:new and tag:gh and to:your_activity@noreply.github.com
 notmuch tag -unread -inbox -- tag:new and tag:gh and to:push@noreply.github.com
-notmuch tag -unread -inbox -- tag:new and tag:gh and 'thread:{tag:gh/amp}' and '-thread:{tag:gh/review}'
 
 #### Finally put all GitHub notifications in own inbox
 notmuch tag -inbox +gh-inbox -- tag:new and tag:gh and tag:inbox
