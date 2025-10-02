@@ -23,6 +23,11 @@ for dir in "${shared_dirs[@]}"; do
 	mkdir -p "$dir"
 done
 
+# Want IDE mode by default
+if [[ $# -eq 0 ]]; then
+	set -- --ide
+fi
+
 if command -v bwrap >/dev/null 2>&1; then
 	bind_args=()
 	for dir in "${shared_dirs[@]}"; do
