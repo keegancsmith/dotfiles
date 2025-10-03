@@ -11,7 +11,7 @@ export AMP_LOG_LEVEL=debug
 # Shared directories between bwrap and sandbox-exec
 shared_dirs=(
 	~/.amp
-  ~/.bun
+	~/.bun
 	~/.npm
 	~/.config
 	~/.cache
@@ -28,15 +28,35 @@ if [[ $# -eq 0 ]]; then
 	set -- --ide
 fi
 
+# Collect directories to bind mount
+bind_dirs=(
+	"$PWD"
+	"$(git rev-parse --show-toplevel 2>/dev/null || true)"
+	"$( (git rev-parse --git-common-dir | xargs -0 realpath | xargs -0 dirname) 2>/dev/null || true)"
+)
+
+# Filter empty, deduplicate, and remove nested directories
+mapfile -t sorted < <(printf '%s\n' "${bind_dirs[@]}" | grep -v '^$' | sort -u)
+bind_dirs=()
+prev=""
+for dir in "${sorted[@]}"; do
+	if [[ -z "$prev" || "$dir" != "$prev"/* ]]; then
+		bind_dirs+=("$dir")
+		prev="$dir"
+	fi
+done
+
 if command -v bwrap >/dev/null 2>&1; then
 	bind_args=()
 	for dir in "${shared_dirs[@]}"; do
 		bind_args+=(--bind "$dir" "$dir")
 	done
+	for dir in "${bind_dirs[@]}"; do
+		bind_args+=(--bind "$dir" "$dir")
+	done
 
 	exec bwrap \
 		--ro-bind / / \
-		--bind "$PWD" "$PWD" \
 		"${bind_args[@]}" \
 		--dev /dev \
 		--proc /proc \
@@ -56,14 +76,15 @@ elif command -v sandbox-exec >/dev/null 2>&1; then
 		printf "$format\n" "$path"
 	}
 
-	PWD_ABS="$(pwd -P)"
 	{
 		echo "(version 1)"
 		echo "(allow default)"
 		echo "(deny file-write*)"
 
-		# Allow writes to current directory
-		policy_print '(allow file-write* (subpath "%s"))' "$PWD_ABS"
+		# Allow writes to bind_dirs (PWD, git root, worktree parent)
+		for dir in "${bind_dirs[@]}"; do
+			policy_print '(allow file-write* (subpath "%s"))' "$dir"
+		done
 
 		# Allow writes to shared directories
 		for dir in "${shared_dirs[@]}"; do
