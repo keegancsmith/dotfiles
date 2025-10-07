@@ -1293,5 +1293,9 @@ directory to make multiple eshell windows easier."
 
 (load-file "~/.emacs.d/my-linear-issues.el")
 
+(load-file-exists (expand-file-name "~/src/github.com/keegancsmith/amp.el/amp.el"))
+(when (fboundp 'amp-mode)
+  (amp-mode 1))
+
 ;;; init.el ends here
 (put 'narrow-to-region 'disabled nil)
