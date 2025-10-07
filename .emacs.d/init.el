@@ -91,6 +91,8 @@
   :config
   (add-to-list 'backup-directory-alist
                (cons tramp-file-name-regexp nil))
+  (put 'narrow-to-region 'disabled nil)
+  (put 'list-timers 'disabled nil)
 
   (recentf-mode 1))
 (use-package calendar
@@ -1298,4 +1300,3 @@ directory to make multiple eshell windows easier."
   (amp-mode 1))
 
 ;;; init.el ends here
-(put 'narrow-to-region 'disabled nil)
