@@ -15,20 +15,6 @@
   "amp.thread.soundNotificationOnIdle": true,
   "amp.url": "https://ampcode.com/",
   "amp.anthropic.thinking.enabled": true,
-  "amp.mcpServers": {
-    "emacs": {
-      "command": "npx",
-      "args": ["-y", "@keegancsmith/emacs-mcp-server"]
-    },
-    "linear-issues": {
-      "command": "passrun",
-      "args": ["mcp", "npx", "-y", "@keegancsmith/linear-issues-mcp-server"]
-    },
-    "playwright": {
-      "command": "npx",
-      "args": ["@playwright/mcp@latest"]
-    }
-  },
   "amp.tab.enabled": true,
   "amp.todos.enabled": true,
   "amp.connections.disable": ["1002"],
