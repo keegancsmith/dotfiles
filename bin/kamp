@@ -61,7 +61,7 @@ if command -v bwrap >/dev/null 2>&1; then
 		"${bind_args[@]}" \
 		--dev /dev \
 		--proc /proc \
-		--tmpfs /tmp \
+		--bind /tmp /tmp \
 		amp --dangerously-allow-all "$@"
 elif command -v sandbox-exec >/dev/null 2>&1; then
 	policy_file="$(mktemp -t amp.seatbelt.XXXXXX)"
