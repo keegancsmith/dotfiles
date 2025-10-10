@@ -7,6 +7,7 @@ fi
 export EDITOR="emacsclient"
 export AMP_DEBUG=1
 export AMP_LOG_LEVEL=debug
+export AMP_CONNECT=1
 
 # Shared directories between bwrap and sandbox-exec
 shared_dirs=(
