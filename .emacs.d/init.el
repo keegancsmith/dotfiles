@@ -1151,6 +1151,24 @@
   :config
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
+;; Sort test/fuzz files to the end of xref results
+(defun my-consult-xref-sort-tests-last (original-fn fetcher alist)
+  "Sort test/fuzz files to the end in consult-xref."
+  (let* ((test-re (rx word-boundary (or "test" "fuzz" "fuzzer") word-boundary))
+         (wrapped-fetcher
+          (lambda ()
+            (let* ((items (funcall fetcher))
+                   (is-test-p (lambda (item)
+                                (string-match-p test-re
+                                                (xref-location-group
+                                                 (xref-item-location item)))))
+                   (non-test-items (seq-remove is-test-p items))
+                   (test-items (seq-filter is-test-p items)))
+              (append non-test-items test-items)))))
+    (funcall original-fn wrapped-fetcher alist)))
+
+(advice-add 'consult-xref :around #'my-consult-xref-sort-tests-last)
+
 (use-package nix-mode)
 
 (use-package tree-sitter
