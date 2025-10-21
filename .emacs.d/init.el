@@ -911,6 +911,11 @@
     (setq fill-column 72))
   (add-hook 'git-commit-mode-hook #'my-git-commit-mode-hook))
 
+(use-package difftastic
+  :defer t
+  :vc (:url "https://github.com/pkryger/difftastic.el.git"
+       :rev :newest))
+
 (use-package git-timemachine)
 
 (use-package browse-at-remote)
