@@ -143,4 +143,32 @@
 (define-key notmuch-search-mode-map "B" #'my-notmuch-search-browse)
 (define-key notmuch-tree-mode-map "B" #'my-notmuch-tree-browse)
 
+;; password-aware PDF viewing
+(defun my-unlock-pdf-handle (handle)
+  "Unlock a password-protected PDF attachment and view it."
+  (let* ((input-file (make-temp-file "pdf-locked-" nil ".pdf"))
+         (output-file (concat (file-name-sans-extension input-file) "_unlocked.pdf")))
+    ;; Save attachment to temp file
+    (mm-with-unibyte-buffer
+      (mm-insert-part handle)
+      (write-region (point-min) (point-max) input-file nil 'silent))
+    ;; Run pdf-unlock on it
+    (call-process "pdf-unlock" nil nil nil input-file)
+    ;; Open the unlocked version
+    (find-file output-file)))
+
+(defun my-notmuch-show-view-pdf ()
+  "View PDF attachments, unlocking if needed."
+  (interactive)
+  (let ((handle (notmuch-show-current-part-handle)))
+    (unwind-protect
+        (pcase (car (nth 1 handle))
+          ("application/pdf"
+           (my-unlock-pdf-handle handle))
+          (_ (notmuch-show-view-part)))
+      (kill-buffer (mm-handle-buffer handle)))))
+
+(setq notmuch-show-part-button-default-action
+      #'my-notmuch-show-view-pdf)
+
 ;;; notmuch-config.el ends here
