@@ -140,8 +140,12 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  hardware.sane.enable = true;
-  hardware.sane.extraBackends = [ pkgs.sane-airscan ];
+  # https://nixos.wiki/wiki/Hardware/Brother
+  services.printing.drivers = [
+    pkgs.brlaser
+    pkgs.brgenml1lpr
+    pkgs.brgenml1cupswrapper
+  ];
 
   users.users.keegan = {
     isNormalUser = true;
