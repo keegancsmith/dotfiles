@@ -20,6 +20,9 @@
  ;; on gmail sync we will get the file, we don't need to create the sent mail
  '(notmuch-fcc-dirs nil))
 
+;; I seem to have to call this to get contact completion in message-mode
+(notmuch-address-setup)
+
 ;; I like to jump to tag searches from notmuch-hello
 (defun notmuch-search-by-tag (tag)
   "Display threads matching TAG in a notmuch-search buffer."
