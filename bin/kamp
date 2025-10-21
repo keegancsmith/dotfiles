@@ -9,6 +9,11 @@ export AMP_DEBUG=1
 export AMP_LOG_LEVEL=debug
 export AMP_CONNECT=1
 
+# Skip system-wide SSH config to avoid permission errors in bubblewrap.
+# Bubblewrap's user namespace remaps root-owned files to nobody, causing
+# SSH to reject system configs with "Bad owner or permissions" errors.
+export GIT_SSH_COMMAND="ssh -F ~/.ssh/config"
+
 # Shared directories between bwrap and sandbox-exec
 shared_dirs=(
 	~/.amp
