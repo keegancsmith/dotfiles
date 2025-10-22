@@ -980,7 +980,7 @@
      (let ((shell-command-buffer-name-async (concat "*" (symbol-name ',name) "*")))
        (async-shell-command ,command))))
 
-(bind-key "C-c m n" (defun-shell notmuch-new         "notmuch new"))
+(bind-key "C-c m n" (defun-shell notmuch-sync        "notmuch sync"))
 (bind-key "C-c m d" (defun-shell notmuch-github-done "notmuch github done"))
 
 (if (eq system-type 'darwin)

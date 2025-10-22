@@ -106,7 +106,7 @@
   (interactive)
   (smtpmail-send-queued-mail)
   (message "Polling mail...")
-  (notmuch-start-notmuch "notmuch-new" nil #'my-notmuch-new-process-sentinel "new"))
+  (notmuch-start-notmuch "notmuch-sync" nil #'my-notmuch-new-process-sentinel "sync"))
 
 (add-to-list 'notmuch-hello-sections #'my-notmuch-hello-queued-mail)
 (define-key notmuch-hello-mode-map (kbd "G") #'my-notmuch-send-poll-and-refresh-this-buffer)

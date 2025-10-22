@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+self=$(muchsync --self)
+if [ "$self" = 2967698721405478202 ]; then
+	notmuch new
+else
+	muchsync --nonew fa.local --nonew
+	ssh fa.local notmuch new
+	muchsync --nonew fa.local --nonew
+
+  echo
+  echo "inbox $(notmuch count tag:inbox) email(s)"
+  echo "gh $(notmuch count tag:gh-inbox) email(s)"
+fi

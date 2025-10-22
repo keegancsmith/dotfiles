@@ -3,16 +3,13 @@
 set -euo pipefail
 
 self=$(muchsync --self)
-if [ "$self" = 2967698721405478202 ]; then
-  cd ~/.mail/gmail
-  gmi sync
-
-  cd ~/.mail/sourcegraph
-  test -f ~/VACATION || gmi sync
-else
-  # race condition in muchsync between tags and mail in maildir. So we make
-  # this 3 phase without muchsync running new.
-  muchsync --nonew fa.local --nonew
-  ssh fa.local notmuch new
-  muchsync --nonew fa.local --nonew
+if [ "$self" != 2967698721405478202 ]; then
+	echo "Warning: pre-new hook does nothing on non-gmi machine. Use notmuch-sync instead." >&2
+	exit 0
 fi
+
+cd ~/.mail/gmail
+gmi sync
+
+cd ~/.mail/sourcegraph
+test -f ~/VACATION || gmi sync
