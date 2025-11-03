@@ -731,11 +731,12 @@
            active-projects agenda-journals refile-journals current-journal)
 
       (cl-flet ((journals (from-month-delta to-month-delta)
-                  (mapcar (lambda (month-delta)
-                            (format-time-string "~/org-files/journals/%Y/%Y-%m-%b.org"
-                                                (encode-time
-                                                 (my-decoded-time-add-month time month-delta))))
-                          (number-sequence from-month-delta to-month-delta))))
+                  (seq-filter #'file-exists-p
+                              (mapcar (lambda (month-delta)
+                                        (format-time-string "~/org-files/journals/%Y/%Y-%m-%b.org"
+                                                            (encode-time
+                                                             (my-decoded-time-add-month time month-delta))))
+                                      (number-sequence from-month-delta to-month-delta)))))
 
         (setq agenda-journals (journals -2 1)
               refile-journals (journals 0 1)
