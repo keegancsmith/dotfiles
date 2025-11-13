@@ -919,7 +919,9 @@
 
 (use-package git-timemachine)
 
-(use-package browse-at-remote)
+(use-package browse-at-remote
+  :config
+  (load-file "~/.emacs.d/my-browse-at-remote.el"))
 
 (use-package minions
   :config (minions-mode 1))
