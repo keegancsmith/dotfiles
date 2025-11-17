@@ -106,6 +106,7 @@
     open = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+    forceFullCompositionPipeline = true;
   };
 
   services.displayManager.defaultSession = "xfce+i3";
