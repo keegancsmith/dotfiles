@@ -17,10 +17,11 @@ export GIT_SSH_COMMAND="ssh -F ~/.ssh/config"
 shared_dirs=(
 	~/.amp
 	~/.bun
-	~/.npm
-	~/.config
 	~/.cache
+	~/.config
 	~/.local
+	~/.mcp-auth
+	~/.npm
 	~/go/pkg
 )
 
