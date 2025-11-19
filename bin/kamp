@@ -7,7 +7,6 @@ fi
 export EDITOR="emacsclient"
 export AMP_DEBUG=1
 export AMP_LOG_LEVEL=debug
-export AMP_CONNECT=1
 
 # Skip system-wide SSH config to avoid permission errors in bubblewrap.
 # Bubblewrap's user namespace remaps root-owned files to nobody, causing
@@ -29,11 +28,6 @@ shared_dirs=(
 for dir in "${shared_dirs[@]}"; do
 	mkdir -p "$dir"
 done
-
-# Want IDE mode by default
-if [[ $# -eq 0 ]]; then
-	set -- --ide
-fi
 
 # Collect directories to bind mount
 bind_dirs=(
