@@ -1272,6 +1272,11 @@
 
 (use-package revbufs)
 
+(when (string= (system-name) "habitat")
+  (use-package activity-watch-mode
+    :config
+    (global-activity-watch-mode)))
+
 (defun my-vc-github-local-checkout (name repo)
   "helper for package-vc-install-from-checkout"
   (let ((dir (expand-file-name repo "~/src/github.com/")))
