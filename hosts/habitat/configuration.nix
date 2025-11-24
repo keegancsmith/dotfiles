@@ -362,6 +362,14 @@
 
     environment.systemPackages = with pkgs; [ mangohud protonup-qt lutris bottles heroic ];
 
+    services.sonarr = {
+      enable = true;
+      openFirewall = true;
+      user = "plex";
+      group = "plex";
+      dataDir = "/var/lib/plex/.config/NzbDrone";
+    };
+
     services.transmission = {
       enable = true;
       openFirewall = true;
