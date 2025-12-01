@@ -9,7 +9,6 @@
   # Enable TPM emulation (for Windows 11). From https://crescentro.se/posts/windows-vm-nixos/
   virtualisation.libvirtd.qemu = {
     swtpm.enable = true;
-    ovmf.packages = [ pkgs.OVMFFull.fd ];
   };
 
   environment.systemPackages = [ pkgs.virtiofsd ];
