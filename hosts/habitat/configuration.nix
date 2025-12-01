@@ -362,14 +362,6 @@
 
     environment.systemPackages = with pkgs; [ mangohud protonup-qt lutris bottles heroic ];
 
-    services.sonarr = {
-      enable = true;
-      openFirewall = true;
-      user = "plex";
-      group = "plex";
-      dataDir = "/var/lib/plex/.config/NzbDrone";
-    };
-
     services.transmission = {
       enable = true;
       openFirewall = true;
@@ -383,6 +375,15 @@
         rpc-host-whitelist = "habitat,habitat.local";
       };
     };
+  };
+
+  # Keep monitoring even if transmission isn't running
+  services.sonarr = {
+    enable = true;
+    openFirewall = true;
+    user = "plex";
+    group = "plex";
+    dataDir = "/var/lib/plex/.config/NzbDrone";
   };
 
   # Run TRIM for my SSD
