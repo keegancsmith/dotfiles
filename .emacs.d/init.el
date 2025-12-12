@@ -201,9 +201,9 @@
   (defun my-set-theme ()
     "Set theme based on current frame type - light for GUI, dark for terminal."
     (interactive)
-    (ef-themes-select (if (display-graphic-p)
-                          'ef-spring
-                        'ef-dream)))
+    (ef-themes-load-theme (if (display-graphic-p)
+                              'ef-spring
+                            'ef-dream)))
   ;; Disable all other themes to avoid awkward blending
   (mapc #'disable-theme custom-enabled-themes)
   (my-set-theme))
