@@ -14,7 +14,7 @@ gc-all = -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolv
 me = log --author=keegan
 checkout-branch = !sh -c 'git fetch origin $0 && git checkout -b $0 FETCH_HEAD'
 pr = !sh -c 'git fetch -fu origin refs/pull/$0/head:pr/$0 && git checkout pr/$0'
-pristine = clean -dx -e .envrc -e .direnv -e .env.local
+pristine = clean -dx -e .envrc -e .direnv -e .env.local -e .jj
 
 # https://difftastic.wilfred.me.uk/git.html#regular-usage
 dlog = -c diff.external=difft log --ext-diff

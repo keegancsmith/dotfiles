@@ -47,6 +47,7 @@
       packages = {
         counsel-repo = pkgs.callPackage ./lib/counsel-repo.nix { };
         git-spice = pkgs.callPackage ./lib/git-spice.nix { };
+        starship-jj = pkgs.callPackage ./lib/starship-jj.nix { };
       };
     }
   );

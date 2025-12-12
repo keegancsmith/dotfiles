@@ -50,6 +50,7 @@
     sqlite
     sqlitebrowser
     starship
+    starship-jj
     tmux
     unzip
     uv
@@ -60,6 +61,7 @@
     go_1_25
     golangci-lint
     gopls
+    jjui
     jujutsu
     yt-dlp
   ]);
