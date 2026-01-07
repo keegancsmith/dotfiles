@@ -137,7 +137,11 @@
   };
 
   # compositor
-  services.picom.enable = true;
+  services.picom = {
+    enable = true;
+    inactiveOpacity = 0.8;
+    opacityRules = [ "100:class_g = 'i3lock'" ];
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
