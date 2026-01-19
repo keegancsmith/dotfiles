@@ -945,6 +945,7 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("qutebrowser-editor-[^/]+\\'" . gfm-mode)
          ("\\.md\\'" . gfm-mode)
+         ("\\.mdx\\'" . gfm-mode)
          ("\\.markdown\\'" . markdown-mode))
   :config
   (defun my-gfm-mode-hook ()
