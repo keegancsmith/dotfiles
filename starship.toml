@@ -34,14 +34,6 @@ disabled = true
 [nix_shell]
 format = '[❄️ $name]($style) '
 
-[custom.jj]
-command = "prompt"
-format = "$output"
-ignore_timeout = true
-shell = ["starship-jj", "--ignore-working-copy", "starship"]
-use_stdin = false
-when = true
-
 [custom.cloud-display-name]
 command = "awk '/displayName:/ { print $2 }' config.yaml"
 detect_files = ['config.yaml']
