@@ -7,10 +7,9 @@ if [ "$self" = 2967698721405478202 ]; then
 	notmuch new
 else
 	muchsync --nonew fa.local --nonew
-	ssh fa.local notmuch new
-	muchsync --nonew fa.local --nonew
+	muchsync --nonew fa.local
 
-  echo
-  echo "inbox $(notmuch count tag:inbox) email(s)"
-  echo "gh $(notmuch count tag:gh-inbox) email(s)"
+	echo
+	echo "inbox $(notmuch count tag:inbox) email(s)"
+	echo "gh $(notmuch count tag:gh-inbox) email(s)"
 fi
