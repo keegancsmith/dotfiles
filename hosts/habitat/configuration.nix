@@ -83,6 +83,7 @@
         "tenant1"
         "tenant2"
         "workspaces"
+        "releaseoperations"
       ]) ++ (map (subdomain: "${subdomain}.sourcegraphapp.test") [
         "default"
         "tenant1"
