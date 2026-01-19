@@ -406,6 +406,7 @@
   powerManagement.cpuFreqGovernor = "schedutil";
 
   nix.settings.allowed-users = [ "@wheel" ];
+  nix.settings.trusted-users = [ "@wheel" ];
 
   virtualisation.docker.enable = true;
 
