@@ -174,7 +174,6 @@
       else "sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch"
     ))
     abiword
-    activitywatch
     avidemux
     btrfs-progs
     bubblewrap

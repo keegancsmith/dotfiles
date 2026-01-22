@@ -172,6 +172,5 @@ assign [class="zoom"] 4
 exec emacs
 exec qutebrowser
 exec caffeine
-exec --no-startup-id aw-qt
 
 exec --no-startup-id sleep 5 && volumeicon
