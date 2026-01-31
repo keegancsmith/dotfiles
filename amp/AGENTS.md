@@ -1,6 +1,6 @@
 # Git Commits
 
-Branch names should be prefixed with `k/`.
+Branch names should be prefixed with `k/` followed by a short descriptive name (e.g., `k/fix-heartbeat-logging`). Do not include my username or full name in branch names—the `k/` prefix is sufficient identification.
 
 ## Commit Messages
 
