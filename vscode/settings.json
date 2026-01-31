@@ -55,5 +55,12 @@
       "action": "allow",
       "matches": {}
     }
+  ],
+  "amp.mcpTrustedServers": [
+    {
+      "serverName": "s2ds",
+      "specHash": "d188cf3ca4165c389bd97b132ed9b456192e97b609181f71899285dee9c2a438",
+      "allow": false
+    }
   ]
 }

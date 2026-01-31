@@ -57,6 +57,9 @@ conditionallink "${REPO}/rofi-pass.conf" "${HOME}/.config/rofi-pass/config"
 # ghostty
 conditionallink "${REPO}/ghostty" "${HOME}/.config/ghostty/config"
 
+# amp
+conditionallink "${REPO}/amp" "${HOME}/.config/amp"
+
 # volumeicon
 conditionallink "${REPO}/volumeicon" "${HOME}/.config/volumeicon/volumeicon"
 

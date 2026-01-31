@@ -1,0 +1,32 @@
+{
+  "amp.jetbrains.skipInstall": true,
+  "amp.dangerouslyAllowAll": true,
+  "amp.mcpTrustedServers": [
+    {
+      "serverName": "s2",
+      "specHash": "17787780a02e0e9005903672dd27ebda32c887a1b700efbef5d4f3154dbfd12b",
+      "allow": false
+    },
+    {
+      "serverName": "s2",
+      "specHash": "b65877d28110eeed938b18a7c9746217511137f98487288c2542a8ff7344ba1b",
+      "allow": false
+    },
+    {
+      "serverName": "s2ds",
+      "specHash": "d188cf3ca4165c389bd97b132ed9b456192e97b609181f71899285dee9c2a438",
+      "allow": true
+    }
+  ],
+  "amp.workspaces": [
+    {
+      "path": "/home/keegan/src/github.com/sourcegraph/sourcegraph",
+      "allowAllMcpServers": true
+    }
+  ],
+  "amp.showElapsedTime": true,
+  "amp.showCost": true,
+  "amp.internal.modes": true,
+  "amp.internal.showDetailedCosts": true,
+  "amp.experimental.dequeueAfterToolCompletion": true
+}
