@@ -211,6 +211,7 @@
     wezterm
     xautolock
     xclip
+    xsel
     xss-lock
   ]) ++ (with (import nixpkgs-unstable { system = "x86_64-linux"; config = { allowUnfree = true; }; }); [
     ghostty
