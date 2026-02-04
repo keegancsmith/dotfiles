@@ -1,3 +1,7 @@
+# GitHub
+
+Use the `gh` CLI tool for all GitHub interactions (issues, PRs, repos, etc.). The tool is already authenticated.
+
 # Git Commits
 
 Branch names should be prefixed with `k/` followed by a short descriptive name (e.g., `k/fix-heartbeat-logging`). Do not include my username or full name in branch names—the `k/` prefix is sufficient identification.
@@ -20,6 +24,8 @@ Include a `## Test Plan` or `Test Plan:` section in the commit body describing h
 - Automated tests added or run
 - Observations confirming the fix works
 
+Omit the test plan for changes where there's nothing meaningful to test (e.g., documentation-only changes, typo fixes).
+
 Prefer `Test Plan:` inline unless the commit has multiple sections (e.g., Changelog), then use `## Test Plan`.
 
 ## Changelog
@@ -31,3 +37,9 @@ Use `## Changelog` sparingly—only for changes worth communicating to end users
 Use `gh` to create pull requests.
 
 Tag `@sourcegraph/code-plane` for review.
+
+## PR Descriptions
+
+Write PR descriptions as prose, not structured sections like "Summary", "Problem", "Solution". Explain the change naturally—what it does, why it's needed, and how it works—in flowing paragraphs.
+
+Still include `## Test Plan` and `## Changelog` sections as described above for commits.
