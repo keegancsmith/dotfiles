@@ -24,9 +24,7 @@
       "allowAllMcpServers": true
     }
   ],
-  "amp.showElapsedTime": true,
   "amp.showCost": true,
   "amp.internal.modes": true,
-  "amp.internal.showDetailedCosts": true,
-  "amp.experimental.dequeueAfterToolCompletion": true
+  "amp.internal.showDetailedCosts": true
 }
