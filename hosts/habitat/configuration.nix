@@ -58,8 +58,9 @@
 
       interfaces.enp6s0 = {
         allowedTCPPorts = [
-          # netatalk
-          548
+          548 # netatalk
+          631 # IPP printer
+          5353 # mDNS
         ];
 
         allowedUDPPortRanges = [
@@ -144,6 +145,11 @@
     opacityRules = [ "100:class_g = 'i3lock'" ];
   };
 
+  # lm_sensors detected kernel modules.
+  #   sudo nix-shell -p lm_sensors --run sensors-detect
+  #   cat /etc/sysconfig/lm_sensors
+  boot.kernelModules = [ "jc42" "nct6775" ];
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
   # https://nixos.wiki/wiki/Hardware/Brother
@@ -189,6 +195,7 @@
     jellyfin
     jellyfin-web
     jellyfin-ffmpeg
+    lm_sensors
     lsof
     maim
     mpv
