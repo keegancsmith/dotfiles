@@ -1273,10 +1273,11 @@
 
 (use-package revbufs)
 
-(when (string= (system-name) "habitat")
-  (use-package activity-watch-mode
-    :config
-    (global-activity-watch-mode)))
+(use-package claude-code-ide
+  :vc (:url "https://github.com/manzaltu/claude-code-ide.el" :rev :newest)
+  :bind ("C-c C-'" . claude-code-ide-menu) ; Set your favorite keybinding
+  :config
+  (claude-code-ide-emacs-tools-setup))
 
 (defun my-vc-github-local-checkout (name repo)
   "helper for package-vc-install-from-checkout"
