@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+TARGET_VERSION="0.105.0"
+TARBALL_URL="https://github.com/openai/codex/releases/download/rust-v${TARGET_VERSION}/codex-x86_64-unknown-linux-musl.tar.gz"
+INSTALL_DIR="${HOME}/.local/bin"
+INSTALL_PATH="${INSTALL_DIR}/codex"
+
+current_version=""
+if command -v codex >/dev/null 2>&1; then
+  if output=$(codex --version 2>/dev/null); then
+    # Expect something like "codex 0.105.0"; take last field.
+    current_version=$(printf "%s" "$output" | awk '{print $NF}')
+  fi
+fi
+
+if [[ -x "$INSTALL_PATH" && "$current_version" == "$TARGET_VERSION" ]]; then
+  printf 'codex is up to date (%s)\n' "$TARGET_VERSION"
+  exit 0
+fi
+
+printf 'Updating codex to %s...\n' "$TARGET_VERSION"
+
+mkdir -p "$INSTALL_DIR"
+
+tmpdir=$(mktemp -d)
+cleanup() {
+  rm -rf "$tmpdir"
+}
+trap cleanup EXIT
+
+archive="$tmpdir/codex.tar.gz"
+
+curl -fsSL "$TARBALL_URL" -o "$archive"
+
+tar -C "$tmpdir" -xzf "$archive"
+
+extracted_path="$tmpdir/codex-x86_64-unknown-linux-musl"
+if [[ ! -f "$extracted_path" ]]; then
+  extracted_path="$tmpdir/codex"
+fi
+
+if [[ ! -f "$extracted_path" ]]; then
+  printf 'Error: codex binary not found in archive\n' >&2
+  exit 1
+fi
+
+install -m 0755 "$extracted_path" "$INSTALL_PATH"
+
+printf 'codex updated to %s at %s\n' "$TARGET_VERSION" "$INSTALL_PATH"
