@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-TARGET_VERSION="0.105.0"
-TARBALL_URL="https://github.com/openai/codex/releases/download/rust-v${TARGET_VERSION}/codex-x86_64-unknown-linux-musl.tar.gz"
+tag=$(gh api repos/openai/codex/releases/latest --jq '.tag_name')
+if [[ -z "${tag}" ]]; then
+  printf 'Error: failed to determine latest codex release tag\n' >&2
+  exit 1
+fi
+
+TARGET_VERSION="${tag#rust-v}"
+TARBALL_URL="https://github.com/openai/codex/releases/download/${tag}/codex-x86_64-unknown-linux-musl.tar.gz"
 INSTALL_DIR="${HOME}/.local/bin"
 INSTALL_PATH="${INSTALL_DIR}/codex"
 
