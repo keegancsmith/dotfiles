@@ -2,6 +2,12 @@
 
 Use the `gh` CLI tool for all GitHub interactions (issues, PRs, repos, etc.). The tool is already authenticated.
 
+# Sandbox Execution
+
+You run inside a sandbox via `bin/agent-sandbox`, which is available on `PATH`.
+Expect to encounter read-only filesystem issues in this environment.
+If sandbox restrictions block progress, report that clearly to the user.
+
 # Git Commits
 
 Branch names should be prefixed with `k/` followed by a short descriptive name (e.g., `k/fix-heartbeat-logging`). Do not include my username or full name in branch names—the `k/` prefix is sufficient identification.
@@ -36,7 +42,7 @@ Use `## Changelog` sparingly—only for changes worth communicating to end users
 
 Use `gh` to create pull requests.
 
-Tag `@sourcegraph/code-plane` for review.
+Tag `@sourcegraph/code-plane` for review if not a draft PR.
 
 ## PR Descriptions
 

@@ -168,6 +168,7 @@ alias o="xdg-open"
 alias kname='kubectl get -o jsonpath={.items[0].metadata.name}'
 alias vim=nvim
 alias amp=kamp
+alias codex=kodex
 alias pamp='pbpaste | amp'
 
 if ! command -v open &> /dev/null; then

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+exec "$(dirname "$0")/agent-sandbox" \
+	--share ~/.cache \
+	--share ~/.codex \
+	--share ~/.config \
+	--share ~/.local \
+	--share ~/.mcp-auth \
+	--share ~/.npm \
+	--share ~/go/pkg \
+	-- codex --dangerously-bypass-approvals-and-sandbox "$@"

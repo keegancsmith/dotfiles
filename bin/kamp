@@ -1,123 +1,17 @@
 #!/usr/bin/env bash
 
-if [[ "$TERM" == tmux* ]]; then
-	export FORCE_HYPERLINK=1
-fi
-
 export EDITOR="emacsclient"
 export AMP_DEBUG=1
 export AMP_LOG_LEVEL=debug
 
-# Skip system-wide SSH config to avoid permission errors in bubblewrap.
-# Bubblewrap's user namespace remaps root-owned files to nobody, causing
-# SSH to reject system configs with "Bad owner or permissions" errors.
-export GIT_SSH_COMMAND="ssh -F ~/.ssh/config"
-
-# Shared directories between bwrap and sandbox-exec
-shared_dirs=(
-	~/.amp
-	~/.bun
-	~/.cache
-	~/.config
-	~/.local
-	~/.mcp-auth
-	~/.npm
-	~/go/pkg
-)
-
-# Ensure shared directories exist
-for dir in "${shared_dirs[@]}"; do
-	mkdir -p "$dir"
-done
-
-# Collect directories to bind mount
-bind_dirs=(
-	"$PWD"
-	"$(git rev-parse --show-toplevel 2>/dev/null || true)"
-	"$( (git rev-parse --git-common-dir | xargs -0 realpath | xargs -0 dirname) 2>/dev/null || true)"
-)
-
-# Filter empty, deduplicate, and remove nested directories
-mapfile -t sorted < <(printf '%s\n' "${bind_dirs[@]}" | grep -v '^$' | sort -u)
-bind_dirs=()
-prev=""
-for dir in "${sorted[@]}"; do
-	if [[ -z "$prev" || "$dir" != "$prev"/* ]]; then
-		bind_dirs+=("$dir")
-		prev="$dir"
-	fi
-done
-
-if command -v bwrap >/dev/null 2>&1; then
-	bind_args=()
-	for dir in "${shared_dirs[@]}"; do
-		bind_args+=(--bind "$dir" "$dir")
-	done
-	for dir in "${bind_dirs[@]}"; do
-		bind_args+=(--bind "$dir" "$dir")
-	done
-
-	exec bwrap \
-		--ro-bind / / \
-		"${bind_args[@]}" \
-		--dev /dev \
-		--proc /proc \
-		--bind /tmp /tmp \
-		amp --dangerously-allow-all "$@"
-elif command -v sandbox-exec >/dev/null 2>&1; then
-	policy_file="$(mktemp -t amp.seatbelt.XXXXXX)"
-	trap 'rm -f "$policy_file"' EXIT
-
-	# Print a policy line with quoted path
-	policy_print() {
-		local format="$1"
-		local path="$2"
-		path="${path//\\/\\\\}"
-		path="${path//\"/\\\"}"
-		# shellcheck disable=SC2059
-		printf "$format\n" "$path"
-	}
-
-	{
-		echo "(version 1)"
-		echo "(allow default)"
-		echo "(deny file-write*)"
-
-		# Allow writes to bind_dirs (PWD, git root, worktree parent)
-		for dir in "${bind_dirs[@]}"; do
-			policy_print '(allow file-write* (subpath "%s"))' "$dir"
-		done
-
-		# Allow writes to shared directories
-		for dir in "${shared_dirs[@]}"; do
-			policy_print '(allow file-write* (subpath "%s"))' "$dir"
-		done
-
-		# Temp directories
-		policy_print '(allow file-write* (subpath "%s"))' "/tmp"
-		policy_print '(allow file-write* (subpath "%s"))' "/var/tmp"
-		policy_print '(allow file-write* (subpath "%s"))' "/var/folders"
-		policy_print '(allow file-write* (subpath "%s"))' "/private/var/folders"
-		policy_print '(allow file-write* (subpath "%s"))' "/private/tmp"
-
-		# Device files
-		policy_print '(allow file-write* (literal "%s"))' "/dev/null"
-		policy_print '(allow file-write* (literal "%s"))' "/dev/zero"
-		policy_print '(allow file-write* (literal "%s"))' "/dev/random"
-		policy_print '(allow file-write* (literal "%s"))' "/dev/urandom"
-		policy_print '(allow file-write* (literal "%s"))' "/dev/tty"
-		policy_print '(allow file-write* (literal "%s"))' "/dev/stdin"
-		policy_print '(allow file-write* (literal "%s"))' "/dev/stdout"
-		policy_print '(allow file-write* (literal "%s"))' "/dev/stderr"
-		policy_print '(allow file-write* (literal "%s"))' "/dev/fd"
-
-		# User Library folders that apps commonly need
-		policy_print '(allow file-write* (subpath "%s"))' "$HOME/Library/Caches"
-		policy_print '(allow file-write* (subpath "%s"))' "$HOME/Library/Logs"
-		policy_print '(allow file-write* (subpath "%s"))' "$HOME/Library/Application Support"
-	} >"$policy_file"
-
-	exec sandbox-exec -f "$policy_file" amp --dangerously-allow-all "$@"
-else
-	exec amp "$@"
-fi
+exec "$(dirname "$0")/agent-sandbox" \
+	--share ~/.amp \
+	--share ~/.bun \
+	--share ~/.cache \
+	--share ~/.config \
+	--share ~/.local \
+	--share ~/.mcp-auth \
+	--share ~/.npm \
+	--share ~/go/pkg \
+	--share ~/src/github.com/keegancsmith/dotfiles/amp \
+	-- amp --dangerously-allow-all "$@"

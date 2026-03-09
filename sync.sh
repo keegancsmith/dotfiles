@@ -59,6 +59,7 @@ conditionallink "${REPO}/ghostty" "${HOME}/.config/ghostty/config"
 
 # amp
 conditionallink "${REPO}/amp" "${HOME}/.config/amp"
+conditionallink "${REPO}/amp/AGENTS.md" "${HOME}/.codex/AGENTS.md"
 
 # volumeicon
 conditionallink "${REPO}/volumeicon" "${HOME}/.config/volumeicon/volumeicon"
