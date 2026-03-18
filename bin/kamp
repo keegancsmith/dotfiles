@@ -12,6 +12,7 @@ exec "$(dirname "$0")/agent-sandbox" \
 	--share ~/.local \
 	--share ~/.mcp-auth \
 	--share ~/.npm \
+	--share ~/.sourcegraph \
 	--share ~/go/pkg \
 	--share ~/src/github.com/keegancsmith/dotfiles/amp \
 	-- amp --dangerously-allow-all "$@"
