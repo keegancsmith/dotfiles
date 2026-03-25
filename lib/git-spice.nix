@@ -1,17 +1,17 @@
-{ lib, buildGo124Module, fetchFromGitHub }:
+{ lib, buildGo125Module, fetchFromGitHub }:
 
-buildGo124Module rec {
+buildGo125Module rec {
   pname = "git-spice";
-  version = "0.15.1";
+  version = "0.24.2";
 
   src = fetchFromGitHub {
     owner = "abhinav";
     repo = "git-spice";
     rev = "v${version}";
-    sha256 = "sha256-mx34JGgY6qKhPdZVs1Z9gVO/VhHnFrl6TThq5dEz/zc=";
+    sha256 = "sha256-Zt4PG3pWJ0h22fBJnsIVqcSk2BwwuOHdmSOrAMENN70=";
   };
 
-  vendorHash = "sha256-uh4GUkfWo12pYQD/Mpw+EWwmukHUpxOii7DTu6C84zo=";
+  vendorHash = "sha256-tlAex6SFTprJtpMexMjAUNanamqraHYJuwtABx52rWQ=";
 
   ldflags = [
     "-s"
