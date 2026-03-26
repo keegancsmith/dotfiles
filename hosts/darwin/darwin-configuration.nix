@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, nixpkgs-unstable, lib, ... }:
+{ config, pkgs, nixpkgs, nixpkgs-unstable, unstablePkgs, lib, ... }:
 
 {
   imports = [ ../../lib/cachix.nix ../../lib/packages.nix ];
@@ -15,7 +15,7 @@
     gnupg
     neovim
     pandoc
-  ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") mpv) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
+  ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") mpv) ++ (with unstablePkgs; [
     lieer
     notmuch
   ]);

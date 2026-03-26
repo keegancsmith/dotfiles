@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs, nixpkgs-unstable, ... }:
+{ ... }:
 
 {
   homebrew.enable = true;

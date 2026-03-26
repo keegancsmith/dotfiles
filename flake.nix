@@ -10,10 +10,22 @@
     kolide-launcher.inputs.nixpkgs.follows = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = { self, nixpkgs, darwin, disko, kolide-launcher, flake-utils, ... }@attrs: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, darwin, disko, kolide-launcher, flake-utils, ... }@attrs:
+    let
+      unstablePkgsFor = system: import nixpkgs-unstable {
+        inherit system;
+        overlays = [
+          (_: prev: {
+            # emacs -> mailutils -> nss_wrapper is broken on darwin
+            notmuch = prev.notmuch.override { withEmacs = !prev.stdenv.isDarwin; };
+          })
+        ];
+      };
+      specialArgsFor = system: attrs // { unstablePkgs = unstablePkgsFor system; };
+    in {
     nixosConfigurations.habitat = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = attrs;
+      specialArgs = specialArgsFor "x86_64-linux";
       modules = [
         disko.nixosModules.disko
         kolide-launcher.nixosModules.kolide-launcher
@@ -23,7 +35,7 @@
     };
     darwinConfigurations.fa = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      specialArgs = attrs;
+      specialArgs = specialArgsFor "aarch64-darwin";
       modules = [
         ./hosts/darwin/darwin-configuration.nix
         ./hosts/darwin/work.nix
@@ -32,12 +44,12 @@
     };
     darwinConfigurations.cliche = darwin.lib.darwinSystem {
       system = "x86_64-darwin";
-      specialArgs = attrs;
+      specialArgs = specialArgsFor "x86_64-darwin";
       modules = [ ./hosts/darwin/darwin-configuration.nix ];
     };
     darwinConfigurations.real = darwin.lib.darwinSystem {
       system = "x86_64-darwin";
-      specialArgs = attrs;
+      specialArgs = specialArgsFor "x86_64-darwin";
       modules = [ ./hosts/darwin/darwin-configuration.nix ];
     };
   } // flake-utils.lib.eachDefaultSystem (system:

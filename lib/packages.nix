@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs-unstable, ... }:
+{ pkgs, unstablePkgs, ... }:
 
 {
   environment.systemPackages = (with pkgs; [
@@ -56,7 +56,7 @@
     watchman
     wget
     zstd
-  ]) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
+  ]) ++ (with unstablePkgs; [
     go_1_26
     golangci-lint
     gopls

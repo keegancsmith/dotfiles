@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs, nixpkgs-unstable, ... }:
+{ pkgs, unstablePkgs, ... }:
 
 {
   environment.systemPackages = (with pkgs; [
@@ -11,7 +11,7 @@
     nodejs_22.pkgs.typescript
     nodejs_22.pkgs.typescript-language-server
     postgresql
-  ]) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
+  ]) ++ (with unstablePkgs; [
     lieer
     notmuch
     google-cloud-sql-proxy
