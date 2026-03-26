@@ -1254,10 +1254,6 @@
            (detached-terminal-data-command system-type)
            (detached-notification-function #'detached-state-transitionion-echo-message)))
 
-(use-package mastodon
-  :custom ((mastodon-instance-url "https://mastodon.social")
-           (mastodon-active-user "keeganza")))
-
 (use-package protobuf-mode)
 
 (use-package bazel
