@@ -57,9 +57,8 @@
     wget
     zstd
   ]) ++ (with nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
-    go_1_25
+    go_1_26
     golangci-lint
     gopls
-    yt-dlp
   ]);
 }

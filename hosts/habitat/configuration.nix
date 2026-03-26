@@ -227,6 +227,7 @@
     spotify
     volumeicon
     vscode
+    yt-dlp
     zoom-us
   ]);
 
