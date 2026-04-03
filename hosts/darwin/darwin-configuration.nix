@@ -49,6 +49,7 @@
     "qutebrowser"
     "scratch"
     "sloth"
+    "sonos-s1-controller"
     "spotify"
     "steam"
     "visual-studio-code"
