@@ -170,6 +170,7 @@ alias vim=nvim
 alias amp=kamp
 alias codex=kodex
 alias pamp='pbpaste | amp'
+alias pr-checkout='gh pr checkout'
 
 if ! command -v open &> /dev/null; then
     alias open='xdg-open'
