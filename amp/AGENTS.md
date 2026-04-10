@@ -1,6 +1,7 @@
 # GitHub
 
 Use the `gh` CLI tool for all GitHub interactions (issues, PRs, repos, etc.). The tool is already authenticated.
+Do not `curl` GitHub pages or APIs, and do not use generic web fetchers for GitHub URLs; use `gh` subcommands or `gh api` instead.
 
 # Sandbox Execution
 
