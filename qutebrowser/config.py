@@ -96,6 +96,9 @@ config.bind(',v', 'spawn --userscript ' + userscript('open-code.py') + ' code')
 # simple script to write org entry to my inbox.org
 config.bind(',w', 'spawn --userscript ' + userscript('org-capture.py'))
 
+# approve nixpkgs PRs with the merge bot command
+config.bind(',n', 'spawn --userscript ' + userscript('nixpkgs-merge'))
+
 # password_fill from upstream
 config.bind(',p', 'spawn --userscript ' + userscript('password_fill'))
 
