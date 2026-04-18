@@ -6,7 +6,7 @@ query='tag:gh and tag:gh-inbox body:"Reply to this email directly or view it on 
 case "$cmd" in
 
   "urls")
-    notmuch show "$query" | egrep -o '^https://github\.com.*/(issues|pull)/[0-9]+' | sort | uniq
+    notmuch show "$query" | egrep -o '^https://github\.com/[^/]*/[^/]*/(issues|pull)/[0-9]+' | sort | uniq
     ;;
 
   "done")
