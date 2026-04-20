@@ -15,7 +15,7 @@
     gnupg
     neovim
     pandoc
-  ] ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") mpv) ++ (with unstablePkgs; [
+  ]) ++ (with unstablePkgs; [
     lieer
     notmuch
   ]);
@@ -27,6 +27,7 @@
     "d12frosted/emacs-plus"
   ];
   homebrew.brews = [
+    "mpv"
     "pinentry-mac"
     "podman"
     {
