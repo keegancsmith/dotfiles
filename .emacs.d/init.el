@@ -1257,8 +1257,27 @@
 (use-package protobuf-mode)
 
 (use-package bazel
+  :commands (bazel-run bazel-test)
   :mode ("\\.bazelrc\\'" . bazelrc-mode)  ; sourcegraph uses .bazelrc as an extension
   :mode ("\\.bazel\\'" . bazel-mode))
+
+(require 'transient)
+
+(transient-define-prefix bazel-menu ()
+  "Bazel commands."
+  ["Bazel"
+   ["Common Targets"
+    ("g" "gazelle" (lambda () (interactive) (bazel-run "//:gazelle")))
+    ("t" "test" (lambda () (interactive)
+                  (bazel-test (concat (file-name-nondirectory
+                                       (directory-file-name default-directory))
+                                      "_test"))))
+    ("m" "generate_mocks" (lambda () (interactive) (bazel-run "generate_mocks")))]
+   ["Interactive"
+    ("R" "run" bazel-run)
+    ("T" "test" bazel-test)]])
+
+(global-set-key (kbd "C-c b") #'bazel-menu)
 
 (use-package presentation)
 
