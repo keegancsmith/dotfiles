@@ -1,0 +1,6 @@
+{
+  "linear": {
+    "url": "https://mcp.linear.app/mcp",
+    "includeTools": ["get_issue", "list_issues", "list_comments", "get_attachment"]
+  }
+}
