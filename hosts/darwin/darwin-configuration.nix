@@ -20,7 +20,7 @@
     notmuch
   ]);
 
-  fonts.packages = with pkgs; [ hack-font iosevka jetbrains-mono ];
+  fonts.packages = with pkgs; [ hack-font iosevka ];
 
   homebrew.enable = true;
   homebrew.taps = [
