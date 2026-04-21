@@ -38,9 +38,12 @@
     mosh
     muchsync
     my-scripts
+    nh
     nix-direnv
     nix-index
+    nix-init
     nixpkgs-fmt
+    nurl
     (pass.withExtensions (ext: [ ext.pass-otp ]))
     (python3.withPackages (ps: with ps; [ numpy pandas requests uv ]))
     ripgrep
