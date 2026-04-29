@@ -19,7 +19,7 @@ msg() {
 }
 
 url="${QUTE_URL:-}"
-if [[ ! $url =~ ^https://github\.com/NixOS/nixpkgs/pull/([0-9]+)([/?].*)?$ ]]; then
+if [[ ! $url =~ ^https://github\.com/NixOS/nixpkgs/pull/([0-9]+) ]]; then
     error 'This command only works on GitHub pull requests in NixOS/nixpkgs.'
     exit 0
 fi
