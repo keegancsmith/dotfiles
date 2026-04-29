@@ -40,6 +40,7 @@
     "adobe-acrobat-reader"
     "anki"
     "discord"
+    "font-jetbrains-mono"
     "ghostty"
     "google-chrome"
     "hammerspoon"
