@@ -1272,7 +1272,8 @@
                   (bazel-test (concat (file-name-nondirectory
                                        (directory-file-name default-directory))
                                       "_test"))))
-    ("m" "generate_mocks" (lambda () (interactive) (bazel-run "generate_mocks")))]
+    ("m" "generate_mocks" (lambda () (interactive) (bazel-run "generate_mocks")))
+    ("G" "write_all_generated" (lambda () (interactive) (bazel-run "//dev:write_all_generated")))]
    ["Interactive"
     ("R" "run" bazel-run)
     ("T" "test" bazel-test)]])
