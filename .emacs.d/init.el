@@ -425,6 +425,28 @@
          (file (completing-read "Find file: " cands nil t)))
     (find-file file)))
 
+(defun my-project-kill-buffers-all ()
+  "Offer to kill buffers in every open project."
+  (interactive)
+  (require 'project)
+  (let (projects
+        found-buffers)
+    (dolist (buffer (buffer-list))
+      (with-current-buffer buffer
+        (when-let ((project (project-current nil)))
+          (unless (member project projects)
+            (push project projects)))))
+    (dolist (project (sort projects
+                           (lambda (a b)
+                             (string< (project-name a) (project-name b)))))
+      (let ((buffers (project--buffers-to-kill project)))
+        (when buffers
+          (setq found-buffers t)
+          (with-current-buffer (car buffers)
+            (project-kill-buffers)))))
+    (unless found-buffers
+      (message "No project buffers to kill"))))
+
 (use-package consult
   :demand t
   :bind (("M-y" . consult-yank-pop)
@@ -440,6 +462,7 @@
          ("C-x t b" . consult-buffer-other-tab)    ;; orig. switch-to-buffer-other-tab
          ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
          ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+         ("C-x p K" . my-project-kill-buffers-all)
 
          ;; Custom M-# bindings for fast register access
          ("M-#" . consult-register-load)
