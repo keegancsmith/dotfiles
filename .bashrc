@@ -168,6 +168,7 @@ alias o="xdg-open"
 alias kname='kubectl get -o jsonpath={.items[0].metadata.name}'
 alias vim=nvim
 alias codex=kodex
+alias pi='npx -y @mariozechner/pi-coding-agent'
 alias pr-checkout='gh pr checkout'
 
 if ! command -v open &> /dev/null; then
