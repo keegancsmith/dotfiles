@@ -31,12 +31,12 @@ Good commit messages:
 
 ## Test Plan
 
-Include a `## Test Plan` or `Test Plan:` section in the commit body describing how the change was validated. This can include:
+Include a `## Test Plan` or `Test Plan:` section in the commit body only when it communicates validation that is not obvious from the diff or CI. Useful test plans include:
 - Manual testing steps taken
-- Automated tests added or run
-- Observations confirming the fix works
+- Automated tests added as part of the change
+- Non-obvious observations confirming the fix works
 
-Omit the test plan for changes where there's nothing meaningful to test (e.g., documentation-only changes, typo fixes).
+Do not add a test plan just to list routine automated checks that CI will clearly run anyway, such as running `go test` on a touched package. Omit the test plan when validation is obvious, redundant with CI, or there is nothing meaningful to test (e.g., documentation-only changes, typo fixes).
 
 Prefer `Test Plan:` inline unless the commit has multiple sections (e.g., Changelog), then use `## Test Plan`.
 
@@ -54,4 +54,4 @@ Tag `@sourcegraph/code-plane` for review if not a draft PR.
 
 Write PR descriptions as prose, not structured sections like "Summary", "Problem", "Solution". Explain the change naturally—what it does, why it's needed, and how it works—in flowing paragraphs.
 
-Still include `## Test Plan` and `## Changelog` sections as described above for commits.
+Include `## Test Plan` and `## Changelog` sections using the same guidance as commits.
