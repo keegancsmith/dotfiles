@@ -142,6 +142,16 @@ function repo {
     done
 }
 
+# jump to a repo with recent Amp activity
+function amp-cd {
+    local selection dir
+    selection=$(amp-status --format=fzf | fzf --with-nth=2.. --delimiter=$'\t' --select-1 --query="$1") || return
+    dir=${selection%%$'\t'*}
+    if [ -n "$dir" ]; then
+        cd "$dir"
+    fi
+}
+
 # pass with fzf
 function pass-fzf {
     d=$(find ~/.password-store/ -name '*.gpg' -printf '%P\n' | rev | cut -b 5- | rev | fzf --select-1)

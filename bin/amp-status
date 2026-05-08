@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import json
 import os
 import subprocess
@@ -118,6 +119,10 @@ def truncate(value, width):
     return value[: width - 1] + "…"
 
 
+def fzf_cell(value):
+    return value.replace("\t", " ").replace("\n", " ").replace("\r", " ")
+
+
 def print_table(rows):
     title_width = 42
     headers = ["repo", "thread", "branch", "branch-age", "dirty", "title"]
@@ -147,7 +152,32 @@ def print_table(rows):
         print(fmt(row))
 
 
+def print_fzf(rows):
+    title_width = 70
+    for row in rows:
+        display = "  ".join(
+            [
+                row["repo"],
+                row["thread_age"],
+                row["branch"],
+                row["branch_age"],
+                row["dirty"],
+                truncate(row["title"], title_width),
+            ]
+        )
+        print(f"{row['path']}\t{fzf_cell(display)}")
+
+
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--format",
+        choices=("table", "fzf"),
+        default="table",
+        help="output format",
+    )
+    args = parser.parse_args()
+
     result = run(["amp", "threads", "list", "--json"])
     if result.returncode != 0:
         print("amp-status: amp threads list --json failed", file=sys.stderr)
@@ -187,6 +217,7 @@ def main():
         branch_ts = branch_time(repo)
         rows.append(
             {
+                "path": repo,
                 "repo": os.path.basename(repo),
                 "updated": thread["updated"],
                 "thread_age": age(thread["updated"], now),
@@ -198,7 +229,10 @@ def main():
         )
 
     rows.sort(key=lambda row: row["updated"], reverse=True)
-    print_table(rows)
+    if args.format == "fzf":
+        print_fzf(rows)
+    else:
+        print_table(rows)
     return 0
 
 
