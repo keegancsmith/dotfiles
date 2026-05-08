@@ -257,7 +257,6 @@
               (setq-local delete-trailing-whitespace-p nil))))
 
 (use-package go-mode
-  :hook (before-save . gofmt-before-save)
   :config
   (defun my-go-mode-hook ()
     (if (not (string-match "go" compile-command))
@@ -265,8 +264,17 @@
              "go test")))
   (add-hook 'go-mode-hook #'my-go-mode-hook)
   (add-hook 'go-ts-mode-hook #'my-go-mode-hook)
-  (setq gofmt-command (expand-file-name "~/go/bin/goimports"))
   (setenv "GOPATH" (string-trim (shell-command-to-string "go env GOPATH")))
+
+  ;; Teach project.el to recognize go.mod as a project root, so eglot
+  ;; can find the right workspace for Go modules outside of VCS.
+  (require 'project)
+  (defun project-find-go-module (dir)
+    (when-let ((root (locate-dominating-file dir "go.mod")))
+      (cons 'go-module root)))
+  (cl-defmethod project-root ((project (head go-module)))
+    (cdr project))
+  (add-hook 'project-find-functions #'project-find-go-module)
   (when (bound-and-true-p consult-imenu-config)
     (add-to-list 'consult-imenu-config '(go-mode :toplevel "Function"
                                                  :types ((?s "Struct"    font-lock-type-face)
@@ -292,8 +300,37 @@
   :commands (eglot eglot-ensure)
   :hook
   (go-mode . eglot-ensure)
+  (go-ts-mode . eglot-ensure)
   (typescript-mode . eglot-ensure)
-  (zig-mode . eglot-ensure))
+  (zig-mode . eglot-ensure)
+  :config
+  ;; gopls workspace settings. See https://go.dev/gopls/settings
+  (setq-default eglot-workspace-configuration
+                '((:gopls . ((staticcheck . t)
+                             (usePlaceholders . t)
+                             (hints . ((parameterNames . t)
+                                       (assignVariableTypes . t)
+                                       (compositeLiteralFields . t)
+                                       (compositeLiteralTypes . t)
+                                       (constantValues . t)
+                                       (functionTypeParameters . t)
+                                       (rangeVariableTypes . t)))))))
+
+  ;; Format with gopls on save (replaces the gofmt-before-save hook).
+  ;; Depth -10 ensures this runs before eglot's willSave notification,
+  ;; so the notification reports the actual contents that will be saved.
+  (defun my/eglot-format-buffer-before-save ()
+    (add-hook 'before-save-hook #'eglot-format-buffer -10 t))
+  (add-hook 'go-mode-hook #'my/eglot-format-buffer-before-save)
+  (add-hook 'go-ts-mode-hook #'my/eglot-format-buffer-before-save)
+
+  ;; Run gopls "Organize Imports" code action on save (replaces goimports).
+  (defun my/eglot-organize-imports-before-save ()
+    (add-hook 'before-save-hook
+              (lambda () (call-interactively 'eglot-code-action-organize-imports))
+              nil t))
+  (add-hook 'go-mode-hook #'my/eglot-organize-imports-before-save)
+  (add-hook 'go-ts-mode-hook #'my/eglot-organize-imports-before-save))
 
 (use-package emacs
   :config
@@ -323,6 +360,13 @@
   ; elisp checking is annoying. checkdoc is targetted at elisp packages, I
   ; just hack at stuff.
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+
+;; Use flycheck for diagnostics in eglot-managed buffers instead of flymake.
+;; See https://github.com/flycheck/flycheck-eglot
+(use-package flycheck-eglot
+  :after (flycheck eglot)
+  :config
+  (global-flycheck-eglot-mode 1))
 
 ;; weird workaround. On latest vertico it fails since it can't find compat
 ;; library. But just requiring it seems to sort it out.
