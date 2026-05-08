@@ -307,6 +307,7 @@
   ;; gopls workspace settings. See https://go.dev/gopls/settings
   (setq-default eglot-workspace-configuration
                 '((:gopls . ((staticcheck . t)
+                             (gofumpt . t)
                              (usePlaceholders . t)
                              (hints . ((parameterNames . t)
                                        (assignVariableTypes . t)
