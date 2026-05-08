@@ -160,6 +160,9 @@ function cloud_jump {
     fi
 }
 
+# fzf respects gitignore by default
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+
 # Alias's
 alias la="ls -A"
 alias ll="ls -l"
