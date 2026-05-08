@@ -1,0 +1,206 @@
+#!/usr/bin/env python3
+import json
+import os
+import subprocess
+import sys
+from datetime import datetime, timezone
+from urllib.parse import unquote, urlparse
+
+
+def run(args, cwd=None):
+    return subprocess.run(
+        args,
+        cwd=cwd,
+        check=False,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+        text=True,
+    )
+
+
+def parse_time(value):
+    if not value:
+        return None
+    if value.endswith("Z"):
+        value = value[:-1] + "+00:00"
+    try:
+        return datetime.fromisoformat(value).astimezone(timezone.utc)
+    except ValueError:
+        return None
+
+
+def age(value, now):
+    if value is None:
+        return "?"
+
+    seconds = max(0, int((now - value).total_seconds()))
+    units = [
+        ("y", 365 * 24 * 60 * 60),
+        ("mo", 30 * 24 * 60 * 60),
+        ("w", 7 * 24 * 60 * 60),
+        ("d", 24 * 60 * 60),
+        ("h", 60 * 60),
+        ("m", 60),
+    ]
+    for suffix, unit_seconds in units:
+        if seconds >= unit_seconds:
+            return f"{seconds // unit_seconds}{suffix}"
+    return "now"
+
+
+def tree_path(tree):
+    if not tree:
+        return None
+
+    parsed = urlparse(tree)
+    if parsed.scheme == "file":
+        return unquote(parsed.path)
+    if parsed.scheme:
+        return None
+    return tree
+
+
+def existing_git_dir(path):
+    path = os.path.abspath(os.path.expanduser(path))
+    if os.path.isfile(path):
+        path = os.path.dirname(path)
+
+    while path and not os.path.exists(path):
+        parent = os.path.dirname(path)
+        if parent == path:
+            return None
+        path = parent
+
+    if not os.path.isdir(path):
+        path = os.path.dirname(path)
+    return path or None
+
+
+def git_toplevel(path):
+    git_dir = existing_git_dir(path)
+    if git_dir is None:
+        return None
+
+    result = run(["git", "rev-parse", "--show-toplevel"], cwd=git_dir)
+    if result.returncode != 0:
+        return None
+    return result.stdout.strip()
+
+
+def branch_name(repo):
+    result = run(["git", "symbolic-ref", "--quiet", "--short", "HEAD"], cwd=repo)
+    if result.returncode == 0:
+        return result.stdout.strip()
+
+    result = run(["git", "rev-parse", "--short", "HEAD"], cwd=repo)
+    if result.returncode == 0:
+        return f"detached@{result.stdout.strip()}"
+    return "?"
+
+
+def branch_time(repo):
+    result = run(["git", "log", "-1", "--format=%cI", "HEAD"], cwd=repo)
+    if result.returncode != 0:
+        return None
+    return parse_time(result.stdout.strip())
+
+
+def is_dirty(repo):
+    result = run(["git", "status", "--porcelain=v1"], cwd=repo)
+    return result.returncode == 0 and bool(result.stdout)
+
+
+def truncate(value, width):
+    if len(value) <= width:
+        return value
+    if width <= 1:
+        return value[:width]
+    return value[: width - 1] + "…"
+
+
+def print_table(rows):
+    title_width = 42
+    headers = ["repo", "thread", "branch", "branch-age", "dirty", "title"]
+    rows = [
+        [
+            row["repo"],
+            row["thread_age"],
+            row["branch"],
+            row["branch_age"],
+            row["dirty"],
+            truncate(row["title"], title_width),
+        ]
+        for row in rows
+    ]
+
+    widths = [len(header) for header in headers]
+    for row in rows:
+        for index, cell in enumerate(row):
+            widths[index] = max(widths[index], len(cell))
+
+    def fmt(row):
+        return "  ".join(cell.ljust(widths[index]) for index, cell in enumerate(row)).rstrip()
+
+    print(fmt(headers))
+    print(fmt(["-" * width for width in widths]))
+    for row in rows:
+        print(fmt(row))
+
+
+def main():
+    result = run(["amp", "threads", "list", "--json"])
+    if result.returncode != 0:
+        print("amp-status: amp threads list --json failed", file=sys.stderr)
+        return result.returncode
+
+    try:
+        threads = json.loads(result.stdout)
+    except json.JSONDecodeError as err:
+        print(f"amp-status: failed to parse amp JSON: {err}", file=sys.stderr)
+        return 1
+
+    now = datetime.now(timezone.utc)
+    repos = {}
+
+    for thread in threads:
+        updated = parse_time(thread.get("updated", ""))
+        if updated is None:
+            continue
+
+        path = tree_path(thread.get("tree"))
+        if path is None:
+            continue
+
+        repo = git_toplevel(path)
+        if repo is None:
+            continue
+
+        existing = repos.get(repo)
+        if existing is None or updated > existing["updated"]:
+            repos[repo] = {
+                "updated": updated,
+                "title": thread.get("title") or "(untitled)",
+            }
+
+    rows = []
+    for repo, thread in repos.items():
+        branch_ts = branch_time(repo)
+        rows.append(
+            {
+                "repo": os.path.basename(repo),
+                "updated": thread["updated"],
+                "thread_age": age(thread["updated"], now),
+                "branch": branch_name(repo),
+                "branch_age": age(branch_ts, now),
+                "dirty": "*" if is_dirty(repo) else "",
+                "title": thread["title"],
+            }
+        )
+
+    rows.sort(key=lambda row: row["updated"], reverse=True)
+    print_table(rows)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
