@@ -419,6 +419,7 @@
   virtualisation.docker.enable = true;
 
   # trust caddy cert. caddy start; curl localhost:2019/pki/ca/local | jq -r .root_certificate
+  # trust mitmproxy CA. mitmdump --set confdir=~/.mitmproxy; cat ~/.mitmproxy/mitmproxy-ca-cert.pem
   security.pki.certificates = [
     ''
       -----BEGIN CERTIFICATE-----
@@ -431,6 +432,28 @@
       BgNVHRMBAf8ECDAGAQH/AgEBMB0GA1UdDgQWBBTB0aLqw0Mz16ltIIZ3kUYeRp+I
       kzAKBggqhkjOPQQDAgNJADBGAiEAlxEfmuFTDxX0RQu7NnEui6aPCO/QHBFk4l/c
       iD6Db90CIQD4MbQdv9w2WSpTBxY65SiNhxOM+n5UC6bPtSxn+NS6nA==
+      -----END CERTIFICATE-----
+    ''
+    ''
+      -----BEGIN CERTIFICATE-----
+      MIIDNTCCAh2gAwIBAgIUP8BZLgD9TsWTAA5paU3cQEArMAcwDQYJKoZIhvcNAQEL
+      BQAwKDESMBAGA1UEAwwJbWl0bXByb3h5MRIwEAYDVQQKDAltaXRtcHJveHkwHhcN
+      MjYwNTA2MDkzOTEwWhcNMzYwNTA1MDkzOTEwWjAoMRIwEAYDVQQDDAltaXRtcHJv
+      eHkxEjAQBgNVBAoMCW1pdG1wcm94eTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
+      AQoCggEBANXgvYo9V9baTW2295etztCqRNSs4bjPdqW9ZU5Wvo72QwzbjK2GJUiL
+      BGiAarjb7uXfD6CwWg4zEH6CSkSEBYpYTi92ShykbUP9Pyd4B7ZVYlisFJVFLRwY
+      qCtgII/9FuqzXfaWolCXwfjGHJt8Hylhhu3pgYU+FWRpButYLBZZumO2LOIMRW8p
+      J/rTIaeGqITlc+42h3UdH6FyTzqHm3nTHL/zFLTM9uBC1UrOGYcTRE/GTM29y3hM
+      D2n5Tfs9539/XPbCb8K+Vje/p/vJZy9JfiNA3CbBtoxCtLZdMeyYLEcU/iGBeRWY
+      zTUMouvHobUbOqqEw6ajJX2xHk6RXLcCAwEAAaNXMFUwDwYDVR0TAQH/BAUwAwEB
+      /zATBgNVHSUEDDAKBggrBgEFBQcDATAOBgNVHQ8BAf8EBAMCAQYwHQYDVR0OBBYE
+      FKrKqMWsz+6HjlvrQ+qcUNCUbrWfMA0GCSqGSIb3DQEBCwUAA4IBAQAwi2n+TMwa
+      h/H8X8qJUiM0WszBGr++JZ6U0HfNHsfgD8VG/UYYhHRYEmOhHK8/dns/vMft6OD5
+      L/SZ2CoGmQ2DI3hYfnksjt4PmdvWtU4kZLdaLNCamGCv/duT+zi7zdXExPsLgiLR
+      rtorc4pvlGt3Izca5X6vVWbAWwLf1KJqHgjRQ9u8Rv3Hj2RqfxRAbGZXlmd95eWN
+      +FLcXNDhFi1vS5Hgiy4kGwsYheZ9eC8AFqbziIXGy/akCyMUladbfElv1OIWgHM0
+      izgo8WXWRYXCthXA08icpVkf9xW6EusCJ0d779E4QyXMTc+08Al1TZTczJ2/sJNT
+      vSjlsLEoOT/9
       -----END CERTIFICATE-----
     ''
   ];
