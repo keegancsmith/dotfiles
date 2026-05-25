@@ -389,15 +389,27 @@
         rpc-host-whitelist = "habitat,habitat.local";
       };
     };
-  };
-
-  # Keep monitoring even if transmission isn't running
-  services.sonarr = {
-    enable = true;
-    openFirewall = true;
-    user = "plex";
-    group = "plex";
-    dataDir = "/var/lib/plex/.config/NzbDrone";
+    services.sonarr = {
+      enable = true;
+      openFirewall = true;
+      user = "plex";
+      group = "plex";
+      dataDir = "/var/lib/plex/.config/NzbDrone";
+    };
+    services.radarr = {
+      enable = true;
+      openFirewall = true;
+      user = "plex";
+      group = "plex";
+      dataDir = "/var/lib/plex/.config/Radarr";
+    };
+    services.jackett = {
+      enable = true;
+      openFirewall = true;
+      user = "plex";
+      group = "plex";
+      dataDir = "/var/lib/plex/.config/Jackett";
+    };
   };
 
   # Run TRIM for my SSD
