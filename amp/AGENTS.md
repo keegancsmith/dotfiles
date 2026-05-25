@@ -36,7 +36,7 @@ Include a `## Test Plan` or `Test Plan:` section in the commit body only when it
 - Automated tests added as part of the change
 - Non-obvious observations confirming the fix works
 
-Do not add a test plan just to list routine automated checks that CI will clearly run anyway, such as running `go test` on a touched package. Omit the test plan when validation is obvious, redundant with CI, or there is nothing meaningful to test (e.g., documentation-only changes, typo fixes).
+Do not add a test plan just to list routine automated checks that CI will clearly run anyway, such as running `go test` on a touched package. Do not add placeholder entries like "not run locally; CI will validate this"—that is just restating the default CI contract. Omit the test plan when validation is obvious, redundant with CI, or there is nothing meaningful to test (e.g., documentation-only changes, typo fixes).
 
 Prefer `Test Plan:` inline unless the commit has multiple sections (e.g., Changelog), then use `## Test Plan`.
 
@@ -54,4 +54,4 @@ Tag `@sourcegraph/code-plane` for review if not a draft PR.
 
 Write PR descriptions as prose, not structured sections like "Summary", "Problem", "Solution". Explain the change naturally—what it does, why it's needed, and how it works—in flowing paragraphs.
 
-Include `## Test Plan` and `## Changelog` sections using the same guidance as commits.
+Use `## Test Plan` and `## Changelog` sections only under the same conditions as commits. Do not add a Test Plan just because a PR template or existing convention might expect one; omit it unless it communicates meaningful validation beyond routine CI.
