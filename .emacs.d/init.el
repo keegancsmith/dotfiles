@@ -1203,6 +1203,7 @@
         ("https:\\/\\/www\\.figma\\.com" . browse-url-background-chrome)
         ("https:\\/\\/linear\\.app" . browse-url-background-chrome)
         ("https:\\/\\/.*sgdev\\.org" . browse-url-background-chrome)
+        ("https:\\/\\/ampcode\\.com" . browse-url-background-chrome)
         ;; Default browser for everything else.
         ("." . browse-url-background)))
 
