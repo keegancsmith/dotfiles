@@ -1,0 +1,221 @@
+#!/usr/bin/env bash
+
+set -u
+
+have() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+section() {
+  printf '\n%s\n' "$1"
+  printf '%s\n' "=============================="
+}
+
+indent() {
+  sed 's/^/  /'
+}
+
+run_optional() {
+  if have "$1"; then
+    "$@"
+  else
+    printf 'missing command: %s\n' "$1"
+    return 127
+  fi
+}
+
+with_timeout() {
+  local seconds="$1"
+  shift
+
+  if have timeout; then
+    timeout "$seconds" "$@"
+  else
+    "$@"
+  fi
+}
+
+host_from_uri() {
+  local uri="$1"
+  local rest host
+
+  case "$uri" in
+    ipp://*|ipps://*|http://*|https://*|socket://*|lpd://*)
+      rest="${uri#*://}"
+      host="${rest%%/*}"
+      host="${host%%:*}"
+      host="${host#[}"
+      host="${host%]}"
+      printf '%s\n' "$host"
+      ;;
+  esac
+}
+
+port_from_uri() {
+  local uri="$1"
+
+  case "$uri" in
+    ipp://*) printf '631\n' ;;
+    ipps://*) printf '631\n' ;;
+    socket://*) printf '9100\n' ;;
+    lpd://*) printf '515\n' ;;
+    http://*) printf '80\n' ;;
+    https://*) printf '443\n' ;;
+  esac
+}
+
+resolve_host() {
+  local host="$1"
+
+  if have avahi-resolve-host-name && [[ "$host" == *.local ]]; then
+    avahi-resolve-host-name "$host" 2>/dev/null | awk '{print $2; exit}'
+    return
+  fi
+
+  if have getent; then
+    getent hosts "$host" 2>/dev/null | awk '{print $1; exit}'
+  fi
+}
+
+check_reachability() {
+  local uri="$1"
+  local host port ip
+
+  host="$(host_from_uri "$uri")"
+  port="$(port_from_uri "$uri")"
+
+  if [[ -z "$host" ]]; then
+    printf 'not a network URI\n'
+    return
+  fi
+
+  ip="$(resolve_host "$host")"
+  if [[ -n "$ip" ]]; then
+    printf 'host: %s (%s)\n' "$host" "$ip"
+  else
+    printf 'host: %s (DNS unresolved)\n' "$host"
+  fi
+
+  if [[ -n "$port" ]] && have nc; then
+    if with_timeout 4 nc -z -w 3 "$host" "$port" >/dev/null 2>&1; then
+      printf 'port: %s open\n' "$port"
+    else
+      printf 'port: %s closed or unreachable\n' "$port"
+    fi
+    return
+  fi
+
+  if have ping; then
+    if with_timeout 4 ping -c 1 -W 2 "$host" >/dev/null 2>&1; then
+      printf 'ping: reachable\n'
+    else
+      printf 'ping: unreachable\n'
+    fi
+  fi
+}
+
+commands_help() {
+  cat <<'EOF'
+Useful printer commands:
+  lpstat -t                 Full CUPS summary: scheduler, default, queues, jobs.
+  lpstat -p -d -o           Printer status, default printer, and active jobs.
+  lpstat -v                 Device URI for each configured printer.
+  lpstat -e                 All known destinations, including discovered ones.
+  lpstat -a                 Which queues are accepting jobs.
+  lpq -a                    Traditional queue/job view.
+  lpinfo -v                 Backends and discovered printer devices.
+  lpadmin -d PRINTER        Set the default printer.
+  lpadmin -x PRINTER        Remove a configured printer queue.
+  cancel JOB_ID             Cancel a stuck job, for example: cancel Brother-123.
+  cupsenable PRINTER        Re-enable a disabled printer queue.
+  cupsaccept PRINTER        Allow a queue to accept new jobs.
+  avahi-resolve-host-name HOST.local
+                             Resolve mDNS printer hostnames.
+  nc -zv HOST 631           Check whether IPP is reachable.
+EOF
+}
+
+if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
+  cat <<'EOF'
+Usage: printer-status [--commands]
+
+Summarise local CUPS printer queues, jobs, discovered destinations, and basic
+network reachability for configured printer device URIs.
+EOF
+  printf '\n'
+  commands_help
+  exit 0
+fi
+
+if [[ "${1:-}" == "--commands" ]]; then
+  commands_help
+  exit 0
+fi
+
+if ! have lpstat; then
+  printf 'lpstat is not installed; CUPS command-line tools are unavailable.\n' >&2
+  exit 1
+fi
+
+section "CUPS"
+lpstat -r 2>&1 | indent
+lpstat -d 2>&1 | indent
+
+default="$(lpstat -d 2>/dev/null | sed 's/^system default destination: //')"
+
+section "Configured Printers"
+devices="$(lpstat -v 2>/dev/null)"
+printers="$(lpstat -p 2>/dev/null | awk '/^printer / {print $2}')"
+
+if [[ -z "$printers" ]]; then
+  printf '  none configured\n'
+else
+  while IFS= read -r printer; do
+    [[ -z "$printer" ]] && continue
+
+    if [[ "$printer" == "$default" ]]; then
+      printf '  %s (default)\n' "$printer"
+    else
+      printf '  %s\n' "$printer"
+    fi
+
+    lpstat -p "$printer" 2>&1 | sed 's/^/    status: /'
+    lpstat -a "$printer" 2>&1 | sed 's/^/    accepting: /'
+
+    uri="$(printf '%s\n' "$devices" | sed -n "s/^device for ${printer}: //p" | head -n 1)"
+    if [[ -n "$uri" ]]; then
+      printf '    device: %s\n' "$uri"
+      check_reachability "$uri" | sed 's/^/    network: /'
+    else
+      printf '    device: unknown\n'
+    fi
+  done <<< "$printers"
+fi
+
+section "Jobs"
+jobs="$(lpstat -o 2>/dev/null)"
+if [[ -z "$jobs" ]]; then
+  printf '  no queued jobs\n'
+else
+  printf '%s\n' "$jobs" | indent
+fi
+
+section "Destinations"
+destinations="$(lpstat -e 2>/dev/null)"
+if [[ -z "$destinations" ]]; then
+  printf '  no destinations reported\n'
+else
+  printf '%s\n' "$destinations" | indent
+fi
+
+section "Discovered Devices"
+if have lpinfo; then
+  if ! with_timeout 8 lpinfo -v 2>/dev/null | indent; then
+    printf '  lpinfo -v timed out or failed\n'
+  fi
+else
+  printf '  lpinfo is not installed\n'
+fi
+
+section "Command Cheatsheet"
+commands_help | indent
