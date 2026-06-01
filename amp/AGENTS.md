@@ -8,12 +8,6 @@ Do not `curl` GitHub pages or APIs, and do not use generic web fetchers for GitH
 I often already have open source repositories cloned under `~/src`. Before using remote-repo tools for OSS code, check for a local checkout there first and prefer reading the local copy when it exists.
 Examples include `~/src/github.com/bazel-contrib/rules_go` and `~/src/go.googlesource.com/go`.
 
-# Sandbox Execution
-
-You run inside a sandbox via `bin/agent-sandbox`, which is available on `PATH`.
-Expect to encounter read-only filesystem issues in this environment.
-If sandbox restrictions block progress, report that clearly to the user.
-
 # Git Commits
 
 Branch names should be prefixed with `k/` followed by a short descriptive name (e.g., `k/fix-heartbeat-logging`). Do not include my username or full name in branch names—the `k/` prefix is sufficient identification.
