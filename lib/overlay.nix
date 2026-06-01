@@ -13,11 +13,6 @@ final: prev: rec {
 
   my-scripts = prev.callPackage ./my-scripts.nix { };
 
-  myNodePackages = import ./node-packages/default.nix {
-    pkgs = prev;
-    nodejs = prev.nodejs_22;
-  };
-
   myEmacs = (prev.emacsPackagesFor prev.emacs30).emacsWithPackages (
     epkgs: [ epkgs.vterm ]
   );

@@ -18,14 +18,7 @@
     {
       device = "/dev/disk/by-uuid/6b501d20-8d36-4afa-82c0-b57513426263";
       fsType = "btrfs";
-      options = [ "subvol=plex" "compress=zstd:3" "space_cache=v2" ];
-    };
-
-  fileSystems."/timemachine" =
-    {
-      device = "/dev/disk/by-uuid/6b501d20-8d36-4afa-82c0-b57513426263";
-      fsType = "btrfs";
-      options = [ "subvol=timemachine" "compress=zstd:3" "space_cache=v2" ];
+      options = [ "subvol=plex" "compress=zstd:3" "space_cache=v2" "nofail" "x-systemd.automount" ];
     };
 
   swapDevices = [ ];

@@ -7,9 +7,9 @@
     kubectl
     kubectx
     nodejs_22
-    nodejs_22.pkgs.pnpm
-    nodejs_22.pkgs.typescript
-    nodejs_22.pkgs.typescript-language-server
+    pnpm
+    typescript
+    typescript-language-server
     postgresql
   ]) ++ (with unstablePkgs; [
     lieer

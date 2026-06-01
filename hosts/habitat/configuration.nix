@@ -204,9 +204,6 @@
     gnumake
     gnumeric
     nmap
-    nodejs_20
-    nodePackages.typescript
-    nodePackages.typescript-language-server
     qutebrowser
     rofi-pass
     screenkey
@@ -310,17 +307,6 @@
 
   services.tailscale.enable = true;
 
-  services.netatalk = {
-    enable = true;
-    settings = {
-      timemachine_fa = {
-        path = "/timemachine/fa";
-        "valid users" = "keegan";
-        "time machine" = true;
-      };
-    };
-  };
-
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -414,8 +400,6 @@
 
   # Run TRIM for my SSD
   services.fstrim.enable = true;
-
-  services.dbus.implementation = "broker";
 
   security.sudo = {
     enable = true;
