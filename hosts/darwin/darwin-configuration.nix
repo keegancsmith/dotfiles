@@ -20,8 +20,6 @@
     notmuch
   ]);
 
-  fonts.packages = with pkgs; [ hack-font iosevka ];
-
   homebrew.enable = true;
   homebrew.taps = [
     "d12frosted/emacs-plus"
@@ -40,6 +38,8 @@
     "adobe-acrobat-reader"
     "anki"
     "discord"
+    "font-hack"
+    "font-iosevka"
     "font-jetbrains-mono"
     "ghostty"
     "google-chrome"
