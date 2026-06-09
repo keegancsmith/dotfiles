@@ -6,7 +6,7 @@
     k9s
     kubectl
     kubectx
-    nodejs_22
+    nodejs_24
     pnpm
     typescript
     typescript-language-server
