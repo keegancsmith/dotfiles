@@ -46,7 +46,7 @@ Use `## Changelog` sparingly—only for changes worth communicating to end users
 
 Use `gh` to create pull requests.
 
-Tag `@sourcegraph/code-plane` for review if not a draft PR.
+By default create a draft PR with no reviewers. Only do otherwise if I explicitly ask for it.
 
 ## PR Descriptions
 
