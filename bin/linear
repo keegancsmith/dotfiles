@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  echo "Usage: $(basename "$0") <linear issue URL-or-identifier>" >&2
+}
+
+if [ "$#" -ne 1 ] || [ -z "${1//[[:space:]]/}" ]; then
+  usage
+  exit 2
+fi
+
+input=$1
+if [[ "$input" =~ ([A-Za-z]+-[0-9]+) ]]; then
+  issue_id=${BASH_REMATCH[1]^^}
+elif [[ "$input" =~ ^[[:space:]]*([0-9]+)[[:space:]]*$ ]]; then
+  issue_id="CPL-${BASH_REMATCH[1]}"
+else
+  echo "linear: couldn't find an issue identifier in: $input" >&2
+  exit 2
+fi
+
+authinfo=${AUTHINFO:-$HOME/.authinfo.gpg}
+if [ ! -r "$authinfo" ]; then
+  echo "linear: can't read $authinfo" >&2
+  exit 1
+fi
+
+if ! authinfo_contents=$(gpg --quiet --batch --no-tty --decrypt "$authinfo"); then
+  echo "linear: failed to decrypt $authinfo" >&2
+  exit 1
+fi
+
+api_key=$(awk '
+  {
+    for (i = 1; i <= NF; i++) {
+      tokens[++n] = $i
+    }
+  }
+
+  END {
+    for (i = 1; i <= n; i++) {
+      if (tokens[i] == "machine" && tokens[i + 1] == "api.linear.app") {
+        for (j = i + 2; j <= n && tokens[j] != "machine"; j++) {
+          if (tokens[j] == "password" && j + 1 <= n) {
+            print tokens[j + 1]
+            exit
+          }
+        }
+        for (j = i + 2; j <= n && tokens[j] != "machine"; j++) {
+          if (tokens[j] == "login" && j + 1 <= n) {
+            print tokens[j + 1]
+            exit
+          }
+        }
+      }
+    }
+  }
+' <<< "$authinfo_contents")
+
+if [ -z "$api_key" ]; then
+  echo "linear: no api.linear.app entry found in $authinfo" >&2
+  exit 1
+fi
+
+query=$(cat <<'GRAPHQL'
+query Issues($filter: IssueFilter) {
+  issues(filter: $filter) {
+    nodes {
+      title
+      url
+      updatedAt
+      parent {
+        url
+      }
+      identifier
+      description
+      comments {
+        nodes {
+          body
+          user {
+            displayName
+          }
+        }
+      }
+      children {
+        nodes {
+          identifier
+          title
+          url
+        }
+      }
+      attachments {
+        nodes {
+          title
+          url
+          metadata
+          subtitle
+        }
+      }
+    }
+  }
+}
+GRAPHQL
+)
+
+response=$(
+  jq -n \
+    --arg query "$query" \
+    --arg id "$issue_id" \
+    '{query: $query, variables: {filter: {id: {eq: $id}}}}' |
+    curl \
+      -fsS \
+      -X POST \
+      -H "Content-Type: application/json" \
+      --config <(printf 'header = "Authorization: %s"\n' "$api_key") \
+      --data-binary @- \
+      https://api.linear.app/graphql
+)
+
+jq -e '
+  def die($message): $message | halt_error(1);
+
+  if ((.errors // []) | length) > 0 then
+    die("linear: GraphQL errors: " + (.errors | map(.message) | join("; ")))
+  else
+    (.data.issues.nodes // []) as $nodes
+    | if ($nodes | length) == 1 then
+        $nodes[0]
+      elif ($nodes | length) == 0 then
+        die("linear: no issue returned")
+      else
+        die("linear: expected exactly one issue, got \($nodes | length)")
+      end
+  end
+' <<< "$response"
