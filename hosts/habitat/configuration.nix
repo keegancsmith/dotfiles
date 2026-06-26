@@ -72,6 +72,15 @@
         ];
       };
 
+      interfaces.docker0 = {
+        allowedTCPPorts = [
+          # Sourcegraph devserver from local Docker containers
+          3080 # frontend HTTP / model-provider / MCP endpoints
+          3443 # caddy HTTPS
+          5050 # local OCI registry
+        ];
+      };
+
     };
 
     hosts = {
