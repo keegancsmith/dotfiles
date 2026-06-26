@@ -24,7 +24,7 @@ dotfiles=".bash_logout .bash_profile .bashrc .emacs.d \
           .inputrc .screenrc .vimrc .gitconfig \
           .bash_darwin .gitignore_global .zshrc .zshenv \
           .notmuch-config .tmux.conf .hammerspoon \
-          .gitconfig-sourcegraph"
+          .gitconfig-sourcegraph .psqlrc"
 for f in $dotfiles; do
     conditionallink "${REPO}/${f}" "${HOME}/${f}"
 done
