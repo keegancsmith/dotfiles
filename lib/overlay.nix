@@ -14,6 +14,6 @@ final: prev: rec {
   my-scripts = prev.callPackage ./my-scripts.nix { };
 
   myEmacs = (prev.emacsPackagesFor prev.emacs30).emacsWithPackages (
-    epkgs: [ epkgs.vterm ]
+    epkgs: [ epkgs.vterm epkgs.treesit-grammars.with-all-grammars ]
   );
 }
