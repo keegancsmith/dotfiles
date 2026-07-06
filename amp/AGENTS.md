@@ -27,17 +27,6 @@ Good commit messages:
 - Provide context on why this approach was chosen
 - Reference relevant issues, threads, or documentation when helpful
 
-## Test Plan
-
-Include a `## Test Plan` or `Test Plan:` section in the commit body only when it communicates validation that is not obvious from the diff or CI. Useful test plans include:
-- Manual testing steps taken
-- Automated tests added as part of the change
-- Non-obvious observations confirming the fix works
-
-Do not add a test plan just to list routine automated checks that CI will clearly run anyway, such as running `go test` on a touched package. Do not add placeholder entries like "not run locally; CI will validate this"—that is just restating the default CI contract. Omit the test plan when validation is obvious, redundant with CI, or there is nothing meaningful to test (e.g., documentation-only changes, typo fixes).
-
-Prefer `Test Plan:` inline unless the commit has multiple sections (e.g., Changelog), then use `## Test Plan`.
-
 ## Changelog
 
 Use `## Changelog` sparingly—only for changes worth communicating to end users. Refactors, chores, internal tooling, and similar changes do not need a changelog entry.
