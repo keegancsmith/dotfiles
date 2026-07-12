@@ -46,6 +46,9 @@ excludesfile = ~/.gitignore_global
 [diff]
 compactionHeuristic = true
 
+[diff "orgfile"]
+  xfuncname = "^\\*+ .*$"
+
 [http]
   cookiefile = ~/.gitcookies
 
