@@ -27,5 +27,6 @@
   "amp.showCost": true,
   "amp.internal.modes": true,
   "amp.internal.showDetailedCosts": true,
-  "amp.agent.deepReasoningEffort": "xhigh"
+  "amp.agent.deepReasoningEffort": "xhigh",
+  "amp.remoteThreadCreation.enabled": true
 }
