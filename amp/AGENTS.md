@@ -41,4 +41,4 @@ By default create a draft PR with no reviewers. Only do otherwise if I explicitl
 
 Write PR descriptions as prose, not structured sections like "Summary", "Problem", "Solution". Explain the change naturally—what it does, why it's needed, and how it works—in flowing paragraphs.
 
-Use `## Test Plan` and `## Changelog` sections only under the same conditions as commits. Do not add a Test Plan just because a PR template or existing convention might expect one; omit it unless it communicates meaningful validation beyond routine CI.
+Use `## Changelog` sections only under the same conditions as commits. Do not add a Test Plan just because a PR template or existing convention might expect one; omit it unless it communicates meaningful validation beyond routine CI.
