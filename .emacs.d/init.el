@@ -294,10 +294,6 @@
               ("C-c C-o f" . go-fill-struct))
   :commands (go-fill-struct))
 
-(use-package company
-  :config
-  (global-company-mode))
-
 (use-package eglot
   :commands (eglot eglot-ensure)
   :hook
@@ -363,14 +359,68 @@
   :init
   (vertico-mode))
 
+;; Use a full-buffer display for line searches while keeping the default
+;; minibuffer display for other completion commands.
+(use-package vertico-multiform
+  :ensure nil
+  :after vertico
+  :custom
+  (vertico-multiform-commands '((consult-line buffer)))
+  :config
+  (vertico-multiform-mode))
+
 ;; Use the `orderless' completion style.
 ;; Enable `partial-completion' for files to allow path expansion.
 ;; You may prefer to use `initials' instead of `partial-completion'.
 (use-package orderless
   :init
-  (setq completion-styles '(orderless)
+  (setq completion-styles '(orderless basic)
         completion-category-defaults nil
         completion-category-overrides '((file (styles . (partial-completion))))))
+
+;; Use Prescient for frecency-based sorting while leaving matching to
+;; Orderless. Persist usage statistics across Emacs sessions.
+(use-package prescient
+  :config
+  (prescient-persist-mode 1))
+
+(use-package vertico-prescient
+  :demand t
+  :after (vertico prescient)
+  :custom
+  (vertico-prescient-enable-filtering nil)
+  (vertico-prescient-enable-sorting t)
+  :config
+  (vertico-prescient-mode 1))
+
+;; Display completion-at-point candidates using the same native completion
+;; APIs used by Vertico and Orderless.
+(use-package corfu
+  :custom
+  (corfu-auto t)
+  (corfu-cycle t)
+  :init
+  (global-corfu-mode)
+  :config
+  (corfu-popupinfo-mode 1))
+
+(use-package corfu-prescient
+  :demand t
+  :after (corfu prescient)
+  :custom
+  (corfu-prescient-enable-filtering nil)
+  (corfu-prescient-enable-sorting t)
+  :config
+  (corfu-prescient-mode 1))
+
+;; Supplement mode- and Eglot-provided completion-at-point functions. Local
+;; completion functions take precedence over these global fallbacks.
+(use-package cape
+  :bind ("C-c p" . cape-prefix-map)
+  :init
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block))
 
 ;; A few more useful configurations for completing-read
 (use-package emacs
@@ -421,8 +471,7 @@
 (defun consult-project ()
   "jump to a repo"
   (interactive)
-  (let* ((selectrum-should-sort nil)
-         (default-directory (getenv "HOME")) ; disable TRAMP
+  (let* ((default-directory (getenv "HOME")) ; disable TRAMP
          (dirs (or (parse-colon-path (getenv "SRCPATH"))
                    '("~/src")))
          (cmd (string-join (cons "counsel-repo -verbose" dirs) " "))
@@ -435,8 +484,7 @@
 (defun consult-project-remote ()
   "jump to a remote repo"
   (interactive)
-  (let* ((selectrum-should-sort nil)
-         (host (if (string= (system-name) "habitat") "fa.local" "habitat"))
+  (let* ((host (if (string= (system-name) "habitat") "fa.local" "habitat"))
          (default-directory (concat "/sshx:" host ":"))
          (cmd "counsel-repo ~/src")
          (cands (split-string (shell-command-to-string cmd) "\n" t))
@@ -537,7 +585,7 @@
   (consult-customize
    consult-ripgrep consult-git-grep consult-grep
    consult-bookmark consult-recent-file consult-xref
-   consult--source-recent-file consult--source-project-recent-file consult--source-bookmark
+   consult-source-recent-file consult-source-project-recent-file consult-source-bookmark
    :preview-key "M-.")
 
   (setq register-preview-delay 0.8
