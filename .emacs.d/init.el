@@ -257,6 +257,7 @@
               (setq-local delete-trailing-whitespace-p nil))))
 
 (use-package go-mode
+  :hook (before-save . gofmt-before-save)
   :config
   (defun my-go-mode-hook ()
     (if (not (string-match "go" compile-command))
@@ -264,6 +265,7 @@
              "go test")))
   (add-hook 'go-mode-hook #'my-go-mode-hook)
   (add-hook 'go-ts-mode-hook #'my-go-mode-hook)
+  (setq gofmt-command (expand-file-name "~/go/bin/goimports"))
   (setenv "GOPATH" (string-trim (shell-command-to-string "go env GOPATH")))
 
   ;; Teach project.el to recognize go.mod as a project root, so eglot
@@ -315,23 +317,7 @@
                                        (compositeLiteralTypes . t)
                                        (constantValues . t)
                                        (functionTypeParameters . t)
-                                       (rangeVariableTypes . t)))))))
-
-  ;; Format with gopls on save (replaces the gofmt-before-save hook).
-  ;; Depth -10 ensures this runs before eglot's willSave notification,
-  ;; so the notification reports the actual contents that will be saved.
-  (defun my/eglot-format-buffer-before-save ()
-    (add-hook 'before-save-hook #'eglot-format-buffer -10 t))
-  (add-hook 'go-mode-hook #'my/eglot-format-buffer-before-save)
-  (add-hook 'go-ts-mode-hook #'my/eglot-format-buffer-before-save)
-
-  ;; Run gopls "Organize Imports" code action on save (replaces goimports).
-  (defun my/eglot-organize-imports-before-save ()
-    (add-hook 'before-save-hook
-              (lambda () (call-interactively 'eglot-code-action-organize-imports))
-              nil t))
-  (add-hook 'go-mode-hook #'my/eglot-organize-imports-before-save)
-  (add-hook 'go-ts-mode-hook #'my/eglot-organize-imports-before-save))
+                                       (rangeVariableTypes . t))))))))
 
 (use-package emacs
   :config
