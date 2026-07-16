@@ -139,20 +139,43 @@
 
 (setq treesit-language-source-alist
       '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+        (c "https://github.com/tree-sitter/tree-sitter-c")
         (cmake "https://github.com/uyha/tree-sitter-cmake")
+        (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
         (css "https://github.com/tree-sitter/tree-sitter-css")
-        (elisp "https://github.com/Wilfred/tree-sitter-elisp")
         (go "https://github.com/tree-sitter/tree-sitter-go")
         (html "https://github.com/tree-sitter/tree-sitter-html")
         (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
         (json "https://github.com/tree-sitter/tree-sitter-json")
-        (make "https://github.com/alemuller/tree-sitter-make")
-        (markdown "https://github.com/ikatyang/tree-sitter-markdown")
         (python "https://github.com/tree-sitter/tree-sitter-python")
         (toml "https://github.com/tree-sitter/tree-sitter-toml")
         (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
         (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
         (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+
+(dolist (mapping '((sh-mode . bash-ts-mode)
+                   (c-or-c++-mode . c-or-c++-ts-mode)
+                   (c-mode . c-ts-mode)
+                   (c++-mode . c++-ts-mode)
+                   (cmake-mode . cmake-ts-mode)
+                   (css-mode . css-ts-mode)
+                   (go-mode . go-ts-mode)
+                   (mhtml-mode . html-ts-mode)
+                   (html-mode . html-ts-mode)
+                   (javascript-mode . js-ts-mode)
+                   (js-mode . js-ts-mode)
+                   (js-json-mode . json-ts-mode)
+                   (python-mode . python-ts-mode)
+                   (conf-toml-mode . toml-ts-mode)
+                   (toml-mode . toml-ts-mode)
+                   (typescript-mode . typescript-ts-mode)
+                   (yaml-mode . yaml-ts-mode)))
+  (add-to-list 'major-mode-remap-alist mapping))
+
+;; TypeScript and TSX share a legacy major mode, so remapping alone cannot
+;; select the appropriate native parser.
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.[cm]?ts\\'" . typescript-ts-mode))
 
 (defun my/stefan ()
   ""
@@ -257,12 +280,12 @@
               (setq-local delete-trailing-whitespace-p nil))))
 
 (use-package go-mode
-  :hook (before-save . gofmt-before-save)
   :config
   (defun my-go-mode-hook ()
     (if (not (string-match "go" compile-command))
         (set (make-local-variable 'compile-command)
-             "go test")))
+             "go test"))
+    (add-hook 'before-save-hook #'gofmt-before-save nil t))
   (add-hook 'go-mode-hook #'my-go-mode-hook)
   (add-hook 'go-ts-mode-hook #'my-go-mode-hook)
   (setq gofmt-command (expand-file-name "~/go/bin/goimports"))
@@ -278,20 +301,23 @@
     (cdr project))
   (add-hook 'project-find-functions #'project-find-go-module)
   (when (bound-and-true-p consult-imenu-config)
-    (add-to-list 'consult-imenu-config '(go-mode :toplevel "Function"
+    (dolist (mode '(go-mode go-ts-mode))
+      (add-to-list 'consult-imenu-config `(,mode :toplevel "Function"
                                                  :types ((?s "Struct"    font-lock-type-face)
                                                          (?i "Interface" font-lock-type-face)
                                                          (?f "Function"  font-lock-function-name-face)
                                                          (?m "Method"    font-lock-function-name-face)
                                                          (?o "Field"     font-lock-variable-name-face)
                                                          (?c "Constant"  font-lock-constant-face)
-                                                         (?v "Variable"  font-lock-variable-name-face))))))
+                                                         (?v "Variable"  font-lock-variable-name-face)))))))
 
 ;; GO111MODULE=on go get github.com/davidrjenni/reftools/cmd/fillstruct
 (use-package go-fill-struct
   :after go-mode
-  :bind (:map go-mode-map
-              ("C-c C-o f" . go-fill-struct))
+  :bind ((:map go-mode-map
+               ("C-c C-o f" . go-fill-struct))
+         (:map go-ts-mode-map
+               ("C-c C-o f" . go-fill-struct)))
   :commands (go-fill-struct))
 
 (use-package eglot
@@ -299,7 +325,8 @@
   :hook
   (go-mode . eglot-ensure)
   (go-ts-mode . eglot-ensure)
-  (typescript-mode . eglot-ensure)
+  (typescript-ts-mode . eglot-ensure)
+  (tsx-ts-mode . eglot-ensure)
   (zig-mode . eglot-ensure)
   :config
   ;; gopls workspace settings. See https://go.dev/gopls/settings
@@ -320,11 +347,6 @@
 
   (setq read-process-output-max (* 1024 1024))) ;; 1mb
 
-(use-package typescript-mode
-  :mode (("\\.[cm]ts\\'" . typescript-mode))
-  :custom
-  (typescript-indent-level 2))
-
 (use-package prettier-js
   :custom
   (prettier-js-use-modules-bin t)
@@ -335,7 +357,9 @@
         (prettier-js-mode +1)))
 
   (add-hook 'js-mode-hook 'maybe-use-prettier)
-  (add-hook 'typescript-mode-hook 'maybe-use-prettier))
+  (add-hook 'js-ts-mode-hook 'maybe-use-prettier)
+  (add-hook 'typescript-ts-mode-hook 'maybe-use-prettier)
+  (add-hook 'tsx-ts-mode-hook 'maybe-use-prettier))
 
 (use-package flycheck
   :init
@@ -1030,8 +1054,6 @@
 
 (use-package dockerfile-mode)
 
-(use-package yaml-mode)
-
 (use-package which-key
   :ensure nil
   :config
@@ -1280,13 +1302,6 @@
 (advice-add 'consult-xref :around #'my-consult-xref-sort-tests-last)
 
 (use-package nix-mode)
-
-(use-package tree-sitter
-  :config
-  (global-tree-sitter-mode)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-
-(use-package tree-sitter-langs)
 
 (use-package zig-mode)
 
