@@ -1032,12 +1032,10 @@
 
 (use-package yaml-mode)
 
-(use-package guide-key
-  :custom
-  (guide-key/guide-key-sequence t)
-  (guide-key/polling-time 0.5)
+(use-package which-key
+  :ensure nil
   :config
-  (guide-key-mode 1))
+  (which-key-mode 1))
 
 ;; For visual wrapping at 80 columns when editing markdown.
 (use-package visual-fill-column)
