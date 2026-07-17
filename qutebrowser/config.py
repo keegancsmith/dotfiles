@@ -99,6 +99,9 @@ config.bind(',w', 'spawn --userscript ' + userscript('org-capture.py'))
 # approve nixpkgs PRs with the merge bot command
 config.bind(',n', 'spawn --userscript ' + userscript('nixpkgs-merge'))
 
+# open the current GitHub PR branch on our Sourcegraph compare page
+config.bind(',s', 'spawn --userscript ' + userscript('github-pr-sourcegraph.py'))
+
 # password_fill from upstream
 config.bind(',p', 'spawn --userscript ' + userscript('password_fill'))
 
