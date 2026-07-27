@@ -20,6 +20,11 @@ function conditionallink {
 cd $(dirname $0)
 REPO=$(pwd)
 
+if ! ./gen.sh; then
+  echo "Error: failed to generate agent guidance"
+  exit 1
+fi
+
 dotfiles=".bash_logout .bash_profile .bashrc .emacs.d \
           .inputrc .screenrc .vimrc .gitconfig \
           .bash_darwin .gitignore_global .zshrc .zshenv \
@@ -59,8 +64,8 @@ conditionallink "${REPO}/ghostty" "${HOME}/.config/ghostty/config"
 
 # amp
 conditionallink "${REPO}/amp" "${HOME}/.config/amp"
-conditionallink "${REPO}/amp/AGENTS.md" "${HOME}/.codex/AGENTS.md"
-conditionallink "${REPO}/amp/AGENTS.md" "${HOME}/.pi/agent/AGENTS.md"
+conditionallink "${REPO}/agents/AGENTS.md" "${HOME}/.codex/AGENTS.md"
+conditionallink "${REPO}/agents/AGENTS.md" "${HOME}/.pi/agent/AGENTS.md"
 
 # volumeicon
 conditionallink "${REPO}/volumeicon" "${HOME}/.config/volumeicon/volumeicon"
