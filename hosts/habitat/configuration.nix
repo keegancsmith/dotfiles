@@ -204,6 +204,7 @@
     jellyfin
     jellyfin-web
     jellyfin-ffmpeg
+    krita
     lm_sensors
     lsof
     maim
