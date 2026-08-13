@@ -161,12 +161,32 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.browsed.enable = false;
   # https://nixos.wiki/wiki/Hardware/Brother
   services.printing.drivers = [
     pkgs.brlaser
     pkgs.brgenml1lpr
     pkgs.brgenml1cupswrapper
   ];
+  hardware.printers = {
+    ensureDefaultPrinter = "Brother_HL-L2360D_series";
+    ensurePrinters = [{
+      name = "Brother_HL-L2360D_series";
+      description = "Brother HL-L2360D series";
+      location = "Harfield Office";
+      deviceUri = "socket://192.168.0.120";
+      model = "drv:///brlaser.drv/brl2360d.ppd";
+      ppdOptions = {
+        PageSize = "A4";
+        InputSlot = "Auto";
+        MediaType = "Stationery";
+        cupsPrintQuality = "Normal";
+        ColorModel = "Gray";
+        Duplex = "DuplexNoTumble";
+        OutputBin = "FaceDown";
+      };
+    }];
+  };
 
   users.users.keegan = {
     isNormalUser = true;
