@@ -17,7 +17,7 @@
         overlays = [
           (_: prev: {
             # emacs -> mailutils -> nss_wrapper is broken on darwin
-            notmuch = prev.notmuch.override { withEmacs = !prev.stdenv.isDarwin; };
+            notmuch = prev.notmuch.override { withEmacs = !prev.stdenv.hostPlatform.isDarwin; };
           })
         ];
       };
