@@ -296,6 +296,7 @@
   documentation.dev.enable = true;
 
   programs.nix-ld.enable = true;
+  services.envfs.enable = true;
 
   programs.i3lock.enable = true;
 
