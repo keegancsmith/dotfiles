@@ -66,7 +66,7 @@ def main():
     repo_path = "/".join(quote(part, safe="") for part in (owner, repo))
     branch_path = quote(branch, safe="/")
     qute_command(
-        f"open -t {SOURCEGRAPH}/r/github.com/{repo_path}/-/compare/...{branch_path}"
+        f"open -t {SOURCEGRAPH}/r/github.com/{repo_path}/-/compare/...{branch_path}?mode=Tour"
     )
 
 
