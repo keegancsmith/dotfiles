@@ -322,6 +322,13 @@
 
 (use-package eglot
   :commands (eglot eglot-ensure)
+  :custom
+  (eglot-events-buffer-config '(:size 0 :format full))
+  (eglot-sync-connect nil)
+  (eglot-ignored-server-capabilities '(:documentHighlightProvider
+                                       :documentLinkProvider
+                                       :inlayHintProvider
+                                       :semanticTokensProvider))
   :hook
   (go-mode . eglot-ensure)
   (go-ts-mode . eglot-ensure)
@@ -331,21 +338,25 @@
   :config
   ;; gopls workspace settings. See https://go.dev/gopls/settings
   (setq-default eglot-workspace-configuration
-                '((:gopls . ((staticcheck . t)
-                             (gofumpt . t)
-                             (usePlaceholders . t)
-                             (hints . ((parameterNames . t)
-                                       (assignVariableTypes . t)
-                                       (compositeLiteralFields . t)
-                                       (compositeLiteralTypes . t)
-                                       (constantValues . t)
-                                       (functionTypeParameters . t)
-                                       (rangeVariableTypes . t))))))))
+                '(:gopls (:staticcheck :json-false
+                          :gofumpt t
+                          :usePlaceholders t
+                          :directoryFilters ["-**/node_modules"
+                                             "-**/.git"
+                                             "-**/.direnv"
+                                             "-**/bazel-bin"
+                                             "-**/bazel-out"
+                                             "-**/bazel-testlogs"]
+                          :diagnosticsDelay "2s"
+                          :diagnosticsTrigger "Save"
+                          :analysisProgressReporting :json-false
+                          :symbolScope "workspace"))))
 
 (use-package emacs
   :config
 
-  (setq read-process-output-max (* 1024 1024))) ;; 1mb
+  (setq read-process-output-max (* 1024 1024) ;; 1mb
+        jsonrpc-default-request-timeout 2))
 
 (use-package prettier-js
   :custom
