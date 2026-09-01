@@ -988,6 +988,7 @@
 
 (use-package envrc
   :after inheritenv
+  :custom (envrc-async t)
   :hook (after-init . envrc-global-mode))
 
 (use-package lua-mode)
