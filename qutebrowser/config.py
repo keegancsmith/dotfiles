@@ -18,6 +18,7 @@ c.window.hide_decoration = True
 import platform
 if platform.node() == 'habitat':
     c.zoom.default = '125%'
+    c.qt.args = ['disable-gpu']
 
 def enableClipboard(pattern):
     with config.pattern(pattern) as p:
