@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+DISPLAY_NAME=$(xrandr --query | awk '/ connected/ { print $1; exit }')
+if [ -z "$DISPLAY_NAME" ]; then
+  echo "Display not found"
+  exit 1
+fi
+
+CURRENT_MODE=$(xrandr --query | awk -v display="$DISPLAY_NAME" '
+  $1 == display && $2 == "connected" {
+    if (match($0, /[0-9]+x[0-9]+\+[0-9]+\+[0-9]+/)) {
+      mode = substr($0, RSTART, RLENGTH)
+      sub(/\+.*/, "", mode)
+      print mode
+    }
+    exit
+  }
+')
+
+if [ "$CURRENT_MODE" = "3840x2160" ]; then
+  TARGET_MODE="1920x1080"
+  TARGET_NAME="1080p"
+else
+  TARGET_MODE="3840x2160"
+  TARGET_NAME="4k"
+fi
+
+if ! xrandr --query | awk -v display="$DISPLAY_NAME" -v mode="$TARGET_MODE" '
+  $1 == display && $2 == "connected" { in_display = 1; next }
+  /^[^[:space:]]/ { in_display = 0 }
+  in_display && $1 == mode { found = 1 }
+  END { exit !found }
+'; then
+  echo "$TARGET_NAME not found for $DISPLAY_NAME"
+  exit 1
+fi
+
+xrandr --output "$DISPLAY_NAME" --mode "$TARGET_MODE"
+echo "Switched to $TARGET_NAME"
