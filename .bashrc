@@ -158,15 +158,48 @@ function pass-fzf {
     pass "$@" "$d"
 }
 
-# quick jumping to directory in sourcegraph/cloud
-function cloud_jump {
-    local dir=$(git grep "displayName:" -- ":/**/config.yaml" | \
+# select a sourcegraph/cloud instance by displayName
+function cloud_instance {
+    git grep "displayName:" -- ":/**/config.yaml" | \
         awk -F': *' '{print $1 "\t" $3}' | \
         fzf --query "$1" --with-nth 2 | \
-        cut -f1)
+        cut -f"${2:-2}"
+}
+
+# quick jumping to directory in sourcegraph/cloud
+function cloud_jump {
+    cd "$HOME/src/github.com/sourcegraph/cloud" || return
+    local dir=$(cloud_instance "$1" 1)
     if [ -n "$dir" ]; then
         cd "$(dirname "$dir")"
     fi
+}
+
+function mi2_db {
+    cd "$HOME/src/github.com/sourcegraph/cloud" || return
+    local query=""
+    if [[ -n "$1" && "$1" != -* ]]; then
+        query="$1"
+        shift
+    fi
+
+    local displayName=$(cloud_instance "$query")
+    if [ -n "$displayName" ]; then
+        mi2 instance db proxy -e prod -s "$displayName" -session.timeout 0 "$@"
+    fi
+}
+
+function mi2_workon {
+    cd "$HOME/src/github.com/sourcegraph/cloud" || return
+    local displayName=$(cloud_instance "$1")
+    if [ -n "$displayName" ]; then
+        mi2 instance workon -e prod -s "$displayName" -exec
+    fi
+}
+
+function gcloud_login {
+    gcloud auth login
+    gcloud auth application-default login
 }
 
 # fzf respects gitignore by default
