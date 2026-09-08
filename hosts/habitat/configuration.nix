@@ -149,9 +149,7 @@
 
   # compositor
   services.picom = {
-    enable = true;
-    inactiveOpacity = 0.8;
-    opacityRules = [ "100:class_g = 'i3lock'" ];
+    enable = false;
   };
 
   # lm_sensors detected kernel modules.
