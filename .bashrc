@@ -198,8 +198,9 @@ function mi2_workon {
 }
 
 function gcloud_login {
-    gcloud auth login
+    gcloud auth login &
     gcloud auth application-default login
+    wait
 }
 
 # fzf respects gitignore by default

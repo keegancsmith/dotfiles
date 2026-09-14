@@ -214,24 +214,25 @@
     discord
     docker
     docker-credential-helpers
-    myEmacs
     ffmpeg-full
     gcc
     gdb
+    gnumake
+    gnumeric
     gv
     jellyfin
-    jellyfin-web
     jellyfin-ffmpeg
+    jellyfin-web
     krita
     lm_sensors
     lsof
     maim
     mpv
-    my-bazelisk
     mupdf
-    gnumake
-    gnumeric
+    my-bazelisk
+    myEmacs
     nmap
+    pandoc
     qutebrowser
     rofi-pass
     screenkey
