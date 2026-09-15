@@ -223,6 +223,7 @@
     jellyfin
     jellyfin-ffmpeg
     jellyfin-web
+    kitty
     krita
     lm_sensors
     lsof
