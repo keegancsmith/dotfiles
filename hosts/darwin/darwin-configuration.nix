@@ -9,7 +9,6 @@
 
   environment.systemPackages = (with pkgs; [
     coreutils
-    (writeShellScriptBin "docker" ''exec /opt/homebrew/bin/podman "$@"'')
     ffmpeg
     findutils
     gnupg
@@ -27,7 +26,6 @@
   homebrew.brews = [
     "mpv"
     "pinentry-mac"
-    "podman"
     {
       name = "emacs-plus@30";
       args = [ "with-modern-icon" "with-mailutils" "with-imagemagick" ];
@@ -45,7 +43,6 @@
     "google-chrome"
     "hammerspoon"
     "insomnia"
-    "kap"
     "karabiner-elements"
     "keybase"
     "qutebrowser"
@@ -55,8 +52,6 @@
     "spotify"
     "steam"
     "visual-studio-code"
-    "wezterm"
-    "zed"
   ];
   homebrew.masApps = {
     "print to pdf" = 1639234272;

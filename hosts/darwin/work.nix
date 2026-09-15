@@ -7,9 +7,7 @@
     "bazelisk"
   ];
   homebrew.casks = [
-    "dbeaver-community"
     "mitmproxy"
-    "superwhisper"
   ];
   homebrew.masApps = {
     "okta verify" = 490179405;
