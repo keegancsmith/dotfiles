@@ -14,6 +14,8 @@
     gnupg
     neovim
     pandoc
+  ]) ++ lib.optionals pkgs.stdenv.hostPlatform.isAarch64 (with pkgs; [
+    qutebrowser-bin
   ]) ++ (with unstablePkgs; [
     lieer
     notmuch
@@ -45,7 +47,6 @@
     "insomnia"
     "karabiner-elements"
     "keybase"
-    "qutebrowser"
     "scratch"
     "sloth"
     "sonos-s1-controller"

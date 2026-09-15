@@ -13,6 +13,8 @@ final: prev: rec {
 
   my-scripts = prev.callPackage ./my-scripts.nix { };
 
+  qutebrowser-bin = prev.callPackage ./qutebrowser-bin.nix { };
+
   myEmacs = (prev.emacsPackagesFor prev.emacs30).emacsWithPackages (
     epkgs: [ epkgs.vterm epkgs.treesit-grammars.with-all-grammars ]
   );
