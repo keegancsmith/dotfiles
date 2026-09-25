@@ -1151,6 +1151,11 @@
 (use-package elfeed
   :commands (elfeed)
   :config
+  ;; Open elfeed entries with the zoom level I usually read them at.
+  (add-hook 'elfeed-show-mode-hook
+            (lambda ()
+              (text-scale-set 2)))
+
   ;; I only care about the Full Performance videos from KEXP, not the
   ;; individual song performances.
   (add-hook 'elfeed-new-entry-hook
