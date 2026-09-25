@@ -1432,6 +1432,10 @@
   :config
   (claude-code-ide-emacs-tools-setup))
 
+(use-package winpulse
+  :config
+  (winpulse-mode +1))
+
 (defun my-vc-github-local-checkout (name repo)
   "helper for package-vc-install-from-checkout"
   (let ((dir (expand-file-name repo "~/src/github.com/")))
