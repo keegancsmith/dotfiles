@@ -1332,10 +1332,10 @@
   (graphql-indent-level 4))
 
 (use-package ready-player
-  :config
-  (setq ready-player-my-media-collection-location (expand-file-name "~/Music"))
-  (setq ready-player-ask-for-project-sustainability nil)
-  (ready-player-mode +1))
+  :custom
+  (ready-player-set-global-bindings nil)
+  (ready-player-my-media-collection-location (expand-file-name "~/Music"))
+  (ready-player-ask-for-project-sustainability nil))
 
 (use-package bongo
   :custom
