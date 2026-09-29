@@ -55,6 +55,8 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward
       uniquify-strip-common-suffix nil)
+(repeat-mode 1)
+(minibuffer-regexp-mode 1)
 ;; Misc settings
 (setq
  vc-handled-backends '(Git Hg)
@@ -68,6 +70,7 @@
  save-abbrevs nil
  dired-listing-switches "-Alh"
  save-interprogram-paste-before-kill t
+ kill-do-not-save-duplicates t
  sentence-end-double-space nil
  font-lock-maximum-decoration t
  vc-follow-symlinks t)
@@ -123,6 +126,15 @@
  indent-tabs-mode nil
  js-indent-level 2
  sh-indentation 2)
+
+;; perf settings from doom
+(setq-default
+ bidi-display-reordering 'left-to-right
+ bidi-paragraph-direction 'left-to-right)
+(setq
+ bidi-inhibit-bpa t
+ redisplay-skip-fontification-on-input t)
+
 ;; Disable annoying keys I accidently hit
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-x C-z"))
@@ -373,17 +385,15 @@
   (add-hook 'tsx-ts-mode-hook 'maybe-use-prettier))
 
 (use-package flycheck
-  :init
-  (global-flycheck-mode)
+  :ensure t
+  :hook ((after-init . global-flycheck-mode)
+         ;; Show diagnostics inline, next to the code (Error Lens style)
+         (after-init . global-flycheck-annotate-mode))
+  :config
   ; elisp checking is annoying. checkdoc is targetted at elisp packages, I
   ; just hack at stuff.
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
-
-;; Use flycheck for diagnostics in eglot-managed buffers instead of flymake.
-;; See https://github.com/flycheck/flycheck-eglot
-(use-package flycheck-eglot
-  :after (flycheck eglot)
-  :config
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+  ;; Report Eglot's LSP diagnostics through Flycheck
   (global-flycheck-eglot-mode 1))
 
 ;; weird workaround. On latest vertico it fails since it can't find compat
@@ -472,6 +482,16 @@
 
   ;; Enable recursive minibuffers
   (setq enable-recursive-minibuffers t))
+
+(use-package completion-preview
+  :ensure nil
+  :config
+  ;; cycle through the other candidates with M-n/M-p (those two
+  ;; commands have no default bindings)
+  (define-key completion-preview-active-mode-map (kbd "M-n") #'completion-preview-next-candidate)
+  (define-key completion-preview-active-mode-map (kbd "M-p") #'completion-preview-prev-candidate)
+  (global-completion-preview-mode +1))
+
 
 (use-package marginalia
   :bind (("M-A" . marginalia-cycle)
