@@ -1005,7 +1005,9 @@
   (setq ediff-window-setup-function 'ediff-setup-windows-plain
         ediff-split-window-function 'split-window-horizontally))
 
-(use-package gptel)
+(use-package gptel
+  :custom
+  (gptel-confirm-tool-calls nil))
 (use-package gptel-agent
   :config (gptel-agent-update))
 
