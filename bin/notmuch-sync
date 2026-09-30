@@ -5,9 +5,18 @@ set -euo pipefail
 self=$(muchsync --self)
 if [ "$self" = 2967698721405478202 ]; then
 	notmuch new
+	# The pre-new hook's gmi sync indexes mail itself and usually touches
+	# the maildir in the same second notmuch new stats it, so notmuch skips
+	# recording the directory mtime. muchsync only rescans directories whose
+	# recorded mtime changed, so without this it syncs tags for messages it
+	# never sends. A second run (after post-new has taken its time) records it.
+	notmuch new --no-hooks
 else
+	# Push local tag changes before gmi syncs them to gmail, then pull
+	# whatever notmuch-sync on fa.local fetched.
 	muchsync --nonew fa.local --nonew
-	muchsync --nonew fa.local
+	ssh fa.local notmuch sync
+	muchsync --nonew fa.local --nonew
 
 	echo
 	echo "inbox $(notmuch count tag:inbox) email(s)"
