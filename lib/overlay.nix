@@ -15,6 +15,22 @@ final: prev: rec {
 
   qutebrowser-bin = prev.callPackage ./qutebrowser-bin.nix { };
 
+  # Contains my fix for "rescan directories of messages modified since last scan"
+  muchsync = prev.muchsync.overrideAttrs (old: {
+    src = prev.fetchFromGitHub {
+      owner = "keegancsmith";
+      repo = "muchsync";
+      rev = "137b983f0b65375d4f011a4d83aab41ba43481d1";
+      hash = "sha256-xvh8vsss/JvgAvU88vHx55cex799sRBaSAI1VofZ6K0=";
+    };
+
+    # The GitHub checkout lacks the generated files included in release tarballs.
+    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
+      prev.autoreconfHook
+      prev.pandoc
+    ];
+  });
+
   myEmacs = (prev.emacsPackagesFor prev.emacs30).emacsWithPackages (
     epkgs: [ epkgs.vterm epkgs.treesit-grammars.with-all-grammars ]
   );
