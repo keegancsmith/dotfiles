@@ -34,6 +34,7 @@ notmuch tag -unread -flagged -- tag:new and tag:gh and 'from:sourcegraph-bot-2' 
 notmuch tag -unread -flagged -- tag:new and tag:gh and 'from:github-actions[bot]' and 'label was applied to the issue'
 
 #### Low signal
+notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:sourcegraph-pr-routing[bot]'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:renovate[bot]'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:codecov[bot]'
 notmuch tag -unread -inbox -- tag:new and tag:gh and 'from:github-actions[bot]' and 'body:"Open the Diff Tour for this PR in Sourcegraph"'
