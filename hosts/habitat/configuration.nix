@@ -445,6 +445,12 @@
 
   virtualisation.docker.enable = true;
 
+  # https://emudhra.we-have-a-problem.com/
+  security.pki.caCertificateBlacklist = [
+    "Comodo AAA Services root"
+    "emSign ECC Root CA - G3"
+  ];
+
   # trust caddy cert. caddy start; curl localhost:2019/pki/ca/local | jq -r .root_certificate
   # trust mitmproxy CA. mitmdump --set confdir=~/.mitmproxy; cat ~/.mitmproxy/mitmproxy-ca-cert.pem
   security.pki.certificates = [
