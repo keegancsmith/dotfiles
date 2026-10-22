@@ -211,7 +211,6 @@
     btrfs-progs
     bubblewrap
     caffeine-ng
-    discord
     docker
     docker-credential-helpers
     ffmpeg-full
@@ -237,12 +236,9 @@
     qutebrowser
     rofi-pass
     screenkey
-    signal-desktop
     simple-scan
     simplescreenrecorder
     steam-run
-    synergy
-    wezterm
     xautolock
     xclip
     xsel
@@ -253,7 +249,6 @@
     google-chrome
     spotify
     volumeicon
-    vscode
     yt-dlp
     zoom-us
   ]);

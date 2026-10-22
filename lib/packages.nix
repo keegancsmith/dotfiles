@@ -6,11 +6,9 @@
     bashInteractive
     btop
     cachix
-    (writeShellScriptBin "claude" ''npx -y @anthropic-ai/claude-code "$@"'')
     comma
     counsel-repo
     curl
-    difftastic
     dig
     direnv
     dtach
@@ -21,8 +19,6 @@
     gh
     ghostscript
     git
-    git-up
-    git-spice
     gnuplot
     graphviz
     htop
@@ -59,7 +55,7 @@
     wget
     zstd
   ]) ++ (with unstablePkgs; [
-    go_1_26
+    go_1_27
     golangci-lint
     gopls
   ]);

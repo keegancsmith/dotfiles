@@ -2,14 +2,12 @@
 
 {
   environment.systemPackages = (with pkgs; [
-    biome
     k9s
     kubectl
     kubectx
     nodejs_24
     pnpm
     typescript
-    typescript-language-server
     postgresql
   ]) ++ (with unstablePkgs; [
     lieer

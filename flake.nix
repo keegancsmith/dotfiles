@@ -58,7 +58,6 @@
       formatter = pkgs.nixpkgs-fmt;
       packages = {
         counsel-repo = pkgs.callPackage ./lib/counsel-repo.nix { };
-        git-spice = pkgs.callPackage ./lib/git-spice.nix { };
       };
     }
   );

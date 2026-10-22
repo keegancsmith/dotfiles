@@ -36,23 +36,16 @@
   ];
   homebrew.casks = [
     "adobe-acrobat-reader"
-    "anki"
-    "discord"
     "font-hack"
     "font-iosevka"
     "font-jetbrains-mono"
     "ghostty"
     "google-chrome"
     "hammerspoon"
-    "insomnia"
     "karabiner-elements"
     "keybase"
-    "scratch"
-    "sloth"
-    "sonos-s1-controller"
     "spotify"
     "steam"
-    "visual-studio-code"
   ];
   homebrew.masApps = {
     "print to pdf" = 1639234272;
