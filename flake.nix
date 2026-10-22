@@ -22,43 +22,44 @@
         ];
       };
       specialArgsFor = system: attrs // { unstablePkgs = unstablePkgsFor system; };
-    in {
-    nixosConfigurations.habitat = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = specialArgsFor "x86_64-linux";
-      modules = [
-        disko.nixosModules.disko
-        kolide-launcher.nixosModules.kolide-launcher
-        ./hosts/habitat/configuration.nix
-        ./lib/work.nix
-      ];
-    };
-    darwinConfigurations.fa = darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      specialArgs = specialArgsFor "aarch64-darwin";
-      modules = [
-        ./hosts/darwin/darwin-configuration.nix
-        ./hosts/darwin/work.nix
-        ./lib/work.nix
-      ];
-    };
-    darwinConfigurations.cliche = darwin.lib.darwinSystem {
-      system = "x86_64-darwin";
-      specialArgs = specialArgsFor "x86_64-darwin";
-      modules = [ ./hosts/darwin/darwin-configuration.nix ];
-    };
-    darwinConfigurations.real = darwin.lib.darwinSystem {
-      system = "x86_64-darwin";
-      specialArgs = specialArgsFor "x86_64-darwin";
-      modules = [ ./hosts/darwin/darwin-configuration.nix ];
-    };
-  } // flake-utils.lib.eachDefaultSystem (system:
-    let pkgs = nixpkgs.legacyPackages.${system}; in
+    in
     {
-      formatter = pkgs.nixpkgs-fmt;
-      packages = {
-        counsel-repo = pkgs.callPackage ./lib/counsel-repo.nix { };
+      nixosConfigurations.habitat = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = specialArgsFor "x86_64-linux";
+        modules = [
+          disko.nixosModules.disko
+          kolide-launcher.nixosModules.kolide-launcher
+          ./hosts/habitat/configuration.nix
+          ./lib/work.nix
+        ];
       };
-    }
-  );
+      darwinConfigurations.fa = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = specialArgsFor "aarch64-darwin";
+        modules = [
+          ./hosts/darwin/darwin-configuration.nix
+          ./hosts/darwin/work.nix
+          ./lib/work.nix
+        ];
+      };
+      darwinConfigurations.cliche = darwin.lib.darwinSystem {
+        system = "x86_64-darwin";
+        specialArgs = specialArgsFor "x86_64-darwin";
+        modules = [ ./hosts/darwin/darwin-configuration.nix ];
+      };
+      darwinConfigurations.real = darwin.lib.darwinSystem {
+        system = "x86_64-darwin";
+        specialArgs = specialArgsFor "x86_64-darwin";
+        modules = [ ./hosts/darwin/darwin-configuration.nix ];
+      };
+    } // flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = nixpkgs.legacyPackages.${system}; in
+      {
+        formatter = pkgs.nixpkgs-fmt;
+        packages = {
+          counsel-repo = pkgs.callPackage ./lib/counsel-repo.nix { };
+        };
+      }
+    );
 }
