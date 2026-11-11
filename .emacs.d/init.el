@@ -1287,9 +1287,25 @@
 
 (use-package elpher)
 
+(defconst my-sourcegraph-pr-url-regexp
+  (rx string-start
+      "https://github.com/sourcegraph/sourcegraph/pull/"
+      (group (+ digit))
+      (opt (any "?#") (* anything))
+      string-end))
+
+(defun my-browse-sourcegraph-pr (url &optional new-window)
+  "Open the Sourcegraph changeset corresponding to GitHub PR URL."
+  (when (string-match my-sourcegraph-pr-url-regexp url)
+    (browse-url-background-chrome
+     (format "https://sourcegraph.sourcegraph.com/changesets/gh/sourcegraph/sourcegraph/%s"
+             (match-string 1 url)))))
+
 ;; I always open URLs without taking focus from emacs.
 (setq browse-url-handlers
-      '(
+      `(
+        ;; Open sourcegraph PRs in sourcegraph
+        (,my-sourcegraph-pr-url-regexp . my-browse-sourcegraph-pr)
         ;; Youtube works better in Chrome
         ("https:\\/\\/www\\.youtu\\.*be." . browse-url-background-chrome)
         ;; Work URLs which require Okta (so Chrome)
