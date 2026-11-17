@@ -213,6 +213,7 @@
     caffeine-ng
     docker
     docker-credential-helpers
+    espeak-ng
     ffmpeg-full
     gcc
     gdb
@@ -342,6 +343,14 @@
       enable = true;
       userServices = true;
     };
+  };
+
+  services.pipewire = {
+    # Allow audio streams to discovered AirPlay receivers.
+    raopOpenFirewall = true;
+    extraConfig.pipewire."10-airplay"."context.modules" = [
+      { name = "libpipewire-module-raop-discover"; }
+    ];
   };
 
   # pipewire uses this for realtime processing of audio.

@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage: airplay-say --list
+       airplay-say DEVICE TEXT...
+       printf 'TEXT' | airplay-say DEVICE
+
+Speak text through an AirPlay output. DEVICE is an exact name from --list.
+EOF
+}
+
+if [[ ${1:-} == --help || ${1:-} == -h ]]; then
+  usage
+  exit 0
+fi
+
+devices=$(pw-dump | jq -c '[.[]
+  | select(.type == "PipeWire:Interface:Node")
+  | .info.props
+  | select(."media.class" == "Audio/Sink")
+  | select(."node.name" | startswith("raop_sink."))
+  | {name: ."node.name", description: ."node.description"}
+]')
+
+if [[ ${1:-} == --list ]]; then
+  jq -r '.[].description' <<<"$devices"
+  exit 0
+fi
+
+if (( $# < 1 )); then
+  usage >&2
+  exit 2
+fi
+
+device=$1
+shift
+sink=$(jq -r --arg device "$device" '.[] | select(.description == $device or .name == $device) | .name' <<<"$devices")
+if [[ -z $sink ]]; then
+  printf 'AirPlay output not found: %s\nAvailable outputs:\n' "$device" >&2
+  jq -r '.[].description' <<<"$devices" >&2
+  exit 1
+fi
+if [[ $sink == *$'\n'* ]]; then
+  printf 'More than one AirPlay output matches: %s\nUse a node name instead.\n' "$device" >&2
+  exit 1
+fi
+
+if (( $# > 0 )); then
+  message=$*
+else
+  if [[ -t 0 ]]; then
+    printf 'Provide text as arguments or on stdin.\n' >&2
+    exit 2
+  fi
+  message=$(cat)
+fi
+if [[ -z ${message//[[:space:]]/} ]]; then
+  printf 'Text is empty.\n' >&2
+  exit 2
+fi
+
+espeak-ng --stdout -- "$message" | pw-play --target "$sink" -
